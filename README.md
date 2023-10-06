@@ -25,3 +25,12 @@
 * [Fuente Titulo](./Desing/Tipografia/image_AlumniSansCollegiateOne.png)
 * [Fuente general](./Desing/Tipografia/image_Roboto.png)
 
+## Avance del diseño de Wireframs
+* [Claudio Delgado (Home)](https://www.figma.com/file/KvoexzYxLPfRc6wRMiJHhT/upstable.com?type=design&node-id=44%3A4&mode=design&t=cELwZlb1ValtihcL-1)
+
+* [Mauricio Cuellar (Carrito de compras)](https://www.figma.com/file/hKNO70Pcg3ggY0CADvaVf7/carrito?type=design&node-id=0%3A1&mode=design&t=jnopzLPFy1giNeEE-1)
+	
+* [Santiago Barrios (Detalle del producto)](https://www.figma.com/file/iXocUguA4FP6CA5mxcdsQT/Detalle-producto?type=design&node-id=0-1&mode=design&t=AKslGHjeepdB0pSo-0)
+	
+* [Emiliano Ferreyra (Formulario de registro y Login)](https://www.figma.com/file/xXtucty1s0fXWzKqiDF0C6/Figma-basics?type=design&node-id=1669-162202&mode=design&t=Txd87SsYBQcvv7LC-0)
+
