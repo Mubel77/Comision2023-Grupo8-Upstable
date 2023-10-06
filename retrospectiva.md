@@ -17,3 +17,9 @@
 * Claudio: comenzar el wireframe del home
 * Santi: comenzar el wireframe del detalle del producto
 * Emi: comenzar el wireframe del formulario de registro
+
+### Jueves 05/10/2023
+* Mauri: seguir trabajando en el wireframe del carrito
+* Claudio: seguir trabajando en el wireframe del home
+* Santi: seguir trabajando en el wireframe del detalle del producto
+* Emi: seguir trabajando en el wireframe del formulario del registro
