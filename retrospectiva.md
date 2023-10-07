@@ -23,3 +23,9 @@
 * Claudio: seguir trabajando en el wireframe del home
 * Santi: seguir trabajando en el wireframe del detalle del producto
 * Emi: seguir trabajando en el wireframe del formulario del registro
+
+### Viernes 06/10/2023
+* Mauri: seguir trabajando en el wireframe del carrito (desktop y android)
+* Claudio: seguir trabajando en el wireframe del home (tablet y android)
+* Santi: seguir trabajando en el wireframe del detalle del producto (tablet y android)
+* Emi: seguir trabajando en el wireframe del formulario del registro (tablet y android)
