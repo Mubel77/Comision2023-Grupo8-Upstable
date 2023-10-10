@@ -29,3 +29,9 @@
 * Claudio: seguir trabajando en el wireframe del home (tablet y android)
 * Santi: seguir trabajando en el wireframe del detalle del producto (tablet y android)
 * Emi: seguir trabajando en el wireframe del formulario del registro (tablet y android)
+
+### Lunes 09/10/2023
+* Mauri: modificar detalles del wireframe del carrito (tablet y android)
+* Claudio: modificar detalles del wireframe del home (tablet y android)
+* Santi: modificar detalles del wireframe detalle del producto (tablet y android)
+* Emi: modificar detalles de los wireframes del formulario del registro y login (tablet y android)
