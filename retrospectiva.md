@@ -35,3 +35,15 @@
 * Claudio: modificar detalles del wireframe del home (tablet y android)
 * Santi: modificar detalles del wireframe detalle del producto (tablet y android)
 * Emi: modificar detalles de los wireframes del formulario del registro y login (tablet y android)
+
+### Marte 10/10/2023
+* Mauri: modificar detalles del wireframe del carrito para Dark mode (boton y combinacion de colores)
+* Claudio: modificar detalles del wireframe del home para Dark mode (boton y combinacion de colores)
+* Santi: modificar detalles del wireframe detalle del producto para Dark mode (boton y combinacion de colores)
+* Emi: modificar detalles de los wireframes del formulario del registro y login para Dark mode (boton y combinacion de colores)
+
+### Miercoles 11/10/2023
+* Mauri: modificar detalles del wireframe del carrito para Dark mode (desktop, tablet y android)
+* Claudio: modificar detalles del wireframe del home para Dark mode (desktop, tablet y android)
+* Santi: modificar detalles del wireframe detalle del producto para Dark mode (desktop, tablet y android)
+* Emi: modificar detalles de los wireframes del formulario del registro y login para Dark mode (desktop, tablet y android)
