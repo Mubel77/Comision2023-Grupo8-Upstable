@@ -47,3 +47,9 @@
 * Claudio: modificar detalles del wireframe del home para Dark mode (desktop, tablet y android)
 * Santi: modificar detalles del wireframe detalle del producto para Dark mode (desktop, tablet y android)
 * Emi: modificar detalles de los wireframes del formulario del registro y login para Dark mode (desktop, tablet y android)
+
+### Jueves 12/10/2023
+* Mauri: terminar wireframe del carrito para Dark mode (desktop, tablet y android)
+* Claudio: vincular wireframes del home con repositorio remoto (desktop, tablet y android)
+* Santi: terminar wireframe detalle del producto para Dark mode (desktop, tablet y android)
+* Emi: vincular los wireframes del formulario del registro y login con repositorio remoto (desktop, tablet y android)
