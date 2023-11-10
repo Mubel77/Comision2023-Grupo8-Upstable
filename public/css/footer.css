@@ -1,1 +1,91 @@
-/*holaaa mundo*/
+
+    .footer-father{
+        background-color: #222222;
+        color: #ffffff;
+        font-size: 9px;
+        padding: 10px;
+        text-align: center;
+        }
+    .footer-father ul li {
+        list-style:none;
+        margin: 10px;
+        }
+    .footer-redes-sociales img{
+        width: 150px;
+        margin-bottom: 10px;
+    }
+    
+    .footer-texto-center{
+        margin-bottom: 10px;
+    }
+
+@media(min-width:320px){
+    .footer-father{
+        display: flex;
+        flex-direction: column; 
+    }
+    .footer-texto-top{
+        display: flex;
+        flex-direction: column;
+    }
+    .footer-texto-bottom, .footer-logo{
+        display: none;
+    }
+
+}
+/*--------media query para tablet----------*/
+
+@media(min-width:768px){
+    .footer-father{
+        background-color: #222222;
+        color: #ffffff;
+        font-size: 12px;
+        padding: 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .footer-texto-top{
+        
+        display: flex;
+        flex-direction:row;
+        justify-content: space-around;
+        padding: 10px;
+        align-items: center;
+    }
+    .footer-redes-sociales img{
+        width: 150px;
+        margin-bottom: 10px;
+    }
+    .footer-logo h2{
+        font-family: 'Alumni Sans Collegiate One', sans-serif;
+        font-size: 100px;
+        font-weight: lighter;
+        text-align: center;
+        
+    
+    }
+    .footer-body ul li {
+        list-style:none;
+        margin: 10px;
+    }
+    .footer-texto-center{
+        margin-bottom: 10px;
+    }
+    
+    .footer-texto-bottom {
+        display: flex;
+
+}
+    .footer-logo{
+        display: flex;
+        flex-direction: column;
+}
+
+}
+/*-------media query para desktop----------*/
+@media(min-width:1024px){
+   
+    
+}
