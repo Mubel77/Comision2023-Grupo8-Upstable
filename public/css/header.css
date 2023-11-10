@@ -1,1 +1,54 @@
-/*holaaa mundo*/
+header{
+    font-family: 'Alumni Sans Collegiate One', sans-serif;
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.logo_header{
+    width: 30%;
+    height: auto;
+    margin:2% 34%;
+    border-radius: 35%;
+}
+.titular{
+    font-weight: 100;
+    font-size: 80px;
+    width: 90%;
+    margin:2% 10%;
+    -webkit-text-stroke: 0.5px black;
+    color: white;
+    
+}
+.buscador_header {
+    width: 55%;
+    margin:0 auto;
+    border-color: white;
+}
+.buscador_header input{
+    width:100%;
+    height: 30px;   
+    border-radius: 15px;
+    border-color: white;
+
+}
+input::placeholder{
+    color:black;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+.nav_header{
+    margin:5% 5%;
+    padding: 10px;
+    width:90%;
+    display:flex;
+    justify-content: space-around;
+}
+.nav_header i{
+    font-size: 120%;
+    color: white;
+}
+.fa-bars{
+    font-size: 120%;
+    color:white;
+    background-color: rgb(41, 40, 40);
+}
