@@ -1,3 +1,4 @@
+
 :root{
     --color-gris: #d1d4de;
     --color-negro: #000000;
@@ -5,4 +6,10 @@
     --color-background: #FFFFFF;
     --color-verde_agua: #2DD4DA;
 
+}
+*{
+    font-family:'Roboto', sans-serif;
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
 }
