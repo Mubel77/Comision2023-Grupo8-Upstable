@@ -4,8 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+    <header class="capa_superior">
+        <img class="logo_header" src="/img/logo_upstables.jpg" alt="logo_upstables">
+        <h1 class="titular">UPSTABLES</h1>
+        <form class="buscador_header">
+            <input type="text" name="buscador" placeholder="¿Qué estás buscando?">
+        </form>
+        <nav class="nav_header">
+             <i class="fas fa-bars"></i>
+            <i class="fa-solid fa-pen"></i>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
+        </nav>
+    </header>
+    <main class="main_registro">
+        <p id="p_registro">registrate</p>
+        <form action="/registro" method="post" id="form_registro">
+            <div class="div_config nombre">
+                <label for="nombre">Nombre</label>
+                <input type="text"  name="nombre" placeholder="Nombre" required>
+            </div>
+            <div class="div_config nombre">
+                <label for="apellido">Apellido</label>
+                <input type="text"  name="apellido" placeholder="Apellido" required>
+            </div>
+            <div class="div_config">
+                <label for="domicilio">Domicilio</label>
+                <input type="text"  name="domicilio" placeholder="Domicilio">
+            </div>
+            <div class="div_config">
+                <label for="email">Email</label>
+                <input type="email"  name="email" placeholder="Email" required>
+            </div>
+            <div class="div_config">
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" placeholder="Contraseña" required>
+            </div> 
+            <div class="div_config">
+                <label for="password">Confirmar contraseña</label>
+                <input type="password" name="password" placeholder="Confirmar contraseña" required>
+            </div>
+            <div class="boton_registro">
+                <button type="submit">Crear cuenta</button>
+            </div>           
+        </form>
+    </main>
+    <footer class="footer-father">
+        <div class="footer-texto-top">
+            <div class="footer-redes-sociales">
+                <h3>seguinos</h3>
+                <img src="/img/redesSociales.png" alt="logo-redes-sociales">
+            </div>
+            <div class="footer-logo">
+                <h2>UPSTABLES</h2>
+                <p>Proteccion para tu tecnologia,garantizada</p>
+            </div>
+            <div class="footer-institucional">
+                <h3>INSTITUCIONALES</h3>
+                <ul>
+                    <li>Quienes Somos</li>
+                    <li>Politica de Privacidad</li>
+                    <li>Termino y condiciones</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-texto-center">
+            <ul>
+                <li>Copyright © 2023</li>
+                <li>UPSTABLES S.A.</li>
+            </ul>
+
     
+        </div>
+        <div class="footer-texto-bottom">
+            <p>El uso de este sitio web implica la aceptación de los Términos y Condiciones y de las Políticas de Privacidad de upstables S.A.. Las fotos son a modo ilustrativo. La venta de cualquiera de los productos publicados está sujeta a la verificación de stock. Los precios online para los productos presentados/publicados en https://upstables.com  son válidos exclusivamente para la compra vía internet en las páginas antes mencionadas</p>
+    
+        </div>
+    </footer>    
 </body>
 </html>
