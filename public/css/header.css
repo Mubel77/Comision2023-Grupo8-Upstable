@@ -2,12 +2,7 @@ header{
     font-family: 'Alumni Sans Collegiate One', sans-serif;
     background-color: #222;
 }
-
 a{
-    text-decoration: none;
-}
-/*---- se agrego esta linea para sacar la linea de la etiqueta a---*/
-header a{
     text-decoration: none;
 }
 
@@ -23,15 +18,10 @@ header a{
     width: 90%;
     margin:0 auto;
     text-align: center;
-    /*-webkit-text-stroke: 0.5px black;---se retiro este atributo*/
-    color: white; 
+    -webkit-text-stroke: 0.5px black;
+    color: white;
+    
 }
-/*----se agrego esta linea para que tome el tipo de letra---*/
-.titulo{
-    font-family: 'Alumni Sans Collegiate One', sans-serif;
-    font-weight: lighter;
-}
-
 .buscador_header {
     width: 55%;
     margin:0 auto;
@@ -51,7 +41,7 @@ input::placeholder{
     font-size: 14px;
 }
 .nav_header{
-    /*margin:5% 5%;----se quito esta etiqueta por que crea conflicto con el main*/
+    margin:5% 5%;
     padding: 10px;
     width:90%;
     display:flex;
@@ -73,7 +63,6 @@ input::placeholder{
 
 .subtitulo{
     display: none;
-
 }
 .texto_nav{
     display: none;
@@ -107,7 +96,7 @@ header{
     flex-wrap: wrap;
 }
     .titulo{
-        /*-webkit-text-stroke: 1px black;*/
+        -webkit-text-stroke: 1px black;
         font-size: 40px;
         width: 100%;
         height: 50%;
@@ -153,9 +142,9 @@ header{
     width:35%;
     margin:0;
     font-size: 12px;
+
 }
-/*---- se detallo mas la clase para que tome el display none----*/
-.nav_header .fa-bars{
+    .fa-bars{
         display: none;
     }
     .texto_nav{
