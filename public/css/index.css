@@ -62,30 +62,37 @@ main{
     transition: background-color 2.5s,color 2s;
     
 }
-.p-detalle-producto {
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-}
-.h3-precio{
-    font-size: 50px;
-    color: blue;
+
+/*---------- Media Query para Movil -----------------*/
+
+@media(min-width:320px){
+    .p-detalle-producto {
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+    }
+    .h3-precio{
+        font-size: 50px;
+        color: blue;
+    }
+    
+    .imagen_publicidad{
+        width: 100%;
+    }
+    .imagen-producto{
+        width: 100%;
+    }
+    .article_publicidad{
+        width: 100%;
+        display: flex;
+        flex-direction:column;
+        gap: 10px;
+        margin: 0 auto;
+        cursor: pointer;
+    }
+
 }
 
-.imagen_publicidad{
-    width: 100%;
-}
-.imagen-producto{
-    width: 100%;
-}
-.article_publicidad{
-    width: 100%;
-    display: flex;
-    flex-direction:column;
-    gap: 10px;
-    margin: 0 auto;
-    cursor: pointer;
-}
 /*---------- Media Query para Tablet -----------------*/
 
 @media(min-width:768px){
