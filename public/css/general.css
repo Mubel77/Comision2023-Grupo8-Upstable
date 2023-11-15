@@ -6,3 +6,11 @@
     --color-verde_agua: #2DD4DA;
 
 }
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+}
