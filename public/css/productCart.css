@@ -1,5 +1,4 @@
-
-main {
+.main_cuerpo_carrito {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -8,14 +7,14 @@ main {
     font-size: 57px;
     margin-left: 72%;
 }
-section img {
-    margin: 10px;
+.imagen-del-carrito{
+    margin: 10px 0px 10px 80px;
 }
-main section article div {
+.fondo-del-producto {
     background-color: var(--color-gris);
     height: 30%;
     width: 70%;
-    margin-left: 15%;
+    margin: 10px 0px 0px 48px;
     border: 1px solid #ffffff;
 }
 .img_3 {
@@ -40,7 +39,7 @@ main section article div {
     font-size: 25px;
     margin-top: 10px;
 }
-p {
+.boton_contador {
     display: flex;
     justify-content: space-around;
     font-size: 25px;
@@ -61,9 +60,57 @@ p {
     padding: 20px;
     text-align: center;
 }
-.caja_contenedora{
+.caja_contenedora {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     position: relative;
+    padding: 15px;
+}
+.subtotal {
+        position: absolute;
+}
+.sub-precio{
+    margin-left: 64%;
+}
+.transporte{
+    margin-right: 50%;
+}
+.condiciones {
+    margin: 10px 30px 10px 0px;
+}
+.border {
+    border-bottom: 1px solid black;
+}
+.total{
+    margin: 10px 0px 10px 82px;
+}
+.boton_finalizar_compra {
+    background-color:var(--color-celeste);
+    border-radius: 5px;
+    height: 40px;
+    text-align: center;
+}
+.boton_continuar_comprando {
+    background-color: black;
+    color: #ffffff;
+    width: 69vw;
+    height: 11vh;
+    border-radius: 5px;
+    margin: 10px 0px 10px 50px;
+}
+.advertencia {
+    background-color:var(--color-verde_agua);
+    width: 47vh;
+    margin: auto;
+    padding: 18px;
+    font-size: 20px;
+    line-height: 28px;
+}
+.boton_imprimir_pdf{
+    background-color:var(--color-gris);
+    width: 69vw;
+    height: 5vh;
+    margin: 15px 0px 15px 49px;
+    border-radius: 5px;
 }
