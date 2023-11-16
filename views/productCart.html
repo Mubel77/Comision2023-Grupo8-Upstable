@@ -4,50 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/b99d7ed5f9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/stylecss">
+    <link rel="stylesheet" href="/css/general.css">
+    
+    <link rel="stylesheet" href="/css/productCart.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <title>Carrito</title>
 </head>
 <body>
-        <header>
-            <img src="/img/logo_upstables.jpg" alt="logo_upstables" width="20%" height="20%">
-            <h1>UPSTABLES</h1>
-            <form>
-                <input type="text" name="buscador" placeholder="¿Qué estás buscando?">
-            </form>
-            <nav>
-                <button class="burger-menu_header"> <i class="fas fa-bars"></i></button>
-                <i class="fa-solid fa-pen"></i>
-                <i class="fa-solid fa-user"></i>
-                <i class="fa-solid fa-cart-shopping"></i>
-            </nav>
-            
-        </header>
-        <main>
-            <i class="fa-solid fa-toggle-off"></i>
+    <header>
+        <img class="logo_header" src="/img/logo_upstables.jpg" alt="logo_upstables" width="40%" height="10%">
+        <h1 class="titular">UPSTABLES</h1>
+        <form class="buscador_header">
+            <input type="text" name="buscador" placeholder="¿Qué estás buscando?">
+        </form>
+        <nav class="nav_header">
+             <i class="fas fa-bars"></i>
+            <i class="fa-solid fa-pen"></i>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
+        </nav>
+        
+    </header>
+        <main >
+            <i class="fa-solid fa-toggle-off eligir_modo_off fondo_main"></i>
             <section>
                 <img src="/img/images 2.png" alt=" imagen del carrito de compra" width="50%" height="20%">
-                    <article>
+                    <article class="separacion_de_article">
                         <div>
-                            <img src="/img/image 3.png" alt="Producto" width="100%" height="20%">
-                            <p>(+) 1 (-) <i class="fa-solid fa-trash"></i></p>
-                            <h3> $4000</h3>
+                            <img class="img_3" src="/img/image 3.png" alt="Producto" width="100%" height="20%">
+                            <article class="contador">
+                                <p >(+) 1 (-) <i class="fa-solid fa-trash icon_tacho"></i></p>
+                                <h3 class="precio"> $4000</h3>
+                            </article>
                         </div>
                     </article>
-                    <article>
+                    <article class="separacion_de_article" >
                         <div>
-                            <img src="/img/image 4.png" alt="Producto" width="100%" height="20%">
-                            <h3>(+) 1 (-) <i class="fa-solid fa-trash"></i></h3>
-                            <h3> $5000</h3>
+                            <img class="img_4" src="/img/image 4.png" alt="Producto" width="100%" height="20%">
+                            <article class="contador">
+                                <p >(+) 1 (-) <i class="fa-solid fa-trash icon_tacho"></i></p>
+                                <h3 class="precio"> $5000</h3>
+                            </article>
                         </div>
                     </article>
             </section>
-            <section>
+            <section class="section_info_carrito">
                 <h2>hay 2 aticulos en su carrito</h2>
-                <h3> subtotal     $000000</h3>
-                <h3>transporte</h3>
-                <h3>(bajo condiciones)</h3>
-                <h3>$000000</h3>
-                <h3>total(IVA inc.)</h3>
-                <button>finalizar compra ^</button>
+                <div class="caja_contenedora">
+                    <div>
+                        <h3>subtotal</h3>
+                        <h3>$000000</h3>
+                    </div>
+                    <h3>transporte</h3>
+                    <h3>(bajo condiciones)</h3>
+                    <h3>$000000</h3>
+                    <h3>total(IVA inc.)</h3>
+                    <button>finalizar compra ^</button>
+                </div>
             </section>
             <article>
                     <i class="fa-solid fa-house"> </i>
