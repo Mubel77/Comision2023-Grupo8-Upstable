@@ -1,7 +1,25 @@
+/* #bodyFormularioRegistro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+} */
+
 .main_registro{
     width: 100vw;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* background-color: rgba(212, 213, 222,0.5);
+    background-image: url('/img/circuit_bg\ 14.png'); */
+}
+
+#imagenFormulario {
+    position: absolute;
+    opacity: 0.1;
+    width: 70%;
 }
 
 #p_registro {
