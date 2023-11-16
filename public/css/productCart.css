@@ -21,8 +21,7 @@
     width: 90%;
 }
 .img_4 {
-    width: 83%;
-    box-shadow: inset 0 0 0 17px #d1d4de;
+    width: 90%;;
 }
 .separacion_de_article{
     margin-top: 1px;
@@ -113,4 +112,31 @@
     height: 5vh;
     margin: 15px 0px 15px 49px;
     border-radius: 5px;
+}
+.div_contador_del_producto {
+    margin-bottom: 10px;
+}
+.boton_sumador {
+    height: 27px;
+    width: 22px;
+    border-radius: 5px;
+    background-color: black;
+    color: #ffffffff;
+}
+.boton_de_resta {
+    margin-right: 38%;
+    height: 27px;
+    width: 22px;
+    border-radius: 5px;
+    background-color: black;
+    color: #ffffffff;
+}
+.fa-trash:before {
+    content: "\f1f8";
+    font-size: 25px;
+}
+.imput_contador {
+    width: 15%;
+    height: 25px;
+    text-align: center;
 }
