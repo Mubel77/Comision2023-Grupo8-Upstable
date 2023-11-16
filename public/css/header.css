@@ -34,7 +34,7 @@ header a{
     border-color: white;
 
 }
-input::placeholder{
+.buscador_header input::placeholder{
     color:black;
     text-align: center;
     font-weight: bold;
@@ -124,7 +124,7 @@ header{
         text-align: left;
         width: 100%;
     }
-    input::placeholder{
+    .buscador_header input::placeholder{
         margin-left: 30px;
     }
     .fa-magnifying-glass{
@@ -205,7 +205,7 @@ header{
        
         
     }
-    input::placeholder{
+   .buscador_header input::placeholder{
         font-size: 16px;
         margin-left: 60px;
     }
