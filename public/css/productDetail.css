@@ -8,7 +8,7 @@ body{
     font-family: 'Roboto';
 }
 main{
-    width:90vw;
+   /* width:90vw;*/
   margin:0 auto;
 }
 .producto{
