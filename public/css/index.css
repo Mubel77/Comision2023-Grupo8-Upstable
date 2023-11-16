@@ -59,10 +59,13 @@ main{
     opacity: 100;
     background-color:rgb(33, 33, 33);
     color: #ffff ;
-    transition: background-color 2.5s,color 2s;
-    
+    transition: background-color 2.5s,color 2s; 
 }
 
+.main-enlace{
+    text-decoration: none;
+    color: black;
+}
 /*---------- Media Query para Movil -----------------*/
 
 @media(min-width:320px){

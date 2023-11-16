@@ -1,8 +1,8 @@
 header{
     font-family: 'Alumni Sans Collegiate One', sans-serif;
-    background-color: #222;
+    background-color: #222222;
 }
-a{
+header a{
     text-decoration: none;
 }
 
@@ -34,7 +34,7 @@ a{
     border-color: white;
 
 }
-input::placeholder{
+.buscador_header input::placeholder{
     color:black;
     text-align: center;
     font-weight: bold;
@@ -124,7 +124,7 @@ header{
         text-align: left;
         width: 100%;
     }
-    input::placeholder{
+    .buscador_header input::placeholder{
         margin-left: 30px;
     }
     .fa-magnifying-glass{
@@ -144,7 +144,7 @@ header{
     font-size: 12px;
 
 }
-    .fa-bars{
+   .nav_header .fa-bars{
         display: none;
     }
     .texto_nav{
@@ -205,7 +205,7 @@ header{
        
         
     }
-    input::placeholder{
+   .buscador_header input::placeholder{
         font-size: 16px;
         margin-left: 60px;
     }
