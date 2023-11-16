@@ -1,8 +1,4 @@
-.fondo_main {
-    background-image: url(/img/circuit_bg\ 1\ \(1\).png);
-    width: 100%;
-    background-repeat: no-repeat;
-}
+
 main {
     display: flex;
     flex-direction: column;
