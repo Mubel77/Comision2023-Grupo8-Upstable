@@ -32,6 +32,18 @@ main{
     margin-bottom: 10px;
     
 }
+.carrusel{
+    width: 100%;
+    display: flex;
+    overflow-y: auto;
+    padding: 10px;
+}
+.carrusel img {
+    width: 400px;
+    height: 400px;
+    margin-right: 10px;
+    
+}
 
 .article_productos{
     
@@ -114,7 +126,7 @@ main{
     }
     
     .carrusel{
-        width: 60%;
+        width: 100%;
         margin: 0 auto;
     }
 }
@@ -138,11 +150,5 @@ main{
         margin: 0 auto;
        
     }
-    
-    .carrusel{
-        width: 40%;
-        margin: 0 auto;
-    }
-
    
 }
