@@ -32,7 +32,7 @@ main{
     margin-bottom: 10px;
     
 }
-/*.carrusel{
+.carrusel{
     width: 100%;
     display: flex;
     overflow-y: auto;
@@ -44,7 +44,7 @@ main{
     height: 400px;
     margin-right: 10px;
     
-}*/
+}
 
 .article_productos{
     
@@ -107,12 +107,12 @@ main{
         cursor: pointer;
     }
 
-   /* .carrusel img {
+   .carrusel img {
     width: 400px;
     height: 400px;
     margin-right: 10px;
     
-}*/
+}
 
 }
 
@@ -133,10 +133,10 @@ main{
         width: 50%;
     }
     
-   /* .carrusel{
+   .carrusel{
         width: 100%;
         margin: 0 auto;
-    }*/
+    }
 }
 
 /*---------- Media Query para Desktop -----------------*/
