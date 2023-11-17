@@ -14,6 +14,10 @@ app.use(bodyParser.json());
 app.get("/login", (req,res) => {
     res.sendFile(path.join(__dirname, "/views/login.html"));
 });
+app.post("/login",(req,res) => {
+    console.log(req.body);
+    res.redirect("/");
+})
 
 app.get("/registro", (req,res) => {
     res.sendFile(path.join(__dirname, "/views/register.html"));
