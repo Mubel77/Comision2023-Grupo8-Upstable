@@ -19,7 +19,7 @@
 #imagenFormulario {
     position: absolute;
     opacity: 0.1;
-    width: 70%;
+    width: 90%;
 }
 
 #p_registro {
@@ -53,6 +53,7 @@
     padding: 5%;
     margin: 2% 0%;
     border-radius: 15px;
+    box-shadow: 0px 5px 5px 0px, rgba(0,0,0,0.5);
 }
 
 .boton_registro {
@@ -60,7 +61,7 @@
 }
 
 .boton_registro button {
-    background-color: var(--color-Celeste);
+    background-color: var(--color-celeste);
     width: 100%;
     border-radius: 5px;
     display: flex;
@@ -70,11 +71,22 @@
     font-size: 82%;
 }
 
+.boton_registro button:hover  {
+    background-color: rgb(8, 200, 244);
+}
+
 input::placeholder {
     text-align: left;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: var(--color-negro);
 }
 
 @media (min-width: 768px) {
+
+    #imagenFormulario{
+        width: 80%;
+    }
 
     .div_config input {
         padding: 3%;
@@ -88,6 +100,11 @@ input::placeholder {
 }
 
 @media (min-width: 1024px) {
+
+    #imagenFormulario{
+        width: 50%;
+    }
+
     .main_registro{
         flex-direction: column;
     }
