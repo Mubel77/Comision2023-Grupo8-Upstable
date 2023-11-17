@@ -6,7 +6,6 @@
 }
 
 #form_login {
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
     margin: 0% auto;
@@ -44,13 +43,17 @@
 }
 
 .boton_login button {
-    background-color: var(--color-Celeste);
+    background-color: var(--color-celeste);
     width: 100%;
     border-radius: 5px;
     margin: 10% auto;
     padding: 6px;
     font-family: 'Roboto';
     font-size: 82%;
+}
+
+.boton_login button:hover  {
+    background-color: rgb(8, 200, 244);
 }
 
 @media (min-width: 768px) {
@@ -78,7 +81,6 @@
 @media (min-width: 1024px) {
 
     #form_login {
-        border: 1px solid black;
         flex-direction: row;
         flex-wrap: wrap;
         width: 85%;

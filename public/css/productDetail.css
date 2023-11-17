@@ -1,84 +1,209 @@
-*{
-    margin:0;
-    padding:0;
-}
+
 
 body{
     background-color: var(--color-gris);
     font-family: 'Roboto';
 }
-main{
-   /* width:90vw;*/
-  margin:0 auto;
+.main_productDetail{
+    width: 90vw;
+    margin: 0 auto;
 }
 .producto{
     display: flex;
+    flex-wrap: wrap;
     background-color: #ffff;
  
 }
 
 .producto_img{
-    width:50%;
-    height: 100px;
+    width:100%;
+    margin: 0px 0px 10px 0px;
 }
+
+.circulos_fotos{
+    background-color: inherit;
+    text-align: center;
+    margin: 10px;
+}
+    #circle_color{
+        color: var(--color-verde_agua);
+        border: 1px solid black;
+        border-radius: 60%;
+    }
+
 .fotos_extras{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 10%;
+    display: none;
 }
 .info_producto{
     display:flex;
-    flex-direction: column;
-    width:33%;
+   flex-wrap: wrap;
+   position:relative;
+   margin:5px;
 }
 .nombre_producto{
-    font-size: 16px;
+    font-size: 24px;
+margin: 5px 0px;
 }
 .marca_producto{
-    font-size: 12px;
-    display: flex;
-    flex-direction: row;
+    width:100%;
+    height: auto;
+   display: block;
    justify-content: space-evenly;
-    
+    background-color: #ffff;
 }
+
+    .marca_producto p{
+        font-size: 12px;
+        display: inline-block;
+        
+    }
+    #marca{
+        font-weight: 800;
+        margin: 10px 0px;
+    }
+    .precio_producto{
+        width: 100%;
+        margin:10px 0px;
+    }
+    
 .unidades{
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    border:2px solid black;
+   width:40%;
+   margin: 10px 0px;
+    justify-content: space-evenly;
+    border: 1px solid rgba(0, 0, 0, 0.2);
     align-items: center;
     
 }
     .unidades p{
-        border-left: 2px solid black;
-        border-right: 2px solid black;
+        border-left: 1px solid rgba(0, 0, 0, 0.2);
+        border-right: 1px solid rgba(0, 0, 0, 0.2);;
         font-size: 12px;
         height: 100%;
-        padding-top: 4px;
+        padding: 5px;
     }
     .unidades i{
         padding: 2px;
-          font-size: 12px;
+          font-size: 16px;
+          font-weight: 800;
     }
 .productos_relacionados img{
     width:20%
 }
 
+.stock_disponible{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: 13px;
+    margin: 10px 0px;
+    width: 40%;
+    position: absolute;
+    right: 10px;
+    top:37px;
+}
+.agregar_carrito{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: 11px;
+    padding: 5px;
+    width: 40%;
+    background-color: var(--color-gris);
+    border: 2px solid var(--color-celeste);
+    border-radius: 5px;
+    position: absolute;
+    right: 10px;
+    top:80px;   
+}
+.comprar_producto{
+background-color: var(--color-celeste);
+padding: 10px;
+margin: 10px auto;
+width: 90%;
+border: 1px solid #ffff;
+border-radius: 5px;
+}
+.descripcion_producto{
+    background-color: #ffff;
+   outline: 1px solid var(--color-gris);
+}
+    .descripcion_producto p{
+        padding: 20px 5px 20px 5px;
+        font-weight: bold;
+    }
+.intereses{
+    margin:20px 0px;
+}
+    .intereses_titulo{
+        background-color: #222;
+        color: white;
+        border: 1px solid #ffff;
+        border-radius: 25px;
+        font-size: 12px;
+        padding:10px;
+        width: 60%;
+        text-align: center;
+    }
+.productos_relacionados{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0px;
+}
+.productos_relacionados_extras{
+    background-color: #222;
+    width: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+    .productos_relacionados_extras img{
+        width: 100%;
+        padding: 10px;
+    }
+    .productos_relacionados_extras h4{
+        color: #ffff;
+        width: 90%;
+        padding: 5px;
+        font-size: 12px;
+        text-align: center;
+    }
+    .productos_relacionados_extras p{
+        color: #ffff;
+        width: 90%;
+        padding: 5px;
+        font-size: 10px;
+        text-align: center;
+    }
+.banners_producto{
+    width: 100%;
+}
+    .banners_producto img{
+        width: 100%;
+    }
+    #img_2{
+        display: none;
+    }
+    #img_3{
+        display: none;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.circulos_banners{
+    background-color: inherit;
+    text-align: center;
+    margin: 20px;
+}
+    #circle_color_white{
+        color: #ffff;
+        background-color: #ffff;
+        border: 1px solid black;
+        border-radius: 50%;
+    }
+    #circle_color_banner{
+        border: 1px solid black;
+        border-radius: 50%;
+        color: var(--color-verde_agua);
+    }
 
 .fa-camera{
     border:1px solid black;
