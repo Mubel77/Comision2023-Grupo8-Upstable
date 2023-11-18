@@ -73,6 +73,9 @@ header a{
 .fa-magnifying-glass{
     display: none;
 }
+.on-off{
+    display: none;
+}
 @media (min-width: 768px){
 header{
     display: flex;
@@ -166,7 +169,9 @@ header{
         font-family: 'Roboto';
         color:white;    
     }
-
+.on-off{
+    display: block;
+}
 .nav_header_2{
    display: flex;
     height: 30px;
