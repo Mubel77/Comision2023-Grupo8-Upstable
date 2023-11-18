@@ -1,42 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://kit.fontawesome.com/b99d7ed5f9.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Collegiate+One&family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+        <title>Registro</title> 
+        <link rel="icon" href="/img/favicon.ico"/>
+        <script src="https://kit.fontawesome.com/b99d7ed5f9.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Collegiate+One&family=Roboto&display=swap" rel="stylesheet">       
+    </head>
 <body>
     <header>
-        <img class="logo_header" src="/img/logo_upstables.jpg" alt="logo_upstables">
-        <div class="titular">
-            <h1 class="titulo">UPSTABLES</h1>
-            <p class="subtitulo">Proteccion para tu tecnología, garantizada.</p>
-        </div>
+        <a class="link_to_home_header" href="/">
+            <img class="logo_header" src="/img/logo_upstables.jpg" alt="logo_upstables">
+                <div class="titular">
+                    <h1 class="titulo">UPSTABLES</h1>
+                    <p class="subtitulo">Proteccion para tu tecnología, garantizada.</p>
+                </div>        
+        </a>
         <div class="buscador_header">
             <form >
                 <input type="text" name="buscador" placeholder="¿Qué estás buscando?">
                 <i class="fa-solid fa-magnifying-glass"></i>
-            </form>
-           
-        </div>
-        
+            </form>           
+        </div>        
         <nav class="nav_header">
-             <i class="fas fa-bars"></i>
-
-            <i class="fa-solid fa-pen"></i>
-           <a href="/register"> <p class="texto_nav">Creá tu cuenta</p> </a>
-
-            <i class="fa-solid fa-user"></i>
-            <a href="/login"> <p class="texto_nav">Ingresar</p> </a>
-            
-            <i class="fa-solid fa-cart-shopping"></i>
-            <a href="/productCart"> <p class="texto_nav">Carrito</p> </a>
-        </nav>
-        
+            <i class="fas fa-bars"></i>            
+            <a href="/registro"> 
+                <p class="texto_nav">Creá tu cuenta</p> 
+                <i class="fa-solid fa-pen"></i>
+            </a>           
+            <a href="/login"> 
+                <p class="texto_nav">Ingresar</p> 
+                <i class="fa-solid fa-user"></i>
+            </a>            
+            <a href="/productCart"> 
+                <p class="texto_nav">Carrito</p> 
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+        </nav>        
     </header>
     <nav class="nav_header_2">
         <h4>UPS</h4>
@@ -47,7 +50,9 @@
     </nav>
     <main class="main_registro">
         <img src="/img/img_formulario_registro.png" alt="fomulario de registro" id="imagenFormulario">
-        <p id="p_registro">registrate</p>
+        <div class="subtitulo_registrate">
+            <p id="p_registro">registrate</p>
+        </div>    
         <form action="/registro" method="post" id="form_registro">
             <div class="div_config nombre">
                 <label for="nombre">Nombre</label>

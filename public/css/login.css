@@ -52,6 +52,10 @@
     font-size: 82%;
 }
 
+.boton_login button:hover  {
+    background-color: rgb(8, 200, 244);
+}
+
 @media (min-width: 768px) {
 
     .login_titulo_p {
@@ -60,7 +64,7 @@
 
     .login_subtitulo_p {
         font-size: 32px;
-        width: 290px;
+        width: 300px;
     }
 
     .boton_login {
