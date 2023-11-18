@@ -148,7 +148,7 @@ header{
     display: flex;
     justify-content: space-around;
     padding: 0;
-    width:35%;
+    width:37%;
     margin:0;
     font-size: 12px;
 
@@ -192,6 +192,18 @@ header{
   background-color: var(--color-verde_agua); 
   margin: 0 5px;
     }
+    .on-off{
+        color: white;
+        font-size: 20px;
+        width: 100%;
+        text-align: right;
+        position: relative;
+    }
+        .fa-toggle-off{
+            position: absolute;
+           bottom: 1px;
+            right:15px
+        }
 }
 
 @media (min-width:1024px){
@@ -241,7 +253,7 @@ header{
         top:15%;   
     }
 .nav_header{
-    width:32%;
+    width:37%;
     font-size: 16px;
 }
 }
