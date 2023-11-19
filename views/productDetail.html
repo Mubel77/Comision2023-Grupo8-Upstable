@@ -3,68 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <title>Detalle Producto</title>
+    <link rel="icon" href="/img/favicon.ico"/>  
     <script src="https://kit.fontawesome.com/b99d7ed5f9.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Collegiate+One&family=Roboto&display=swap" rel="stylesheet">
-    <title>Document</title>
+    
 </head>
 <body>
-    
-        <header>
+    <header>
+        <a class="link_to_home_header" href="/">
             <img class="logo_header" src="/img/logo_upstables.jpg" alt="logo_upstables">
-            <div class="titular">
-                <h1 class="titulo">UPSTABLES</h1>
-                <p class="subtitulo">Proteccion para tu tecnología, garantizada.</p>
-            </div>
-            <div class="buscador_header">
-                <form >
-                    <input type="text" name="buscador" placeholder="¿Qué estás buscando?">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </form>
+                <div class="titular">
+                    <h1 class="titulo">UPSTABLES</h1>
+                    <p class="subtitulo">Proteccion para tu tecnología, garantizada.</p>
+                </div>
                
-            </div>
+        
+        </a>
+        <div class="buscador_header">
+            <form >
+                <input type="text" name="buscador" placeholder="¿Qué estás buscando?">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </form>
+           
+        </div>
+        
+        <nav class="nav_header">
+             <i class="fas fa-bars"></i>
+
             
-            <nav class="nav_header">
-                 <i class="fas fa-bars"></i>
+            <a href="/register"> 
+            <p class="texto_nav">Creá tu cuenta</p> 
+            <i class="fa-solid fa-pen"></i>
+            </a>
 
-                <i class="fa-solid fa-pen"></i>
-               <a href="/register"> <p class="texto_nav">Creá tu cuenta</p> </a>
-
+            
+            <a href="/login"> 
+                <p class="texto_nav">Ingresar</p> 
                 <i class="fa-solid fa-user"></i>
-                <a href="/login"> <p class="texto_nav">Ingresar</p> </a>
-                
-                <i class="fa-solid fa-cart-shopping"></i>
-                <a href="/productCart"> <p class="texto_nav">Carrito</p> </a>
-            </nav>
+            </a>
             
-        </header>
-        <nav class="nav_header_2">
-            <h4>UPS</h4>
-            <div class="linea"></div>
-            <h4 class="estab_nav">ESTABILIZADORES</h4>
-            <div class="linea"></div>
-            <h4>OFERTAS</h4>
+            
+            <a href="/productCart"> 
+                <p class="texto_nav">Carrito</p> 
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+
+            
         </nav>
+        <div class="on-off">
+            <i class="fa-solid fa-toggle-off"></i>
+        </div>
+        
+    </header>
+    <nav class="nav_header_2">
+        <h4>UPS</h4>
+        <div class="linea"></div>
+        <h4 class="estab_nav">ESTABILIZADORES</h4>
+        <div class="linea"></div>
+        <h4>OFERTAS</h4>
+    </nav>
     
     <main class="main_productDetail">
 
         
-        <i class="fa-solid fa-toggle-off"></i>
+       
         <section class="producto">
             <article class="fotos_producto">
                 <div class="fotos_extras">
                     <i class="fa-solid fa-camera"></i>
                     <i class="fa-solid fa-camera"></i>
-                    <i class="fa-solid fa-camera"></i>
-                    <i class="fa-solid fa-plus"></i>
+                    <i id="foto_extra_bkg" class="fa-solid fa-camera"></i>
+                    <i id="mas_fotos" class="fa-solid fa-plus"></i>
                 </div>
                 <img  class="producto_img" src="/img/ups_img.jpg" alt="foto_ups"> 
                 <div class="circulos_fotos">
                     <i id="circle_color"class="fa-solid fa-circle"></i>
                     <i class="fa-regular fa-circle"></i>
                     <i class="fa-regular fa-circle"></i>
-                </div>
+                </div> 
                 
             </article>
             
@@ -115,11 +134,15 @@
                     <h4>ULT - 6KVA</h4>
                     <p>$11111111</p>
                 </div>
-                <div class="productos_relacionados_extras">
+                <div id="img_relacionados_3"class="productos_relacionados_extras">
                     <img src="/img/ups6kva_img.jpg" alt="img-producto">
                     <h4>ULT - 6KVA</h4>
                     <p>$11111111</p>
                 </div>
+                <div class="flecha_relacionados">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+                
             </article>
         </section>
 
