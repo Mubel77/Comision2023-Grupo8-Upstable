@@ -11,32 +11,45 @@
 
 <body>
     <header>
-        <img class="logo_header" src="/img/logo_upstables.jpg" alt="logo_upstables">
-        <div class="titular">
-            <h1 class="titulo">UPSTABLES</h1>
-            <p class="subtitulo">Proteccion para tu tecnología, garantizada.</p>
-        </div>
+        <a class="link_to_home_header" href="/">
+            <img class="logo_header" src="/img/logo_upstables.jpg" alt="logo_upstables">
+            <div class="titular">
+                <h1 class="titulo">UPSTABLES</h1>
+                <p class="subtitulo">Proteccion para tu tecnología, garantizada.</p>
+            </div>
+
+
+        </a>
         <div class="buscador_header">
-            <form >
+            <form>
                 <input type="text" name="buscador" placeholder="¿Qué estás buscando?">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </form>
-           
+
         </div>
-        
+
         <nav class="nav_header">
-             <i class="fas fa-bars"></i>
+            <i class="fas fa-bars"></i>
 
-            <i class="fa-solid fa-pen"></i>
-           <a href="/register"> <p class="texto_nav">Creá tu cuenta</p> </a>
 
-            <i class="fa-solid fa-user"></i>
-            <a href="/login"> <p class="texto_nav">Ingresar</p> </a>
-            
-            <i class="fa-solid fa-cart-shopping"></i>
-            <a href="/productCart"> <p class="texto_nav">Carrito</p> </a>
+            <a href="/register">
+                <p class="texto_nav">Creá tu cuenta</p>
+                <i class="fa-solid fa-pen"></i>
+            </a>
+
+
+            <a href="/login">
+                <p class="texto_nav">Ingresar</p>
+                <i class="fa-solid fa-user"></i>
+            </a>
+
+
+            <a href="/productCart">
+                <p class="texto_nav">Carrito</p>
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
         </nav>
-        
+
     </header>
     <nav class="nav_header_2">
         <h4>UPS</h4>
@@ -45,72 +58,86 @@
         <div class="linea"></div>
         <h4>OFERTAS</h4>
     </nav>
-
-    <main class="main_cuerpo_carrito">
-        <i class="fa-solid fa-toggle-off eligir_modo_off fondo_main"></i>
-        <img src="/img/images 2.png" alt=" imagen del carrito de compra" width="50%" height="20%"
-            class="imagen-del-carrito">
-        <section class="fondo-del-producto">
-            <article class="separacion_de_article">
+    <main>
+        <section class="main_caja_padre_compra">
+            <h1 class="titulo_carrito">Carrito</h1>
+            <section class="main_caja_hija_detalle_compra">
+                <article class="fondo_de_articulo">
                     <div>
-                        <img class="img_3" src="/img/estabilizador 1.png" alt="Producto" width="100%" height="20%">
-                        <p class="p-detalle-producto">Estabilizador De Tensión Trv - Micro Volt L - 1200va(pico) F</p>
-                        <h3 class="h3-precio">$ 50.000</h3>
+                        <div>
+                            <img class="img_producto_de_compra" src="/img/estabilizador 1.png" alt="Producto" width="100%" height="20%">
+                        </div>
+                        <p class="carrito_p-detalle-producto">Estabilizador De Tensión Trv - Micro Volt L - 1200va(pico) F
+                        </p>
+                        <h3 class="carrito_h3-precio">$ 50.000</h3>
                     </div>
-                    <article class="contador">
-                        <div class="div_contador_del_producto">
+                    <div class="div_contador">
+                        <div class="div_contador_icons">
+                            <div>
                                 <button class="boton_sumador"><i class="fa-solid fa-plus"></i></button>
-                           <input type="number" name="contador_del_producto" min="0" max="1000" class="imput_contador">
+                                <input type="number" name="contador_del_producto" min="0" max="1000" class="imput_contador">
                                 <button class="boton_de_resta"><i class="fa-solid fa-minus"></i></button>
-                           <i class="fa-solid fa-trash icon_tacho"></i>
-                           <h3 class="precio"> $ 50.000</h3>
-                        </div>
-                    </article>
-            </article>
-        </section>
-        <section class="fondo-del-producto">
-            <article class="separacion_de_article">
-                <div>
-                    <img class="img_4" src="/img/estabilizador3.png" alt="Producto" width="100%" height="20%">
-                    <p class="p-detalle-producto">Estabilizador De Tensión Trv - Micro Volt L - 1200va(pico) F</p>
-                    <h3 class="h3-precio">$ 60.000</h3>
-                    <article class="contador">
-                        <div class="div_contador_del_producto">
-                            <button class="boton_sumador"><i class="fa-solid fa-plus"></i></button>
-                            <input type="number" name="contador_del_producto" min="0" max="1000" class="imput_contador">
-                            <button class="boton_de_resta"><i class="fa-solid fa-minus"></i></button>
+                            </div>
                             <i class="fa-solid fa-trash icon_tacho"></i>
-                            <h3 class="precio"> $60.000</h3>
                         </div>
-                    </article>
-                </div>
-            </article>
-        </section>
-        <section class="section_info_carrito">
-            <h2>hay 2 aticulos en su carrito</h2>
-            <div class="caja_contenedora">
-                <div>
-                    <h3 class="subtotal"> subtotal</h3>
-                    <h3 class="sub-precio">$000000</h3>
-                </div>
-                <h3 class="transporte">transporte</h3>
-                <h3 class="condiciones">(bajo condiciones)</h3>
-                <h3 class ="articulos_precio_final">$000000</h3>
-                <div class="border"></div>
-                <h3 class="total">total(IVA inc.)</h3>
-                <button class="boton_finalizar_compra">finalizar compra ^</button>
-            </div>
-        </section>
-            <a href="/"  class="boton_continuar_comprando">
+                        <h3 class="precio"> $ 50.000</h3>
+                    </div>     
+                </article>
+                <article class="fondo_de_articulo">
+                    <div>
+                        <div>
+                            <img class="img_producto_de_compra" src="/img/estabilizador 1.png" alt="Producto" width="100%" height="20%">
+                        </div>
+                        <p class="carrito_p-detalle-producto">Estabilizador De Tensión Trv - Micro Volt L - 1200va(pico) F
+                        </p>
+                        <h3 class="carrito_h3-precio">$ 50.000</h3>
+                    </div>
+                    <div class="div_contador">
+                        <div class="div_contador_icons">
+                            <div>
+                                <button class="boton_sumador"><i class="fa-solid fa-plus"></i></button>
+                                <input type="number" name="contador_del_producto" min="0" max="1000" class="imput_contador">
+                                <button class="boton_de_resta"><i class="fa-solid fa-minus"></i></button>
+                            </div>
+                            <i class="fa-solid fa-trash icon_tacho"></i>
+                        </div>
+                        <h3 class="precio"> $ 50.000</h3>
+                    </div>     
+                </article>
+            </section>
+            <section class="main_caja_hija_detalle_articulos">
+                <article>
+                    <div>
+                        <h2 class="listado_de_articulo">hay 2 aticulos en su carrito</h2>
+                    </div>
+
+                    <div  class="listado_de_articulo_precios">
+                        <h3 class="subtotal"> subtotal</h3>
+                        <h3 class="sub-precio">$000000</h3>
+                        <h3 class="transporte">transporte</h3>
+                        <h3 class="condiciones">(bajo condiciones)</h3>
+                        <div class="border">
+                            <h3 class="total">total(IVA inc.)</h3>
+                        </div>
+                        <h3 class="sub-precio">$000000</h3>
+                    </div>
+                    <div>
+                        <button class="boton_finalizar_compra">finalizar compra ^</button>
+                    </div>
+                </article>    
+            </section>
+            <a href="/" class="boton_continuar_comprando">
                 <i class="fa-solid fa-house"> </i>
                 <h3>Continuar comprando</h3>
             </a>
-        <article class="advertencia">
-            <h3 class="advertencia_texto">¡El pedido solo se confirmará al hacer click en el botón 'Pedido con obligación de pago' en la última
+        </section>
+        <h3 class="advertencia_texto">¡El pedido solo se confirmará al hacer click en el botón 'Pedido con
+                obligación de pago' en la última
                 parte del proceso de compra!
-            </h3>
-        </article>
-        <button class="boton_imprimir_pdf">Imprimir carrito en PDF</button>
+        </h3>
+        <div class="centrar_el_botonon">
+            <button class="boton_imprimir_pdf">Imprimir carrito en PDF</button>
+        </div>
     </main>
     <footer class="footer-father">
         <div class="footer-texto-top">
@@ -138,8 +165,12 @@
             </ul>
         </div>
         <div class="footer-texto-bottom">
-            <p>El uso de este sitio web implica la aceptación de los Términos y Condiciones y de las Políticas de Privacidad de upstables S.A.. Las fotos son a modo ilustrativo. La venta de cualquiera de los productos publicados está sujeta a la verificación de stock. Los precios online para los productos presentados/publicados en https://upstables.com  son válidos exclusivamente para la compra vía internet en las páginas antes mencionadas</p>
-    
+            <p>El uso de este sitio web implica la aceptación de los Términos y Condiciones y de las Políticas de
+                Privacidad de upstables S.A.. Las fotos son a modo ilustrativo. La venta de cualquiera de los productos
+                publicados está sujeta a la verificación de stock. Los precios online para los productos
+                presentados/publicados en https://upstables.com son válidos exclusivamente para la compra vía internet
+                en las páginas antes mencionadas</p>
+
         </div>
     </footer>
 
