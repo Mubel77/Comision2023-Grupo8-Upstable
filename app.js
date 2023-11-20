@@ -22,7 +22,7 @@ app.post("/login",(req,res) => {
 app.get("/register", (req,res) => {
     res.sendFile(path.join(__dirname, "/views/register.html"));
 });
-app.post("/registro",(req,res) => {
+app.post("/register",(req,res) => {
     console.log(req.body);
     res.redirect("/");
 })
