@@ -59,17 +59,18 @@
 .imput_contador {
     width: 30%;
     text-align: center;
+    background-color: #ffffff;
     color: #000000;
 }
 .boton_sumador{
-    height: 4vh;
+    height: 80%;
     width: 20px;
     border-radius: 5px;
     background-color: black;
     color: #ffffffff;
 }
 .boton_de_resta {
-    height: 4vh;
+    height: 80%;
     width: 20px;
     border-radius: 5px;
     background-color: black;
@@ -284,6 +285,7 @@
     .imput_contador {
         width: 30%;
         text-align: center;
+        background-color: #ffffff;
         color:#000000;
     }
     .fa-trash:before {
@@ -465,6 +467,7 @@
         height: 6vh;
         text-align: center;
         font-size: 18px;
+        background-color: #ffffff;
         color: #000;;
     }
     .fa-trash:before {
