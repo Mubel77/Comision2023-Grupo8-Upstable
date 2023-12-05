@@ -1,6 +1,6 @@
 <%-include('./partials/head.ejs') %>
 <body>
-   <%-include('./partials/header.ejs') %>
+    <%-include('./partials/header.ejs') %>
     <nav class="nav_header_2">
         <h4>UPS</h4>
         <div class="linea"></div>
@@ -8,66 +8,39 @@
         <div class="linea"></div>
         <h4>OFERTAS</h4>
     </nav>
-   
     <main>
         <img class="icono-fijo" src="/images/icon-whasap2.png" alt="">
         <section class="section_productos">
             <h3 class="titulo-carrusel">NOVEDADES</h3>
-            <article class="carrusel">  
-              <img src="/images/estabilizador 1.png" alt="">
-              <img src="/images/estabilizador2.png" alt="">
-              <img src="/images/estabilizador3.png" alt="">
-              <img src="/images/estabilizador4.png" alt="">
+            <article class="carrusel"> 
+
+                <% productos.forEach(producto => {%>
+                    <img src="/images/<%= producto.imagen %>" alt="">
+                <%}); %> 
+                
             </article>
             <h3 class="titulo-carrusel">ARTICULOS</h3>
             <article class="container-articulos">
-                
+
+                <% productos.forEach(producto => {%>
                     <article class="article_productos">
-                        <a class="main-enlace" href="/productDetail">
-                        <img class="imagen-producto" src="/images/estabilizador4.png" alt="foto-producto">
-                        <p class="p-detalle-producto">Estabilizador De Tensión Trv - Micro Volt L - 1200va(pico) F</p>
-                        <h3 class="h3-precio">$ 50.000</h3>
+                        <a class="main-enlace" href="#">
+                        <img class="imagen-producto" src="/images/<%= producto.imagen %>" alt="foto-producto">
+                        <p class="p-detalle-producto"><%= producto.descripcion %></p>
+                        <h3 class="h3-precio">$<%= producto.precio %></h3>
                     </a>
                 </article>
-                
-                    <article class="article_productos">
-                        <a href="/productDetail" class="main-enlace">
-                        <img class="imagen-producto" src="/images/estabilizador 1.png" alt="foto-producto">
-                        <p class="p-detalle-producto">Estabilizador De Tensión Trv - Micro Volt L - 1200va(pico) F</p>
-                        <h3 class="h3-precio">$ 50.000</h3>
-                    </a>
-                    </article>
-                
-                
-                    <article class="article_productos">
-                        <a href="/productDetail" class="main-enlace">
-                        <img class="imagen-producto" src="/images/estabilizador3.png" alt="foto-producto">
-                        <p class="p-detalle-producto">Estabilizador De Tensión Trv - Micro Volt L - 1200va(pico) F</p>
-                        <h3 class="h3-precio">$ 50.000</h3>
-                    </a>
-                    </article>
-                
-                
-                    <article class="article_productos">
-                        <a href="/productDetail" class="main-enlace">
-                        <img class="imagen-producto" src="/images/estabilizador2.png" alt="foto-producto">
-                        <p class="p-detalle-producto">Estabilizador De Tensión Trv - Micro Volt L - 1200va(pico) F</p>
-                        <h3 class="h3-precio">$ 50.000</h3>
-                    </a>
-                    </article>
-                
+                <%}); %>
 
             </article>
-
             <h3 class="titulo-carrusel">VER MAS</h3>
             <article class="article_publicidad">
-                <img class="imagen_publicidad" src="/images/minibanner1-10-06-22.png" alt="logo publicidad">
 
-                <img class="imagen_publicidad" src="/images/minibanner2-28-06-22.png" alt="logo publicidad">
+                <% publicidad.forEach(element => {%>
+                    <img class="imagen_publicidad" src="/images/<%= element.imagen %>" alt="logo publicidad">
+                <%}); %>
 
-                <img class="imagen_publicidad" src="/images/minibanner3-10-06-22.png" alt="logo publicidad">
             </article>
-            
         </section>
     </main>
     <%-include('./partials/footer.ejs') %>
