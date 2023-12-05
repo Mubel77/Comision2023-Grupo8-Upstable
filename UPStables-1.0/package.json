@@ -1,0 +1,17 @@
+{
+  "name": "upstable",
+  "version": "1.0.0",
+  "description": "UPStables E-commerce ofrece en su variedad estabilizadores electronicos de tension y UPS (Uninterruptable Power Supply). Los productos que ofrece nuestro sitio son ideales para brindar una tension estabilizada en su salida (220/380 Volts) independientemente de los valores en la entrada de la tension electrica. De esta manera, nustra oferta se adapta a las necesidades de una red electrica tanto monofasica como trifasica, permitiendo cubrir las necesidades de un domicilio particular, un negocio, edificios, empresas y mas. Contamos con asistencia tecnica profesional a fin de evaluar la demanda del cliente y brindar la mejor opcion de compra que se adapte a esas necesidades. En el sitio el cliente encontrara toda la informacion necesaria acerca de nuestros productos y cotizaciones al dia. Tambien estaran nuestros canales de contacto para comunicacion directa con profesionales para asistencia tecnica y enlaces directos a nuestras redes sociales. Para una mejor experiencia de compra invitamos a nuestros clientes a registrarse en el sitio y recibir nuestras ultimas novedades.\r    El grupo de desarrolladores web de UPStables E-commerce se compone de cuatro colaboradores:",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1",
+    "path": "^0.12.7"
+  }
+}
