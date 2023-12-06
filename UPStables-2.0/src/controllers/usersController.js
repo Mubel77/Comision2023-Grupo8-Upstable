@@ -4,15 +4,15 @@ const userController = {
       },
 
     createUser: function(req, res, next) {
-        res.render('index', { title: 'Home' });
+        res.redirect('/');
       },
 
     login: function(req, res, next) {
-        res.render('/users/login', { title: 'Login' });
+        res.render('/users/login', { title: 'Login', formLogeo,tipo,etiqueta });
       },
 
-    logeado: function(req, res, next) {
-        res.render('index', { title: 'Home' });
+    loginUp: function(req, res, next) {
+        res.redirect('/');
       },
 }
 
