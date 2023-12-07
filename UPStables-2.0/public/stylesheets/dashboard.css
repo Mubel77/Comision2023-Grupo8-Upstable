@@ -62,11 +62,10 @@
     .dashboard_main {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
     }
 
     .dashboard_article {
-        margin: 10px 0px;
+        margin: 10px;
         width: 48%;
     }
 
