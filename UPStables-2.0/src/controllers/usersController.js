@@ -1,5 +1,6 @@
 const subtitulo = "registrate";
 const formRegistro = ['NoMBre','Apellido','Domicilio','email','ConTRaseña','confiRMAR contraseña'];
+const formLogeo = ['email','ConTRaseña'];
 
 function tipo(element) {
   switch (element.toLowerCase()) {
@@ -39,7 +40,7 @@ const userController = {
       },
 
     login: function(req, res, next) {
-        res.render('/users/login', { title: 'Login', formLogeo,tipo,etiqueta });
+        res.render('users/login', { title: 'Login', formLogeo,tipo,etiqueta });
       },
 
     loginUp: function(req, res, next) {
