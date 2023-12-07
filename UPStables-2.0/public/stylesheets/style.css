@@ -6,7 +6,11 @@
 @import url(./register.css);
 @import url(./productDetail.css);
 @import url(./footer.css);
+<<<<<<< HEAD
 @import url(./formCreate.css);
 
+=======
+@import url(./dashboard.css);
+>>>>>>> d3802bd6ed299f13d4461ee6e9785b09b4e57e10
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Collegiate+One&display=swap');
