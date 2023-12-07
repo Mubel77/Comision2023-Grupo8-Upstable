@@ -31,11 +31,11 @@ function tipo(element) {
 
 const userController = {
     register: function(req, res, next) {
-        res.render('/users/register', { title: 'Registro', subtitulo,formRegistro,tipo,etiqueta});
+        res.render('users/register', { title: 'Registro', subtitulo,formRegistro,tipo,etiqueta});
       },
 
     createUser: function(req, res, next) {
-        res.redirect('index', { title: 'Home' });
+        res.redirect('/');
       },
 
     login: function(req, res, next) {
