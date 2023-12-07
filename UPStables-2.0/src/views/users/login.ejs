@@ -1,0 +1,29 @@
+<%- include('../partials/head')%>
+    
+<body>
+        <%- include('../partials/header.ejs')%>    
+    
+        <main class="main_login">
+            <span class="login_titulo_p">¡Bienvenido!</span>
+            <span class="login_subtitulo_p">Ingresá, te estamos esperando...</span>
+            <form action="/users/login" method="POST" id="form_login">
+                <%  for(x=0; x < formLogeo.length; x++) {%>
+                    <div class="div_config">
+                        <label for="<%- formLogeo[x].toLowerCase()%>"><%= etiqueta(formLogeo[x]) %></label>
+                        <input type="<%- tipo(formLogeo[x]) %>"  name="<%- formLogeo[x].toLowerCase()%>" placeholder="<%= etiqueta(formLogeo[x]) %>" required>
+                    </div>
+                <% }%>
+
+                <a href="/users/register" id="login_password">
+                    <span >Olvidaste tu Contraseña?</span>
+                </a>
+                <div class="boton_login">
+                    <button type="submit">Ingresar</button>
+                </div> 
+            </form>
+        </main>
+    
+        <%- include('../partials/footer') %>
+    
+</body>
+</html>
