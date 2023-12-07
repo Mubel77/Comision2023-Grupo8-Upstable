@@ -8,9 +8,9 @@
             <section class="main_caja_hija_detalle_compra">
                 <%productsCart.forEach(product => {%>
                 <article class="fondo_de_articulo">
-                    <img class="img_producto_de_compra" src="<%= product.imagen %>" alt="Producto" width="100%" height="20%">
+                    <img class="img_producto_de_compra" src="/images/<%= product.imagen %>" alt="Producto" width="100%" height="20%">
                     <p class="carrito_p-detalle-producto"><%= product.descripcion %></p>
-                    <h3 class="carrito_h3-precio">$<%= product.price %></h3>
+                    <h3 class="carrito_h3-precio">$<%= product.precio %></h3>
                     <div class="div_contador">
                         <div class="div_contador_icons">
                             <div>

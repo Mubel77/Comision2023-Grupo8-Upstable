@@ -34,7 +34,8 @@ const productsController = {
     },
 
     formUpdate: function(req, res, next) {
-      res.render('/products/formUpdate', { title: 'Formulario Modificar' });
+     res.render('products/formUpdate', { title: 'Formulario Modificar' });
+
     },
 
     update: function(req, res, next) {
