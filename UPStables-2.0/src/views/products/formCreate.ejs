@@ -1,0 +1,32 @@
+<%-include('../partials/head.ejs') %>
+<body>
+    <%-include('../partials/header.ejs') %>
+    <main>
+        <form method="POST" action="products/create" id="" class="form_create">
+            <% for (let x = 0; x < formRegistro.length; x++) { %>
+                
+                    <label class="label-create" for="<%= formRegistro[x].toLowerCase() %>"><%= formRegistro[x] %></label>
+                    <% switch (formRegistro[x]) { 
+                        case "descripcion": %>
+                            <textarea class="textarea-create" name="<%= formRegistro[x].toLowerCase() %>" id="<%= formRegistro[x].toLowerCase() %>" cols="30" rows="10" placeholder=" Ingrese el detalle del producto" required></textarea>
+                            <% break;
+                        case "imagen": %>
+                            <input class="image-create" type="file" name="<%= formRegistro[x].toLowerCase() %>" id="<%= formRegistro[x].toLowerCase() %>" accept="image/*" required>
+                            <% break;
+                        case "id": %>
+                            <input class="id-create" type="number" name="<%= formRegistro[x].toLowerCase() %>" placeholder="<%= formRegistro[x] %>" required>
+                            <% break;
+                        default: %>
+                            <input class="text-create" type="text" name="<%= formRegistro[x].toLowerCase() %>" placeholder="<%= formRegistro[x] %>" required>
+                    <% } %>
+            <% } %>
+            <div class="boton_registro_create">
+                <button type="submit">Crear Producto</button>
+            </div>
+        </form>
+        
+        
+    </main>
+    <%-include('../partials/footer.ejs') %>
+</body>
+</html>   

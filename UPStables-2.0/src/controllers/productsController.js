@@ -1,3 +1,4 @@
+const formRegistro=['id','precio','descripcion','imagen']
 const productsController = {
     detail: function(req, res, next) {
         res.render('/products/productDetail', { title: 'Detalle Producto' });
@@ -8,11 +9,11 @@ const productsController = {
     },
 
     formCreate: function(req, res, next) {
-      res.render('/products/formCreate', { title: 'Formulario Crear' });
+      res.render('products/formCreate', { title: 'Formulario Crear',formRegistro });
     },
 
     create: function(req, res, next) {
-      res.redirect('/dashboard');
+      res.redirect('/');
     },
 
     formUpdate: function(req, res, next) {
