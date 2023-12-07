@@ -4,7 +4,7 @@ const productsController = {
     },
     
     dashboard: function(req, res, next) {
-        res.render('/products/dashboard', { title: 'Dashboard' });
+        res.render('products/dashboard', { title: 'Dashboard' });
     },
 
     formCreate: function(req, res, next) {
