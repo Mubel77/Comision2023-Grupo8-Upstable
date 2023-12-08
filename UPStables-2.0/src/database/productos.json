@@ -1,11 +1,11 @@
 [
   {
     "id": "1",
-    "nombre": "NOMBRE",
-    "marca": "MARCA",
+    "nombre": "Estabilizador De Tensión Trv - Micro Volt L - 1200va(pico) F",
+    "marca": "TRV",
     "modelo": "MODELO",
     "descripcion": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur harum ex libero nesciunt soluta facere.",
-    "precio": "1",
+    "precio": "50.000",
     "stock": "100",
     "imagen": "estabilizador 1.png"
   },
