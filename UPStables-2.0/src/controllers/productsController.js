@@ -6,7 +6,9 @@ const productos = JSON.parse(json);
 
 const productsController = {
     detail: function(req, res, next) {
-        res.render('/products/productDetail', { title: 'Detalle Producto' });
+      const{id}= req.params;
+      const producto= productos.find(producto=> producto.id == id)
+        res.render('products/productDetail', { title: producto.nombre, producto });
     },
     
     dashboard: function(req, res, next) {
