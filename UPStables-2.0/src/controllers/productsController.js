@@ -22,7 +22,7 @@ const productsController = {
     },
 
     create: function(req, res, next) {
-      res.redirect('/dashboard');
+      res.redirect('/products/dashboard');
     },
 
     formUpdate: function(req, res, next) {

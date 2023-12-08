@@ -2,7 +2,7 @@
 <body>
     <%-include('../partials/header.ejs') %>
     <main>
-        <form method="POST" action="products/dashboard" id="" class="form_create">
+        <form method="POST" action="/products/dashboard" id="" class="form_create">
             <% for (let x = 0; x < formRegistro.length; x++) { %>
                 
                     <label class="label-create" for="<%= formRegistro[x].toLowerCase() %>"><%= formRegistro[x] %></label>
