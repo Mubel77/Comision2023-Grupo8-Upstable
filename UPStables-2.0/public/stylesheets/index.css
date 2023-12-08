@@ -9,6 +9,7 @@ main{
    
 
 }
+
 .icono-fijo{
     position:fixed;
     bottom: 30px;
@@ -50,11 +51,11 @@ main{
     
     background-color: white;
     margin-bottom: 10px;
-   
+    height: 600px;
     cursor: pointer;
-    display: flex;
+    /*display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-end;*/
     
 }
 .article_productos:hover{
@@ -75,11 +76,23 @@ main{
     transition: background-color 2.5s,color 2s; 
 }
 
-.main-enlace{
-    text-decoration: none;
-    color: black;
+.div-test-image{
+    height: 60%;
+
 }
-/*---------- Media Query para Movil -----------------*/
+.div-test-p{
+    
+    height: 30%;
+
+}
+.div-test-precio{
+    
+    height: 10%;
+
+}
+
+
+
 
 @media(min-width:320px){
     .p-detalle-producto {
@@ -96,7 +109,7 @@ main{
         width: 100%;
     }
     .imagen-producto{
-        width: 100%;
+        width: 55%;
     }
     .article_publicidad{
         width: 100%;
@@ -116,7 +129,7 @@ main{
 
 }
 
-/*---------- Media Query para Tablet -----------------*/
+
 
 @media(min-width:768px){
     .container-articulos{
@@ -137,9 +150,12 @@ main{
         width: 100%;
         margin: 0 auto;
     }
+    .imagen-producto{
+        width: 80%;
+    }
 }
 
-/*---------- Media Query para Desktop -----------------*/
+
 
 @media(min-width:1024px){
   
@@ -148,6 +164,7 @@ main{
     }
     .article_productos{
         width: 24%;
+        padding: 0px;
         
     }
     .article_publicidad{
@@ -155,9 +172,10 @@ main{
         display: flex;
         flex-direction:row;
         justify-content: space-around;
-        margin: 0 auto;
-        
-       
+        margin: 0 auto; 
     }
-   
+    
+    .imagen-producto{
+        width: 100%;
+    }
 }

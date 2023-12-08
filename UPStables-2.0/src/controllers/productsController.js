@@ -4,7 +4,7 @@ const json = fs.readFileSync(path.join(__dirname,"../database/productos.json"),"
 const productos = JSON.parse(json);
 const jsonCarrito = fs.readFileSync(path.join(__dirname,"../database/productosCarrito.json"),"utf-8")
 const productsCart= JSON.parse(jsonCarrito);
-const formRegistro=['id','nombre','marca','modelo','descripcion','precio','imagen']
+const formRegistro=['nombre','marca','modelo','descripcion','precio','imagen']
 
 const productsController = {
     detail: function(req, res, next) {
