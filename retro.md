@@ -11,4 +11,20 @@ Mantener la comunicacion y el compromiso que tenemos hasta ahora con el proyecto
 Evitar dejar dudas para ultimo momento ya que las mismas pueden derivar en algun posible cambio para el cual despues puede que no haya tiempo para atenderlo.
 ### Dejar de hacer...
 Alargar las dailys. Ha sido una practica bastante comun en este sprint y el problema es que termina siendo una reunion poco clara, que inclusive puede llegar a generar mas dudas que certezas.
-	
+
+
+# SPRINT 2 
+
+Una vez finalizado este sprint, podría definirlo como casi cumplido. Creemos que al haber tenido dos semanas para llevar a cabo este sprint, nos relajamos bastante y realizamos las tareas despacio y con tranquilidad, cuando realmente era lo que no debíamos hacer. Cumplimos con el objetivo, pero no dentro del tiempo estimado, no llevó dos días más para poder completarlo en su totalidad. 
+A pesar del traspié el grupo siguió con buena comunicación y con ganas de poder entregar en la fecha estipulada. 
+
+### Comenzar a hacer...
+Prestar más atención al paso del tiempo y tener en cuenta la carga horaria que conlleva cada tarea. 
+### Hacer mas...
+Concentrarse más en el proyecto. Reuniones más formales. 
+### Continuar haciendo...
+Mantener la comunicacion y el compromiso que tenemos hasta ahora con el proyecto.
+### Hacer menos...
+-
+### Dejar de hacer...
+-
