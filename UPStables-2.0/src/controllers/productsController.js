@@ -1,5 +1,10 @@
-const formRegistro=['id','nombre','marca','modelo','descripcion','precio','imagen']const jsonCarrito = fs.readFileSync(path.join(__dirname,"../database/productosCarrito.json"),"utf-8")
+const fs = require("fs");
+const path = require("path");
+const json = fs.readFileSync(path.join(__dirname,"../database/productos.json"),"utf-8")
+const productos = JSON.parse(json);
+const jsonCarrito = fs.readFileSync(path.join(__dirname,"../database/productosCarrito.json"),"utf-8")
 const productsCart= JSON.parse(jsonCarrito);
+const formRegistro=['id','nombre','marca','modelo','descripcion','precio','imagen']
 
 const productsController = {
     detail: function(req, res, next) {
@@ -19,7 +24,7 @@ const productsController = {
     },
 
     formUpdate: function(req, res, next) {
-     res.render('products/formUpdate', { title: 'Formulario Modificar' });
+     res.render('products/formUpdate', { title: 'Formulario Modificar',formRegistro});
 
     },
 
