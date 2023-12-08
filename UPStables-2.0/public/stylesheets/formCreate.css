@@ -64,6 +64,22 @@ input::placeholder {
     font-weight: bold;
     color: var(--color-negro);
 }
+.boton_registro_update{
+    width: 100%;
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+}
+.boton_registro_update button {
+    background-color: var(--color-celeste);
+    width: 110px;
+    border-radius: 5px;
+    margin: 10% auto;
+    padding: 6px;
+    font-family: 'Roboto';
+    font-size: 82%;
+}
+
 
 
 @media(min-width:320px){
@@ -88,6 +104,12 @@ input::placeholder {
     .text-create{
         width: 75%;
     }
+    .boton_registro_update {
+        width: 80%;
+    }
+    .boton_registro_update button {
+        width: 150px;
+    }
 
 }
 /*-------media query para desktop----------*/
@@ -95,5 +117,8 @@ input::placeholder {
     .form_create{
         width: 50%;
         
+    }
+    .boton_registro_update{
+        width: 50%;
     }
 }
