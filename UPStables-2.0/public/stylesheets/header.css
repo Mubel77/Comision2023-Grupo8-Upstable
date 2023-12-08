@@ -54,7 +54,7 @@ header a{
     font-size: 120%;
     color: white;
 }
-.fa-bars{
+.burguer_header{
     font-size: 120%;
     color:white;
     background-color: rgb(41, 40, 40);
@@ -70,7 +70,7 @@ header a{
 .texto_nav{
     display: none;
 }
-.fa-magnifying-glass{
+.lupa_header{
     display: none;
 }
 .on-off{
@@ -139,7 +139,7 @@ header{
     .buscador_header input::placeholder{
         margin-left: 30px;
     }
-    .fa-magnifying-glass{
+    .lupa_header{
         display: flex;
         position:absolute;
         font-size: 20px;
@@ -160,7 +160,7 @@ header{
     display: flex;
     margin-right: 10px;
 }
-    .fa-bars{
+    .burguer_header{
         display: none;
     }
     .nav_header a{
@@ -252,7 +252,7 @@ header{
         font-size: 16px;
         margin-left: 60px;
     }
-    .fa-magnifying-glass{
+    .lupa_header{
         font-size: 25px;
         left:85%;
         top:15%;   
