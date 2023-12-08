@@ -10,7 +10,7 @@ router.get('/dashboard', productsController.dashboard);
 
 // Crear producto Admin
 router.get('/formCreate', productsController.formCreate);
-router.post('/create', productsController.create);
+router.post('/formCreate', productsController.create);
 
 // Actualizar productos Admin
 router.get('/formUpdate', productsController.formUpdate);
