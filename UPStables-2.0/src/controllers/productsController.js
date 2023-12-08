@@ -5,6 +5,10 @@ const productos = JSON.parse(json);
 const jsonCarrito = fs.readFileSync(path.join(__dirname,"../database/productosCarrito.json"),"utf-8")
 const productsCart= JSON.parse(jsonCarrito);
 const formRegistro=['id','nombre','marca','modelo','descripcion','precio','imagen']
+const fs = require("fs");
+const path = require("path");
+const json = fs.readFileSync(path.join(__dirname,"../database/productos.json"),"utf-8")
+const productos = JSON.parse(json);
 
 const productsController = {
     detail: function(req, res, next) {
