@@ -38,5 +38,15 @@
     "precio": "1",
     "stock": "100",
     "imagen": "estabilizador4.png"
+  },
+  {
+    "id": "1",
+    "nombre": "NOMBRE",
+    "marca": "MARCA",
+    "modelo": "MODELO",
+    "descripcion": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur harum ex libero nesciunt soluta facere.",
+    "precio": "1",
+    "stock": "100",
+    "imagen": "estabilizador 1.png"
   }
 ]

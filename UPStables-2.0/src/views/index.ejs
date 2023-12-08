@@ -1,11 +1,41 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<%-include('./partials/head.ejs') %>
+<body>
+    <%-include('./partials/header.ejs') %>
+    <main>
+        <img class="icono-fijo" src="/images/icon-whasap2.png" alt="">
+        <section class="section_productos">
+            <h3 class="titulo-carrusel">NOVEDADES</h3>
+            <article class="carrusel"> 
+
+                <% productos.forEach(producto => {%>
+                    <img src="/images/<%= producto.imagen %>" alt="">
+                <%}); %> 
+                
+            </article>
+            <h3 class="titulo-carrusel">ARTICULOS</h3>
+            <article class="container-articulos">
+
+                <% productos.forEach(producto => {%>
+                    <article class="article_productos">
+                        <a class="main-enlace" href="#">
+                        <img class="imagen-producto" src="/images/<%= producto.imagen %>" alt="foto-producto">
+                        <p class="p-detalle-producto"><%= producto.descripcion %></p>
+                        <h3 class="h3-precio">$<%= producto.precio %></h3>
+                    </a>
+                </article>
+                <%}); %>
+
+            </article>
+            <h3 class="titulo-carrusel">VER MAS</h3>
+            <article class="article_publicidad">
+
+                <% publicidad.forEach(element => {%>
+                    <img class="imagen_publicidad" src="/images/<%= element.imagen %>" alt="logo publicidad">
+                <%}); %>
+
+            </article>
+        </section>
+    </main>
+    <%-include('./partials/footer.ejs') %>
+</body>
 </html>

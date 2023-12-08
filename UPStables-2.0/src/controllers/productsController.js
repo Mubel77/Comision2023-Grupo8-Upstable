@@ -1,20 +1,8 @@
-const productsCart = [
-  {
-  id:1,
-  nombre:"Producto1",
-  descripcion:"Estabilizador De Tensión Trv - Micro Volt L - 1200va(pico) F.",
-  imagen:"/images/estabilizador 1.png",
-  price:"50.000"
-},
-{
-  id:2,
-  nombre:"Producto2",
-  descripcion:"Estabilizador De Tensión Trv - Micro Volt L - 1200va(pico) F.",
-  imagen:"/images/estabilizador 1.png",
-  price:"50.000"
-}
-];
-
+const formRegistro=['id','nombre','marca','modelo','descripcion','precio','imagen']
+const fs = require("fs");
+const path = require("path");
+const json = fs.readFileSync(path.join(__dirname,"../database/productos.json"),"utf-8")
+const productos = JSON.parse(json);
 
 const productsController = {
     detail: function(req, res, next) {
@@ -22,11 +10,11 @@ const productsController = {
     },
     
     dashboard: function(req, res, next) {
-        res.render('/products/dashboard', { title: 'Dashboard' });
+        res.render('products/dashboard', { title: 'Dashboard', productos });
     },
 
     formCreate: function(req, res, next) {
-      res.render('/products/formCreate', { title: 'Formulario Crear' });
+      res.render('products/formCreate', { title: 'Formulario Crear',formRegistro });
     },
 
     create: function(req, res, next) {
