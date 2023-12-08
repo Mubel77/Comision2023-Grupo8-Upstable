@@ -1,0 +1,30 @@
+<%- include('../partials/head.ejs') %>
+
+    <body>
+        <%- include('../partials/header.ejs') %>
+            <main class="dashboard_main">
+                <% productos.forEach(element => {%>
+                    <article class="dashboard_article">
+                        <div class="dashboard_div_img">
+                            <img src="/images/<%= element.imagen%>" alt="<%= element.nombre%>">
+                        </div>
+                        <div class="dashboard_div_texto">
+                            <h3><%= element.nombre%></h3>
+                            <h4><%= element.modelo%></h4>
+                            <h4><%= element.marca%></h4>
+                            <p><%= element.descripcion%></p>
+                        </div>
+                        <div class="dashboard_div_botones">
+                            <a href="/products/formUpdate"><button>Modificar</button></a>
+                        </div>
+                    </article>
+                <% })%>
+                
+                <div class="dashboard_div_botonAgregar">
+                    <a href="/products/formCreate"><button>+ Agregar Producto</button></a>
+                </div>
+
+            </main>
+            <%- include('../partials/footer.ejs') %>
+    </body>
+</html>
