@@ -10,43 +10,43 @@
     "imagen": "estabilizador 1.png"
   },
   {
-    "id": "1",
-    "nombre": "NOMBRE",
-    "marca": "MARCA",
-    "modelo": "MODELO",
+    "id": "2",
+    "nombre": "Estabilizador Elevador De Tensión  3000 Va ",
+    "marca": "Lyonn",
+    "modelo": "Tca 3000nv",
     "descripcion": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur harum ex libero nesciunt soluta facere.",
-    "precio": "1",
+    "precio": "55,521",
     "stock": "100",
     "imagen": "estabilizador2.png"
   },
   {
-    "id": "1",
-    "nombre": "NOMBRE",
-    "marca": "MARCA",
-    "modelo": "MODELO",
+    "id": "3",
+    "nombre": "APC SMC1500 SMART-UPS, 1500 VA, CON PANTALLA LCD",
+    "marca": "APC",
+    "modelo": "SMC1500",
     "descripcion": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur harum ex libero nesciunt soluta facere.",
-    "precio": "1",
+    "precio": "60.000",
     "stock": "100",
     "imagen": "estabilizador3.png"
   },
   {
-    "id": "1",
-    "nombre": "NOMBRE",
-    "marca": "MARCA",
-    "modelo": "MODELO",
+    "id": "4",
+    "nombre": "Ups Apc Bx1600mi-ar 1600va",
+    "marca": "APC",
+    "modelo": "Bx1600mi-ar",
     "descripcion": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur harum ex libero nesciunt soluta facere.",
-    "precio": "1",
+    "precio": "57.000",
     "stock": "100",
     "imagen": "estabilizador4.png"
   },
   {
-    "id": "1",
-    "nombre": "NOMBRE",
-    "marca": "MARCA",
-    "modelo": "MODELO",
+    "id": "5",
+    "nombre": "CTB-800VA [DISPLAY]",
+    "marca": "Lyonn",
+    "modelo": "CTB-800VA",
     "descripcion": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur harum ex libero nesciunt soluta facere.",
-    "precio": "1",
+    "precio": "55.000",
     "stock": "100",
-    "imagen": "estabilizador 1.png"
+    "imagen": "ups_img.jpg"
   }
 ]
