@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "nombre": "Producto1",
+    "descripcion": "Estabilizador De Tensión Trv - Micro Volt L - 1200va(pico) F.",
+    "precio": "50.000",
+    "imagen": "estabilizador 1.png"
+  },
+  {
+    "id": "2",
+    "nombre": "Producto1",
+    "descripcion": "Estabilizador De Tensión Trv - Micro Volt L - 1200va(pico) F.",
+    "precio": "50.000",
+    "imagen": "estabilizador 1.png"
+  },
+  {
+    "id": "3",
+    "nombre": "Producto1",
+    "descripcion": "Estabilizador De Tensión Trv - Micro Volt L - 1200va(pico) F.",
+    "precio": "50.000",
+    "imagen": "estabilizador 1.png"
+  }
+]
