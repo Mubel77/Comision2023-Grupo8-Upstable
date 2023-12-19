@@ -1,0 +1,21 @@
+<%-include('../partials/head.ejs') %>
+<body>
+    <%-include('../partials/header.ejs') %>
+    <main>
+            <article class="container-articulos">
+                <% productos.forEach(producto => {%>
+                        <article class="article_productos">
+                            <a class="main-enlace" href="/products/productDetail/<%= producto.id %>">
+                                <img class="imagen-producto" src="/images/<%= producto.imagen %>" alt="foto-producto">
+                                <p class="p-detalle-producto"><%= producto.nombre %></p>
+                                <p class="h3-precio">$<%= producto.precio %></p>    
+                            </a>
+                        </article>
+                <%})%>
+            </article>
+
+        </section>
+    </main>
+    <%-include('../partials/footer.ejs') %>
+</body>
+</html>

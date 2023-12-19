@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 
 const productsController = require ('../controllers/productsController.js');
+//Ver todos productos listados
+router.get('/list', productsController.list)
+
 /* Ver producto */
 router.get('/productDetail/:id', productsController.detail);
 

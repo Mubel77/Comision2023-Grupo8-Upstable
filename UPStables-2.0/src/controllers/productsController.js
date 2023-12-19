@@ -7,6 +7,10 @@ const productsCart= JSON.parse(jsonCarrito);
 const formRegistro=['nombre','marca','modelo','descripcion','precio','imagen']
 
 const productsController = {
+
+  list:function(req, res, next) {
+    res.render('products/productsList', { title: 'List Products', productos });},
+
     detail: function(req, res, next) {
       const{id}= req.params;
       const producto= productos.find(producto=> producto.id == id)
