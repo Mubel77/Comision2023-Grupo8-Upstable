@@ -145,3 +145,32 @@
     - Qué hizo ayer: continuó con el dashboard
     - Qué va a hacer hoy: finalizar el dashboard
     - Tuvo algún impedimento: por el momento no presenta dificultades
+
+# SPRINT 4
+
+### Lunes 18/12/23
+* Santi:
+    - Qué hizo ayer:
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: Eliminar archivos html de la carpeta partials, aplicar logica al controlador "detail"
+* Emi:
+    - Qué hizo ayer:
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: definir los campos necesarios para el producto y generar archivo json
+### Martes 18/12/23
+* Mauri:
+    - Qué hizo ayer: ponerme al dia con el sprint
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: crear retro.md
+* Claudio:
+    - Qué hizo ayer:
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: Eliminar archivo index.html, aplicar logica al controlador para la carga de un producto.
+* Santi:
+    - Qué hizo ayer: Eliminar archivos html de la carpeta partials
+    - Si se encontró con algún impedimento: No
+    - Qué va a hacer hoy: Aplicar logica al controlador "detail"
+* Emi:
+    - Qué hizo ayer: Definir los campos necesarios para el producto y generar archivo json
+    - Si se encontró con algún impedimento: No
+    - Qué va a hacer hoy: Vista home para products
