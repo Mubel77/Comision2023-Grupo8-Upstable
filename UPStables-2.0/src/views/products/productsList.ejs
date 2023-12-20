@@ -7,12 +7,20 @@
                         <article class="article_productos">
                             <a class="main-enlace" href="/products/productDetail/<%= producto.id %>">
                                 <img class="imagen-producto" src="/images/<%= producto.imagen %>" alt="foto-producto">
-                                <p class="p-detalle-producto"><%= producto.nombre %></p>
-                                <p class="h3-precio">$<%= producto.precio %></p>    
+                                <div class="products_list">
+                                <% if (producto.descuento > 0) {%>                                    
+                                        <p class="products_list_precio">$<%= producto.precio-((producto.precio*producto.descuento)/100)%></p>
+                                        <p class="products_list_precio-off"><%= "$"+producto.precio %></p>
+                                        <p class="products_list_descuento"><%= producto.descuento+"% OFF" %></p>
+                                    <% } else {%>   
+                                        <p class="products_list_precio">$<%= producto.precio %></p>
+                                    <% }%>                            
+                                        <p class="products_list_marca"><%= producto.marca %> <%= producto.modelo %></p>
+                                </div>
                             </a>
                         </article>
                 <%})%>
-            </article>
+            </article>  
 
         </section>
     </main>

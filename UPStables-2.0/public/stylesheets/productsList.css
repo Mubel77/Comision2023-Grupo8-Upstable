@@ -1,0 +1,29 @@
+.products_list{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px;
+}
+
+.products_list p {
+    margin: 5px 0px;
+}
+
+.products_list_precio {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.products_list_precio-off {
+    text-decoration:line-through;
+}
+
+.products_list_descuento {
+    background-color: var(--color-celeste);
+    width: 60px;
+}
+
+.products_list_marca {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+}
