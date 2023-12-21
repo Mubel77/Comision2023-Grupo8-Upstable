@@ -1,11 +1,7 @@
 const fs = require("fs");
 const path = require("path");
-const json = fs.readFileSync(path.join(__dirname,"../database/productos.json"),"utf-8")
-const productos = JSON.parse(json);
-const jsonCarrito = fs.readFileSync(path.join(__dirname,"../database/productosCarrito.json"),"utf-8")
-const productsCart= JSON.parse(jsonCarrito);
-const formRegistro=['nombre','marca','modelo','descripcion','precio','imagen']
-
+const {v4:uuidv4}=require("uuid");
+const {leerArchivo,escribirArchivo}=require("../database/jsonFunctions");
 const productsController = {
     detail: function(req, res, next) {
       const{id}= req.params;
@@ -14,15 +10,34 @@ const productsController = {
     },
     
     dashboard: function(req, res, next) {
+      let productos= leerArchivo("products");
         res.render('products/dashboard', { title: 'Dashboard', productos });
     },
 
     formCreate: function(req, res, next) {
-      res.render('products/formCreate', { title: 'Formulario Crear',formRegistro });
+      res.render('products/formCreate', { title: 'Formulario Crear'});
     },
 
     create: function(req, res, next) {
-      res.redirect('/products/dashboard');
+     let productos= leerArchivo("products");
+     const{marca,modelo,descripcion,precio,stock,potencia,categoria,tomas,descuento,imagen}=req.body;
+     const id = uuidv4();
+     const nuevoProducto={
+      id,
+      modelo: modelo.trim(),
+      marca:marca.trim(),
+      categoria:categoria.trim(),
+      descripcion:descripcion.trim(),
+      potencia:+potencia,
+      tomas:+tomas,
+      precio:+precio,
+      descuento:+descuento,
+      stock:+stock,
+      imagen:""
+     }
+     productos.push(nuevoProducto);
+    escribirArchivo(productos,"products");
+    res.redirect('/products/dashboard');
     },
 
     formUpdate: function(req, res, next) {
