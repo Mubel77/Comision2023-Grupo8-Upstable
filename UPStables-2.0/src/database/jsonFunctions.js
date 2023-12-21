@@ -8,7 +8,7 @@ const leerArchivo = (nameFile) => {
 }
 
 const escribirArchivo = (newArray, nameFile) => {
-    let pathFile = path.join(__dirname,"../data",nameFile+".json");
+    let pathFile = path.join(__dirname,"../database",nameFile+".json");
     let arrayJson = JSON.stringify(newArray);
     fs.writeFileSync(pathFile,arrayJson,'utf-8')
 }
