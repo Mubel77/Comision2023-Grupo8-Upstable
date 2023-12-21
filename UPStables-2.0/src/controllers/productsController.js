@@ -4,8 +4,9 @@ const {v4:uuidv4}=require("uuid");
 const {leerArchivo,escribirArchivo}=require("../database/jsonFunctions");
 const productsController = {
     detail: function(req, res, next) {
+      let productos = leerArchivo("products");
       const{id}= req.params;
-      const producto= productos.find(producto=> producto.id == id)
+      const producto= productos.find(producto=> producto.id == id);
         res.render('products/productDetail', { title: producto.nombre, producto });
     },
     
