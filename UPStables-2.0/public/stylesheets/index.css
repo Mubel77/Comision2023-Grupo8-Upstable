@@ -1,0 +1,155 @@
+main, footer {
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+main{
+    background-image: url("/images/circuit_bg 14.png");
+    background-color: #D1D4DE;
+   
+
+}
+
+.icono-fijo{
+    position:fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 10%;
+    cursor: pointer;
+    z-index: 2;
+}
+.section_productos{
+    
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.titulo-carrusel{
+    display: block;
+    border-bottom: 4px solid rgb(9, 245, 213);
+    text-align: center;
+    margin-bottom: 10px;
+    
+}
+.carrusel{
+    width: 100%;
+    display: flex;
+    overflow-y: auto;
+    padding: 10px;
+    object-fit: cover;
+}
+.carrusel img {
+    width: 400px;
+    height: 400px;
+    margin-right: 10px; 
+}
+.container-articulos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.article_productos {
+    border: 1px solid #ddd; 
+    background-color: white;
+    cursor: pointer;
+}
+.article_productos:hover{
+    box-shadow: 0px 0px 10px rgb(100, 100, 100);
+    background-color: rgba(33,33,33,0.3);
+    color: white;
+    transform: scale(1.01);
+    transition: background-color 2.5s, color 1s,transform 1s;
+    
+}
+.article_productos h3{
+    opacity: 0;
+}
+.article_productos:hover h3{
+    opacity: 100;
+    background-color:rgb(33, 33, 33);
+    color: #ffff ;
+    transition: background-color 2.5s,color 2s; 
+}
+
+
+.main-enlace {
+    text-decoration: none;
+    color: inherit;
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;
+}
+
+.imagen-producto {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.p-detalle-producto,
+.h3-precio {
+    margin: 10px 0;
+}
+
+
+@media(min-width:320px){
+   
+    .imagen_publicidad{
+        width: 100%;
+    }
+    
+    .article_publicidad{
+        width: 100%;
+        display: flex;
+        flex-direction:column;
+        gap: 10px;
+        margin: 0 auto;
+        cursor: pointer;
+    }
+
+   .carrusel img {
+    width: 400px;
+    height: 400px;
+    margin-right: 10px;
+    
+}
+
+}
+
+
+
+@media(min-width:768px){
+   
+    
+    .article_publicidad{
+        width: 50%;
+    }
+    
+   .carrusel{
+        width: 100%;
+        margin: 0 auto;
+    }
+   
+}
+
+
+
+@media(min-width:1024px){
+  
+    .icono-fijo{
+        width: 5%;
+    }
+    
+    .article_publicidad{
+        width: 25%;
+        display: flex;
+        flex-direction:row;
+        justify-content: space-around;
+        margin: 0 auto; 
+    }
+    
+   
+}
+

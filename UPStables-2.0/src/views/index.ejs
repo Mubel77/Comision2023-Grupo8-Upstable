@@ -1,0 +1,54 @@
+<%-include('./partials/head.ejs') %>
+<body>
+    <%-include('./partials/header.ejs') %>
+    <main>
+        <img class="icono-fijo" src="/images/icon-whasap2.png" alt="">
+        <section class="section_productos">
+            <h3 class="titulo-carrusel">NOVEDADES</h3>
+            <article class="carrusel"> 
+
+                <% productos.forEach(producto => {%>
+                    <img src="/images/<%= producto.imagen %>" alt="">
+                <%}); %> 
+                
+            </article>
+            <h3 class="titulo-carrusel">ARTICULOS</h3>
+
+            <article class="container-articulos">
+                <% let contador = 0;%>
+                <% productos.forEach(producto => {%>
+                        <% if (contador < 4) {%>
+                            <article class="article_productos">
+                                <a class="main-enlace" href="/products/productDetail/1">
+                                    
+                                        <img class="imagen-producto" src="/images/<%= producto.imagen %>" alt="foto-producto">
+                                    
+                                   
+                                        <p class="p-detalle-producto"><%= producto.nombre %></p>
+                                    
+                                    
+                                        <p class="h3-precio">$<%= producto.precio %></p>
+                                    
+                                </a>
+                            </article>
+                <% contador++;%>
+                       <% }%>
+                    <%})%>
+            </article>
+            
+            <h3 class="titulo-carrusel">VER MAS</h3>
+            <article class="article_publicidad">
+
+                <% publicidad.forEach(element => {%>
+                    <img class="imagen_publicidad" src="/images/<%= element.imagen %>" alt="logo publicidad">
+                <%}); %>
+
+            </article>
+        </section>
+    </main>
+    <%-include('./partials/footer.ejs') %>
+</body>
+</html>
+
+
+
