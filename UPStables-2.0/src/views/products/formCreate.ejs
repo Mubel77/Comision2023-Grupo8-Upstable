@@ -2,7 +2,7 @@
 <body>
     <%- include('../partials/header.ejs')%>
     <main>
-        <form action="/products/formCreate"  method=POST  class="form_create">
+        <form action="/products/formCreate"  method=POST  class="form_create" enctype="multipart/form-data">
                 <div class="div_config div_form_product">
                     <label for="modelo" id="modelo" class="div_config_label">Modelo</label>
                     <input type="text"  name="modelo" >
