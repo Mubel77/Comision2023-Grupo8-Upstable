@@ -2,33 +2,59 @@
 <body>
     <%-include('../partials/header.ejs') %>
     <main>
-        <form method="POST" action="products/formUpdate" id="" class="form_create">
-            <% for (let x = 0; x < formRegistro.length; x++) { %>
-                
-                    <label class="label-create" for="<%= formRegistro[x].toLowerCase() %>"><%= formRegistro[x] %></label>
-                    <% switch (formRegistro[x]) { 
-                        case "descripcion": %>
-                            <textarea class="textarea-create" name="<%= formRegistro[x].toLowerCase() %>" id="<%= formRegistro[x].toLowerCase() %>" cols="30" rows="10" placeholder=" Ingrese el detalle del producto" ></textarea>
-                            <% break;
-                        case "imagen": %>
-                            <input class="image-create" type="file" name="<%= formRegistro[x].toLowerCase() %>" id="<%= formRegistro[x].toLowerCase() %>" accept="image/*" >
-                            <% break;
-                        case "id": %>
-                            <input class="id-create" type="number" name="<%= formRegistro[x].toLowerCase() %>" placeholder="<%= formRegistro[x] %>">
-                            <% break;
-                        default: %>
-                            <input class="text-create" type="text" name="<%= formRegistro[x].toLowerCase() %>" placeholder="<%= formRegistro[x] %>">
-                    <% } %>
-            <% } %>       
-        </form>
-        <div class="boton_registro_update ">
-                    <a href="/products/dashboard">
-                            <button type="submit">Editar Producto</button>
-                    </a>
-                    <a href="/products/dashboard">
-                            <button type="submit">Eliminar </button>
-                    </a>   
-        </div>  
+        <form action="/products/update/<%=productToEdit.id%>?_method=PUT"  method="POST"  class="form_create">
+            <div class="div_config div_form_product">
+                <label for="modelo" id="modelo" class="div_config_label">Modelo</label>
+                <input type="text"  name="modelo" value="<%= productToEdit.modelo %>">
+            </div>
+            <div class="div_config">
+                <label for="marca" id="marca">Marca</label>
+                <input type="text"  name="marca" value="<%= productToEdit.marca %>">
+            </div>
+            <div class="div_config">
+                <label for="categoria" id="categoria">Categoria</label>
+                <select name="categoria"  id="categoria" class="div_config">
+                    <option value="" <%= productToEdit.categoria == "" ? "selected" :null %>>Elegi una Opcion</option>
+                    <option value="UPS" <%= productToEdit.categoria == "UPS" ? "selected" :null %>>UPS</option>
+                    <option value="Estabilizadores" <%= productToEdit.categoria == "Estabilizadores" ? "selected" :null %>>ESTABILIZADORES</option>
+                </select>
+            </div>
+            <div class="div_config">
+                <label for="descripcion" id="descripcion">Descripcion</label>
+                <textarea name="descripcion" id="descripcion"  cols="60" rows="20"><%= productToEdit.descripcion %></textarea>
+            </div>
+            <div class="div_config">
+                <label for="potencia" id="potencia">Potencia</label>
+                <input type="number"  name="potencia" value="<%= productToEdit.potencia %>" >
+            </div>
+            <div class="div_config">
+                <label for="tomas" id="tomas">Cantidad de tomas</label>
+                <input type="number"  name="tomas" value="<%= productToEdit.tomas %>" >
+            </div>
+            <div class="div_config">
+                <label for="precio" id="precio">Precio</label>
+                <input type="number"  name="precio" value="<%= productToEdit.precio %>" >
+            </div>
+            <div class="div_config">
+                <label for="descuento" id="descuento">Descuento</label>
+                <input type="number"  name="descuento" value="<%= productToEdit.descuento %>">
+            </div>
+            <div class="div_config">
+                <label for="stock" id="stock">Stock</label>
+                <input type="number"  name="stock" value="<%= productToEdit.stock %>">
+            </div>
+            <div class="div_config">
+                <label for="imagen" id="imagen">Seleccione una imagen</label>
+                <input type="file"  name="imagen" value="<%= productToEdit.imagen %>" >
+            </div>
+       
+            <div class="boton_registro_update ">
+                <button type="submit">Editar Producto</button>
+                <button type="submit">Eliminar </button>
+            </div> 
+            
+    </form>
+         
         
     </main>
     <%-include('../partials/footer.ejs') %>

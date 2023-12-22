@@ -42,12 +42,36 @@ const productsController = {
     },
 
     formUpdate: function(req, res, next) {
-     res.render('products/formUpdate', { title: 'Formulario Modificar',formRegistro});
-
+      let products= leerArchivo('products');
+		const {id}=req.params;
+		const productToEdit = products.find(product => product.id == id);
+     res.render('products/formUpdate', { title: 'Formulario Modificar', productToEdit});
     },
 
     update: function(req, res, next) {
-      res.redirect('/productDetail/:id');
+      let products= leerArchivo('products');
+		const {id}=req.params;
+		const {marca,modelo,descripcion,precio,stock,potencia,categoria,tomas,descuento,imagen}=req.body;
+		const nuevoArray= products.map(product=>{
+			if(product.id == id){
+				return{
+					id,
+        modelo: modelo.trim(),
+        marca:marca.trim(),
+        categoria:categoria.trim(),
+        descripcion:descripcion.trim(),
+        potencia:+potencia,
+        tomas:+tomas,
+        precio:+precio,
+        descuento:+descuento,
+        stock:+stock,
+        imagen:imagen ? imagen : product.imagen
+				}	
+			}
+			return product
+		})
+		 escribirArchivo(nuevoArray, 'products')
+		 res.redirect(`/products/productDetail/${id}`)
     },
 
     delete: function(req, res, next) {
