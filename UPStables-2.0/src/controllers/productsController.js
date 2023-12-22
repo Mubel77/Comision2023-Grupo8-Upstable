@@ -84,6 +84,7 @@ const productsController = {
     },
 
     cart: function(req, res, next) {
+      let productsCart = leerArchivo("productosCarrito");
       res.render('products/productCart', { title: 'Carrito de Compras', productsCart, cartItemCount: productsCart.length });
   },
 }
