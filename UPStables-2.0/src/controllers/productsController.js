@@ -4,6 +4,9 @@ const json = fs.readFileSync(path.join(__dirname,"../database/productos.json"),"
 const productos = JSON.parse(json);
 const jsonCarrito = fs.readFileSync(path.join(__dirname,"../database/productosCarrito.json"),"utf-8")
 const productsCart= JSON.parse(jsonCarrito);
+
+
+
 const formRegistro=['nombre','marca','modelo','descripcion','precio','imagen']
 
 const productsController = {
@@ -35,6 +38,10 @@ const productsController = {
     },
 
     delete: function(req, res, next) {
+      let productos= leerArchivos("products");
+      const {id} = req.params;
+      const nuevaLista = productos.filter(producto => producto.id != id);
+      escribirArchivo(nuevaLista, "products");
       res.redirect('/dashboard');
     },
 
