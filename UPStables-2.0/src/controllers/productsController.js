@@ -76,7 +76,10 @@ const productsController = {
     },
 
     delete: function(req, res, next) {
-      git 
+      let productos= leerArchivos("products");
+      const {id} = req.params;
+      const nuevaLista = productos.filter(producto => producto.id != id);
+      escribirArchivo(nuevaLista, "products");
       res.redirect('/dashboard');
     },
 
