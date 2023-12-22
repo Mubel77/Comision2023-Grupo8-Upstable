@@ -2,48 +2,48 @@
 <body>
     <%- include('../partials/header.ejs')%>
     <main>
-        <form action="/products/formCreate"  method=POST  class="form_create">
+        <form action="/products/formCreate"  method=POST  class="form_create" enctype="multipart/form-data">
                 <div class="div_config div_form_product">
                     <label for="modelo" id="modelo" class="div_config_label">Modelo</label>
                     <input type="text"  name="modelo" >
                 </div>
-                <div class="div_config">
+                <div class="div_config div_form_product">
                     <label for="marca" id="marca">Marca</label>
                     <input type="text"  name="marca" >
                 </div>
-                <div class="div_config">
+                <div class="div_config div_form_product">
                     <label for="categoria" id="categoria">Categoria</label>
                     <select name="categoria"  id="categoria" class="div_config">
-                        <option value="" selected>Elegi una Opcion</option>
+                        <option value="" selected disabled style="display:none;">Elegí una Opción</option>
                         <option value="ups">UPS</option>
                         <option value="estabilizadores">ESTABILIZADORES</option>
                     </select>
                 </div>
-                <div class="div_config">
+                <div class="div_config div_form_product">
                     <label for="descripcion" id="descripcion">Descripcion</label>
                     <textarea name="descripcion" id="descripcion"  cols="60" rows="20"></textarea>
                 </div>
-                <div class="div_config">
+                <div class="div_config div_form_product">
                     <label for="potencia" id="potencia">Potencia</label>
                     <input type="number"  name="potencia" >
                 </div>
-                <div class="div_config">
+                <div class="div_config div_form_product">
                     <label for="tomas" id="tomas">Cantidad de tomas</label>
                     <input type="number"  name="tomas" >
                 </div>
-                <div class="div_config">
+                <div class="div_config div_form_product">
                     <label for="precio" id="precio">Precio</label>
                     <input type="number"  name="precio" >
                 </div>
-                <div class="div_config">
+                <div class="div_config div_form_product">
                     <label for="descuento" id="descuento">Descuento</label>
                     <input type="number"  name="descuento" >
                 </div>
-                <div class="div_config">
+                <div class="div_config div_form_product">
                     <label for="stock" id="stock">Stock</label>
                     <input type="number"  name="stock" >
                 </div>
-                <div class="div_config">
+                <div class="div_config div_form_product">
                     <label for="imagen" id="imagen">Seleccione una imagen</label>
                     <input type="file"  name="imagen" >
                 </div>

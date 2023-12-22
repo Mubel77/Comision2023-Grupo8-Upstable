@@ -7,9 +7,13 @@
             <h3 class="titulo-carrusel">NOVEDADES</h3>
             <article class="carrusel"> 
             <!-- se aplico logica de js para mostrar las imagen en el carrusel    -->
-                <% productos.forEach(producto => {%>
+            <% let contadorCarrusel = 0;%>
+            <% productos.forEach(producto => {%>
+                <% if (contadorCarrusel < 3) {%>
                     <img src="/images/<%= producto.imagen %>" alt="">
-                <%}); %> 
+                    <% contadorCarrusel++;%>
+                <%} %> 
+                <%});%>
                 
             </article>
             <h3 class="titulo-carrusel">ARTICULOS</h3>
@@ -24,11 +28,9 @@
                                 <a class="main-enlace" href="/products/productDetail/1">
                                     
                                         <img class="imagen-producto" src="/images/<%= producto.imagen %>" alt="foto-producto">
-                                    
-                                   
-                                        <p class="p-detalle-producto"><%= producto.nombre %></p>
-                                    
-                                    
+                                        <p class="p-detalle-producto"><%= producto.categoriajh %></p>
+                                        <p class="p-detalle-producto"><%= producto.marca %></p>
+                                        <p class="p-detalle-producto"><%= producto.modelo %></p>
                                         <p class="h3-precio">$<%= producto.precio %></p>
                                     
                                 </a>
