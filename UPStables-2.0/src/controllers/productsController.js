@@ -76,11 +76,11 @@ const productsController = {
     },
 
     delete: function(req, res, next) {
-      let productos= leerArchivos("products");
+      let productos= leerArchivo("products");
       const {id} = req.params;
       const nuevaLista = productos.filter(producto => producto.id != id);
       escribirArchivo(nuevaLista, "products");
-      res.redirect('/dashboard');
+      res.redirect('/products/dashboard');
     },
 
     cart: function(req, res, next) {
