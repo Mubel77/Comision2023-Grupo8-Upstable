@@ -13,6 +13,19 @@
     "imagen": "estabilizador 1.png"
   },
   {
+    "id": 2,
+    "modelo": "Oralla",
+    "marca": "Karlotte",
+    "categoria": "Fran",
+    "descripcion": "Brenna",
+    "potencia": 2,
+    "tomas": 2,
+    "precio": 2,
+    "descuento": 2,
+    "stock": 2,
+    "imagen": "estabilizador2.png"
+  },
+  {
     "id": 3,
     "modelo": "June",
     "marca": "Cherilyn",
@@ -39,11 +52,37 @@
     "imagen": "estabilizador4.png"
   },
   {
-    "id": "7",
-    "modelo": "CTB-500",
-    "marca": "Lyonn",
-    "categoria": "UPS",
-    "descripcion": "Lyonn--Lyonn--Lyonn--Lyonn--Lyonn--Lyonn--Lyonn--\r\nLyonn--Lyonn--Lyonn--Lyonn--Lyonn--Lyonn--\r\nLyonn--Lyonn--Lyonn--Lyonn--Lyonn--\r\nLyonn--Lyonn--Lyonn--Lyonn--\r\nLyonn--Lyonn--Lyonn--\r\nLyonn--Lyonn--\r\nLyonn--",
+    "id": 5,
+    "modelo": "Son",
+    "marca": "Garreth",
+    "categoria": "Andros",
+    "descripcion": "Peyter",
+    "potencia": 5,
+    "tomas": 5,
+    "precio": 5,
+    "descuento": 5,
+    "stock": 5,
+    "imagen": "Natoque.tiff"
+  },
+  {
+    "id": 6,
+    "modelo": "Cordelia",
+    "marca": "Kent",
+    "categoria": "Gauthier",
+    "descripcion": "Kariotta",
+    "potencia": 6,
+    "tomas": 6,
+    "precio": 6,
+    "descuento": 6,
+    "stock": 6,
+    "imagen": "NisiVenenatis.doc"
+  },
+  {
+    "id": 7,
+    "modelo": "Wilt",
+    "marca": "Bo",
+    "categoria": "Whittaker",
+    "descripcion": "Sonny",
     "potencia": 7,
     "tomas": 7,
     "precio": 7,
@@ -494,6 +533,84 @@
     "imagen": "Blandit.jpeg"
   },
   {
+    "id": 42,
+    "modelo": "Danielle",
+    "marca": "Estell",
+    "categoria": "Ave",
+    "descripcion": "Carlee",
+    "potencia": 42,
+    "tomas": 42,
+    "precio": 42,
+    "descuento": 42,
+    "stock": 42,
+    "imagen": "UltricesLiberoNon.png"
+  },
+  {
+    "id": 43,
+    "modelo": "Griz",
+    "marca": "Chrissie",
+    "categoria": "Culver",
+    "descripcion": "Geri",
+    "potencia": 43,
+    "tomas": 43,
+    "precio": 43,
+    "descuento": 43,
+    "stock": 43,
+    "imagen": "IntegerAcLeo.mp3"
+  },
+  {
+    "id": 44,
+    "modelo": "Nerta",
+    "marca": "Forester",
+    "categoria": "Michel",
+    "descripcion": "Royall",
+    "potencia": 44,
+    "tomas": 44,
+    "precio": 44,
+    "descuento": 44,
+    "stock": 44,
+    "imagen": "Pretium.avi"
+  },
+  {
+    "id": 45,
+    "modelo": "Eilis",
+    "marca": "Harrison",
+    "categoria": "Justinian",
+    "descripcion": "Nessie",
+    "potencia": 45,
+    "tomas": 45,
+    "precio": 45,
+    "descuento": 45,
+    "stock": 45,
+    "imagen": "QuamPede.mpeg"
+  },
+  {
+    "id": 46,
+    "modelo": "Barth",
+    "marca": "Daisy",
+    "categoria": "Sibyl",
+    "descripcion": "Dolf",
+    "potencia": 46,
+    "tomas": 46,
+    "precio": 46,
+    "descuento": 46,
+    "stock": 46,
+    "imagen": "TinciduntNullaMollis.ppt"
+  },
+  {
+    "id": 47,
+    "modelo": "Ossie",
+    "marca": "Brooke",
+    "categoria": "Renado",
+    "descripcion": "Deeanne",
+    "potencia": 47,
+    "tomas": 47,
+    "precio": 47,
+    "descuento": 47,
+    "stock": 47,
+    "imagen": "AdipiscingMolestieHendrerit.xls"
+  },
+  {
     "id": 48,
     "modelo": "Mable",
     "marca": "Jerri",
@@ -505,6 +622,32 @@
     "descuento": 48,
     "stock": 48,
     "imagen": "LacusPurus.tiff"
+  },
+  {
+    "id": 49,
+    "modelo": "Ilka",
+    "marca": "Tybalt",
+    "categoria": "Marys",
+    "descripcion": "Angie",
+    "potencia": 49,
+    "tomas": 49,
+    "precio": 49,
+    "descuento": 49,
+    "stock": 49,
+    "imagen": "EratQuisqueErat.avi"
+  },
+  {
+    "id": "50",
+    "modelo": "Tate",
+    "marca": "Carmela",
+    "categoria": "",
+    "descripcion": "Bartholemy",
+    "potencia": 50,
+    "tomas": 50,
+    "precio": 50,
+    "descuento": 50,
+    "stock": 50,
+    "imagen": "Rutrum.mov"
   },
   {
     "id": "ead598e9-82cb-42bf-8690-bed0889daf85",
@@ -640,7 +783,7 @@
     "id": "3e1fb4af-055a-43ea-960d-7f2f424ac060",
     "modelo": "zzzz",
     "marca": "asdfasf",
-    "categoria": "",
+    "categoria": "estabilizadores",
     "descripcion": "asdfaasfafa",
     "potencia": 1,
     "tomas": 2,
@@ -648,18 +791,6 @@
     "descuento": 3,
     "stock": 1,
     "imagen": "Upstable-imagen1703201807537.jpg"
-  },
-  {
-    "id": "6a6ee2eb-0ada-4bc4-8b32-8537e25027c8",
-    "modelo": "zxc",
-    "marca": "zxczx",
-    "categoria": "ups",
-    "descripcion": "zxcczx",
-    "potencia": 44,
-    "tomas": 23,
-    "precio": 123,
-    "descuento": 23,
-    "stock": 22,
-    "imagen": "default.jpg"
   }
 ]
+

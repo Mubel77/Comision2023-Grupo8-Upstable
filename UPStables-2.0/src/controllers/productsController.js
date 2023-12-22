@@ -53,7 +53,7 @@ const productsController = {
      }
      productos.push(nuevoProducto);
     escribirArchivo(productos,"products");
-    res.redirect('/products/dashboard');
+    res.redirect(`/products/productDetail/${id}`)
     },
 
     formUpdate: function(req, res, next) {
