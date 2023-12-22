@@ -76,6 +76,7 @@ const productsController = {
     },
 
     delete: function(req, res, next) {
+      git 
       res.redirect('/dashboard');
     },
 
