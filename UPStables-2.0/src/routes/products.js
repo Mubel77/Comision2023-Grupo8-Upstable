@@ -1,5 +1,18 @@
 var express = require('express');
+var multer = require('multer')
+var path = require('path');
 var router = express.Router();
+
+const storage= multer.diskStorage({
+    destination:(req,file,cb)=>{
+        cb(null,path.join(__dirname,'../../public/images'))
+    },
+    filename: (req,file,cb)=>{
+        const newFilename='Upstable-imagen'+ Date.now() + path.extname(file.originalname);
+        cb(null,newFilename)
+    }
+});
+const upload=multer({storage});
 
 const productsController = require ('../controllers/productsController.js');
 /* Ver producto */
@@ -10,10 +23,10 @@ router.get('/dashboard', productsController.dashboard);
 
 // Crear producto Admin
 router.get('/formCreate', productsController.formCreate);
-router.post('/formCreate', productsController.create);
+router.post('/formCreate',upload.single('imagen'), productsController.create);
 
 // Actualizar productos Admin
-router.get('/formUpdate', productsController.formUpdate);
+router.get('/formUpdate/:id', productsController.formUpdate);
 router.put('/update/:id', productsController.update);
 
 // Borrar productos Admin
