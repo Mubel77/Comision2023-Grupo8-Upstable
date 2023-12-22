@@ -5,29 +5,34 @@
   justify-content: center;
 }
 
-#form_login {
+.mensaje_bienvenida {
   display: flex;
   flex-direction: column;
-  margin: 0% auto;
-  width: 90%;
+  width: 85%;
+  align-items: center;
+  margin: 30px auto;
 }
 
 .login_titulo_p {
   font-family: "Roboto";
   font-size: 36px;
   font-weight: bold;
-  padding: 30px 0px 0px 10px;
   text-align: center;
-  width: 100%;
 }
 
 .login_subtitulo_p {
   font-family: "Roboto";
   font-size: 28px;
   font-weight: bold;
-  padding-bottom: 20px;
   text-align: center;
   width: 260px;
+}
+
+#form_login {
+  display: flex;
+  flex-direction: column;
+  margin: 0% auto;
+  width: 90%;
 }
 
 #login_password {
@@ -50,12 +55,12 @@
 
 .boton_login button {
   background-color: var(--color-celeste);
-  width: 100%;
   border-radius: 5px;
   margin: 10% auto;
-  padding: 6px;
+  padding: 8px;
   font-family: "Roboto";
-  font-size: 82%;
+  font-size: 16px;
+  font-weight: bold;
   display: flex;
   align-items: center;
 }
@@ -66,12 +71,14 @@
 
 @media (min-width: 768px) {
   .login_titulo_p {
-    font-size: 40px;
+    font-size: 52px;
+    margin-bottom: 10px;
   }
 
   .login_subtitulo_p {
-    font-size: 32px;
-    width: 300px;
+    font-size: 38px;
+    width: 400px;
+    margin-top: 10px;
   }
 
   .boton_login {
@@ -79,9 +86,7 @@
   }
 
   .boton_login button {
-    width: 100%;
-    height: 35px;
-    font-size: 130%;
+    font-size: 18px;
   }
 }
 
@@ -92,6 +97,15 @@
     width: 85%;
   }
 
+  .login_titulo_p {
+    font-size: 62px;
+  }
+
+  .login_subtitulo_p {
+    font-size: 48px;
+    width: 450px;
+  }
+
   form a {
     order: 1;
   }
@@ -100,6 +114,12 @@
     height: 50px;
     align-items: center;
     padding: 0%;
+  }
+
+  .box_boton_login {
+    display: flex;
+    margin-top: 5%;
+    width: 40%;
   }
 
   .boton_login {
