@@ -1,7 +1,8 @@
 const fs = require("fs");
 const path = require("path");
-const json = fs.readFileSync(path.join(__dirname,"../database/productos.json"),"utf-8")
-const productos = JSON.parse(json);
+const {leerArchivo,escribirArchivo}=require("../database/jsonFunctions");
+//const json = fs.readFileSync(path.join(__dirname,"../database/productos.json"),"utf-8")
+//const productos = JSON.parse(json);
 // const productos=[
 //   {
 //     id:"1",
@@ -71,8 +72,10 @@ publicidad=[
   }
 ]
 const indexController = {
+  
     home: function(req, res, next) {
-        res.render('index', { title: 'UPStables', productos, publicidad});
+      let productos= leerArchivo("products");
+      res.render('index', { title: 'UPStables', productos, publicidad});
       },
 }
 

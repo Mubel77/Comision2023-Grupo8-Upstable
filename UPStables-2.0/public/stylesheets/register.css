@@ -42,6 +42,9 @@
 .div_config label {
     display: none;
 }
+.div_form_product label{
+    display: inline;
+}
 
 .div_config input {
     border: 1px solid #000;
