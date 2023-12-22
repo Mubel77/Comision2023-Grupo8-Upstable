@@ -23,6 +23,7 @@ router.get('/productDetail/:id', productsController.detail);
 
 // Listar productos Admin
 router.get('/dashboard', productsController.dashboard);
+router.get('/dashboard/search', productsController.dashboardSearch);
 
 // Crear producto Admin
 router.get('/formCreate', productsController.formCreate);

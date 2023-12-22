@@ -6,6 +6,7 @@ const {leerArchivo,escribirArchivo}=require("../database/jsonFunctions");
 const productsController = {
 
   list:function(req, res, next) {
+    let productos = leerArchivo('products')
     res.render('products/productsList', { title: 'List Products', productos });},
 
     detail: function(req, res, next) {
@@ -18,6 +19,14 @@ const productsController = {
     dashboard: function(req, res, next) {
       let productos= leerArchivo("products");
         res.render('products/dashboard', { title: 'Dashboard', productos });
+    },
+
+    dashboardSearch: function(req, res, next) {
+      const mensaje = "No hay elementos";
+      let {keywords} = req.query;
+      let productos= leerArchivo("products");
+      let result = productos.filter(producto => producto.marca.toLowerCase().includes(keywords.toLowerCase()))
+      res.render('products/dashboardSearch', { title: 'Dashboard', mensaje, result});
     },
 
     formCreate: function(req, res, next) {
