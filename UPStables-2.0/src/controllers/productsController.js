@@ -2,7 +2,12 @@ const fs = require("fs");
 const path = require("path");
 const {v4:uuidv4}=require("uuid");
 const {leerArchivo,escribirArchivo}=require("../database/jsonFunctions");
+
 const productsController = {
+
+  list:function(req, res, next) {
+    res.render('products/productsList', { title: 'List Products', productos });},
+
     detail: function(req, res, next) {
       let productos = leerArchivo("products");
       const{id}= req.params;

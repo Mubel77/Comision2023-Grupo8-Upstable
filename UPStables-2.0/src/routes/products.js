@@ -15,6 +15,9 @@ const storage= multer.diskStorage({
 const upload=multer({storage});
 
 const productsController = require ('../controllers/productsController.js');
+//Ver todos productos listados
+router.get('/', productsController.list)
+
 /* Ver producto */
 router.get('/productDetail/:id', productsController.detail);
 
