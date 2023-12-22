@@ -1,3 +1,4 @@
+const {leerArchivo,escribirArchivo} = require('../database/jsonFunctions');
 const subtitulo = "registrate";
 const formRegistro = ['NoMBre','Apellido','Domicilio','email','ConTRaseña','confiRMAR contraseña'];
 const formLogeo = ['email','ConTRaseña'];
@@ -36,7 +37,18 @@ const userController = {
       },
 
     createUser: function(req, res, next) {
-        res.redirect('/');
+        let users = leerArchivo('users');
+        const {nombre,apellido,domicilio,email,contraseña} = req.body;
+        const newUser = {
+          nombre: nombre.trim(),
+          apellido: apellido.trim(),
+          domicilio: domicilio.trim(),
+          email: email.trim(),
+          contraseña: contraseña.trim()
+        }
+        users.push(newUser);
+        escribirArchivo(users,'users');
+        res.redirect('/')
       },
 
     login: function(req, res, next) {
