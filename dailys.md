@@ -213,18 +213,18 @@ Jueves 21/12/23
 
 viernes  22/12/23
 * Mauri:
-    - Qué hizo ayer: 
+    - Qué hizo ayer: terminar crud de eliminar 
     - Si se encontró con algún impedimento: 
-    - Qué va a hacer hoy: 
+    - Qué va a hacer hoy: utilizar multer para crud de eliminar 
 * Claudio:
     - Qué hizo ayer: 
     - Si se encontró con algún impedimento: 
     - Qué va a hacer hoy: 
 * Santi:
-    - Qué hizo ayer: 
+    - Qué hizo ayer: reformar lsita de edit
     - Si se encontró con algún impedimento: 
-    - Qué va a hacer hoy: 
+    - Qué va a hacer hoy: agregar multer de edicion de imagenes
 * Emi:
-    - Qué hizo ayer: 
+    - Qué hizo ayer: json de usario
     - Si se encontró con algún impedimento:
-    - Qué va a hacer hoy: 
+    - Qué va a hacer hoy: terminar la vista del dashboard
