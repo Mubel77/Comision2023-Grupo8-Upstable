@@ -4,8 +4,10 @@
         <%- include('../partials/header.ejs')%>    
     
         <main class="main_login">
-            <span class="login_titulo_p">¡Bienvenido!</span>
-            <span class="login_subtitulo_p">Ingresá, te estamos esperando...</span>
+            <div class="mensaje_bienvenida">
+                <p class="login_titulo_p">¡Bienvenido!</p>
+                <p class="login_subtitulo_p">Ingresá, te estamos esperando...</p>
+            </div>
             <form action="/users/login" method="POST" id="form_login">
                 <%  for(x=0; x < formLogeo.length; x++) {%>
                     <div class="div_config">
@@ -13,13 +15,15 @@
                         <input type="<%- tipo(formLogeo[x]) %>"  name="<%- formLogeo[x].toLowerCase()%>" placeholder="<%= etiqueta(formLogeo[x]) %>" required>
                     </div>
                 <% }%>
-
-                <a href="/users/register" id="login_password">
-                    <span >Olvidaste tu Contraseña?</span>
-                </a>
-                <div class="boton_login">
-                    <button type="submit">Ingresar</button>
-                </div> 
+                
+                <div class="box_boton_login">
+                    <a href="/users/register" id="login_password">
+                        <span >Olvidaste tu Contraseña?</span>
+                    </a>
+                    <div class="boton_login">
+                        <button type="submit">Ingresar</button>
+                    </div> 
+                </div>
             </form>
         </main>
     
