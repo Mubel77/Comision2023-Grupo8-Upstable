@@ -206,7 +206,7 @@ Jueves 21/12/23
     - Qué hizo ayer: trabajo con la logica de edit
     - Si se encontró con algún impedimento: no
     - Qué va a hacer hoy: reformula la vista formupdate y terminar con la logica de edit
-** Emi:
+* Emi:
     - Qué hizo ayer:
     - Si se encontró con algún impedimento: no
     - Qué va a hacer hoy: json de usario
