@@ -175,25 +175,6 @@
     - Si se encontró con algún impedimento: No
     - Qué va a hacer hoy: Vista home para products
  
-### Miercoles 20/12/23
-* Mauri:
-    - Qué hizo ayer: retro.md 
-    - Si se encontró con algún impedimento:
-    - Qué va a hacer hoy: empezando hacer el metodo crud de eliminar
-* Claudio:
-    - Qué hizo ayer: lista de productos
-    - Si se encontró con algún impedimento:
-    - Qué va a hacer hoy: trabjadon conestilo
-* Santi:
-    - Qué hizo ayer: Eliminar archivos html de la carpeta partials
-    - Si se encontró con algún impedimento: No
-    - Qué va a hacer hoy: Aplicar logica al controlador "detail"
-* Emi:
-    - Qué hizo ayer:ponerse al dia con el sprint
-    - Si se encontró con algún impedimento: la correcion del sprint anterior 
-    - Qué va a hacer hoy: crud de crear
-
-
 Miercoles 20/12/23
 * Mauri:
     - Qué hizo ayer: retro.md
