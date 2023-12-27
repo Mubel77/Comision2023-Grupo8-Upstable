@@ -94,9 +94,18 @@ const productsController = {
     },
 
     delete: function(req, res, next) {
-      let productos= leerArchivo("products");
-      const {id} = req.params;
+      let productos = leerArchivo("products");
+      const { id } = req.params;
+      const product = productos.find(producto => producto.id == id);
       const nuevaLista = productos.filter(producto => producto.id != id);
+    
+      console.log("imagen", product.imagen);
+      
+      fs.unlink(`./public/images/${product.imagen}`, (err) => {
+        if (err) throw err;
+        console.log(`borrar el archivo ${product.imagen}`);
+      });
+    
       escribirArchivo(nuevaLista, "products");
       res.redirect('/products/dashboard');
     },
