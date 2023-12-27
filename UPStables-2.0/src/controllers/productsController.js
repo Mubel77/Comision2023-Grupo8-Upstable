@@ -35,9 +35,13 @@ const productsController = {
 
     create: function(req, res, next) {
      let productos= leerArchivo("products");
-     const{marca,modelo,descripcion,precio,stock,potencia,categoria,tomas,descuento,imagen}=req.body;
-     const file=req.file;
+     const{marca,modelo,descripcion,precio,stock,potencia,categoria,tomas,descuento}=req.body;
+     const files=req.files;
      const id = uuidv4();
+     const arrayImagenes=[];
+     files.forEach(element => {
+      arrayImagenes.push(element.filename);
+     });
      const nuevoProducto={
       id,
       modelo: modelo.trim(),
@@ -49,7 +53,7 @@ const productsController = {
       precio:+precio,
       descuento:+descuento,
       stock:+stock,
-      imagen:file? file.filename : "default.jpg"
+      imagen:files.length > 0 ? arrayImagenes : ["default.jpg"]
      }
      productos.push(nuevoProducto);
     escribirArchivo(productos,"products");

@@ -27,7 +27,7 @@ router.get('/dashboard/search', productsController.dashboardSearch);
 
 // Crear producto Admin
 router.get('/formCreate', productsController.formCreate);
-router.post('/formCreate',upload.single('imagen'), productsController.create);
+router.post('/formCreate',upload.array('imagenes'), productsController.create);
 
 // Actualizar productos Admin
 router.get('/formUpdate/:id', productsController.formUpdate);
