@@ -637,17 +637,10 @@
     "imagen": "EratQuisqueErat.avi"
   },
   {
-<<<<<<< HEAD
     "id": "50",
     "modelo": "Tate",
     "marca": "Carmela",
     "categoria": "",
-=======
-    "id": 50,
-    "modelo": "Tate",
-    "marca": "Carmela",
-    "categoria": "Grannie",
->>>>>>> PEE-106-formulario-carga-producto
     "descripcion": "Bartholemy",
     "potencia": 50,
     "tomas": 50,
@@ -798,41 +791,6 @@
     "descuento": 3,
     "stock": 1,
     "imagen": "Upstable-imagen1703201807537.jpg"
-<<<<<<< HEAD
   }
 ]
 
-=======
-  },
-  {
-    "id": "b78f991c-e11f-47be-aa6a-b3d6cb7c88aa",
-    "modelo": "ss1",
-    "marca": "GOKU",
-    "categoria": "estabilizadores",
-    "descripcion": "XCVZXCVV",
-    "potencia": 1,
-    "tomas": 1,
-    "precio": 1,
-    "descuento": 1,
-    "stock": 1,
-    "imagen": ["Upstable-imagen1703638175659.jpg"]
-  },
-  {
-    "id": "7395a499-0053-4965-9c3b-08769f3d2fad",
-    "modelo": "SS3",
-    "marca": "GOKU",
-    "categoria": "estabilizadores",
-    "descripcion": "adfasfaf",
-    "potencia": 1,
-    "tomas": 1,
-    "precio": 1,
-    "descuento": 1,
-    "stock": 1,
-    "imagen": [
-      "Upstable-imagen1703641071277.webp",
-      "Upstable-imagen1703641071279.jpg",
-      "Upstable-imagen1703641071319.jpg"
-    ]
-  }
-]
->>>>>>> PEE-106-formulario-carga-producto
