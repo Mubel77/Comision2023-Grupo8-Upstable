@@ -15,15 +15,19 @@ const storage= multer.diskStorage({
 const upload=multer({storage});
 
 const productsController = require ('../controllers/productsController.js');
+//Ver todos productos listados
+router.get('/', productsController.list)
+
 /* Ver producto */
 router.get('/productDetail/:id', productsController.detail);
 
 // Listar productos Admin
 router.get('/dashboard', productsController.dashboard);
+router.get('/dashboard/search', productsController.dashboardSearch);
 
 // Crear producto Admin
 router.get('/formCreate', productsController.formCreate);
-router.post('/formCreate',upload.single('imagen'), productsController.create);
+router.post('/formCreate',upload.array('imagenes'), productsController.create);
 
 // Actualizar productos Admin
 router.get('/formUpdate/:id', productsController.formUpdate);

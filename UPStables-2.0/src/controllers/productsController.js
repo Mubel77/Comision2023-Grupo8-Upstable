@@ -2,7 +2,13 @@ const fs = require("fs");
 const path = require("path");
 const {v4:uuidv4}=require("uuid");
 const {leerArchivo,escribirArchivo}=require("../database/jsonFunctions");
+
 const productsController = {
+
+  list:function(req, res, next) {
+    let productos = leerArchivo('products')
+    res.render('products/productsList', { title: 'List Products', productos });},
+
     detail: function(req, res, next) {
       let productos = leerArchivo("products");
       const{id}= req.params;
@@ -15,15 +21,27 @@ const productsController = {
         res.render('products/dashboard', { title: 'Dashboard', productos });
     },
 
+    dashboardSearch: function(req, res, next) {
+      const mensaje = "No hay elementos";
+      let {keywords} = req.query;
+      let productos= leerArchivo("products");
+      let result = productos.filter(producto => producto.marca.toLowerCase().includes(keywords.toLowerCase()))
+      res.render('products/dashboardSearch', { title: 'Dashboard', mensaje, result});
+    },
+
     formCreate: function(req, res, next) {
       res.render('products/formCreate', { title: 'Formulario Crear'});
     },
 
     create: function(req, res, next) {
      let productos= leerArchivo("products");
-     const{marca,modelo,descripcion,precio,stock,potencia,categoria,tomas,descuento,imagen}=req.body;
-     const file=req.file;
+     const{marca,modelo,descripcion,precio,stock,potencia,categoria,tomas,descuento}=req.body;
+     const files=req.files;
      const id = uuidv4();
+     const arrayImagenes=[];
+     files.forEach(element => {
+      arrayImagenes.push(element.filename);
+     });
      const nuevoProducto={
       id,
       modelo: modelo.trim(),
@@ -35,11 +53,11 @@ const productsController = {
       precio:+precio,
       descuento:+descuento,
       stock:+stock,
-      imagen:file? file.filename : "default.jpg"
+      imagen:files.length > 0 ? arrayImagenes : ["default.jpg"]
      }
      productos.push(nuevoProducto);
     escribirArchivo(productos,"products");
-    res.redirect('/products/dashboard');
+    res.redirect(`/products/productDetail/${id}`)
     },
 
     formUpdate: function(req, res, next) {
@@ -76,7 +94,7 @@ const productsController = {
     },
 
     delete: function(req, res, next) {
-      let productos= leerArchivos("products");
+      let productos= leerArchivo("products");
       const {id} = req.params;
       const nuevaLista = productos.filter(producto => producto.id != id);
       escribirArchivo(nuevaLista, "products");
