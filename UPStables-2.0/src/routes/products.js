@@ -31,7 +31,7 @@ router.post('/formCreate',upload.array('imagenes'), productsController.create);
 
 // Actualizar productos Admin
 router.get('/formUpdate/:id', productsController.formUpdate);
-router.put('/update/:id', productsController.update);
+router.put('/update/:id',upload.array('imagenes'), productsController.update);
 
 // Borrar productos Admin
 router.delete('/delete/:id', productsController.delete);
