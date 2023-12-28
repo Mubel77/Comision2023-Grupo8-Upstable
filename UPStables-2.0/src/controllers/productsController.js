@@ -35,21 +35,25 @@ const productsController = {
 
     create: function(req, res, next) {
      let productos= leerArchivo("products");
-     const{marca,modelo,descripcion,precio,stock,potencia,categoria,tomas,descuento,imagen}=req.body;
-     const file=req.file;
+     const{marca,modelo,descripcion,precio,stock,potencia,categoria,tomas,descuento}=req.body;
+     const files=req.files;
      const id = uuidv4();
+     const arrayImagenes=[];
+     files.forEach(element => {
+      arrayImagenes.push(element.filename);
+     });
      const nuevoProducto={
       id,
       modelo: modelo.trim(),
       marca:marca.trim(),
-      categoria:categoria.trim(),
+      categoria:categoria,
       descripcion:descripcion.trim(),
       potencia:+potencia,
       tomas:+tomas,
       precio:+precio,
       descuento:+descuento,
       stock:+stock,
-      imagen:file? file.filename : "default.jpg"
+      imagen: arrayImagenes.length > 0 ? arrayImagenes : ["default.jpg"]
      }
      productos.push(nuevoProducto);
     escribirArchivo(productos,"products");
@@ -64,23 +68,30 @@ const productsController = {
     },
 
     update: function(req, res, next) {
+      const newImages = []
+      if(req.files){
+        req.files.forEach(element => {
+          newImages.push(element.filename)
+        });
+      }
       let products= leerArchivo('products');
 		const {id}=req.params;
 		const {marca,modelo,descripcion,precio,stock,potencia,categoria,tomas,descuento,imagen}=req.body;
+    console.log("Esto es BODY: ",req.body);
 		const nuevoArray= products.map(product=>{
 			if(product.id == id){
 				return{
 					id,
-        modelo: modelo.trim(),
+        modelo:modelo.trim(),
         marca:marca.trim(),
-        categoria:categoria.trim(),
+        categoria:categoria,
         descripcion:descripcion.trim(),
         potencia:+potencia,
         tomas:+tomas,
         precio:+precio,
         descuento:+descuento,
         stock:+stock,
-        imagen:imagen ? imagen : product.imagen
+        imagen: newImages.length > 0 ? newImages : product.imagen 
 				}	
 			}
 			return product
@@ -90,9 +101,18 @@ const productsController = {
     },
 
     delete: function(req, res, next) {
-      let productos= leerArchivo("products");
-      const {id} = req.params;
+      let productos = leerArchivo("products");
+      const { id } = req.params;
+      const product = productos.find(producto => producto.id == id);
       const nuevaLista = productos.filter(producto => producto.id != id);
+    
+      console.log("imagen", product.imagen);
+      
+      fs.unlink(`./public/images/${product.imagen}`, (err) => {
+        if (err) throw err;
+        console.log(`borrar el archivo ${product.imagen}`);
+      });
+    
       escribirArchivo(nuevaLista, "products");
       res.redirect('/products/dashboard');
     },

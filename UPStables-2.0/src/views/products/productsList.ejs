@@ -4,9 +4,9 @@
     <main>
             <article class="container-articulos">
                 <% productos.forEach(producto => {%>
-                        <article class="article_productos">
-                            <a class="main-enlace" href="/products/productDetail/<%= producto.id %>">
-                                <img class="imagen-producto" src="/images/<%= producto.imagen %>" alt="foto-producto">
+                        <article class="article_productos article_listProducts">
+                            <a class="main-enlace main_listProducts" href="/products/productDetail/<%= producto.id %>">
+                                <div class="box-image-listProducts"><img class="imagen-producto imagen-listProducts" src="/images/<%= producto.imagen[0] %>" alt="foto-producto"></div>
                                 <div class="products_list">
                                 <% if (producto.descuento > 0) {%>                                    
                                         <p class="products_list_precio">$<%= producto.precio-((producto.precio*producto.descuento)/100)%></p>

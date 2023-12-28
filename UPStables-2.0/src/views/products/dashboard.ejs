@@ -7,7 +7,7 @@
                 <div class="dashboard_box_search-add">
                     <div class="dashboard_search">
                         <form action="/products/dashboard/search" method="GET">
-                            <input type="text" name="keywords" placeholder="Buscar producto">
+                            <input type="text" name="keywords" placeholder="Buscar producto por Marca">
                             <button type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
@@ -18,7 +18,7 @@
                 <% productos.forEach(element => {%>
                     <article class="dashboard_article">
                         <div class="dashboard_div_img">
-                            <img src="/images/<%= element.imagen%>" alt="<%= element.categoria%>">
+                            <img src="/images/<%= element.imagen[0]%>" alt="<%= element.categoria%>">
                         </div>
                         <div class="dashboard_div_texto">
                             <h2>Modelo: <%= element.modelo%></h2>
