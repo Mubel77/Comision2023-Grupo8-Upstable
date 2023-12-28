@@ -261,13 +261,21 @@ border-radius: 5px;
         #foto_extra_bkg{
             background-color: rgba(88, 88, 88, 0.5);
         }
-        #mas_fotos{
-            color: white;
-            font-size: 30px;
+        .mas_fotos_div{
             position:relative;
-            bottom: 44px;
-            /* left:8px;  */
+            bottom: 45px;
+            background-color: rgba(88, 88, 88, 0.5);
+            width: 100%;
+            height: 25%;
+        }
+        #mas_fotos{
+            width: 100%;
+            height: 100%;
+            color: white;
+            font-size: 196%;
+           margin-top: 7px;
             text-align: center;  
+           
         }
            
     .producto_img{
@@ -430,6 +438,25 @@ border-radius: 5px;
     #img_3{
         width: 30%;
         padding: 0;
+    }
+    .mas_fotos_div{
+        position:relative;
+        bottom: 60px;
+        background-color: rgba(88, 88, 88, 0.5);
+        width: 100%;
+        height: 30%;
+    }
+    #mas_fotos{
+        width: 100%;
+        height: 100%;
+        color: white;
+        font-size: 360%;
+        margin-top: 0;
+        /* position:relative; */
+        /*bottom: 44px;
+        /* left:8px;  */
+        text-align: center;  
+       
     }
   }
 

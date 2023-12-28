@@ -7,11 +7,11 @@
                 <label for="modelo" id="modelo" class="div_config_label">Modelo</label>
                 <input type="text"  name="modelo" value="<%= productToEdit.modelo %>">
             </div>
-            <div class="div_config">
-                <label for="marca" id="marca">Marca</label>
+            <div class="div_config div_form_product">
+                <label for="marca" id="marcas">Marca</label>
                 <input type="text"  name="marca" value="<%= productToEdit.marca %>">
             </div>
-            <div class="div_config">
+            <div class="div_config div_form_product">
                 <label for="categoria" id="categoria">Categoria</label>
                 <select name="categoria"  id="categoria" class="div_config">
                     <option value="" <%= productToEdit.categoria == "" ? "selected" :null %>>Elegi una Opcion</option>
@@ -19,31 +19,31 @@
                     <option value="Estabilizadores" <%= productToEdit.categoria == "Estabilizadores" ? "selected" :null %>>ESTABILIZADORES</option>
                 </select>
             </div>
-            <div class="div_config">
+            <div class="div_config div_form_product" >
                 <label for="descripcion" id="descripcion">Descripcion</label>
                 <textarea name="descripcion" id="descripcion"  cols="60" rows="20"><%= productToEdit.descripcion %></textarea>
             </div>
-            <div class="div_config">
+            <div class="div_config div_form_product">
                 <label for="potencia" id="potencia">Potencia</label>
                 <input type="number"  name="potencia" value="<%= productToEdit.potencia %>" >
             </div>
-            <div class="div_config">
+            <div class="div_config div_form_product">
                 <label for="tomas" id="tomas">Cantidad de tomas</label>
                 <input type="number"  name="tomas" value="<%= productToEdit.tomas %>" >
             </div>
-            <div class="div_config">
+            <div class="div_config div_form_product">
                 <label for="precio" id="precio">Precio</label>
                 <input type="number"  name="precio" value="<%= productToEdit.precio %>" >
             </div>
-            <div class="div_config">
+            <div class="div_config div_form_product">
                 <label for="descuento" id="descuento">Descuento</label>
                 <input type="number"  name="descuento" value="<%= productToEdit.descuento %>">
             </div>
-            <div class="div_config">
+            <div class="div_config div_form_product">
                 <label for="stock" id="stock">Stock</label>
                 <input type="number"  name="stock" value="<%= productToEdit.stock %>">
             </div>
-            <div class="div_config">
+            <div class="div_config div_form_product">
                 <label for="imagen" id="imagen">Seleccione una imagen</label>
                 <input type="file"  name="imagenes" value="<%= productToEdit.imagen %>" multiple>
             </div>

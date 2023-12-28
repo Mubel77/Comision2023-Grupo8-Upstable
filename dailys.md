@@ -157,7 +157,7 @@
     - Qué hizo ayer:
     - Si se encontró con algún impedimento:
     - Qué va a hacer hoy: definir los campos necesarios para el producto y generar archivo json
-### Martes 18/12/23
+### Martes 19/12/23
 * Mauri:
     - Qué hizo ayer: ponerme al dia con el sprint
     - Si se encontró con algún impedimento:
@@ -174,3 +174,57 @@
     - Qué hizo ayer: Definir los campos necesarios para el producto y generar archivo json
     - Si se encontró con algún impedimento: No
     - Qué va a hacer hoy: Vista home para products
+ 
+Miercoles 20/12/23
+* Mauri:
+    - Qué hizo ayer: retro.md
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: empezando hacer el metodo crud de eliminar
+* Claudio:
+    - Qué hizo ayer: ponerse al dia con el sprint
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: crud de crear
+* Santi:
+    - Qué hizo ayer: Eliminar archivos html de la carpeta partials
+    - Si se encontró con algún impedimento: No
+    - Qué va a hacer hoy: Aplicar logica al controlador "detail"
+* Emi:
+    - Qué hizo ayer:lista de productos
+    - Si se encontró con algún impedimento: la correcion del sprint anterior
+    - Qué va a hacer hoy:  trabjadon conestilo de lista de productos
+
+Jueves 21/12/23
+* Mauri:
+    - Qué hizo ayer: empeze hacer el crud de eliminar
+    - Si se encontró con algún impedimento: me falto de asegurarme si fncina corectamente
+    - Qué va a hacer hoy: terminar el crud de eliminar
+* Claudio:
+    - Qué hizo ayer: termino si tarea del crud y termino de corregir su vista index
+    - Si se encontró con algún impedimento: falta eliminar el archivo html index
+    - Qué va a hacer hoy: ultimos retoques
+* Santi:
+    - Qué hizo ayer: trabajo con la logica de edit
+    - Si se encontró con algún impedimento: no
+    - Qué va a hacer hoy: reformula la vista formupdate y terminar con la logica de edit
+* Emi:
+    - Qué hizo ayer:
+    - Si se encontró con algún impedimento: no
+    - Qué va a hacer hoy: json de usario
+
+viernes  22/12/23
+* Mauri:
+    - Qué hizo ayer: terminar crud de eliminar 
+    - Si se encontró con algún impedimento: 
+    - Qué va a hacer hoy: utilizar multer para crud de eliminar 
+* Claudio:
+    - Qué hizo ayer: 
+    - Si se encontró con algún impedimento: 
+    - Qué va a hacer hoy: 
+* Santi:
+    - Qué hizo ayer: reformar lsita de edit
+    - Si se encontró con algún impedimento: 
+    - Qué va a hacer hoy: agregar multer de edicion de imagenes
+* Emi:
+    - Qué hizo ayer: json de usario
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: terminar la vista del dashboard

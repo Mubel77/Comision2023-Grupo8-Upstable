@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const {v4:uuidv4}=require("uuid");
 const {leerArchivo,escribirArchivo}=require("../database/jsonFunctions");
+const { log } = require("console");
 
 const productsController = {
 
@@ -13,7 +14,7 @@ const productsController = {
       let productos = leerArchivo("products");
       const{id}= req.params;
       const producto= productos.find(producto=> producto.id == id);
-        res.render('products/productDetail', { title: producto.nombre, producto });
+        res.render('products/productDetail', { title:producto.modelo, producto, productos });
     },
     
     dashboard: function(req, res, next) {
@@ -35,9 +36,13 @@ const productsController = {
 
     create: function(req, res, next) {
      let productos= leerArchivo("products");
-     const{marca,modelo,descripcion,precio,stock,potencia,categoria,tomas,descuento,imagen}=req.body;
-     const file=req.file;
+     const{marca,modelo,descripcion,precio,stock,potencia,categoria,tomas,descuento}=req.body;
+     const files=req.files;
      const id = uuidv4();
+     const arrayImagenes=[];
+     files.forEach(element => {
+      arrayImagenes.push(element.filename);
+     });
      const nuevoProducto={
       id,
       modelo: modelo.trim(),
@@ -49,7 +54,7 @@ const productsController = {
       precio:+precio,
       descuento:+descuento,
       stock:+stock,
-      imagen:file? file.filename : "default.jpg"
+      imagen:files.length > 0 ? arrayImagenes : ["default.jpg"]
      }
      productos.push(nuevoProducto);
     escribirArchivo(productos,"products");
@@ -64,10 +69,16 @@ const productsController = {
     },
 
     update: function(req, res, next) {
+      const images = [];
+      if(req.files){
+        req.files.forEach(element=>{
+          images.push(element.filename)
+        })
+      };
       let products= leerArchivo('products');
-		const {id}=req.params;
-		const {marca,modelo,descripcion,precio,stock,potencia,categoria,tomas,descuento,imagen}=req.body;
-		const nuevoArray= products.map(product=>{
+		  const {id}=req.params;
+		  const {marca,modelo,descripcion,precio,stock,potencia,categoria,tomas,descuento,imagen}=req.body;
+		  const nuevoArray= products.map(product=>{
 			if(product.id == id){
 				return{
 					id,
@@ -80,13 +91,13 @@ const productsController = {
         precio:+precio,
         descuento:+descuento,
         stock:+stock,
-        imagen:imagen ? imagen : product.imagen
+        imagen:images.length > 0 ? images : product.imagen
 				}	
 			}
 			return product
-		})
-		 escribirArchivo(nuevoArray, 'products')
-		 res.redirect(`/products/productDetail/${id}`)
+		});
+		  escribirArchivo(nuevoArray, 'products')
+		  res.redirect(`/products/productDetail/${id}`)
     },
 
     delete: function(req, res, next) {
