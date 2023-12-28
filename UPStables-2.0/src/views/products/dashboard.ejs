@@ -18,7 +18,7 @@
                 <% productos.forEach(element => {%>
                     <article class="dashboard_article">
                         <div class="dashboard_div_img">
-                            <img src="/images/<%= element.imagen%>" alt="<%= element.categoria%>">
+                            <img src="/images/<%= element.imagen[0]%>" alt="<%= element.categoria%>">
                         </div>
                         <div class="dashboard_div_texto">
                             <h2>Modelo: <%= element.modelo%></h2>
