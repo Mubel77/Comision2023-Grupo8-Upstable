@@ -279,7 +279,8 @@ border-radius: 5px;
         }
            
     .producto_img{
-        width: 95%;
+        width: 230px;
+        margin: auto;
         
     }
     .circulos_fotos{
