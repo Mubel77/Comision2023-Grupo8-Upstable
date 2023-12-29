@@ -2,7 +2,7 @@
 <body>
     <%-include('../partials/header.ejs') %>
     <main>
-        <form action="/products/update/<%=productToEdit.id%>?_method=PUT"  method="POST"  class="form_create">
+        <form action="/products/update/<%=productToEdit.id%>?_method=PUT"  method="POST"  class="form_create" enctype="multipart/form-data">
             <div class="div_config div_form_product">
                 <label for="modelo" id="modelo" class="div_config_label">Modelo</label>
                 <input type="text"  name="modelo" value="<%= productToEdit.modelo %>">
@@ -44,8 +44,8 @@
                 <input type="number"  name="stock" value="<%= productToEdit.stock %>">
             </div>
             <div class="div_config">
-                <label for="imagen" id="imagen">Seleccione una imagen</label>
-                <input type="file"  name="imagen" value="<%= productToEdit.imagen %>" >
+                <label for="imagenes" id="imagenes">Seleccione una imagen</label>
+                <input type="file"  name="imagenes" multiple>
             </div>
        
             <div class="boton_registro_update ">

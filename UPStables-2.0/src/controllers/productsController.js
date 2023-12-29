@@ -46,14 +46,14 @@ const productsController = {
       id,
       modelo: modelo.trim(),
       marca:marca.trim(),
-      categoria:categoria.trim(),
+      categoria:categoria,
       descripcion:descripcion.trim(),
       potencia:+potencia,
       tomas:+tomas,
       precio:+precio,
       descuento:+descuento,
       stock:+stock,
-      imagen:files.length > 0 ? arrayImagenes : ["default.jpg"]
+      imagen: arrayImagenes.length > 0 ? arrayImagenes : ["default.jpg"]
      }
      productos.push(nuevoProducto);
     escribirArchivo(productos,"products");
@@ -68,23 +68,30 @@ const productsController = {
     },
 
     update: function(req, res, next) {
+      const newImages = []
+      if(req.files){
+        req.files.forEach(element => {
+          newImages.push(element.filename)
+        });
+      }
       let products= leerArchivo('products');
 		const {id}=req.params;
 		const {marca,modelo,descripcion,precio,stock,potencia,categoria,tomas,descuento,imagen}=req.body;
+    console.log("Esto es BODY: ",req.body);
 		const nuevoArray= products.map(product=>{
 			if(product.id == id){
 				return{
 					id,
-        modelo: modelo.trim(),
+        modelo:modelo.trim(),
         marca:marca.trim(),
-        categoria:categoria.trim(),
+        categoria:categoria,
         descripcion:descripcion.trim(),
         potencia:+potencia,
         tomas:+tomas,
         precio:+precio,
         descuento:+descuento,
         stock:+stock,
-        imagen:imagen ? imagen : product.imagen
+        imagen: newImages.length > 0 ? newImages : product.imagen 
 				}	
 			}
 			return product
