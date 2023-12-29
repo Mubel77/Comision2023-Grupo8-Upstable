@@ -1,7 +1,30 @@
+.article_listProducts {
+    display: flex;
+    height: 500px;
+}
+
+.main_listProducts {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box-image-listProducts {
+    height: 70%;
+    display: flex;
+    align-items: center;
+}
+
+.imagen-listProducts {
+    height: 100%;
+}
+
 .products_list{
+    height: 30%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 0px 20px;
+    justify-content: space-around;
 }
 
 .products_list p {
