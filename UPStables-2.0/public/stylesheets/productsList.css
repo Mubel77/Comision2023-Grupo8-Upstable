@@ -1,0 +1,52 @@
+.article_listProducts {
+    display: flex;
+    height: 500px;
+}
+
+.main_listProducts {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box-image-listProducts {
+    height: 70%;
+    display: flex;
+    align-items: center;
+}
+
+.imagen-listProducts {
+    height: 100%;
+}
+
+.products_list{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px;
+    justify-content: space-around;
+}
+
+.products_list p {
+    margin: 5px 0px;
+}
+
+.products_list_precio {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.products_list_precio-off {
+    text-decoration:line-through;
+}
+
+.products_list_descuento {
+    background-color: var(--color-celeste);
+    width: 60px;
+}
+
+.products_list_marca {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+}

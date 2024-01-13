@@ -1,4 +1,50 @@
+.dashboard_box_search-add {
+    width: 95%;
+    margin: auto;   
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dashboard_search {
+    display: flex;
+    width: 100%;
+}
+
+.dashboard_search form {
+    width: 100%;
+}
+
+.dashboard_search form input {
+    width: 85%;
+    padding: 10px;
+}
+
+.dashboard_search form button {
+    padding: 10px;
+    margin: 5px 0px 20px;
+    font-weight: bold;
+    width: 35px;
+}
+
+.dashboard_add {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0px 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.dashboard_section {
+    overflow: auto  ;
+    display: flex;
+    flex-wrap: wrap;
+    height: 600px;
+    width: 100%;
+}
+
 .dashboard_article {
+    border: 1px solid var(--color-negro);
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     margin: auto;
@@ -29,26 +75,35 @@
     font-weight: bold;
 }
 
-.dashboard_div_botonAgregar {
-    width: 95%;
-    margin: auto;
-}
-
-.dashboard_div_botonAgregar button {
-    padding: 10px;
-    margin: 5px 0px 20px;
-    font-weight: bold;
-}
-
 @media (min-width: 768px) {
+
+    .dashboard_box_search-add {
+        justify-content: space-between;
+    }
+
+    .dashboard_search {
+        width: 40%;
+    }
+
+    .dashboard_add {
+        font-size: 16px;
+    }
+
     .dashboard_article {
         border: 1px solid var(--color-negro);
         margin: 5px;
+        position: relative;
     }
 
     .dashboard_div_texto {
         width: 80%;
         margin-left: 10px;
+    }
+
+    .dashboard_div_botones {
+        position: absolute;
+        right: 5%;
+        bottom: 2%;
     }
 
     .dashboard_div_botones button {

@@ -28,3 +28,20 @@ Mantener la comunicacion y el compromiso que tenemos hasta ahora con el proyecto
 Distraernos en detalles que no son propios del sprint.
 ### Dejar de hacer...
 Subestimar el valor del tiempo y las dificultades de las actividades. 
+
+
+# SPRINT 3
+
+El tercer sprint tuvo una duración más corta, limitándose a una semana. A pesar de la brevedad, logramos finalizar el trabajo dentro del tiempo estimado. Durante esta semana, experimentamos una carga del curso considerable debido a la nueva clase, lo que resultó en una menor comunicación diaria. Sin embargo, nos reunimos como equipo para garantizar el cumplimiento del objetivo del sprint.
+Aunque la carga de trabajo fue intensa, el equipo se esforzó por cumplir con los objetivos y mejorar la calidad del proyecto.
+
+### Comenzar a hacer...
+Comunicar al grupo si uno se encuentra trabado con su trabaj asignado .
+### Hacer mas...
+Concentrarse más en el proyecto. Reuniones más formales.
+### Continuar haciendo...
+Mantener la comunicacion y el compromiso que tenemos hasta ahora con el proyecto.
+### Hacer menos...
+Distraernos en detalles que no son propios del sprint.
+### Dejar de hacer...
+Subestimar el valor del tiempo y las dificultades de las actividades

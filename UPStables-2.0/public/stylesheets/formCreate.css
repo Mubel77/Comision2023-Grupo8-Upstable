@@ -69,6 +69,7 @@ input::placeholder {
     display: flex;
     margin: auto;
     justify-content: space-between;
+    align-items: center;
 }
 .boton_registro_update button {
     background-color: var(--color-celeste);
@@ -79,6 +80,10 @@ input::placeholder {
     font-family: 'Roboto';
     font-size: 82%;
 }
+    .boton_registro_update form{
+    margin: 10% auto;
+    padding: 6px;
+    }
 
 
 
@@ -118,7 +123,7 @@ input::placeholder {
         width: 50%;
         
     }
-    .boton_registro_update{
+    /*.boton_registro_update{
         width: 50%;
-    }
+    }*/
 }

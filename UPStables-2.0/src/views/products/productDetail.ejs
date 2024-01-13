@@ -9,12 +9,15 @@
         <section class="producto">
             <article class="fotos_producto">
                 <div class="fotos_extras">
-                    <i class="fa-solid fa-camera"></i>
-                    <i class="fa-solid fa-camera"></i>
-                    <i id="foto_extra_bkg" class="fa-solid fa-camera"></i>
-                    <i id="mas_fotos" class="fa-solid fa-plus"></i>
+                    <% for (let i = 1; i < producto.imagen.length; i++) { %>
+                        <img src="/images/<%= producto.imagen[i] %>" alt="Imagen Extra">
+                      <% } %>
+                      <div class="mas_fotos_div">
+                        <i id="mas_fotos" class="fa-solid fa-plus"></i>
+                      </div>
+                   
                 </div>
-                    <img  class="producto_img" src="/images/<%= producto.imagen %>" alt="foto_ups"> 
+                    <img  class="producto_img" src="/images/<%= producto.imagen[0] %>" alt="foto_ups"> 
                 
                 <div class="circulos_fotos">
                     <i id="circle_color"class="fa-solid fa-circle"></i>
@@ -26,7 +29,7 @@
             
 
             <article class="info_producto">
-                    <h3 class="nombre_producto"><%= producto.nombre %></h3>
+                    <h3 class="nombre_producto"><%= producto.modelo %></h3>
                 <div class="marca_producto">
                     <p id="marca">Marca:</p> 
                     <p><%= producto.marca %></p>
@@ -65,19 +68,19 @@
             <p class="intereses_titulo">También podría interesarte</p>
             <article class="productos_relacionados">
                 <div class="productos_relacionados_extras">
-                        <img src="/images/<%= producto.imagen %>" alt="img-producto">
-                        <h4><%= producto.nombre %></h4>
+                        <img src="/images/<%= producto.imagen[0] %>" alt="img-producto">
+                        <h4><%= producto.modelo %></h4>
                         <p>$<%= producto.precio %></p>
                     </div>
                     
                     <div class="productos_relacionados_extras">
-                        <img src="/images/<%= producto.imagen %>" alt="img-producto">
-                        <h4><%= producto.nombre %></h4>
+                        <img src="/images/<%= producto.imagen[1] %>" alt="img-producto">
+                        <h4><%= producto.modelo %></h4>
                         <p>$<%= producto.precio %></p>
                     </div>
                     <div class="productos_relacionados_extras">
-                        <img src="/images/<%= producto.imagen %>" alt="img-producto">
-                        <h4><%= producto.nombre %></h4>
+                        <img src="/images/<%= producto.imagen[2] %>" alt="img-producto">
+                        <h4><%= producto.modelo%></h4>
                         <p>$<%= producto.precio %></p>
                     </div>
                 <div class="flecha_relacionados">

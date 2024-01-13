@@ -1,0 +1,49 @@
+<%- include('../partials/head.ejs') %>
+
+    <body>
+        <%- include('../partials/header.ejs') %>
+            <main class="dashboard_main">
+                                
+                <div class="dashboard_box_search-add">
+                    <div class="dashboard_search">
+                        <form action="/products/dashboard/search" method="GET">
+                            <input type="text" name="keywords" placeholder="Buscar producto">
+                            <button type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+                    <a href="/products/formCreate"><button class="dashboard_add">+ Agregar Producto</button></a>
+                </div>
+
+                <section class="dashboard_section">
+                    <% if (result.length > 0) {%>                   
+                    <% result.forEach(element => {%>
+                        <article class="dashboard_article">
+                            <div class="dashboard_div_img">
+                                <img src="/images/<%= element.imagen[0]%>" alt="<%= element.categoria%>">
+                            </div>
+                            <div class="dashboard_div_texto">
+                                <h2>Modelo: <%= element.modelo%></h2>
+                                <h3>Marca: <%= element.marca%></h3>
+                                <h4>Categoria: <%= element.categoria%></h4>
+                                <p><%= element.descripcion%></p>
+                                <h4>Potencia: <%= element.potencia%></h4>
+                                <h4>Tomas: <%= element.tomas%></h4>
+                                <h4>Precio: <%= element.precio%></h4>
+                                <h4>Descuento: <%= element.descuento%></h4>
+                                <h4>Stock: <%= element.stock%></h4>
+                            </div>
+                            <div class="dashboard_div_botones">
+                                <a href="/products/formUpdate/<%= element.id%>"><button>Modificar</button></a>
+                            </div>
+                        </article>
+                <% })%>
+                    <% } else {%>
+                             <h2><%= mensaje %></h2>
+                        <% }%>  
+                
+                </section>
+
+            </main>
+            <%- include('../partials/footer.ejs') %>
+    </body>
+</html>
