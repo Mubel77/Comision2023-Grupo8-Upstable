@@ -50,6 +50,12 @@ const userController = {
         escribirArchivo(users,'users');
         res.redirect('/')
       },
+      registerAdmin: function(req,res,next){
+
+      },
+      createUserAdmin: function(req,res,next){
+
+      },
 
     login: function(req, res, next) {
         res.render('users/login', { title: 'Login', formLogeo,tipo,etiqueta });
@@ -58,6 +64,13 @@ const userController = {
     loginUp: function(req, res, next) {
         res.redirect('/');
       },
+    perfilAdmin: function(req,res,next){
+
+      },
+    logout: function(req,res,next){
+      
+    }
+
 }
 
 module.exports = userController;
