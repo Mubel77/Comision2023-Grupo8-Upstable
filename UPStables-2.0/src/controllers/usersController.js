@@ -1,3 +1,4 @@
+const { title } = require('process');
 const {leerArchivo,escribirArchivo} = require('../database/jsonFunctions');
 const {validationResult} = require('express-validator')
 const subtitulo = "registrate";
@@ -67,7 +68,7 @@ const userController = {
       console.log(errores);
       
       if(!errores.isEmpty()){
-        res.render("/users/login", {errores:errores.mapped()})
+        res.render('./users/login', {errores:errores.mapped(), old: req.body, title: "Login"})
       }
       const {email} = req.body;
       const users = leerArchivo("users");
