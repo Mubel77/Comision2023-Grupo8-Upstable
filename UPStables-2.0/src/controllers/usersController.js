@@ -1,4 +1,5 @@
 const {leerArchivo,escribirArchivo} = require('../database/jsonFunctions');
+const {validationResult} = require('express-validator')
 const subtitulo = "registrate";
 const formRegistro = ['NoMBre','Apellido','Domicilio','email','ConTRaseña','confiRMAR contraseña'];
 const formLogeo = ['email','ConTRaseña'];
@@ -62,7 +63,19 @@ const userController = {
       },
 
     loginUp: function(req, res, next) {
-        res.redirect('/');
+      const errores = validationResult(req);
+      console.log(errores);
+      
+      if(!errores.isEmpty()){
+        res.render("/users/login", {errores:errores.mapped()})
+      }
+      const {email} = req.body;
+      const users = leerArchivo("users");
+      const user = users.find(usuario=> usuario.email == email);
+
+      req.session.user = user;
+
+        res.redirect('/')
       },
     perfilAdmin: function(req,res,next){
 
