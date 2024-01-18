@@ -62,8 +62,26 @@ const userController = {
       },
 
     loginUp: function(req, res, next) {
+      const errores = validationResult(req);
+      console.log(errores);
+      
+      if(!errores.isEmpty()){
+        res.render('./users/login', {errores:errores.mapped(), old: req.body, title: "Login"})
+      }
+
+      const {email} = req.body;
+      const users = leerArchivo("users");
+      const user = users.find(usuario=> usuario.email == email);
+
+      req.session.user = user;
+
+      if (req.body.remember) {
+        res.cookie('userEmail', user.email, {maxAge:1000 * 60})
+        res.cookie('rememberMe',"true", {maxAge: 1000 * 60});
+      }
         res.redirect('/');
       },
+
     perfilAdmin: function(req,res,next){
 
       },
