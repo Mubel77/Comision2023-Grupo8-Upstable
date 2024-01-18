@@ -37,25 +37,50 @@ const userController = {
       },
 
     createUser: function(req, res, next) {
-        let users = leerArchivo('users');
-        const {nombre,apellido,domicilio,email,contraseña} = req.body;
-        const newUser = {
-          nombre: nombre.trim(),
-          apellido: apellido.trim(),
-          domicilio: domicilio.trim(),
-          email: email.trim(),
-          contraseña: contraseña.trim()
-        }
-        users.push(newUser);
-        escribirArchivo(users,'users');
-        res.redirect('/')
+        // const errors= validationResult(req);
+    
+        // if (errors.errors.length > 0){
+        //   res.render('register', { title: 'Registro', errors:errors.mapped(), oldData:req.body});
+        // } else {
+          const users = leerArchivo('users');
+          const {nombre,apellido,domicilio,email,password} = req.body;
+          const newUser = {
+            nombre: nombre.trim(),
+            apellido: apellido.trim(),
+            domicilio: domicilio,
+            email: email.trim(),
+            password: password
+          };
+          users.push(newUser);
+          escribirArchivo(users, 'users');
+          res.redirect('/');
+        // }
       },
-      registerAdmin: function(req,res,next){
-
+      registerAdmin:  function(req, res, next) {
+        res.render('users/registerAdmin', { title: 'RegistroAdmin'});
       },
       createUserAdmin: function(req,res,next){
+      //   // const errors= validationResult(req);
+    
+      //   if (errors.errors.length > 0){
+      //     res.render('register', { title: 'Registro', errors:errors.mapped(), oldData:req.body});
+      //   } else {
+      //   const users = leerArchivo('users');
+      //   const {nombre,apellido,domicilio,email,contraseña,categoria} = req.body;
+      //   const newAdmind = {
+      //     nombre: nombre.trim(),
+      //     apellido: apellido.trim(),
+      //     domicilio: domicilio.trim(),
+      //     email: email.trim(),
+      //     contraseña: contraseña.trim(),
+      //     categoria:categoria.trim()
+      //   }
+      //   users.push( newAdmind);
+      //   escribirArchivo(users,'users');
+      //   res.redirect('/')
 
-      },
+      // }
+    },
 
     login: function(req, res, next) {
         res.render('users/login', { title: 'Login', formLogeo,tipo,etiqueta });

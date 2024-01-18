@@ -40,5 +40,21 @@
     "domicilio": "Neuquen",
     "email": "licciardi@gmail.com",
     "contraseña": "comision23"
+  },
+  {
+    "nombre": "Mauricio",
+    "apellido": "cuellar",
+    "domicilio": "Rosario 263",
+    "email": "abel772003@gmail.com"
+  },
+  {
+    "nombre": "abel",
+    "apellido": "cuellar",
+    "domicilio": "Rosario 263",
+    "email": "abel772003@gmail.com",
+    "password": [
+      "12345",
+      "12345"
+    ]
   }
 ]
