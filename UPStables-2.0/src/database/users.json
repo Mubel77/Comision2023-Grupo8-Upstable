@@ -87,5 +87,13 @@
         "email": "hernan@gmail.com",
         "image": "Image20231031202709-1705730148226-7d72b9d8-c514-4ba7-af09-53f8f3486a11.png",
         "password": "$2a$10$UCblodgXufCFHslathC.LOIzxOgS5q.jSmKZf5PJdFa9KttDpIJme"
+    },
+    {
+        "nombre": "pepita",
+        "apellido": "pistolera",
+        "domicilio": "calle123",
+        "email": "pepi@pistol.com",
+        "image": "DIS-1705732233921-ad6c1520-0ca7-4a90-9885-feb976cbf8b7.png",
+        "password": "$2a$10$G6sQ.dclXJOsJ1aA.5yOWOpyq5wr8Har5pu/jDxLXwA8Lv07HjwUe"
     }
 ]

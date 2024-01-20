@@ -25,8 +25,8 @@
         <% if(locals.usuario){%>
             <div class="icons_nav" id="img_user">
             <a href="/users/perfilUser">
-                <img src="/images/users/<%= usuario.image %>"  alt="foto de perfil">
-                <p class="texto_nav">¡ Hola !<br> <%= usuario.nombre %></p> 
+                <img src="/images/users/<%= locals.usuario.image %>"  alt="foto de perfil">
+                <p class="texto_nav">¡ Hola !<br> <%= locals.usuario.nombre %></p> 
             </a>
         </div>
         <div class="icons_nav">

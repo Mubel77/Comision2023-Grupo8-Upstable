@@ -93,25 +93,26 @@ console.log(errors);
 
     loginUp: function(req, res, next) {
       const errores = validationResult(req);
-      console.log(errores);
+      
       
       if(!errores.isEmpty()){
         res.render("/users/login", {errores:errores.mapped()})
       }
-      const {email} = req.body;
+      console.log(req.body);
+      const {email, password} = req.body;
       const users = leerArchivo("users");
       const user = users.find(usuario=> usuario.email == email);
-
-      req.session.user = user;
       
-      delete user.password
-      res.cookie('user',user,{maxAge: 1000 * 60 * 5 });
-
-      if(req.body.remember == "true") {
-        res.cookie('rememberMe',"true", {maxAge: 1000 * 60 * 5 });
-      }
-
-        res.redirect('/')
+      
+        // delete user.password;
+        req.session.user = user;
+        res.cookie('user',user,{maxAge: 1000 * 60 * 5 });
+  
+        if(req.body.remember) {
+          res.cookie('rememberMe',"true", {maxAge: 1000 * 60 * 5 });        
+        }
+     
+      res.redirect('/')
       },
     perfilAdmin: function(req,res,next){
 
