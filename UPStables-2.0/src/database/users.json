@@ -87,5 +87,14 @@
         "email": "hernan@gmail.com",
         "image": "Image20231031202709-1705730148226-7d72b9d8-c514-4ba7-af09-53f8f3486a11.png",
         "password": "$2a$10$UCblodgXufCFHslathC.LOIzxOgS5q.jSmKZf5PJdFa9KttDpIJme"
+    },
+    {
+        "nombre": "leonel",
+        "apellido": "Messi",
+        "domicilio": "Rosario",
+        "email": "quemirabob@gmail.com",
+        "image": "user-default.png",
+        "password": "$2a$10$qyxNnSdDQTqnWbJLeZGtgevl0./nKBwNI7sd3LRY.uv65CemafD1e",
+        "categoria": "Vendedor"
     }
 ]

@@ -55,6 +55,12 @@ const validatorRegisterAdmin = [
         }).withMessage("Los password no coinciden"),
     body('categoria')
         .notEmpty().withMessage('Debes completar cual es tu categoria').bail(),
+    body('image').custom((value, { req }) => {
+            if (req.errorValidationImage) {
+              return false;
+            }
+            return true;
+          }).withMessage("No es un tipo de archivo válido"),
 ];
 
 module.exports = { validatorRegister, validatorRegisterAdmin };
