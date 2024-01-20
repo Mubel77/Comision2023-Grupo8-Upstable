@@ -27,7 +27,7 @@
             <div class="div_config">
                 <label for="email">Email</label>
                 <input type="email"  name="email" placeholder="Email" value="<%= locals.oldData ? oldData.email : null %>">
-                <p><%= locals.errors && errors.apellido ? errors.email.msg : null %> </p>
+                <p><%= locals.errors && errors.email ? errors.email.msg : null %> </p>
             </div>
             <div class="div_config">
                 <label for="password">Password</label>
