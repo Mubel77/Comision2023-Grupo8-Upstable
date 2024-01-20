@@ -115,16 +115,17 @@ console.log(errors);
      
       res.redirect('/')
       },
-    perfilAdmin: function(req,res,next){
 
+    perfilAdmin: function(req,res,next){
+        res.render('users/perfil-admin', {title:'Mi Perfil', usuario: req.session.user})  
       },
 
     perfilUser: function(req,res,next){
-        res.render('users/perfil-user', {title:'Mi Perfil'})
+         res.render('users/perfil-user', {title:'Mi Perfil', usuario: req.session.user})
     },  
 
     logout: function(req,res,next){
-      
+      res.send('sesion cerrada')
     }
 
 }

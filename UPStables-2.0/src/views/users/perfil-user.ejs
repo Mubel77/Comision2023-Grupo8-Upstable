@@ -4,38 +4,38 @@
         <%- include('../partials/header.ejs')%>    
     <% if(locals.usuario) {%>
         <main class="main_perfil-user">
-            <section style="margin: 0px 5px;" class="section_izq_perfil-user">
-                <a href="">
+            <section class="section_izq_perfil-user">
+                <a href="/users/perfilUser">
                     <div class="div_enlaces_perfil-user">
                         <i class="fa-solid fa-user"></i>
-                        <p class="">Mi cuenta</p>
+                        <p>Mi cuenta</p>
                     </div>
                 </a>
-                <a href="">
+                <a href="/products/productCart">
                     <div class="div_enlaces_perfil-user">
                         <i class="fa-solid fa-bag-shopping"></i>
                         <p>Mis compras</p>
                     </div>
                 </a>
-                <a href="">
+                <a href="/users/profile/:email">
                     <div class="div_enlaces_perfil-user">
                         <i class="fa-solid fa-user-pen"></i>
                         <p>Editar perfil</p>
                     </div>
                 </a>
-                <a href="">
+                <a href="/users/logout">
                     <div class="div_enlaces_perfil-user">
                         <i class="fa-solid fa-right-from-bracket"></i>
                         <p>Salir</p>
                     </div>
                 </a>
             </section>
-            <section style="margin: 0px 5px;" class="section_der_perfil-user">
+            <section class="section_der_perfil-user">
                 <div class="div_miPerfil">
                     <p>Mi perfil</p>
-                    <img src="" alt="">
+                    <img src="/images/users/<%= usuario.image %>" alt="Avatar-Usuario">
                 </div>
-                <article class="section_der_article_perfil-user" style="margin: 0px 5px;">
+                <article class="section_der_article_perfil-user">
                     <div>
                         <p class="div_p_titulos_perfil-user">Nombre</p>
                         <p class="div_p_subtitulos_perfil-user"><%= usuario.nombre %></p>

@@ -1,99 +1,116 @@
 [
-    {
-        "nombre": "Emiliano",
-        "apellido": "Ferreyra",
-        "domicilio": "san miguel",
-        "email": "ferreyra_comision23@gmail.com",
-        "contraseña": "comision23"
-    },
-    {
-        "nombre": "Mauricio",
-        "apellido": "Cuellar",
-        "domicilio": "Alejandro Korn",
-        "email": "cuellar_comision23@gmail.com",
-        "contraseña": "comision23"
-    },
-    {
-        "nombre": "Claudio",
-        "apellido": "Delgado",
-        "domicilio": "Formosa",
-        "email": "delgado_comision23@gmail.com",
-        "contraseña": "comision23"
-    },
-    {
-        "nombre": "Santiago",
-        "apellido": "Barrios",
-        "domicilio": "Lanus",
-        "email": "barrios_comision23@gmail.com",
-        "contraseña": "comision23"
-    },
-    {
-        "nombre": "Profe",
-        "apellido": "Aquino",
-        "domicilio": "San Miguel",
-        "email": "aquino_comision23@gmail.com",
-        "contraseña": "comision23"
-    },
-    {
-        "nombre": "Profe",
-        "apellido": "Licciardi",
-        "domicilio": "Neuquen",
-        "email": "licciardi@gmail.com",
-        "contraseña": "comision23"
-    },
-    {
-        "nombre": "Mauricio",
-        "apellido": "cuellar",
-        "domicilio": "Rosario 263",
-        "email": "abel772003@gmail.com"
-    },
-    {
-        "nombre": "abel",
-        "apellido": "cuellar",
-        "domicilio": "Rosario 263",
-        "email": "abel772003@gmail.com",
-        "password": [
-            "12345",
-            "12345"
-        ]
-    },
-    {
-        "nombre": "Abel",
-        "apellido": "Cuellar",
-        "domicilio": "Rosario 263",
-        "email": "mau@gmail.com",
-        "password": "$2a$10$kG4Xtrxbgx4Q/pwT28IovO8VoiZ/0hRsHH5vjfBMp1CsoiOUj2pEe"
-    },
-    {
-        "nombre": "jorge",
-        "apellido": "villa",
-        "domicilio": "lanuss",
-        "email": "jorge@gmail.com",
-        "password": "$2a$10$sZDMphTEZEqMFt4aQkbkCODbv8D2xFRFfYgy1XSiNAD0oT1laFr3C",
-        "categoria": "Supervisor"
-    },
-    {
-        "nombre": "luisss",
-        "apellido": "escape",
-        "domicilio": "suipacha",
-        "email": "luis@gmail.com",
-        "image": "default.jpg",
-        "password": "$2a$10$u4xXXjS2L.zA69KgUVz0ae4kZaHAYywz2Wc8EMXgT3AZxwfb6jiHu"
-    },
-    {
-        "nombre": "hernan",
-        "apellido": "escape",
-        "domicilio": "suipachasss",
-        "email": "hernan@gmail.com",
-        "image": "Image20231031202709-1705730148226-7d72b9d8-c514-4ba7-af09-53f8f3486a11.png",
-        "password": "$2a$10$UCblodgXufCFHslathC.LOIzxOgS5q.jSmKZf5PJdFa9KttDpIJme"
-    },
-    {
-        "nombre": "pepita",
-        "apellido": "pistolera",
-        "domicilio": "calle123",
-        "email": "pepi@pistol.com",
-        "image": "DIS-1705732233921-ad6c1520-0ca7-4a90-9885-feb976cbf8b7.png",
-        "password": "$2a$10$G6sQ.dclXJOsJ1aA.5yOWOpyq5wr8Har5pu/jDxLXwA8Lv07HjwUe"
-    }
+  {
+    "nombre": "Emiliano",
+    "apellido": "Ferreyra",
+    "domicilio": "san miguel",
+    "email": "ferreyra_comision23@gmail.com",
+    "contraseña": "Comision-23",
+    "image": "user-default.png",
+    "categoria": "vendedor"
+  },
+  {
+    "nombre": "Mauricio",
+    "apellido": "Cuellar",
+    "domicilio": "Alejandro Korn",
+    "email": "cuellar_comision23@gmail.com",
+    "contraseña": "Comision-23",
+    "image": "user-default.png",
+    "categoria": "vendedor"
+  },
+  {
+    "nombre": "Claudio",
+    "apellido": "Delgado",
+    "domicilio": "Formosa",
+    "email": "delgado_comision23@gmail.com",
+    "contraseña": "Comision-23",
+    "image": "user-default.png",
+    "categoria": "vendedor"
+  },
+  {
+    "nombre": "Santiago",
+    "apellido": "Barrios",
+    "domicilio": "Lanus",
+    "email": "barrios_comision23@gmail.com",
+    "contraseña": "Comision-23",
+    "image": "user-default.png",
+    "categoria": "vendedor"
+  },
+  {
+    "nombre": "Profe Julian",
+    "apellido": "Aquino",
+    "domicilio": "San Miguel",
+    "email": "aquino_comision23@gmail.com",
+    "contraseña": "Comision-23",
+    "image": "user-default.png",
+    "categoria": "supervisor"
+  },
+  {
+    "nombre": "Profe Juan",
+    "apellido": "Licciardi",
+    "domicilio": "Neuquen",
+    "email": "licciardi@gmail.com",
+    "contraseña": "Comision-23",
+    "image": "user-default.png",
+    "categoria": "supervisor"
+  },
+  {
+    "nombre": "Mauricio",
+    "apellido": "cuellar",
+    "domicilio": "Rosario 263",
+    "email": "abel772003@gmail.com"
+  },
+  {
+    "nombre": "abel",
+    "apellido": "cuellar",
+    "domicilio": "Rosario 263",
+    "email": "abel772003@gmail.com",
+    "password": ["12345", "12345"]
+  },
+  {
+    "nombre": "Abel",
+    "apellido": "Cuellar",
+    "domicilio": "Rosario 263",
+    "email": "mau@gmail.com",
+    "password": "$2a$10$kG4Xtrxbgx4Q/pwT28IovO8VoiZ/0hRsHH5vjfBMp1CsoiOUj2pEe"
+  },
+  {
+    "nombre": "jorge",
+    "apellido": "villa",
+    "domicilio": "lanuss",
+    "email": "jorge@gmail.com",
+    "password": "$2a$10$sZDMphTEZEqMFt4aQkbkCODbv8D2xFRFfYgy1XSiNAD0oT1laFr3C",
+    "categoria": "Supervisor"
+  },
+  {
+    "nombre": "luisss",
+    "apellido": "escape",
+    "domicilio": "suipacha",
+    "email": "luis@gmail.com",
+    "image": "default.jpg",
+    "password": "$2a$10$u4xXXjS2L.zA69KgUVz0ae4kZaHAYywz2Wc8EMXgT3AZxwfb6jiHu"
+  },
+  {
+    "nombre": "hernan",
+    "apellido": "escape",
+    "domicilio": "suipachasss",
+    "email": "hernan@gmail.com",
+    "image": "Image20231031202709-1705730148226-7d72b9d8-c514-4ba7-af09-53f8f3486a11.png",
+    "password": "$2a$10$UCblodgXufCFHslathC.LOIzxOgS5q.jSmKZf5PJdFa9KttDpIJme"
+  },
+  {
+    "nombre": "pepita",
+    "apellido": "pistolera",
+    "domicilio": "calle123",
+    "email": "pepi@pistol.com",
+    "image": "DIS-1705732233921-ad6c1520-0ca7-4a90-9885-feb976cbf8b7.png",
+    "password": "$2a$10$G6sQ.dclXJOsJ1aA.5yOWOpyq5wr8Har5pu/jDxLXwA8Lv07HjwUe"
+  },
+  {
+    "nombre": "Emiliano",
+    "apellido": "Ferreyra",
+    "domicilio": "Casa 3030",
+    "email": "emi@fer.com",
+    "image": "pinza seguer-1705790695746-a3c12fd0-e059-4a88-87b7-06ec67342774.jpg",
+    "password": "$2a$10$0Kzs00iHmHxVgOGPu4QT5O.WXI4Amr4pT98zLFLC0Gzq7RFVQ7CXG"
+  }
 ]
