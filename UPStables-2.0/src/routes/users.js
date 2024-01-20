@@ -4,7 +4,7 @@ const usersController = require('../controllers/usersController.js');
 const { validatorRegister, validatorRegisterAdmin } = require('../validaciones/registerValidator.js');
 const upload = require('../validaciones/uploadUser');
 
-const usersController = require ('../controllers/usersController.js');
+
 const loginValidator = require('../validaciones/loginValidator.js')
 /* GET users listing. */
 router.get('/register', usersController.register);
