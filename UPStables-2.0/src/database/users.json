@@ -71,5 +71,21 @@
         "email": "jorge@gmail.com",
         "password": "$2a$10$sZDMphTEZEqMFt4aQkbkCODbv8D2xFRFfYgy1XSiNAD0oT1laFr3C",
         "categoria": "Supervisor"
+    },
+    {
+        "nombre": "luisss",
+        "apellido": "escape",
+        "domicilio": "suipacha",
+        "email": "luis@gmail.com",
+        "image": "default.jpg",
+        "password": "$2a$10$u4xXXjS2L.zA69KgUVz0ae4kZaHAYywz2Wc8EMXgT3AZxwfb6jiHu"
+    },
+    {
+        "nombre": "hernan",
+        "apellido": "escape",
+        "domicilio": "suipachasss",
+        "email": "hernan@gmail.com",
+        "image": "Image20231031202709-1705730148226-7d72b9d8-c514-4ba7-af09-53f8f3486a11.png",
+        "password": "$2a$10$UCblodgXufCFHslathC.LOIzxOgS5q.jSmKZf5PJdFa9KttDpIJme"
     }
 ]

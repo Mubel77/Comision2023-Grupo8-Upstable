@@ -23,6 +23,12 @@ const validatorRegister = [
         .custom((value,{req})=> {
         return value == req.body.passwordConfirmation ;
         }).withMessage("Los password no coinciden"),
+    body('image').custom((value, { req }) => {
+            if (req.errorValidationImage) {
+              return false;
+            }
+            return true;
+          }).withMessage("No es un tipo de archivo válido"),
 ];
 
 const validatorRegisterAdmin = [

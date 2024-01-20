@@ -2,10 +2,11 @@ var express = require('express');
 var router = express.Router();
 const usersController = require('../controllers/usersController.js');
 const { validatorRegister, validatorRegisterAdmin } = require('../validaciones/registerValidator.js');
-
+const upload = require('../validaciones/uploadUser');
 /* GET users listing. */
 router.get('/register', usersController.register);
-router.post('/register', validatorRegister, usersController.createUser);
+router.post('/register', upload.single('image'), validatorRegister, usersController.createUser);
+
 
 router.get('/registerAdmin', usersController.registerAdmin);
 router.post('/registerAdmin', validatorRegisterAdmin, usersController.createUserAdmin);

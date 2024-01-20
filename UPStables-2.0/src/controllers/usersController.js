@@ -46,13 +46,14 @@ console.log(errors);
          } else {
           console.log("entre e usuarios",errors );
           const users = leerArchivo('users');
-          const {nombre,apellido,domicilio,email,password} = req.body;
+          const {nombre,apellido,domicilio,email,password,image} = req.body;
           const newUser = {
             nombre: nombre.trim(),
             apellido: apellido.trim(),
             domicilio: domicilio,
             email: email.trim(),
-              password: bcrypt.hashSync(password,10),
+            image:req.file ? req.file.filename : "user-default.png", 
+            password: bcrypt.hashSync(password,10),
           };
           users.push(newUser);
           escribirArchivo(users, 'users');
