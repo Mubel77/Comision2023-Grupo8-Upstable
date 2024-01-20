@@ -85,6 +85,11 @@ const userController = {
     perfilAdmin: function(req,res,next){
 
       },
+
+    perfilUser: function(req,res,next){
+        res.render('users/perfil-user', {title:'Mi Perfil'})
+    },  
+
     logout: function(req,res,next){
       
     }
