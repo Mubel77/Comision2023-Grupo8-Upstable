@@ -1,3 +1,4 @@
+const { title } = require('process');
 const {leerArchivo,escribirArchivo} = require('../database/jsonFunctions');
 const bcrypt = require('bcryptjs');
 const {validationResult} = require('express-validator')
@@ -96,7 +97,7 @@ console.log(errors);
       
       
       if(!errores.isEmpty()){
-        res.render("/users/login", {errores:errores.mapped()})
+        res.render('./users/login', {errores:errores.mapped(), old: req.body, title: "Login"})
       }
       console.log(req.body);
       const {email, password} = req.body;
