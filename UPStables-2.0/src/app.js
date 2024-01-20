@@ -12,6 +12,7 @@ var app = express();
 
 const methodOverride =  require('method-override');
 const session = require('express-session')
+const userLogedMiddleware = require('./middlewares/rememberMe_Middlewares');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,6 +29,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
+app.use(userLogedMiddleware);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
