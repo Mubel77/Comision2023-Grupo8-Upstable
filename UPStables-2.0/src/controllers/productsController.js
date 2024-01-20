@@ -14,7 +14,7 @@ const productsController = {
       let productos = leerArchivo("products");
       const{id}= req.params;
       const producto= productos.find(producto=> producto.id == id);
-        res.render('products/productDetail', { title:producto.modelo, producto, productos });
+        res.render('products/productDetail', { title:producto.modelo, producto, productos,usuario: req.session.user });
     },
     
     dashboard: function(req, res, next) {
@@ -119,7 +119,7 @@ const productsController = {
 
     cart: function(req, res, next) {
       let productsCart = leerArchivo("productosCarrito");
-      res.render('products/productCart', { title: 'Carrito de Compras', productsCart, cartItemCount: productsCart.length });
+      res.render('products/productCart', { title: 'Carrito de Compras', productsCart, cartItemCount: productsCart.length, usuario: req.session.user });
   },
 }
 

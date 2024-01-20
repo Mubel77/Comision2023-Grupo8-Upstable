@@ -1,58 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const {leerArchivo,escribirArchivo}=require("../database/jsonFunctions");
-//const json = fs.readFileSync(path.join(__dirname,"../database/productos.json"),"utf-8")
-//const productos = JSON.parse(json);
-// const productos=[
-//   {
-//     id:"1",
-//     nombre:"Estabilizador",
-//     descripcion:"Estabilizador De Tensión Trv - Gohan - 1200va(pico) F",
-//     precio:50000,
-//     imagen:"estabilizador4.png"
 
-//   },
-//   {
-//     id:"2",
-//     nombre:"Estabilizador",
-//     descripcion:"Estabilizador De Tensión Trv -Goku- 1200va(pico) F",
-//     precio:60000,
-//     imagen:"estabilizador 1.png"
-
-//   },
-//   {
-//     id:"3",
-//     nombre:"Estabilizador",
-//     descripcion:"Estabilizador De Tensión Trv - Veggeta- 1200va(pico) F",
-//     precio:40000,
-//     imagen:"estabilizador3.png"
-
-//   },
-//   {
-//     id:"4",
-//     nombre:"Estabilizador",
-//     descripcion:"Estabilizador De Tensión Trv - Crillin - 1200va(pico) F",
-//     precio:10000,
-//     imagen:"estabilizador2.png"
-
-//   },
-//   {
-//     id:"5",
-//     nombre:"Estabilizador",
-//     descripcion:"Estabilizador De Tensión Trv - Bulma - 1200va(pico) F",
-//     precio:10000,
-//     imagen:"estabilizador2.png"
-
-//   },
-//   {
-//     id:"6",
-//     nombre:"Estabilizador",
-//     descripcion:"Estabilizador De Tensión Trv - Piccollo - 1200va(pico) F",
-//     precio:10000,
-//     imagen:"estabilizador2.png"
-
-//   }
-// ]
 publicidad=[
   {
     idPublicidad:1,
@@ -75,7 +24,9 @@ const indexController = {
   
     home: function(req, res, next) {
       let productos= leerArchivo("products");
-      res.render('index', { title: 'UPStables', productos, publicidad});
+      
+      console.log("USERR:", req.session.user)
+      res.render('index', { title: 'UPStables', productos, publicidad, usuario: req.session.user});
       },
 }
 
