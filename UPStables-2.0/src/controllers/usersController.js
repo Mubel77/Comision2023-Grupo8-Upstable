@@ -74,6 +74,13 @@ const userController = {
       const user = users.find(usuario=> usuario.email == email);
 
       req.session.user = user;
+      
+      delete user.password
+      res.cookie('user',user,{maxAge: 1000 * 60 * 5 });
+
+      if(req.body.remember == "true") {
+        res.cookie('rememberMe',"true", {maxAge: 1000 * 60 * 5 });
+      }
 
         res.redirect('/')
       },
