@@ -1,4 +1,5 @@
 const {leerArchivo,escribirArchivo} = require('../database/jsonFunctions');
+const bcrypt = require('bcryptjs');
 const {validationResult} = require('express-validator')
 const subtitulo = "registrate";
 const formRegistro = ['NoMBre','Apellido','Domicilio','email','ConTRaseña','confiRMAR contraseña'];
@@ -34,29 +35,57 @@ function tipo(element) {
 
 const userController = {
     register: function(req, res, next) {
-        res.render('users/register', { title: 'Registro', subtitulo,formRegistro,tipo,etiqueta});
+      res.render('users/register', { title: 'Registro', subtitulo });
       },
 
     createUser: function(req, res, next) {
-        let users = leerArchivo('users');
-        const {nombre,apellido,domicilio,email,contraseña} = req.body;
-        const newUser = {
-          nombre: nombre.trim(),
-          apellido: apellido.trim(),
-          domicilio: domicilio.trim(),
-          email: email.trim(),
-          contraseña: contraseña.trim()
+        const errors= validationResult(req);
+console.log(errors);
+        if (!errors.isEmpty()){
+          res.render('users/register', { title: 'Registro',subtitulo, errors:errors.mapped(), oldData:req.body});
+         } else {
+          console.log("entre e usuarios",errors );
+          const users = leerArchivo('users');
+          const {nombre,apellido,domicilio,email,password,image} = req.body;
+          const newUser = {
+            nombre: nombre.trim(),
+            apellido: apellido.trim(),
+            domicilio: domicilio,
+            email: email.trim(),
+            image:req.file ? req.file.filename : "user-default.png", 
+            password: bcrypt.hashSync(password,10),
+          };
+          users.push(newUser);
+          escribirArchivo(users, 'users');
+          res.redirect('/');
         }
-        users.push(newUser);
-        escribirArchivo(users,'users');
-        res.redirect('/')
       },
-      registerAdmin: function(req,res,next){
-
+      registerAdmin:  function(req, res, next) {
+        res.render('users/registerAdmin', { title: 'RegistroAdmin',subtitulo,});
       },
       createUserAdmin: function(req,res,next){
+       const errors= validationResult(req);
+    
+       if (!errors.isEmpty()){
+           res.render('users/registerAdmin', { title: 'Registro',subtitulo, errors:errors.mapped(), oldData:req.body});
+         } else {
+          const users = leerArchivo('users');
+         const {nombre,apellido,domicilio,email,password,categoria} = req.body;
+         const newAdmind = {
+           nombre: nombre.trim(),
+           apellido: apellido.trim(),
+           domicilio: domicilio.trim(),
+           email: email.trim(),
+           password: bcrypt.hashSync(password,10),
+           categoria
 
-      },
+         }
+         users.push( newAdmind);
+         escribirArchivo(users,'users');
+         res.redirect('/')
+
+       }
+    },
 
     login: function(req, res, next) {
         res.render('users/login', { title: 'Login', formLogeo,tipo,etiqueta });
