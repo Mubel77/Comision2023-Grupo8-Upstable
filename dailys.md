@@ -157,6 +157,7 @@
     - Qué hizo ayer:
     - Si se encontró con algún impedimento:
     - Qué va a hacer hoy: definir los campos necesarios para el producto y generar archivo json
+
 ### Martes 19/12/23
 * Mauri:
     - Qué hizo ayer: ponerme al dia con el sprint
@@ -175,7 +176,7 @@
     - Si se encontró con algún impedimento: No
     - Qué va a hacer hoy: Vista home para products
  
-Miercoles 20/12/23
+### Miercoles 20/12/23
 * Mauri:
     - Qué hizo ayer: retro.md
     - Si se encontró con algún impedimento:
@@ -193,7 +194,7 @@ Miercoles 20/12/23
     - Si se encontró con algún impedimento: la correcion del sprint anterior
     - Qué va a hacer hoy:  trabjadon conestilo de lista de productos
 
-Jueves 21/12/23
+### Jueves 21/12/23
 * Mauri:
     - Qué hizo ayer: empeze hacer el crud de eliminar
     - Si se encontró con algún impedimento: me falto de asegurarme si fncina corectamente
@@ -211,7 +212,7 @@ Jueves 21/12/23
     - Si se encontró con algún impedimento: no
     - Qué va a hacer hoy: json de usario
 
-viernes  22/12/23
+### Viernes  22/12/23
 * Mauri:
     - Qué hizo ayer: terminar crud de eliminar 
     - Si se encontró con algún impedimento: 
@@ -228,3 +229,131 @@ viernes  22/12/23
     - Qué hizo ayer: json de usario
     - Si se encontró con algún impedimento:
     - Qué va a hacer hoy: terminar la vista del dashboard
+
+# SPRINT 5
+
+### Martes 16/01/24
+* Claudio: 
+-Qué hizo ayer: -
+-Si se encontró con algún impedimento: problemas personales
+-Qué va a hacer hoy: definir rutas, controladores y vistas para el registro y logueo de usuarios
+
+* Mauri: 
+-Qué hizo ayer: -
+-Si se encontró con algún impedimento: a la espera de la definicion de la tarea de entidad de usuarios
+-Qué va a hacer hoy: a la espera de la definicion de la tarea de entidad de usuarios
+
+* Santi: 
+-Qué hizo ayer: -
+-Si se encontró con algún impedimento: a la espera de la definicion de la tarea de entidad de usuarios
+-Qué va a hacer hoy: a la espera de la definicion de la tarea de entidad de usuarios
+
+* Emi:
+-Qué hizo ayer: -
+-Si se encontró con algún impedimento: a la espera de la definicion de la tarea de entidad de usuarios
+-Qué va a hacer hoy: a la espera de la definicion de la tarea de entidad de usuarios
+
+### Miercoles 17/01/24
+* Claudio: 
+-Qué hizo ayer: definir rutas, controladores y vistas para el registro y logueo de usuarios
+-Si se encontró con algún impedimento: problemas personales
+-Qué va a hacer hoy: recopilar informacion sobre daily y retrospectiva
+
+* Mauri: 
+-Qué hizo ayer: a la espera de la definicion de la tarea de entidad de usuarios
+-Si se encontró con algún impedimento: -
+-Qué va a hacer hoy: definir las validaciones necesarias para el registro de los usuarios
+
+* Santi: 
+-Qué hizo ayer: a la espera de la definicion de la tarea de entidad de usuarios
+-Si se encontró con algún impedimento: -
+-Qué va a hacer hoy: definir el proceso de logeo y sus validaciones
+
+* Emi:
+-Qué hizo ayer: a la espera de la definicion de la tarea de entidad de usuarios
+-Si se encontró con algún impedimento: -
+-Qué va a hacer hoy: definir la funcion y el middleware para recordar el inicio de sesion del usuario
+
+### Jueves 18/01/24
+* Claudio: 
+-Qué hizo ayer: -
+-Si se encontró con algún impedimento: -
+-Qué va a hacer hoy: -
+
+* Mauri: 
+-Qué hizo ayer: definir las validaciones necesarias para el registro de los usuarios
+-Si se encontró con algún impedimento: -
+-Qué va a hacer hoy: declarar las validaciones para los campos a completar del formulario
+
+* Santi: 
+-Qué hizo ayer: definir el proceso de logeo y sus validaciones
+-Si se encontró con algún impedimento: -
+-Qué va a hacer hoy: declarar las validaciones para los campos a completar del formulario
+
+* Emi:
+-Qué hizo ayer: definir la funcion y el middleware para recordar el inicio de sesion del usuario
+-Si se encontró con algún impedimento: -
+-Qué va a hacer hoy: definir las vistas para los perfiles (usuario y administrador)
+
+### Viernes 19/1/24
+* Claudio: 
+-Qué hizo ayer: -
+-Si se encontró con algún impedimento: -
+-Qué va a hacer hoy: -
+
+* Mauri: 
+-Qué hizo ayer: declarar las validaciones para los campos a completar del formulario
+-Si se encontró con algún impedimento: -
+-Qué va a hacer hoy: acondicionar la vista de la pagina para mostrar los errores al momento de completar el formulario y completar proceso de registro
+
+* Santi: 
+-Qué hizo ayer: declarar las validaciones para los campos a completar del formulario
+-Si se encontró con algún impedimento: -
+-Qué va a hacer hoy: acondicionar la vista de la pagina para mostrar los errores al momento de completar el formulario y completar proceso de login
+
+* Emi:
+-Qué hizo ayer: definir las vistas para los perfiles (usuario y administrador)
+-Si se encontró con algún impedimento: -
+-Qué va a hacer hoy: vistas del perfil, estructura con ejs y estilos con css
+
+### Sabado 20/01/24
+* Claudio: 
+-Qué hizo ayer: -
+-Si se encontró con algún impedimento: -
+-Qué va a hacer hoy: -
+
+* Mauri: 
+-Qué hizo ayer: acondicionar la vista de la pagina para mostrar los errores al momento de completar el formulario y completar proceso de registro
+-Si se encontró con algún impedimento: -
+-Qué va a hacer hoy: formulario de edicion para el perfil del usuario, vista y logica del proceso (tarea compartida con Santi)
+
+* Santi: 
+-Qué hizo ayer: acondicionar la vista de la pagina para mostrar los errores al momento de completar el formulario y completar proceso de login
+-Si se encontró con algún impedimento: -
+-Qué va a hacer hoy: formulario de edicion para el perfil del usuario, vista y logica del proceso (tarea compartida con Mauri)
+
+* Emi:
+-Qué hizo ayer: vistas del perfil, estructura con ejs y estilos con css
+-Si se encontró con algún impedimento: -
+-Qué va a hacer hoy: corregir funcion y el middleware para recordar el inicio de sesion del usuario, transcribir retrospectiva y dailys
+
+### Domingo 21/01/24
+* Claudio: 
+-Qué hizo ayer: -
+-Si se encontró con algún impedimento: -
+-Qué va a hacer hoy: -
+
+* Mauri: 
+-Qué hizo ayer: formulario de edicion para el perfil del usuario, vista y logica del proceso (tarea compartida con Santi)
+-Si se encontró con algún impedimento: -
+-Qué va a hacer hoy: implementar rutas para huespedes, usuarios y administradores (tarea compartida con Santi)
+
+* Santi: 
+-Qué hizo ayer: formulario de edicion para el perfil del usuario, vista y logica del proceso (tarea compartida con Mauri)
+-Si se encontró con algún impedimento: -
+-Qué va a hacer hoy: implementar rutas para huespedes, usuarios y administradores (tarea compartida con Mauri)
+
+* Emi:
+-Qué hizo ayer: corregir funcion y el middleware para recordar el inicio de sesion del usuario, transcribir retrospectiva y daily
+-Si se encontró con algún impedimento: -
+-Qué va a hacer hoy: completar registro de dailys, testear errores
