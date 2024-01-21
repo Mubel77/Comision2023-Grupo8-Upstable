@@ -24,8 +24,6 @@ const indexController = {
   
     home: function(req, res, next) {
       let productos= leerArchivo("products");
-      
-      console.log("USERR:", req.session.user)
       res.render('index', { title: 'UPStables', productos, publicidad, usuario: req.session.user});
       },
 }

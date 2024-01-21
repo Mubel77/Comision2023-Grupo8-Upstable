@@ -41,11 +41,9 @@ const userController = {
 
     createUser: function(req, res, next) {
         const errors= validationResult(req);
-console.log(errors);
         if (!errors.isEmpty()){
           res.render('users/register', { title: 'Registro',subtitulo, errors:errors.mapped(), oldData:req.body});
          } else {
-          console.log("entre e usuarios",errors );
           const users = leerArchivo('users');
           const {nombre,apellido,domicilio,email,password,image} = req.body;
           const newUser = {
@@ -94,25 +92,21 @@ console.log(errors);
 
     loginUp: function(req, res, next) {
       const errores = validationResult(req);
-      
-      
       if(!errores.isEmpty()){
         res.render('./users/login', {errores:errores.mapped(), old: req.body, title: "Login"})
       }
-      console.log(req.body);
       const {email, password} = req.body;
       const users = leerArchivo("users");
       const user = users.find(usuario=> usuario.email == email);
       
-      
         // delete user.password;
         req.session.user = user;
         res.cookie('user',user,{maxAge: 1000 * 60 * 5 });
-  
-        if(req.body.remember) {
+        
+        if(req.body.remember == "on") {
           res.cookie('rememberMe',"true", {maxAge: 1000 * 60 * 5 });        
         }
-     
+        
       res.redirect('/')
       },
 
@@ -125,7 +119,7 @@ console.log(errors);
     },  
 
     logout: function(req,res,next){
-      res.send('sesion cerrada')
+      res.send('Deberia cerrarse la sesion pero....')
     }
 
 }
