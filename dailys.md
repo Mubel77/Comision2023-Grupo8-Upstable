@@ -234,126 +234,126 @@
 
 ### Martes 16/01/24
 * Claudio: 
--Qué hizo ayer: -
--Si se encontró con algún impedimento: problemas personales
--Qué va a hacer hoy: definir rutas, controladores y vistas para el registro y logueo de usuarios
+    - Qué hizo ayer:
+    - Si se encontró con algún impedimento: problemas personales
+    - Qué va a hacer hoy: definir rutas, controladores y vistas para el registro y logueo de usuarios
 
 * Mauri: 
--Qué hizo ayer: -
--Si se encontró con algún impedimento: a la espera de la definicion de la tarea de entidad de usuarios
--Qué va a hacer hoy: a la espera de la definicion de la tarea de entidad de usuarios
+    - Qué hizo ayer:
+    - Si se encontró con algún impedimento: a la espera de la definicion de la tarea de entidad de usuarios
+    - Qué va a hacer hoy: a la espera de la definicion de la tarea de entidad de usuarios
 
 * Santi: 
--Qué hizo ayer: -
--Si se encontró con algún impedimento: a la espera de la definicion de la tarea de entidad de usuarios
--Qué va a hacer hoy: a la espera de la definicion de la tarea de entidad de usuarios
+    - Qué hizo ayer:
+    - Si se encontró con algún impedimento: a la espera de la definicion de la tarea de entidad de usuarios
+    - Qué va a hacer hoy: a la espera de la definicion de la tarea de entidad de usuarios
 
 * Emi:
--Qué hizo ayer: -
--Si se encontró con algún impedimento: a la espera de la definicion de la tarea de entidad de usuarios
--Qué va a hacer hoy: a la espera de la definicion de la tarea de entidad de usuarios
+    - Qué hizo ayer:
+    - Si se encontró con algún impedimento: a la espera de la definicion de la tarea de entidad de usuarios
+    - Qué va a hacer hoy: a la espera de la definicion de la tarea de entidad de usuarios
 
 ### Miercoles 17/01/24
 * Claudio: 
--Qué hizo ayer: definir rutas, controladores y vistas para el registro y logueo de usuarios
--Si se encontró con algún impedimento: problemas personales
--Qué va a hacer hoy: recopilar informacion sobre daily y retrospectiva
+    - Qué hizo ayer: definir rutas, controladores y vistas para el registro y logueo de usuarios
+    - Si se encontró con algún impedimento: problemas personales
+    - Qué va a hacer hoy: recopilar informacion sobre daily y retrospectiva
 
 * Mauri: 
--Qué hizo ayer: a la espera de la definicion de la tarea de entidad de usuarios
--Si se encontró con algún impedimento: -
--Qué va a hacer hoy: definir las validaciones necesarias para el registro de los usuarios
+    - Qué hizo ayer: a la espera de la definicion de la tarea de entidad de usuarios
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: definir las validaciones necesarias para el registro de los usuarios
 
 * Santi: 
--Qué hizo ayer: a la espera de la definicion de la tarea de entidad de usuarios
--Si se encontró con algún impedimento: -
--Qué va a hacer hoy: definir el proceso de logeo y sus validaciones
+    - Qué hizo ayer: a la espera de la definicion de la tarea de entidad de usuarios
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: definir el proceso de logeo y sus validaciones
 
 * Emi:
--Qué hizo ayer: a la espera de la definicion de la tarea de entidad de usuarios
--Si se encontró con algún impedimento: -
--Qué va a hacer hoy: definir la funcion y el middleware para recordar el inicio de sesion del usuario
+    - Qué hizo ayer: a la espera de la definicion de la tarea de entidad de usuarios
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: definir la funcion y el middleware para recordar el inicio de sesion del usuario
 
 ### Jueves 18/01/24
 * Claudio: 
--Qué hizo ayer: -
--Si se encontró con algún impedimento: -
--Qué va a hacer hoy: -
+    - Qué hizo ayer:
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy:
 
 * Mauri: 
--Qué hizo ayer: definir las validaciones necesarias para el registro de los usuarios
--Si se encontró con algún impedimento: -
--Qué va a hacer hoy: declarar las validaciones para los campos a completar del formulario
+    - Qué hizo ayer: definir las validaciones necesarias para el registro de los usuarios
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: declarar las validaciones para los campos a completar del formulario
 
 * Santi: 
--Qué hizo ayer: definir el proceso de logeo y sus validaciones
--Si se encontró con algún impedimento: -
--Qué va a hacer hoy: declarar las validaciones para los campos a completar del formulario
+    - Qué hizo ayer: definir el proceso de logeo y sus validaciones
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: declarar las validaciones para los campos a completar del formulario
 
 * Emi:
--Qué hizo ayer: definir la funcion y el middleware para recordar el inicio de sesion del usuario
--Si se encontró con algún impedimento: -
--Qué va a hacer hoy: definir las vistas para los perfiles (usuario y administrador)
+    - Qué hizo ayer: definir la funcion y el middleware para recordar el inicio de sesion del usuario
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: definir las vistas para los perfiles (usuario y administrador)
 
 ### Viernes 19/1/24
 * Claudio: 
--Qué hizo ayer: -
--Si se encontró con algún impedimento: -
--Qué va a hacer hoy: -
+    - Qué hizo ayer:
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy:
 
 * Mauri: 
--Qué hizo ayer: declarar las validaciones para los campos a completar del formulario
--Si se encontró con algún impedimento: -
--Qué va a hacer hoy: acondicionar la vista de la pagina para mostrar los errores al momento de completar el formulario y completar proceso de registro
+    - Qué hizo ayer: declarar las validaciones para los campos a completar del formulario
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: acondicionar la vista de la pagina para mostrar los errores al momento de completar el formulario y completar proceso de registro
 
 * Santi: 
--Qué hizo ayer: declarar las validaciones para los campos a completar del formulario
--Si se encontró con algún impedimento: -
--Qué va a hacer hoy: acondicionar la vista de la pagina para mostrar los errores al momento de completar el formulario y completar proceso de login
+    - Qué hizo ayer: declarar las validaciones para los campos a completar del formulario
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: acondicionar la vista de la pagina para mostrar los errores al momento de completar el formulario y completar proceso de login
 
 * Emi:
--Qué hizo ayer: definir las vistas para los perfiles (usuario y administrador)
--Si se encontró con algún impedimento: -
--Qué va a hacer hoy: vistas del perfil, estructura con ejs y estilos con css
+    - Qué hizo ayer: definir las vistas para los perfiles (usuario y administrador)
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: vistas del perfil, estructura con ejs y estilos con css
 
 ### Sabado 20/01/24
 * Claudio: 
--Qué hizo ayer: -
--Si se encontró con algún impedimento: -
--Qué va a hacer hoy: -
+    - Qué hizo ayer:
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy:
 
 * Mauri: 
--Qué hizo ayer: acondicionar la vista de la pagina para mostrar los errores al momento de completar el formulario y completar proceso de registro
--Si se encontró con algún impedimento: -
--Qué va a hacer hoy: formulario de edicion para el perfil del usuario, vista y logica del proceso (tarea compartida con Santi)
+    - Qué hizo ayer: acondicionar la vista de la pagina para mostrar los errores al momento de completar el formulario y completar proceso de registro
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: formulario de edicion para el perfil del usuario, vista y logica del proceso (tarea compartida con Santi)
 
 * Santi: 
--Qué hizo ayer: acondicionar la vista de la pagina para mostrar los errores al momento de completar el formulario y completar proceso de login
--Si se encontró con algún impedimento: -
--Qué va a hacer hoy: formulario de edicion para el perfil del usuario, vista y logica del proceso (tarea compartida con Mauri)
+    - Qué hizo ayer: acondicionar la vista de la pagina para mostrar los errores al momento de completar el formulario y completar proceso de login
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: formulario de edicion para el perfil del usuario, vista y logica del proceso (tarea compartida con Mauri)
 
 * Emi:
--Qué hizo ayer: vistas del perfil, estructura con ejs y estilos con css
--Si se encontró con algún impedimento: -
--Qué va a hacer hoy: corregir funcion y el middleware para recordar el inicio de sesion del usuario, transcribir retrospectiva y dailys
+    - Qué hizo ayer: vistas del perfil, estructura con ejs y estilos con css
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: corregir funcion y el middleware para recordar el inicio de sesion del usuario, transcribir retrospectiva y dailys
 
 ### Domingo 21/01/24
 * Claudio: 
--Qué hizo ayer: -
--Si se encontró con algún impedimento: -
--Qué va a hacer hoy: -
+    - Qué hizo ayer:
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy:
 
 * Mauri: 
--Qué hizo ayer: formulario de edicion para el perfil del usuario, vista y logica del proceso (tarea compartida con Santi)
--Si se encontró con algún impedimento: -
--Qué va a hacer hoy: implementar rutas para huespedes, usuarios y administradores (tarea compartida con Santi)
+    - Qué hizo ayer: formulario de edicion para el perfil del usuario, vista y logica del proceso (tarea compartida con Santi)
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: implementar rutas para huespedes, usuarios y administradores (tarea compartida con Santi)
 
 * Santi: 
--Qué hizo ayer: formulario de edicion para el perfil del usuario, vista y logica del proceso (tarea compartida con Mauri)
--Si se encontró con algún impedimento: -
--Qué va a hacer hoy: implementar rutas para huespedes, usuarios y administradores (tarea compartida con Mauri)
+    - Qué hizo ayer: formulario de edicion para el perfil del usuario, vista y logica del proceso (tarea compartida con Mauri)
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: implementar rutas para huespedes, usuarios y administradores (tarea compartida con Mauri)
 
 * Emi:
--Qué hizo ayer: corregir funcion y el middleware para recordar el inicio de sesion del usuario, transcribir retrospectiva y daily
--Si se encontró con algún impedimento: -
--Qué va a hacer hoy: completar registro de dailys, testear errores
+    - Qué hizo ayer: corregir funcion y el middleware para recordar el inicio de sesion del usuario, transcribir retrospectiva y daily
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: completar registro de dailys, testear errores
