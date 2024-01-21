@@ -45,3 +45,19 @@ Mantener la comunicacion y el compromiso que tenemos hasta ahora con el proyecto
 Distraernos en detalles que no son propios del sprint.
 ### Dejar de hacer...
 Subestimar el valor del tiempo y las dificultades de las actividades
+
+
+# SPRINT 4
+
+Este sprint estuvo atravesado por el receso de fin de año y ello hizo que la comunicacion sea un tanto diferente a la que trabajamos en los sprints anteriores. No por ello fue menos efectiva y logramos cumplir en tiempo y forma con la entrega. Habiendo recibido una devolucion de parte los profesores por este trabajo y sabiendo cuales son los puntos a mejorar, consideramos que:
+
+### Comenzar a hacer...
+	Buscaremos bajar ideas a esquemas, tipo diagramas de flujo para ayudar a interpretar las consignas a resolver en caso que sea necesario. 
+### Hacer mas...
+	Mejorar la organizacion y planificacion de las tareas y corregir detalles en la ejecucion de las mismas (tablero Jira, GitHub).
+### Continuar haciendo...
+	Mantener la comunicacion y el compromiso que tenemos hasta ahora con el proyecto.
+### Hacer menos...
+	Darle una importancia menor a la retrospectiva por sobre las demas tareas.
+### Dejar de hacer...
+	Reuniones sin ideas o dudas concretas a fin de optimizar mas el tiempo.
