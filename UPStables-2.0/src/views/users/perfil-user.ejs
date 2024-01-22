@@ -1,0 +1,63 @@
+<%- include('../partials/head')%>
+    
+<body>
+        <%- include('../partials/header.ejs')%>    
+    <% if(locals.usuario) {%>
+        <main class="main_perfil-user">
+            <section class="section_izq_perfil-user">
+                <a href="/users/perfilUser">
+                    <div class="div_enlaces_perfil-user">
+                        <i class="fa-solid fa-user"></i>
+                        <p>Mi cuenta</p>
+                    </div>
+                </a>
+                <a href="/products/productCart">
+                    <div class="div_enlaces_perfil-user">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <p>Mis compras</p>
+                    </div>
+                </a>
+                <a href="/users/profile/:email">
+                    <div class="div_enlaces_perfil-user">
+                        <i class="fa-solid fa-user-pen"></i>
+                        <p>Editar perfil</p>
+                    </div>
+                </a>
+                <a href="/users/logout">
+                    <div class="div_enlaces_perfil-user">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <p>Salir</p>
+                    </div>
+                </a>
+            </section>
+            <section class="section_der_perfil-user">
+                <div class="div_miPerfil">
+                    <p>Mi perfil</p>
+                    <img src="/images/users/<%= usuario.image %>" alt="Avatar-Usuario">
+                </div>
+                <article class="section_der_article_perfil-user">
+                    <div>
+                        <p class="div_p_titulos_perfil-user">Nombre</p>
+                        <p class="div_p_subtitulos_perfil-user"><%= usuario.nombre %></p>
+                    </div>
+                    <div>
+                        <p class="div_p_titulos_perfil-user">Apellido</p>
+                        <p class="div_p_subtitulos_perfil-user"><%= usuario.apellido %></p>
+                    </div>
+                    <div>
+                        <p class="div_p_titulos_perfil-user">Domicilio</p>
+                        <p class="div_p_subtitulos_perfil-user"><%= usuario.domicilio %></p>
+                    </div>
+                    <div>
+                        <p class="div_p_titulos_perfil-user">E-mail</p>
+                        <p class="div_p_subtitulos_perfil-user"><%= usuario.email %></p>
+                    </div>
+                </article>
+            </section>
+        </main>
+        <% } %>
+    
+        <%- include('../partials/footer') %>
+    
+</body>
+</html>

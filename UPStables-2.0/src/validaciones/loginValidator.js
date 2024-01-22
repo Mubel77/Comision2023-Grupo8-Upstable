@@ -10,7 +10,7 @@ const loginValidator = [
         console.log("VALUE:", value);
         const user = users.find(elemento => elemento.email == value);
         return user ? true : false
-    }).withMessage("El usuario no existe"), 
+    }).withMessage("Usuario o contraseña incorrectos"), 
 
     body('password').notEmpty().withMessage("El campo no puede estar vacío").bail()
     .custom((value, {req})=>{
@@ -18,10 +18,8 @@ const loginValidator = [
         const user = users.find(elemento => elemento.email == req.body.email)
         console.log("USER:", user);
         console.log("USER-PASSWORD:", user.password);
-        if(value == user.password){
-            return value
-        }
-    }).withMessage("Contraseña incorrecta")
+        return bcrypt.compareSync(value, user.password);
+    }).withMessage("Usuario o contraseña incorrectos")
 ]
 
 module.exports = loginValidator

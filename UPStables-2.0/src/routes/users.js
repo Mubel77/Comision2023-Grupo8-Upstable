@@ -8,7 +8,6 @@ const upload = require('../validaciones/uploadUser');
 router.get('/register', usersController.register);
 router.post('/register', upload.single('image'), validatorRegister, usersController.createUser);
 
-
 router.get('/registerAdmin', usersController.registerAdmin);
 router.post('/registerAdmin', upload.single('image'),validatorRegisterAdmin, usersController.createUserAdmin);
 
@@ -21,6 +20,8 @@ router.get('/profile/:email', usersController.profile)
 router.put('/profile/:email', upload.single('image'), usersController.processUpdate)
 
 router.get('/perfilAdmin', usersController.perfilAdmin);
+router.get('/perfilUser', usersController.perfilUser);
+
 router.get('/logout', usersController.logout);
 
 module.exports = router;

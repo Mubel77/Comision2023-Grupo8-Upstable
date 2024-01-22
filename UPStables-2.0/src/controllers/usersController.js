@@ -41,11 +41,9 @@ const userController = {
 
     createUser: function(req, res, next) {
         const errors= validationResult(req);
-console.log(errors);
         if (!errors.isEmpty()){
           res.render('users/register', { title: 'Registro',subtitulo, errors:errors.mapped(), oldData:req.body});
          } else {
-          console.log("entre e usuarios",errors );
           const users = leerArchivo('users');
           const {nombre,apellido,domicilio,email,password,image} = req.body;
           const newUser = {
@@ -95,19 +93,24 @@ console.log(errors);
 
     loginUp: function(req, res, next) {
       const errores = validationResult(req);
-      console.log(errores);
-      
       if(!errores.isEmpty()){
         res.render('./users/login', {errores:errores.mapped(), old: req.body, title: "Login"})
       }
-      const {email} = req.body;
+      const {email, password} = req.body;
       const users = leerArchivo("users");
       const user = users.find(usuario=> usuario.email == email);
-
-      req.session.user = user;
-
-        res.redirect('/')
+      
+        // delete user.password;
+        req.session.user = user;
+        res.cookie('user',user,{maxAge: 1000 * 60 * 5 });
+        
+        if(req.body.remember == "on") {
+          res.cookie('rememberMe',"true", {maxAge: 1000 * 60 * 5 });        
+        }
+        
+      res.redirect('/')
       },
+
       // contralador de la actualizacion de usuario
       profile:(req,res)=>{
         const {email} = req.params;
@@ -142,10 +145,15 @@ console.log(errors);
         res.redirect(`/users/profile/${id}`);
       },
     perfilAdmin: function(req,res,next){
-
+        res.render('users/perfil-admin', {title:'Mi Perfil', usuario: req.session.user})  
       },
+
+    perfilUser: function(req,res,next){
+         res.render('users/perfil-user', {title:'Mi Perfil', usuario: req.session.user})
+    },  
+
     logout: function(req,res,next){
-      
+      res.send('Deberia cerrarse la sesion pero....')
     }
 
 }
