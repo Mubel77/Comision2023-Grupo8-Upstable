@@ -8,16 +8,28 @@
             <span class="login_titulo_p">¡Bienvenido!</span>
             <span class="login_subtitulo_p">Ingresá, te estamos esperando...</span>
             </div>
-            
+          
             <form action="/users/login" method="post" id="form_login">
                 <div class="div_config">
                     <label for="email">Email</label>
-                    <input type="email"  name="email" placeholder="Email" required>
+                    <input type="email"  name="email" placeholder="Email">
+                    <% if (locals.errores && errores.email) { %>
+                        <p style="color: red;"> <%= errores.email.msg %> </p> 
+                   <% } %>
                 </div>
+                
                 <div class="div_config">
                     <label for="password">Contraseña</label>
-                    <input type="password" name="password" placeholder="Contraseña" required>
+                    <input type="password" name="password" placeholder="Contraseña">
+                    <% if (locals.errores && errores.password) { %>
+                        <p style="color: red;"> <%= errores.password.msg %> </p> 
+                   <% } %>
                 </div>
+                <div>
+                    <label for="remember">Recuerdame</label>
+                    <input type="checkbox" name="remember">
+                </div>
+                
                 <a href="/users/register" id="login_password">
                     <span>¿No tenés cuenta? <br> Crea tu cuenta</span>
                 </a>

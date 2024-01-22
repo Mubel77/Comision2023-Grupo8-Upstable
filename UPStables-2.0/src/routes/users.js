@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const usersController = require('../controllers/usersController.js');
+const loginValidator = require('../validaciones/loginValidator.js')
 const { validatorRegister, validatorRegisterAdmin } = require('../validaciones/registerValidator.js');
 const upload = require('../validaciones/uploadUser');
 /* GET users listing. */
@@ -13,7 +14,7 @@ router.post('/registerAdmin', upload.single('image'),validatorRegisterAdmin, use
 
 
 router.get('/login', usersController.login);
-router.post('/login', usersController.loginUp);
+router.post('/login', loginValidator, usersController.loginUp);
 
 //ruta para editar usuario, tarea de santy y mauri, 
 router.get('/profile/:email', usersController.profile)
