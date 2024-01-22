@@ -2,9 +2,9 @@ const { title } = require('process');
 const {leerArchivo,escribirArchivo} = require('../database/jsonFunctions');
 const bcrypt = require('bcryptjs');
 const {validationResult} = require('express-validator')
-const subtitulo = "registrate";
-const formRegistro = ['NoMBre','Apellido','Domicilio','email','ConTRaseña','confiRMAR contraseña'];
-const formLogeo = ['email','ConTRaseña'];
+// const subtitulo = "registrate";
+// const formRegistro = ['NoMBre','Apellido','Domicilio','email','ConTRaseña','confiRMAR contraseña'];
+// const formLogeo = ['email','ConTRaseña'];
 
 function tipo(element) {
   switch (element.toLowerCase()) {
@@ -88,7 +88,7 @@ const userController = {
     },
 
     login: function(req, res, next) {
-        res.render('users/login', { title: 'Login', formLogeo,tipo,etiqueta });
+        res.render('users/login', { title: 'Login' });
       },
 
     loginUp: function(req, res, next) {
@@ -117,18 +117,20 @@ const userController = {
         
         const users = leerArchivo('users');
         const user = users.find(elemento => elemento.email == email);
-        res.render('./users/formUpdateUser', { title: 'Editar Usuario', user,subtitulo: "Editar Usuario", user: req.session.user });
+        
+        res.render('./users/formUpdateUser', { title: 'Editar Usuario',subtitulo: "Editar Usuario", usuario: req.session.user });
       },
       processUpdate:(req,res)=>{
        // const {id} = req.params;
-        const {nombre,apelllido,email,age,date} = req.body;
+        const {nombre,apellido,email,domicilio,age,date} = req.body;
         const users = leerArchivo('users');
         const usuarios = users.map(element => {
           if (element.email == email) {
             return {
               nombre: nombre.trim(),
-              apellido:apelllido.trim(),
+              apellido:apellido.trim(),
               email:email.trim(),
+              domicilio,
               age,
               date,
               image:req.file ? req.file.filename : element.image, 
@@ -142,7 +144,7 @@ const userController = {
         req.session.user = userUpdate;
         delete userUpdate.password
         res.cookie('user',(userUpdate))
-        res.redirect(`/users/profile/${id}`);
+        res.redirect('/users/profile/');
       },
     perfilAdmin: function(req,res,next){
         res.render('users/perfil-admin', {title:'Mi Perfil', usuario: req.session.user})  
