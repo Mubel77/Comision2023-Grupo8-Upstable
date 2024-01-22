@@ -144,7 +144,7 @@ const userController = {
         req.session.user = userUpdate;
         delete userUpdate.password
         res.cookie('user',(userUpdate))
-        res.redirect('/users/profile/');
+        res.redirect('/users/perfilUser');
       },
     perfilAdmin: function(req,res,next){
         res.render('users/perfil-admin', {title:'Mi Perfil', usuario: req.session.user})  

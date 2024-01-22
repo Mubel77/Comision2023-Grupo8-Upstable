@@ -17,7 +17,7 @@
                         <p>Mis compras</p>
                     </div>
                 </a>
-                <a href="/users/profile/:email">
+                <a href="/users/profile">
                     <div class="div_enlaces_perfil-user">
                         <i class="fa-solid fa-user-pen"></i>
                         <p>Editar perfil</p>
@@ -36,22 +36,42 @@
                     <img src="/images/users/<%= usuario.image %>" alt="Avatar-Usuario">
                 </div>
                 <article class="section_der_article_perfil-user">
-                    <div>
-                        <p class="div_p_titulos_perfil-user">Nombre</p>
-                        <p class="div_p_subtitulos_perfil-user"><%= usuario.nombre %></p>
-                    </div>
-                    <div>
-                        <p class="div_p_titulos_perfil-user">Apellido</p>
-                        <p class="div_p_subtitulos_perfil-user"><%= usuario.apellido %></p>
-                    </div>
-                    <div>
-                        <p class="div_p_titulos_perfil-user">Domicilio</p>
-                        <p class="div_p_subtitulos_perfil-user"><%= usuario.domicilio %></p>
-                    </div>
-                    <div>
-                        <p class="div_p_titulos_perfil-user">E-mail</p>
-                        <p class="div_p_subtitulos_perfil-user"><%= usuario.email %></p>
-                    </div>
+                    <% if (usuario.nombre) { %>
+                        <div>
+                            <p class="div_p_titulos_perfil-user">Nombre</p>
+                            <p class="div_p_subtitulos_perfil-user"><%= usuario.nombre %></p>
+                        </div>
+                    <%  } %>
+                    <% if (usuario.apellido) { %>
+                        <div>
+                            <p class="div_p_titulos_perfil-user">Apellido</p>
+                            <p class="div_p_subtitulos_perfil-user"><%= usuario.apellido %></p>
+                        </div>
+                    <%  } %>
+                    <% if (usuario.domicilio) { %>
+                        <div>
+                            <p class="div_p_titulos_perfil-user">Domicilio</p>
+                            <p class="div_p_subtitulos_perfil-user"><%= usuario.domicilio %></p>
+                        </div>
+                    <%  } %>
+                    <% if (usuario.email) { %>
+                        <div>
+                            <p class="div_p_titulos_perfil-user">E-mail</p>
+                            <p class="div_p_subtitulos_perfil-user"><%= usuario.email %></p>
+                        </div>
+                    <%  } %>
+                    <% if (usuario.age) { %>
+                        <div>
+                            <p class="div_p_titulos_perfil-user">Edad</p>
+                            <p class="div_p_subtitulos_perfil-user"><%= usuario.age %> años</p>
+                        </div>
+                    <%  } %>
+                    <% if (usuario.date) { %>
+                        <div>
+                            <p class="div_p_titulos_perfil-user">Fecha de Nacimiento</p>
+                            <p class="div_p_subtitulos_perfil-user"><%= usuario.date %></p>
+                        </div>
+                    <%  } %>
                 </article>
             </section>
         </main>
