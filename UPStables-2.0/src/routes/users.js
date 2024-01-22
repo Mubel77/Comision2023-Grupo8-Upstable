@@ -3,6 +3,7 @@ var router = express.Router();
 const usersController = require('../controllers/usersController.js');
 const loginValidator = require('../validaciones/loginValidator.js')
 const { validatorRegister, validatorRegisterAdmin } = require('../validaciones/registerValidator.js');
+const {sessionValidator, isAdmin} = require('../middlewares/sessionValidator.js')
 const upload = require('../validaciones/uploadUser');
 /* GET users listing. */
 router.get('/register', usersController.register);
@@ -16,11 +17,11 @@ router.get('/login', usersController.login);
 router.post('/login', loginValidator, usersController.loginUp);
 
 //ruta para editar usuario, tarea de santy y mauri, 
-router.get('/profile', usersController.profile)
+router.get('/profile', sessionValidator, usersController.profile)
 router.put('/profile', upload.single('image'), usersController.processUpdate)
 
-router.get('/perfilAdmin', usersController.perfilAdmin);
-router.get('/perfilUser', usersController.perfilUser);
+router.get('/perfilAdmin',isAdmin, usersController.perfilAdmin);
+router.get('/perfilUser',sessionValidator, usersController.perfilUser);
 
 router.get('/logout', usersController.logout);
 
