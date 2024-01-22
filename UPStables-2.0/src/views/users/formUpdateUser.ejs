@@ -13,22 +13,22 @@
         <form method="POST" action="/users/updateProfile" id="form_registro" enctype="multipart/form-data">
             <div class="div_config nombre">
                 <label for="nombre">Nombre</label>
-                <input type="text"  name="nombre" placeholder="Nombre" value="<%= locals.oldData ? oldData.nombre : null %>" >
+                <input type="text"  name="nombre" placeholder="Nombre" value="<%= locals.user ? user.nombre : locals.old && old.nombre ? old.nombre : null %>" >
                 <p><%= locals.errors&& errors.nombre ? errors.nombre.msg : null %> </p>
             </div>
             <div class="div_config nombre">
                 <label for="apellido">Apellido</label>
-                <input type="text"  name="apellido" placeholder="Apellido"  value="<%= locals.oldData ? oldData.apellido : null %>">
+                <input type="text"  name="apellido" placeholder="Apellido"  value="<%= locals.user ? user.apellido : locals.old && old.apellido ? old.apellido : null %>">
                 <p><%= locals.errors && errors.apellido ? errors.apellido.msg : null %> </p>
             </div>
             <div class="div_config">
                 <label for="domicilio">Domicilio</label>
-                <input type="text"  name="domicilio" placeholder="Domicilio" value="<%= locals.oldData ? oldData.domicilio : null %>">
+                <input type="text"  name="domicilio" placeholder="Domicilio" value="<%= locals.user ? user.domicilio : locals.old && old.domicilio ? old.domicilio : null %>">
                 <p><%= locals.errors && errors.domicilio ? errors.domicilio.msg : null %> </p>
             </div>
             <div class="div_config">
                 <label for="email">Email</label>
-                <input type="email"  name="email" placeholder="Email" value="<%= locals.oldData ? oldData.email : null %>">
+                <input type="email"  name="email" placeholder="Email" value="<%= locals.user ? user.email: locals.old && old.email? old.email: null %>">
                 <p><%= locals.errors && errors.apellido ? errors.email.msg : null %> </p>
             </div>
             <div class="div_config">

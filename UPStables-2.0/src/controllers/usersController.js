@@ -108,38 +108,38 @@ console.log(errors);
         res.redirect('/')
       },
       // contralador de la actualizacion de usuario
-      // profile:(req,res)=>{
-      //   const {id} = req.params;
-      //   const users = leerArchivo('users');
-      //   const user = users.find(elemento => elemento.id == id);
-      //   res.render('./users/updateProfile', { title: 'Editar Usuario', user,subtitulo,  });
-      // },
-      // processUpdate:(req,res)=>{
-      //   const {id} = req.params;
-      //   const {nombre,apelllido,email,age,date} = req.body;
-      //   const users = leerArchivo('users');
-      //   const usuarios = users.map(element => {
-      //     if (element.id == id) {
-      //       return {
-      //         id,
-      //         nombre: nombre.trim(),
-      //         apellido:apelllido.trim(),
-      //         email:email.trim(),
-      //         age,
-      //         date,
-      //         image:req.file ? req.file.filename : element.image, 
-      //         password: element.password,
-      //       }
-      //     }
-      //     return element
-      //   });
-      //   escribirArchivo(usuarios,'users');
-      //   const userUpdate = usuarios.find(elemento => elemento.id == id);
-      //   req.session.user = userUpdate;
-      //   delete userUpdate.password
-      //   res.cookie('user',(userUpdate))
-      //   res.redirect(`/users/profile/${id}`);
-      // },
+      profile:(req,res)=>{
+        const {email} = req.params;
+        
+        const users = leerArchivo('users');
+        const user = users.find(elemento => elemento.email == email);
+        res.render('./users/formUpdateUser', { title: 'Editar Usuario', user,subtitulo: "Editar Usuario", user: req.session.user });
+      },
+      processUpdate:(req,res)=>{
+       // const {id} = req.params;
+        const {nombre,apelllido,email,age,date} = req.body;
+        const users = leerArchivo('users');
+        const usuarios = users.map(element => {
+          if (element.email == email) {
+            return {
+              nombre: nombre.trim(),
+              apellido:apelllido.trim(),
+              email:email.trim(),
+              age,
+              date,
+              image:req.file ? req.file.filename : element.image, 
+              password: element.password,
+            }
+          }
+          return element
+        });
+        escribirArchivo(usuarios,'users');
+        const userUpdate = usuarios.find(elemento => elemento.email == email);
+        req.session.user = userUpdate;
+        delete userUpdate.password
+        res.cookie('user',(userUpdate))
+        res.redirect(`/users/profile/${id}`);
+      },
     perfilAdmin: function(req,res,next){
 
       },
