@@ -2,9 +2,9 @@ const { title } = require('process');
 const {leerArchivo,escribirArchivo} = require('../database/jsonFunctions');
 const bcrypt = require('bcryptjs');
 const {validationResult} = require('express-validator')
-const subtitulo = "registrate";
-const formRegistro = ['NoMBre','Apellido','Domicilio','email','ConTRaseña','confiRMAR contraseña'];
-const formLogeo = ['email','ConTRaseña'];
+// const subtitulo = "registrate";
+// const formRegistro = ['NoMBre','Apellido','Domicilio','email','ConTRaseña','confiRMAR contraseña'];
+// const formLogeo = ['email','ConTRaseña'];
 
 function tipo(element) {
   switch (element.toLowerCase()) {
@@ -69,12 +69,13 @@ const userController = {
            res.render('users/registerAdmin', { title: 'Registro',subtitulo, errors:errors.mapped(), oldData:req.body});
          } else {
           const users = leerArchivo('users');
-         const {nombre,apellido,domicilio,email,password,categoria} = req.body;
+         const {nombre,apellido,domicilio,email,password,categoria,image} = req.body;
          const newAdmind = {
            nombre: nombre.trim(),
            apellido: apellido.trim(),
            domicilio: domicilio.trim(),
            email: email.trim(),
+           image:req.file ? req.file.filename : "user-default.png", 
            password: bcrypt.hashSync(password,10),
            categoria
 
@@ -87,7 +88,7 @@ const userController = {
     },
 
     login: function(req, res, next) {
-        res.render('users/login', { title: 'Login', formLogeo,tipo,etiqueta });
+        res.render('users/login', { title: 'Login' });
       },
 
     loginUp: function(req, res, next) {
@@ -110,6 +111,41 @@ const userController = {
       res.redirect('/')
       },
 
+      // contralador de la actualizacion de usuario
+      profile:(req,res)=>{
+        const {email} = req.params;
+        
+        const users = leerArchivo('users');
+        const user = users.find(elemento => elemento.email == email);
+        
+        res.render('./users/formUpdateUser', { title: 'Editar Usuario',subtitulo: "Editar Usuario", usuario: req.session.user });
+      },
+      processUpdate:(req,res)=>{
+       // const {id} = req.params;
+        const {nombre,apellido,email,domicilio,age,date} = req.body;
+        const users = leerArchivo('users');
+        const usuarios = users.map(element => {
+          if (element.email == email) {
+            return {
+              nombre: nombre.trim(),
+              apellido:apellido.trim(),
+              email:email.trim(),
+              domicilio,
+              age,
+              date,
+              image:req.file ? req.file.filename : element.image, 
+              password: element.password,
+            }
+          }
+          return element
+        });
+        escribirArchivo(usuarios,'users');
+        const userUpdate = usuarios.find(elemento => elemento.email == email);
+        req.session.user = userUpdate;
+        delete userUpdate.password
+        res.cookie('user',(userUpdate))
+        res.redirect('/users/profile/');
+      },
     perfilAdmin: function(req,res,next){
         res.render('users/perfil-admin', {title:'Mi Perfil', usuario: req.session.user})  
       },

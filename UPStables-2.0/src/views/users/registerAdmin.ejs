@@ -8,7 +8,7 @@
             <div class="subtitulo_registrate">
                 <p id="p_registro">registrate</p>
             </div>    
-            <form action="/users/registerAdmin" method="post" id="form_registro">
+            <form action="/users/registerAdmin" method="post" id="form_registro" enctype="multipart/form-data">
                 <div class="div_config nombre">
                     <label for="nombre">Nombre</label>
                     <input type="text"  name="nombre" placeholder="Nombre" value="<%= locals.oldData ? oldData.nombre : null %>" >
@@ -39,16 +39,21 @@
                   <input type="password" name="passwordConfirmation" placeholder="Confirmar contraseña" value="<%= locals.oldData ? oldData.passwordConfirmation : null %>">
                   <p><%= locals.errors && errors.password ? errors.password.msg : null %> </p>
               </div>
-                <div class="div_config">
+              <div class="div_config">
                     <label for="categoria">Categoria</label>
                     <select name="categoria"  id="categoria" class="div_config">
                         <option >Supervisor</option>
                         <option >Vendedor</option>
                     </select>
-                </div>
-                <div class="boton_registro">
-                    <button type="submit">Crear cuenta</button>
-                </div>           
+             </div>
+             <div class="div_config">
+                <label for="image" class="col-12 mt-3">Foto de perfil</label>
+                <input type="file" class="form-control" id="inputGroupFile02" name="image">
+                <p><%= locals.errors && errors.image ? errors.image.msg : null %> </p>
+            </div>
+             <div class="boton_registro">
+                <button type="submit">Crear cuenta</button>
+            </div>           
             </form>
         </main>
     
