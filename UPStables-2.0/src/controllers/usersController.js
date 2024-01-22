@@ -36,13 +36,13 @@ function tipo(element) {
 
 const userController = {
     register: function(req, res, next) {
-      res.render('users/register', { title: 'Registro', subtitulo });
+      res.render('users/register', { title: 'Registro', subtitulo:"Registrate" });
       },
 
     createUser: function(req, res, next) {
         const errors= validationResult(req);
         if (!errors.isEmpty()){
-          res.render('users/register', { title: 'Registro',subtitulo, errors:errors.mapped(), oldData:req.body});
+          res.render('users/register', { title: 'Registro',subtitulo:"Registrate", errors:errors.mapped(), oldData:req.body});
          } else {
           const users = leerArchivo('users');
           const {nombre,apellido,domicilio,email,password,image} = req.body;
@@ -100,9 +100,9 @@ const userController = {
       const users = leerArchivo("users");
       const user = users.find(usuario=> usuario.email == email);
       
-        // delete user.password;
+        delete user.password;
         req.session.user = user;
-        res.cookie('user',user,{maxAge: 1000 * 60 * 5 });
+        res.cookie('user',user,{maxAge: 1000 * 60 * 10 });
         
         if(req.body.remember == "on") {
           res.cookie('rememberMe',"true", {maxAge: 1000 * 60 * 5 });        
@@ -155,7 +155,9 @@ const userController = {
     },  
 
     logout: function(req,res,next){
-      res.send('Deberia cerrarse la sesion pero....')
+      res.clearCookie('user')
+      req.session.destroy()
+      return res.redirect('/')
     }
 
 }
