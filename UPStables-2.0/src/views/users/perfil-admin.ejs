@@ -37,7 +37,7 @@
                             <p class="">Editar Producto</p>
                         </div>
                     </a>
-                    <% if (usuario.categoria == 'supervisor') {%>
+                    <% if (usuario.categoria.toLowerCase() == 'supervisor') {%>
                         <a href="/users/registerAdmin">
                         <div class="div_enlaces_perfil-user">
                             <i class="fa-solid fa-screwdriver-wrench"></i>
