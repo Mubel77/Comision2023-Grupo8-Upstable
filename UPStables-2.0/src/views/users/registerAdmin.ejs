@@ -42,8 +42,8 @@
               <div class="div_config">
                     <label for="categoria">Categoria</label>
                     <select name="categoria"  id="categoria" class="div_config">
-                        <option >Supervisor</option>
-                        <option >Vendedor</option>
+                        <option value="supervisor" <%=locals.oldData && (oldData.categoria == "supervisor") ? "selected" : null  %> >Supervisor</option>
+                        <option value="vendedor" <%=locals.oldData && (oldData.categoria == "vendedor") ? "selected" : null  %>>Vendedor</option>
                     </select>
              </div>
              <div class="div_config">

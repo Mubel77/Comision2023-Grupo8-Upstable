@@ -66,7 +66,7 @@ const userController = {
        const errors= validationResult(req);
     
        if (!errors.isEmpty()){
-           res.render('users/registerAdmin', { title: 'Registro',subtitulo, errors:errors.mapped(), oldData:req.body});
+           res.render('users/registerAdmin', { title: 'Registro Admin',subtitulo, errors:errors.mapped(), oldData:req.body});
          } else {
           const users = leerArchivo('users');
          const {nombre,apellido,domicilio,email,password,categoria,image} = req.body;
