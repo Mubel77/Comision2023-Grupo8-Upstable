@@ -125,10 +125,10 @@
         "apellido": "Admin",
         "email": "soyadmin@gmail.com",
         "domicilio": "calle asombrosa 543",
-        "age": "4",
+        "age": "18",
         "date": "",
         "image": "DBZ_wallpaper_1440X900_by_Ryan_Cheale-1705896259044-41f9571c-25db-4985-a99c-d8cb1ea82c53.jpg",
         "password": "$2a$10$pDxMYiucRNbKwmg2XYTNwOgTLPBprmfA2mQboDoEZHzVxcdjdYiky",
-        "categoria": "supervisor"
+        "categoria" : "supervisor"
     }
 ]

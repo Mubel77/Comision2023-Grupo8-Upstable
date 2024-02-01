@@ -35,8 +35,9 @@
                 <div class="div_config">
                     <label for="categoria">Categoria</label>
                     <select name="categoria"  id="categoria" class="div_config">
-                        <option >Supervisor</option>
-                        <option >Vendedor</option>
+                        <option value="<%= locals.usario.categoria == "" ? "selected": null %>">Eligir una categoria</option>
+                        <option value="<%= locals.usario.categoria == "supervisor"? "selected": null %>" >Supervisor</option>
+                        <option value="<%= locals.usario.categoria == "vendedor"? "selected": null %>">Vendedor</option>
                     </select>
                 </div>
                 <div class="div_config">
