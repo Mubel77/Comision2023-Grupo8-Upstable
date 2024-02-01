@@ -60,7 +60,7 @@ const userController = {
         }
       },
       registerAdmin:  function(req, res, next) {
-        res.render('users/registerAdmin', { title: 'RegistroAdmin',subtitulo,});
+        res.render('users/registerAdmin', { title: 'RegistroAdmin'});
       },
       createUserAdmin: function(req,res,next){
        const errors= validationResult(req);
