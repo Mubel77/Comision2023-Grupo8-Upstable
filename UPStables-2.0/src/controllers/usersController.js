@@ -2,41 +2,10 @@ const { title } = require('process');
 const {leerArchivo,escribirArchivo} = require('../database/jsonFunctions');
 const bcrypt = require('bcryptjs');
 const {validationResult} = require('express-validator')
-// const subtitulo = "registrate";
-// const formRegistro = ['NoMBre','Apellido','Domicilio','email','ConTRaseña','confiRMAR contraseña'];
-// const formLogeo = ['email','ConTRaseña'];
-
-function tipo(element) {
-  switch (element.toLowerCase()) {
-
-    case "email":
-      type = "email";
-      break;
-
-    case "contraseña":
-      type = "password";
-      break;
-
-    case "confirmar contraseña":
-      type = "password";
-      break;
-
-    default:
-      type = "text";
-      break;
-  };
-
-  return type;
-}
-
- function etiqueta(element) {
-   let palabraCapital = element.toUpperCase().charAt(0) + element.substring(1, element.length).toLowerCase();
-   return palabraCapital;
- }
 
 const userController = {
     register: function(req, res, next) {
-      res.render('users/register', { title: 'Registro', subtitulo:"Registrate" });
+        res.render('users/register', { title: 'Registro', subtitulo:"Registrate" });
       },
 
     createUser: function(req, res, next) {
@@ -56,17 +25,18 @@ const userController = {
           };
           users.push(newUser);
           escribirArchivo(users, 'users');
-          res.redirect('/');
+          res.redirect('/users/login');
         }
       },
-      registerAdmin:  function(req, res, next) {
-        res.render('users/registerAdmin', { title: 'RegistroAdmin'});
+
+    registerAdmin:  function(req, res, next) {
+        res.render('users/registerAdmin', { title: 'RegistroAdmin',usuario: req.session.user});
       },
-      createUserAdmin: function(req,res,next){
+
+    createUserAdmin: function(req,res,next){
        const errors= validationResult(req);
-    
        if (!errors.isEmpty()){
-           res.render('users/registerAdmin', { title: 'Registro',subtitulo, errors:errors.mapped(), oldData:req.body});
+           res.render('users/registerAdmin', { title: 'Registro', errors:errors.mapped(), oldData:req.body});
          } else {
           const users = leerArchivo('users');
          const {nombre,apellido,domicilio,email,password,categoria,image} = req.body;
@@ -78,14 +48,12 @@ const userController = {
            image:req.file ? req.file.filename : "user-default.png", 
            password: bcrypt.hashSync(password,10),
            categoria
-
          }
          users.push( newAdmind);
          escribirArchivo(users,'users');
-         res.redirect('/')
-
+         res.redirect('/users/perfilAdmin')
        }
-    },
+      },
 
     login: function(req, res, next) {
         res.render('users/login', { title: 'Login' });
@@ -112,7 +80,7 @@ const userController = {
       },
 
       // contralador de la actualizacion de usuario
-      profile:(req,res)=>{
+    profile:(req,res)=>{
         const {email} = req.params;
         
         const users = leerArchivo('users');
@@ -120,9 +88,10 @@ const userController = {
         
         res.render('./users/formUpdateUser', { title: 'Editar Usuario',subtitulo: "Editar Usuario", usuario: req.session.user });
       },
-      processUpdate:(req,res)=>{
+
+    processUpdate:(req,res)=>{
        // const {id} = req.params;
-        const {nombre,apellido,email,domicilio,age,date} = req.body;
+        const {nombre,apellido,email,domicilio,age,date,categoria} = req.body;
         const users = leerArchivo('users');
         const usuarios = users.map(element => {
           if (element.email == email) {
@@ -135,6 +104,7 @@ const userController = {
               date,
               image:req.file ? req.file.filename : element.image, 
               password: element.password,
+              categoria
             }
           }
           return element
@@ -142,24 +112,31 @@ const userController = {
         escribirArchivo(usuarios,'users');
         const userUpdate = usuarios.find(elemento => elemento.email == email);
         req.session.user = userUpdate;
+        console.log("This is sessionUserUpdate....",req.session.user);
         delete userUpdate.password
         res.cookie('user',(userUpdate))
-        res.redirect('/users/perfilUser');
+        if(userUpdate.categoria) {
+          res.redirect('/users/perfilAdmin');
+        } else {
+          res.redirect('/users/perfilUser');
+        }
+        
       },
+
     perfilAdmin: function(req,res,next){
         res.render('users/perfil-admin', {title:'Mi Perfil', usuario: req.session.user})  
+        console.log("This is sessionUsuario....",{usuario:req.session.user});
       },
 
     perfilUser: function(req,res,next){
          res.render('users/perfil-user', {title:'Mi Perfil', usuario: req.session.user})
-    },  
+      },  
 
     logout: function(req,res,next){
       res.clearCookie('user')
       req.session.destroy()
       return res.redirect('/')
-    }
-
+      }
 }
 
 module.exports = userController;

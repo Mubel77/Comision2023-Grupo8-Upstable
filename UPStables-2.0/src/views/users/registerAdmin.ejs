@@ -41,10 +41,12 @@
               </div>
               <div class="div_config">
                     <label for="categoria">Categoria</label>
-                    <select name="categoria"  id="categoria" class="div_config">
-                        <option >Supervisor</option>
-                        <option >Vendedor</option>
+                    <select name="categoria"  id="categoria" class="campo_select">
+                        <option value = "" selected> Indique una Categoria </option>
+                        <option value = "supervisor"> Supervisor </option>
+                        <option value = "vendedor"> Vendedor </option>
                     </select>
+                    <p><%= locals.errors && errors.categoria ? errors.categoria.msg : null %> </p>
              </div>
              <div class="div_config">
                 <label for="image" class="col-12 mt-3">Foto de perfil</label>

@@ -43,8 +43,7 @@ const validatorRegisterAdmin = [
         .isLength({ min: 5 }).withMessage('El domicilio debe tener al menos 5 caracteres'),
         body('email').notEmpty().withMessage("El campo no puede estar vacio").bail()
         .isEmail().withMessage('Debe ser un correo con formato valido').bail()
-        .custom(value => {
-        console.log("value:",value);    
+        .custom(value => {    
         const users = leerArchivo('users');
         const user = users.find(elemento => elemento.email == value);
         return user ? false : true

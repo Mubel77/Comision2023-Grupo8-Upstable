@@ -46,10 +46,20 @@
     display: inline;
 }
 
-.div_config input {
+.div_config input{
     border: 1px solid #000;
     width: 100%;
     padding: 5%;
+    margin: 2% 0%;
+    border-radius: 15px;
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
+    margin-bottom: 10px;
+}
+
+.campo_select {
+    border: 1px solid #000;
+    width: 100%;
+    padding: 1%;
     margin: 2% 0%;
     border-radius: 15px;
     box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
@@ -127,7 +137,7 @@ input::placeholder {
     }
 
     .div_config {
-        margin: 0% 0%;
+        margin: 1% 0%;
         width: 100%;
     }
 
