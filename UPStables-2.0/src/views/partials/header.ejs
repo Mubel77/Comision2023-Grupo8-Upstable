@@ -17,22 +17,54 @@
     </div>
     
     <nav class="nav_header">
-        <div class="burguer_header">
+        <div class="burguer_header" >
             <i class="fas fa-bars"></i>
         </div>
          
-        <a href="/users/register"> 
-        <p class="texto_nav">Creá tu cuenta</p> 
-        <i class="fa-solid fa-pen"></i>
-        </a>
-        <a href="/users/login"> 
-            <p class="texto_nav">Ingresar</p> 
-            <i class="fa-solid fa-user"></i>
-        </a>
-        <a href="/products/productCart"> 
-            <p class="texto_nav">Carrito</p> 
-            <i class="fa-solid fa-cart-shopping"></i>
-        </a>
+       
+        <% if(locals.usuario){%>
+            <% if(locals.usuario.categoria){%>
+                <div class="icons_nav" id="img_user">
+                    <a href="/users/perfilAdmin">
+                        <img src="/images/users/<%= locals.usuario.image %>"  alt="foto de perfil">
+                        <p class="texto_nav">¡ Hola !<br> <%= locals.usuario.nombre %></p> 
+                    </a>
+                </div>
+           <% }else{%>
+            <div class="icons_nav" id="img_user">
+                <a href="/users/perfilUser">
+                    <img src="/images/users/<%= locals.usuario.image %>"  alt="foto de perfil">
+                    <p class="texto_nav">¡ Hola !<br> <%= locals.usuario.nombre %></p> 
+                </a>
+            </div>
+            <div class="icons_nav">
+                <a href="/products/productCart"> 
+                    <p class="texto_nav">Carrito</p> 
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+            </div>
+           <% } %>
+           
+                
+                   <% }else{ %>
+                    <div class="icons_nav">
+                        <a href="/users/register"> 
+                            <p class="texto_nav">Creá tu cuenta</p> 
+                            <i class="fa-solid fa-pen"></i>
+                            </a>
+                    </div>
+                    <div class="icons_nav">
+                        <a href="/users/login"> 
+                            <p class="texto_nav">Ingresar</p> 
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                    </div>
+            
+            
+           
+            <% } %>
+           
+           
     </nav>
     <div class="on-off">
         <i class="fa-solid fa-toggle-off"></i>
@@ -46,7 +78,4 @@
     <div class="linea"></div>
     <h4>OFERTAS</h4>
 </nav>
-<div style="display: flex;justify-content: end;padding: 0px 10px;">
-<a href="/products/dashboard"><h3 style="text-align: right; padding: 0px 5px;">Dashboard</h3></a>
-<a href="/products"><h3 style="text-align: right; padding: 0px 5px">Todos los productos</h3></a>
-</div>
+

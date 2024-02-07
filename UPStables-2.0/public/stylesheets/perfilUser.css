@@ -1,0 +1,78 @@
+a {
+    color: black;
+}
+
+.main_perfil-user {
+    display: flex;
+}
+
+.section_izq_perfil-user {
+    width: 30%;
+    padding: 5px 0px 0px 30px;
+}
+
+.div_enlaces_perfil-user {
+    display: flex;
+    align-items: center;
+    margin: 20px 5px;
+}
+
+.div_enlaces_perfil-user i {
+    font-size: 30px;
+    width: 40px;
+}
+
+.div_enlaces_perfil-user p{
+    width: 300px;
+    font-size: 28px;
+    font-style: italic;
+    margin-left: 25px;
+}
+
+.section_der_perfil-user {
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.div_miPerfil {
+    width: 50%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div_miPerfil p {
+    font-size: 58px;
+    font-style: italic;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.div_miPerfil img {
+    height: 400px;
+    width: 300px;
+    border-radius: 150px;
+}
+
+.section_der_article_perfil-user { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    padding: 5px 50px;
+}
+
+.div_p_titulos_perfil-user{
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-decoration-line: underline;
+    font-style: italic;
+}
+
+.div_p_subtitulos_perfil-user {
+    font-size: 36px;
+    margin: 20px 0px 20px 30px; 
+}

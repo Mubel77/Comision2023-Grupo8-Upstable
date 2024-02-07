@@ -1,0 +1,77 @@
+<%- include('../partials/head')%>
+    
+<body>
+        <%- include('../partials/header.ejs')%>    
+
+    <% if(locals.usuario) {%>
+        <main class="main_perfil-user">    
+            <section class="section_izq_perfil-admin">
+                <div class="div_miPerfil-admin">
+                    <img src="/images/users/<%= usuario.image %>" alt="Avatar-Administrador">    
+                    <p class="div_p_subtitulos_perfil-user"><%= usuario.nombre %></p>
+                    <p class="div_p_subtitulos_perfil-user"><%= usuario.email %></p>
+                    <p class="div_p_subtitulos_perfil-user"><%= usuario.categoria.toLocaleUpperCase() %></p>
+                </div>
+                <article class="section_izq_article_perfil-admin">
+                    <a href="/products/dashboard">
+                        <div class="div_enlaces_perfil-user">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                            <p class="">Dashboard</p>
+                        </div>
+                    </a>
+                    <a href="/products/">
+                        <div class="div_enlaces_perfil-user">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                            <p class="">Lista de productos</p>
+                        </div>
+                    </a>
+                    <a href="/products/formCreate">
+                        <div class="div_enlaces_perfil-user">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                            <p class="">Crear Producto</p>
+                        </div>
+                    </a>
+                    <a href="/products/dashboard">
+                        <div class="div_enlaces_perfil-user">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                            <p class="">Editar Producto</p>
+                        </div>
+                    </a>
+                    <% if (usuario.categoria.toLowerCase() == 'supervisor') {%>
+                        <a href="/users/registerAdmin">
+                        <div class="div_enlaces_perfil-user">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                            <p class="">Crear Admin</p>
+                        </div>
+                    </a>
+                    <% } %>
+                    
+                </article>
+            </section>
+            <section class="section_der_perfil-admin">
+                <a href="/users/perfilAdmin">
+                    <div class="div_enlaces_perfil-admin">
+                        <i class="fa-solid fa-user"></i>
+                        <p class="">Mi cuenta</p>
+                    </div>
+                </a>
+                <a href="/users/profile">
+                    <div class="div_enlaces_perfil-admin">
+                        <i class="fa-solid fa-user-pen"></i>
+                        <p>Editar perfil</p>
+                    </div>
+                </a>
+                <a href="/users/logout">
+                    <div class="div_enlaces_perfil-admin">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <p>Salir</p>
+                    </div>
+                </a>
+            </section>
+        </main>
+    <% } %> 
+    
+        <%- include('../partials/footer') %>
+    
+</body>
+</html>

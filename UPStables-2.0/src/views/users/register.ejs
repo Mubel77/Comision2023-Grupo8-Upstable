@@ -8,20 +8,42 @@
         <div class="subtitulo_registrate">
             <p id="p_registro"><%= subtitulo %></p>
         </div>    
-        <form method="POST" action="/users/register" id="form_registro">
-                <%  for(x=0; x < formRegistro.length; x++) {%>
-                    <% if (x<2){%>
+        <form method="POST" action="/users/register" id="form_registro" enctype="multipart/form-data">
             <div class="div_config nombre">
-                <label for="<%- formRegistro[x].toLowerCase()%>"><%= etiqueta(formRegistro[x])%></label>
-                <input type="<%- tipo(formRegistro[x])%>" name="<%- formRegistro[x].toLowerCase()%>" placeholder="<%= etiqueta(formRegistro[x])%>" required>
+                <label for="nombre">Nombre</label>
+                <input type="text"  name="nombre" placeholder="Nombre" value="<%= locals.oldData ? oldData.nombre : null %>" >
+                <p><%= locals.errors&& errors.nombre ? errors.nombre.msg : null %> </p>
             </div>
-                    <% } else {%>
+            <div class="div_config nombre">
+                <label for="apellido">Apellido</label>
+                <input type="text"  name="apellido" placeholder="Apellido"  value="<%= locals.oldData ? oldData.apellido : null %>">
+                <p><%= locals.errors && errors.apellido ? errors.apellido.msg : null %> </p>
+            </div>
             <div class="div_config">
-                <label for="<%- formRegistro[x].toLowerCase()%>"><%= etiqueta(formRegistro[x]) %></label>
-                <input type="<%- tipo(formRegistro[x]) %>"  name="<%- formRegistro[x].toLowerCase()%>" placeholder="<%= etiqueta(formRegistro[x]) %>" required>
+                <label for="domicilio">Domicilio</label>
+                <input type="text"  name="domicilio" placeholder="Domicilio" value="<%= locals.oldData ? oldData.domicilio : null %>">
+                <p><%= locals.errors && errors.domicilio ? errors.domicilio.msg : null %> </p>
             </div>
-                    <% }%>
-                <% }%>
+            <div class="div_config">
+                <label for="email">Email</label>
+                <input type="email"  name="email" placeholder="Email" value="<%= locals.oldData ? oldData.email : null %>">
+                <p><%= locals.errors && errors.email ? errors.email.msg : null %> </p>
+            </div>
+            <div class="div_config">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Contrseña" value="<%= locals.oldData ? oldData.password : null %>">
+                <p> <%= locals.errors && errors.password ? errors.password.msg : null %> </p>
+            </div> 
+            <div class="div_config">
+              <label for="password">Confirmar contraseña</label>
+              <input type="password" name="passwordConfirmation" placeholder="Confirmar contraseña" value="<%= locals.oldData ? oldData.passwordConfirmation : null %>">
+              <p><%= locals.errors && errors.password ? errors.password.msg : null %> </p>
+          </div>
+          <div class="div_config">
+            <label for="image" class="col-12 mt-3">Foto de perfil</label>
+            <input type="file" class="form-control" id="inputGroupFile02" name="image">
+            <p><%= locals.errors && errors.image ? errors.image.msg : null %> </p>
+        </div>
             <div class="boton_registro">
                 <button type="submit">Crear cuenta</button>
             </div>           

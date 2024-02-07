@@ -49,6 +49,7 @@ header a{
     width:90%;
     display:flex;
     justify-content: space-around;
+    align-items: center;
 }
 .nav_header i{
     font-size: 120%;
@@ -76,6 +77,14 @@ header a{
 .on-off{
     display: none;
 }
+.icons_nav{
+    padding: 10px;
+    
+} 
+    .icons_nav img{
+        border-radius: 50%;
+        width: 30px
+    }
 @media (min-width: 768px){
 header{
     display: flex;
@@ -91,6 +100,16 @@ header{
     justify-content:space-around;
     flex-wrap: wrap;
     align-items: center;
+}
+#img_user{
+    width: 40%;
+   
+    
+}
+#img_user a{
+    width: 100%;
+    display:flex;
+    justify-content: space-around;
 }
 .logo_header{
     display: flex;

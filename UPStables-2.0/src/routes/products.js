@@ -14,6 +14,7 @@ const storage= multer.diskStorage({
 });
 const upload=multer({storage});
 
+const {sessionValidator, isAdmin} = require('../middlewares/sessionValidator.js')
 const productsController = require ('../controllers/productsController.js');
 //Ver todos productos listados
 router.get('/', productsController.list)
@@ -22,21 +23,21 @@ router.get('/', productsController.list)
 router.get('/productDetail/:id', productsController.detail);
 
 // Listar productos Admin
-router.get('/dashboard', productsController.dashboard);
+router.get('/dashboard',isAdmin, productsController.dashboard);
 router.get('/dashboard/search', productsController.dashboardSearch);
 
 // Crear producto Admin
-router.get('/formCreate', productsController.formCreate);
+router.get('/formCreate', isAdmin, productsController.formCreate);
 router.post('/formCreate', upload.array('imagenes'), productsController.create);
 
 // Actualizar productos Admin
-router.get('/formUpdate/:id', productsController.formUpdate);
+router.get('/formUpdate/:id',isAdmin, productsController.formUpdate);
 router.put('/update/:id', upload.array('imagenes'), productsController.update);
 
 // Borrar productos Admin
 router.delete('/delete/:id', productsController.delete);
 
 // Ver carrito de compra
-router.get('/productCart', productsController.cart);
+router.get('/productCart', sessionValidator, productsController.cart);
 
 module.exports = router;

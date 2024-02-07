@@ -8,18 +8,18 @@ const productsController = {
 
   list:function(req, res, next) {
     let productos = leerArchivo('products')
-    res.render('products/productsList', { title: 'List Products', productos });},
+    res.render('products/productsList', { title: 'List Products', productos, usuario: req.session.user });},
 
     detail: function(req, res, next) {
       let productos = leerArchivo("products");
       const{id}= req.params;
       const producto= productos.find(producto=> producto.id == id);
-        res.render('products/productDetail', { title:producto.modelo, producto, productos });
+        res.render('products/productDetail', { title:producto.modelo, producto, productos,usuario: req.session.user });
     },
     
     dashboard: function(req, res, next) {
       let productos= leerArchivo("products");
-        res.render('products/dashboard', { title: 'Dashboard', productos });
+        res.render('products/dashboard', { title: 'Dashboard', productos, usuario: req.session.user });
     },
 
     dashboardSearch: function(req, res, next) {
@@ -27,11 +27,11 @@ const productsController = {
       let {keywords} = req.query;
       let productos= leerArchivo("products");
       let result = productos.filter(producto => producto.marca.toLowerCase().includes(keywords.toLowerCase()))
-      res.render('products/dashboardSearch', { title: 'Dashboard', mensaje, result});
+      res.render('products/dashboardSearch', { title: 'Dashboard', mensaje, result, usuario: req.session.user});
     },
 
     formCreate: function(req, res, next) {
-      res.render('products/formCreate', { title: 'Formulario Crear'});
+      res.render('products/formCreate', { title: 'Formulario Crear', usuario: req.session.user});
     },
 
     create: function(req, res, next) {
@@ -65,7 +65,7 @@ const productsController = {
       let products= leerArchivo('products');
 		const {id}=req.params;
 		const productToEdit = products.find(product => product.id == id);
-     res.render('products/formUpdate', { title: 'Formulario Modificar', productToEdit});
+     res.render('products/formUpdate', { title: 'Formulario Modificar', productToEdit,usuario: req.session.user});
     },
 
     update: function(req, res, next) {
@@ -119,7 +119,7 @@ const productsController = {
 
     cart: function(req, res, next) {
       let productsCart = leerArchivo("productosCarrito");
-      res.render('products/productCart', { title: 'Carrito de Compras', productsCart, cartItemCount: productsCart.length });
+      res.render('products/productCart', { title: 'Carrito de Compras', productsCart, cartItemCount: productsCart.length, usuario: req.session.user });
   },
 }
 
