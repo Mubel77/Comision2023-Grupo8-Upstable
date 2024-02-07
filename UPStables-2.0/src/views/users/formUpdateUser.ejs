@@ -34,17 +34,18 @@
                 </div>
                 <div class="div_config">
                     <label for="categoria">Categoria</label>
-                    <select name="categoria"  id="categoria" class="div_config">
-                        <option >Supervisor</option>
-                        <option >Vendedor</option>
+                    <select name="categoria"  id="categoria" class="campo_select">
+                        <option value="supervisor" <%= usuario.categoria == "supervisor" ? "selected" : null %>>Supervisor</option>
+                        <option value="vendedor" <%= usuario.categoria == "vendedor" ? "selected" : null %>>Vendedor</option>
                     </select>
+                    <p><%= locals.errors && errors.categoria ? errors.email.msg : null %> </p>
                 </div>
                 <div class="div_config">
                     <label for="age">Edad</label>
                     <input type="number" name="age" id="age" value="<%= locals.usuario ? usuario.age : locals.oldData && oldData.age ? oldData.age : null %>">
                     <p><%= locals.errors && errors.age ? errors.age.msg : null %> </p>
                 </div> 
-                <div class="div_config"></div>
+                <div class="div_config">
                     <label for="date">Fecha de Nacimiento</label>
                     <input type="date" name="date" id="date" >
                     <p><%= locals.errors && errors.date ? errors.date.msg : null %> </p>

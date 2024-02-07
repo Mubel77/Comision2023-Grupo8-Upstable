@@ -9,7 +9,7 @@ const upload = require('../validaciones/uploadUser');
 router.get('/register', usersController.register);
 router.post('/register', upload.single('image'), validatorRegister, usersController.createUser);
 
-router.get('/registerAdmin', usersController.registerAdmin);
+router.get('/registerAdmin', isAdmin, usersController.registerAdmin);
 router.post('/registerAdmin', upload.single('image'),validatorRegisterAdmin, usersController.createUserAdmin);
 
 
