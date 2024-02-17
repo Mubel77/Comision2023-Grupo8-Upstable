@@ -356,4 +356,102 @@
 * Emi:
     - Qué hizo ayer: corregir funcion y el middleware para recordar el inicio de sesion del usuario, transcribir retrospectiva y daily
     - Si se encontró con algún impedimento:
-    - Qué va a hacer hoy: completar registro de dailys, testear errores
+    - Qué va a hacer hoy: completar registro de dailys, testear errores.
+
+# SPRINT 6
+
+### Lunes 12/02/24
+* Mauri: 
+    - Qué hizo ayer:
+    - Si se encontró con algún impedimento: 
+    - Qué va a hacer hoy: idear diagrama para la base de datos
+
+* Santi: 
+    - Qué hizo ayer:
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: idear diagrama para la base de datos
+
+* Emi:
+    - Qué hizo ayer:
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: idear diagrama para la base de datos
+
+### Martes 13/02/24
+* Mauri: 
+    - Qué hizo ayer: idear diagrama para la base de datos
+    - Si se encontró con algún impedimento: definir entidades y sus relaciones
+    - Qué va a hacer hoy: continuar con el diagrama para la base de datos
+
+* Santi: 
+    - Qué hizo ayer: idear diagrama para la base de datos
+    - Si se encontró con algún impedimento: definir entidades y sus relaciones
+    - Qué va a hacer hoy: continuar con el diagrama para la base de datos
+
+* Emi:
+    - Qué hizo ayer: idear diagrama para la base de datos
+    - Si se encontró con algún impedimento: definir entidades y sus relaciones
+    - Qué va a hacer hoy: continuar con el diagrama para la base de datos
+
+### Miercoles 14/02/24
+* Mauri: 
+    - Qué hizo ayer: idear diagrama para la base de datos
+    - Si se encontró con algún impedimento: definir entidades y sus relaciones  
+    - Qué va a hacer hoy: reunion grupal para definir el diagrama 
+
+* Santi: 
+    - Qué hizo ayer: idear diagrama para la base de datos
+    - Si se encontró con algún impedimento: definir entidades y sus relaciones
+    - Qué va a hacer hoy: reunion grupal para definir el diagrama
+
+* Emi:
+    - Qué hizo ayer: idear diagrama para la base de datos
+    - Si se encontró con algún impedimento: definir entidades y sus relaciones
+    - Qué va a hacer hoy: reunion grupal para definir el diagrama
+
+### Jueves 15/02/24
+* Mauri: 
+    - Qué hizo ayer: definimos el diagrama a presentar
+    - Si se encontró con algún impedimento: definir entidades y sus relaciones
+    - Qué va a hacer hoy: exposicion del diagrama en clase para corregir errores
+
+* Santi: 
+    - Qué hizo ayer: definimos el diagrama a presentar
+    - Si se encontró con algún impedimento: definir entidades y sus relaciones
+    - Qué va a hacer hoy: exposicion del diagrama en clase para corregir errores
+
+* Emi:
+    - Qué hizo ayer: definimos el diagrama a presentar
+    - Si se encontró con algún impedimento: definir entidades y sus relaciones
+    - Qué va a hacer hoy: exposicion del diagrama en clase para corregir errores
+
+### Viernes 16/02/24
+* Mauri: 
+    - Qué hizo ayer: exposicion del diagrama en clase para corregir errores
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: reunion grupal para definir la reparticion de tareas y realizar la retrospectiva
+
+* Santi: 
+    - Qué hizo ayer: exposicion del diagrama en clase para corregir errores
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: reunion grupal para definir la reparticion de tareas y realizar la retrospectiva
+
+* Emi:
+    - Qué hizo ayer: exposicion del diagrama en clase para corregir errores
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: reunion grupal para definir la reparticion de tareas y realizar la retrospectiva
+
+### Sabado 17/02/24
+* Mauri: 
+    - Qué hizo ayer: reunion grupal para definir la reparticion de tareas y realizar la retrospectiva
+    - Si se encontró con algún impedimento: 
+    - Qué va a hacer hoy: refactorizar los controladores del producto
+
+* Santi: 
+    - Qué hizo ayer: reunion grupal para definir la reparticion de tareas y realizar la retrospectiva
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: refactorizar los controladores del usuario
+
+* Emi:
+    - Qué hizo ayer: reunion grupal para definir la reparticion de tareas y realizar la retrospectiva
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: configuracion de Sequelize y definicion de modelos relacionados con la entidad Usuario
