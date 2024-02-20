@@ -2,7 +2,7 @@
 // const {Model} = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  const alias = 'Potencia';
+  const alias = 'Carrito_Compra';
   const cols = {
     id: {
       unsigned: true,
@@ -12,8 +12,15 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    potencia: {
+    usuario_id: {
       unsigned: true,
+      unique: true,
+      allowNull: false,
+      type: DataTypes.INTEGER
+    },
+    producto_id: {
+      unsigned: true,
+      unique: true,
       allowNull: false,
       type: DataTypes.INTEGER
     },
@@ -27,9 +34,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   const config = {
-    tableName: 'potencias',
+    tableName: 'carritos_compras',
     timestamps: true
   }
-  const Potencia = sequelize.define(alias, cols, config)
-  return Potencia;
+  const Carrito_Compra = sequelize.define(alias, cols, config)
+  return Carrito_Compra;
 };

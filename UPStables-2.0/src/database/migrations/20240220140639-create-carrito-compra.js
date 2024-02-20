@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, DataTypes) {
-    await queryInterface.createTable('categorias', {
+    await queryInterface.createTable('carritos_compras', {
       id: {
         unsigned: true,
         unique: true,
@@ -11,9 +11,17 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      categoria: {
+      usuario_id: {
+        unsigned: true,
+        unique: true,
         allowNull: false,
-        type: DataTypes.STRING(100)
+        type: DataTypes.INTEGER
+      },
+      producto_id: {
+        unsigned: true,
+        unique: true,
+        allowNull: false,
+        type: DataTypes.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -26,6 +34,6 @@ module.exports = {
     });
   },
   async down(queryInterface, DataTypes) {
-    await queryInterface.dropTable('categorias');
+    await queryInterface.dropTable('carritos_compras');
   }
 };

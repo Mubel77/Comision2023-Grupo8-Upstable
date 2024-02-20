@@ -1,7 +1,6 @@
 // 'use strict';
-// const {
-//   Model
-// } = require('sequelize');
+// const {Model} = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   const alias = 'Marca';
   const cols = {
@@ -28,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   const config = {
     tableName: 'marcas',
-    timestamp: true
+    timestamps: true
   }
   const Marca = sequelize.define(alias, cols, config)
   return Marca;
