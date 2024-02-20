@@ -1,9 +1,8 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+// 'use strict';
+// const {Model} = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-  const alias = '';
+  const alias = 'Usuario_has_Telefono';
   const cols = {
     id: {
       allowNull: false,

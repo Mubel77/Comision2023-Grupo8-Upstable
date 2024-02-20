@@ -1,9 +1,8 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+// 'use strict';
+// const {} = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-  const alias = '';
+  const alias = 'Usuario_has_Direccion';
   const cols = {
     id: {
       unsigned: true,
@@ -38,6 +37,6 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'usuarios_has_direcciones',
     timestamp: true
   };
-  const Usuario_has_Direcciones = sequelize.define(alias, cols, config)
-  return Usuario_has_Direcciones;
+  const Usuario_has_Direccion = sequelize.define(alias, cols, config)
+  return Usuario_has_Direccion;
 };

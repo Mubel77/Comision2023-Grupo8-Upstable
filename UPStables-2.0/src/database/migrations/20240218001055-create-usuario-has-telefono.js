@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, DataTypes) {
-    await queryInterface.createTable('Usuario_has_Telefonos', {
+    await queryInterface.createTable('usuarios_has_telefonos', {
       id: {
         unsigned: true,
         unique: true,
@@ -33,7 +33,7 @@ module.exports = {
       }
     });
   },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Usuario_has_Telefonos');
+  async down(queryInterface, DataTypes) {
+    await queryInterface.dropTable('usuarios_has_telefonos');
   }
 };
