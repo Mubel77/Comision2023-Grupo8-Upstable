@@ -32,11 +32,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DATE
     }
-  }
+  };
   const config = {
     tableName: 'carritos_compras',
     timestamps: true
-  }
-  const Carrito_Compra = sequelize.define(alias, cols, config)
+  };
+  const Carrito_Compra = sequelize.define(alias, cols, config);
   return Carrito_Compra;
 };

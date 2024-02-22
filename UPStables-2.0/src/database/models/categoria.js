@@ -24,15 +24,15 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DATE
     }
-  }
+  };
   const config = {
     tableName: 'categorias',
     timestamps: true
-  }
-  const Categoria = sequelize.define(alias, cols, config)
+  };
+  const Categoria = sequelize.define(alias, cols, config);
 
   Categoria.associate = (modelos) => {
-    Categoria.hasOne(modelos.Producto,{
+    Categoria.hasMany(modelos.Producto,{
       as:'productos',
       foreignKey:'id_categorias'
     });

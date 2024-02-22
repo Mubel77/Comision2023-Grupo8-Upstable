@@ -29,11 +29,11 @@ module.exports = (sequelize, DataTypes) => {
   const config = {
     tableName: 'tomas',
     timestamps: true
-  }
-  const Toma = sequelize.define(alias, cols, config)
+  };
+  const Toma = sequelize.define(alias, cols, config);
 
   Toma.associate = (modelos) => {
-    Toma.hasOne(modelos.Producto,{
+    Toma.hasMany(modelos.Producto,{
       as:'productos',
       foreignKey:'id_tomas'
     });

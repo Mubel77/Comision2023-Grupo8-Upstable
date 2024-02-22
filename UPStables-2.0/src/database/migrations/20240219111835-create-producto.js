@@ -78,12 +78,6 @@ module.exports = {
           key: 'id'
         }
       },
-      id_imagen: {
-        unsigned: true,
-        unique: true,
-        allowNull: false,
-        type: DataTypes.INTEGER
-      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE
