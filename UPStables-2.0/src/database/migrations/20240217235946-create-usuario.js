@@ -32,7 +32,13 @@ module.exports = {
         type: DataTypes.INTEGER,
         allowNull: false,
         unsigned: true,
-        unique: true
+        unique: true,
+        references: {
+          model: {
+            tableName: 'roles'
+          },
+          key: 'id'
+        }
       },
       imagen_id: {
         type: DataTypes.INTEGER,

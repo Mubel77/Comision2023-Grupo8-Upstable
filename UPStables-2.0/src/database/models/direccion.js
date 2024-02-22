@@ -29,6 +29,12 @@ module.exports = (sequelize, DataTypes) => {
     provincia: {
       type: DataTypes.STRING(100)
     },
+    id_usuario: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unsigned: true,
+      unique: true
+    },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE
@@ -42,6 +48,14 @@ module.exports = (sequelize, DataTypes) => {
     tableName:'direcciones',
     timestamps: true
   };
-  const Direccion = sequelize.define(alias, cols, config)
+  const Direccion = sequelize.define(alias, cols, config);
+
+  Direccion.associate = (modelos) => {
+    Direccion.belongsTo(modelos.Usuario, { 
+      as: 'usuarios',
+      foreignKey: 'id_usuario' 
+    });
+  };
+
   return Direccion;
 };

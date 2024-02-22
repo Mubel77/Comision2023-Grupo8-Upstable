@@ -19,11 +19,17 @@ module.exports = {
         allowNull: false,
         type: DataTypes.STRING(100)
       },
-      id_producto: {
+      id_usuario: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
         unsigned: true,
         unique: true,
-        allowNull: false,
-        type: DataTypes.INTEGER
+        references: {
+          model: {
+            tableName: 'usuarios'
+          },
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,

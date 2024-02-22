@@ -37,6 +37,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     imagen_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       unsigned: true,
       unique: true
     },
@@ -52,7 +53,30 @@ module.exports = (sequelize, DataTypes) => {
   const config = {
     tableName : 'usuarios',
     timestamp : true
-  }
-  const Usuario = sequelize.define(alias, cols, config)
+  };
+  const Usuario = sequelize.define(alias, cols, config);
+
+  Usuario.associate = (modelos) => {
+    Usuario.belongsTo(modelos.Rol, { 
+      as: 'roles',
+      foreignKey: 'rol_id' 
+    });
+
+    Usuario.hasMany(modelos.Direccion, { 
+      as: 'direcciones',
+      foreignKey: 'id_usuario' 
+    }); 
+
+    Usuario.hasMany(modelos.Telefono, { 
+      as: 'telefonos',
+      foreignKey: 'id_usuario' 
+    });
+
+    Usuario.belongsTo(modelos.Imagen,{
+      as:'imagenes',
+      foreignKey: 'imagen_id'
+    })
+  };
+
   return Usuario;
 };

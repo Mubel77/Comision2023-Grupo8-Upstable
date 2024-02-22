@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING(100)
     },
-    id_producto: {
+    usuario_id: {
       unsigned: true,
       unique: true,
       allowNull: false,
@@ -38,7 +38,15 @@ module.exports = (sequelize, DataTypes) => {
   const config = {
     tableName:'imagenes',
     timestamp: true
+  };
+  const Imagen = sequelize.define(alias, cols, config);
+
+  Imagen.associate = (modelos) => {
+    Imagen.hasOne(modelos.Usuario,{
+      as: 'usuarios',
+      foreignKey: 'usuario_id'
+    })
   }
-  const Imagen = sequelize.define(alias, cols, config)
+
   return Imagen;
 };

@@ -22,6 +22,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unsigned: true
     },
+    id_usuario: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unsigned: true,
+      unique: true,
+    },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE
@@ -34,7 +40,15 @@ module.exports = (sequelize, DataTypes) => {
   const config = {
     tableName:'telefonos',
     timestamp:true
+  };
+  const Telefono = sequelize.define(alias, cols, config);
+
+  Telefono.associate = (modelos) => {
+    Telefono.belongsTo(modelos.Usuario,{
+      as:'usuarios',
+      foreignKey: 'id_usuario'
+    })
   }
-  const Telefono = sequelize.define(alias, cols, config)
+
   return Telefono;
 };

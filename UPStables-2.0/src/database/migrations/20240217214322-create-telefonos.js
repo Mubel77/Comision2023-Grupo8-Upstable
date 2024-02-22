@@ -21,6 +21,18 @@ module.exports = {
         allowNull: false,
         unsigned: true
       },
+      id_usuario: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unsigned: true,
+        unique: true,
+        references: {
+          model: {
+            tableName: 'usuarios'
+          },
+          key: 'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE

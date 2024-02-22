@@ -28,6 +28,18 @@ module.exports = {
       provincia: {
         type: DataTypes.STRING(100)
       },
+      id_usuario: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unsigned: true,
+        unique: true,
+        references: {
+          model: {
+            tableName: 'usuarios'
+          },
+          key: 'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE
