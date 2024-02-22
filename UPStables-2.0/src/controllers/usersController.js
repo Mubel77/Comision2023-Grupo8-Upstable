@@ -1,7 +1,8 @@
 const { title } = require('process');
 const {leerArchivo,escribirArchivo} = require('../database/jsonFunctions');
 const bcrypt = require('bcryptjs');
-const {validationResult} = require('express-validator')
+const {validationResult} = require('express-validator');
+const db = require('../database/models');
 
 const userController = {
     register: function(req, res, next) {
@@ -13,7 +14,6 @@ const userController = {
         if (!errors.isEmpty()){
           res.render('users/register', { title: 'Registro',subtitulo:"Registrate", errors:errors.mapped(), oldData:req.body});
          } else {
-          const users = leerArchivo('users');
           const {nombre,apellido,domicilio,email,password,image} = req.body;
           const newUser = {
             nombre: nombre.trim(),
@@ -23,9 +23,14 @@ const userController = {
             image:req.file ? req.file.filename : "user-default.png", 
             password: bcrypt.hashSync(password,10),
           };
-          users.push(newUser);
-          escribirArchivo(users, 'users');
-          res.redirect('/users/login');
+          db.Usuario.create(newUser)
+          .then((newUser)=>{
+            res.redirect('/users/login');
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
+          
         }
       },
 
@@ -38,9 +43,8 @@ const userController = {
        if (!errors.isEmpty()){
            res.render('users/registerAdmin', { title: 'Registro', errors:errors.mapped(), oldData:req.body});
          } else {
-          const users = leerArchivo('users');
          const {nombre,apellido,domicilio,email,password,categoria,image} = req.body;
-         const newAdmind = {
+         const newAdmin = {
            nombre: nombre.trim(),
            apellido: apellido.trim(),
            domicilio: domicilio.trim(),
@@ -49,9 +53,13 @@ const userController = {
            password: bcrypt.hashSync(password,10),
            categoria
          }
-         users.push( newAdmind);
-         escribirArchivo(users,'users');
-         res.redirect('/users/perfilAdmin')
+         db.Usuario.create(newAdmin)
+         .then((newAdmin)=>{
+          res.redirect('/users/perfilAdmin')
+         })
+         .catch((err)=>{
+          console.log(err);
+         })
        }
       },
 
@@ -64,11 +72,14 @@ const userController = {
       if(!errores.isEmpty()){
         res.render('./users/login', {errores:errores.mapped(), old: req.body, title: "Login"})
       }
-      const {email, password} = req.body;
-      const users = leerArchivo("users");
-      const user = users.find(usuario=> usuario.email == email);
-      
-        delete user.password;
+      const {email} = req.body;
+      db.Usuario.findOne({
+        attributes: {exclude: ["password"]},
+        where: {
+          email,
+        }
+      })
+      .then((user)=>{
         req.session.user = user;
         res.cookie('user',user,{maxAge: 1000 * 60 * 10 });
         
@@ -77,6 +88,11 @@ const userController = {
         }
         
       res.redirect('/')
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+        
       },
 
       // contralador de la actualizacion de usuario
