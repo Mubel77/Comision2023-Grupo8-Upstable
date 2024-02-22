@@ -15,13 +15,25 @@ module.exports = {
         unsigned: true,
         unique: true,
         allowNull: false,
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        references: {
+          model: {
+            tableName: 'usuarios'
+          },
+          key: 'id'
+        }
       },
       producto_id: {
         unsigned: true,
         unique: true,
         allowNull: false,
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        references: {
+          model: {
+            tableName: 'productos'
+          },
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,

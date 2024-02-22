@@ -57,6 +57,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER
     },
+    id_imagen: {
+      unsigned: true,
+      unique: true,
+      allowNull: false,
+      type: DataTypes.INTEGER
+    },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE
@@ -71,5 +77,40 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true
   }
   const Producto = sequelize.define(alias, cols, config)
+
+  Producto.associate = (modelos) => {
+
+    Producto.belongsTo(modelos.Categoria,{
+      as:'categorias',
+      foreignKey:'id_categorias'
+    });
+
+    Producto.belongsTo(modelos.Marca,{
+      as:'marcas',
+      foreignKey:'id_marcas'
+    });
+
+    Producto.belongsTo(modelos.Potencia,{
+      as:'potencias',
+      foreignKey:'id_potencias'
+    });
+
+    Producto.belongsTo(modelos.Toma,{
+      as:'tomas',
+      foreignKey:'id_tomas'
+    });
+
+    Producto.belongsTo(modelos.Imagen,{
+      as:'imagenes',
+      foreignKey:'id_imagen'
+    });
+
+    Producto.belongsToMany(modelos.Carrito_Compra,{
+      as:'imagenes',
+      foreignKey:'id_imagen'
+    });
+
+  }
+
   return Producto;
 };

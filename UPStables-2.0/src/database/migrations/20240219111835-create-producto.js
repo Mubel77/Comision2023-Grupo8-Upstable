@@ -34,21 +34,51 @@ module.exports = {
         unsigned: true,
         unique: true,
         allowNull: false,
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        references: {
+          model: {
+            tableName: 'potencias'
+          },
+          key: 'id'
+        }
       },
       id_tomas: {
         unsigned: true,
         unique: true,
         allowNull: false,
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        references: {
+          model: {
+            tableName: 'tomas'
+          },
+          key: 'id'
+        }
       },
       id_marcas: {
         unsigned: true,
         unique: true,
         allowNull: false,
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        references: {
+          model: {
+            tableName: 'marcas'
+          },
+          key: 'id'
+        }
       },
       id_categorias: {
+        unsigned: true,
+        unique: true,
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: {
+          model: {
+            tableName: 'categorias'
+          },
+          key: 'id'
+        }
+      },
+      id_imagen: {
         unsigned: true,
         unique: true,
         allowNull: false,

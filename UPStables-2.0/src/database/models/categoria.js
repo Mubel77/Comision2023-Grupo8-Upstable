@@ -30,5 +30,13 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true
   }
   const Categoria = sequelize.define(alias, cols, config)
+
+  Categoria.associate = (modelos) => {
+    Categoria.hasOne(modelos.Producto,{
+      as:'productos',
+      foreignKey:'id_categorias'
+    });
+  }
+
   return Categoria;
 };
