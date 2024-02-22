@@ -80,48 +80,82 @@ const userController = {
       },
 
       // contralador de la actualizacion de usuario
-    profile:(req,res)=>{
-        const {email} = req.params;
-        
-        const users = leerArchivo('users');
-        const user = users.find(elemento => elemento.email == email);
-        
+      formUpdateUser:(req,res)=>{
+        // const {email} = req.params;
+        // const users = leerArchivo('users');
+        // const user = users.find(elemento => elemento.email == email);
+        const {id}=req.session;
+        db.User.findByPk(id)
+        .then(response => {  res.render('./users/formUpdateUser',
+         { title: 'Editar Usuario',subtitulo: "Editar Usuario",
+         user: response.dataValues,
+          usuario: req.session.user });
+        })
+        .catch(err => console.log(err))
+         
         res.render('./users/formUpdateUser', { title: 'Editar Usuario',subtitulo: "Editar Usuario", usuario: req.session.user });
       },
+      processUpdate:(req,res)=>{
+         const {id} = req.params;
+         const {nombre,apellido,email,domicilio,age,date,categoria,image} = req.body;
+          db.User.update(
+              {
+               nombre: nombre.trim(),
+               apellido:apellido.trim(),
+               email:email.trim(),
+               domicilio,
+               age,
+               date,
+               image:req.file ? req.file.filename : element.image, 
+               password: element.password,
+               categoria
+              },{
+                where:{
+                  id
+                }
+              }).then(UserUpDate => {
+                  if(userUpdate.categoria) {
+                    res.redirect(`/users/perfilAdmin/${id}`);
+                  } else {
+                  res.redirect(`/users/perfilUser/${id}`);
+                }
+              })
+              .catch(err => console.log(err))
+       },
 
-    processUpdate:(req,res)=>{
-       // const {id} = req.params;
-        const {nombre,apellido,email,domicilio,age,date,categoria} = req.body;
-        const users = leerArchivo('users');
-        const usuarios = users.map(element => {
-          if (element.email == email) {
-            return {
-              nombre: nombre.trim(),
-              apellido:apellido.trim(),
-              email:email.trim(),
-              domicilio,
-              age,
-              date,
-              image:req.file ? req.file.filename : element.image, 
-              password: element.password,
-              categoria
-            }
-          }
-          return element
-        });
-        escribirArchivo(usuarios,'users');
-        const userUpdate = usuarios.find(elemento => elemento.email == email);
-        req.session.user = userUpdate;
-        console.log("This is sessionUserUpdate....",req.session.user);
-        delete userUpdate.password
-        res.cookie('user',(userUpdate))
-        if(userUpdate.categoria) {
-          res.redirect('/users/perfilAdmin');
-        } else {
-          res.redirect('/users/perfilUser');
-        }
+    // processUpdate:(req,res)=>{
+    //    // const {id} = req.params;
+    //     const {nombre,apellido,email,domicilio,age,date,categoria} = req.body;
+    //     const users = leerArchivo('users');
+    //     const usuarios = users.map(element => {
+    //       if (element.email == email) {
+    //         return {
+    //           nombre: nombre.trim(),
+    //           apellido:apellido.trim(),
+    //           email:email.trim(),
+    //           domicilio,
+    //           age,
+    //           date,
+    //           image:req.file ? req.file.filename : element.image, 
+    //           password: element.password,
+    //           categoria
+    //         }
+    //       }
+    //       return element
+    //     });
+    //     escribirArchivo(usuarios,'users');
+    //     const userUpdate = usuarios.find(elemento => elemento.email == email);
+    //     req.session.user = userUpdate;
+    //     console.log("This is sessionUserUpdate....",req.session.user);
+    //     delete userUpdate.password
+    //     res.cookie('user',(userUpdate))
+    //     if(userUpdate.categoria) {
+    //       res.redirect('/users/perfilAdmin');
+    //     } else {
+    //       res.redirect('/users/perfilUser');
+    //     }
         
-      },
+    //   },
 
     perfilAdmin: function(req,res,next){
         res.render('users/perfil-admin', {title:'Mi Perfil', usuario: req.session.user})  

@@ -17,7 +17,7 @@ router.get('/login', usersController.login);
 router.post('/login', loginValidator, usersController.loginUp);
 
 //ruta para editar usuario, tarea de santy y mauri, 
-router.get('/profile', sessionValidator, usersController.profile)
+router.get('/profile', sessionValidator, usersController.formUpdateUser)
 router.put('/profile', upload.single('image'), usersController.processUpdate)
 
 router.get('/perfilAdmin',isAdmin, usersController.perfilAdmin);
