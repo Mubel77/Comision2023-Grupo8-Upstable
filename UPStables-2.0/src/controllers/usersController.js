@@ -80,10 +80,13 @@ const userController = {
       },
 
       // contralador de la actualizacion de usuario
-      formUpdateUser:(req,res)=>{
+        // formUpdateUser:(req,res)=>{
         // const {email} = req.params;
         // const users = leerArchivo('users');
         // const user = users.find(elemento => elemento.email == email);
+
+      //contralador de la actualizacion de usuario; 6 sprint(Mauricio)
+      formUpdateUser:(req,res)=>{
         const {id}=req.session;
         db.User.findByPk(id)
         .then(response => {  res.render('./users/formUpdateUser',
@@ -95,6 +98,7 @@ const userController = {
          
         res.render('./users/formUpdateUser', { title: 'Editar Usuario',subtitulo: "Editar Usuario", usuario: req.session.user });
       },
+      //Proceso de actualizacion de usario del 6 sprint(Mauricio)
       processUpdate:(req,res)=>{
          const {id} = req.params;
          const {nombre,apellido,email,domicilio,age,date,categoria,image} = req.body;
@@ -122,7 +126,7 @@ const userController = {
               })
               .catch(err => console.log(err))
        },
-
+// Proceso de actualizacion de usario del 5 sprint
     // processUpdate:(req,res)=>{
     //    // const {id} = req.params;
     //     const {nombre,apellido,email,domicilio,age,date,categoria} = req.body;
