@@ -26,7 +26,7 @@ module.exports = {
         unique: true,
         references: {
           model: {
-            tableName: 'productos'
+            tableName:'productos'
           },
           key: 'id'
         }
