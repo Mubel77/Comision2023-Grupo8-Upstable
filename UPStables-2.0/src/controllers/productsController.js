@@ -3,6 +3,7 @@ const path = require("path");
 const {v4:uuidv4}=require("uuid");
 const {leerArchivo,escribirArchivo}=require("../database/jsonFunctions");
 const { log } = require("console");
+const db = require('../database/models')
 
 const productsController = {
 
@@ -101,11 +102,12 @@ const productsController = {
     },
 
     delete: function(req, res, next) {
-      let productos = leerArchivo("products");
       const { id } = req.params;
-      const product = productos.find(producto => producto.id == id);
-      const nuevaLista = productos.filter(producto => producto.id != id);
-    
+      db.Producto.destroy({
+        where: {
+          id: id,
+      }
+    })
       console.log("imagen", product.imagen);
       
       fs.unlink(`./public/images/${product.imagen}`, (err) => {
