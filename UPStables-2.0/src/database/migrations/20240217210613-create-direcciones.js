@@ -20,7 +20,7 @@ module.exports = {
         allowNull: false,
       },
       codigo_postal: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
       },
       localidad: {
         type: DataTypes.STRING(100)

@@ -14,12 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     prefijo: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       unsigned: true
     },
     numero: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       unsigned: true
     },
     id_usuario: {

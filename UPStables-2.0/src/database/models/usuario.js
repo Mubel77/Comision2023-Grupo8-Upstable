@@ -13,33 +13,31 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     nombre: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     apellido: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     email: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false,
       unique: true
     },
     password: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     rol_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER(100),
       allowNull: false,
       unsigned: true,
-      unique: true
+      unique: true,
     },
-    imagen_id: {
+    imagen: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      unsigned: true,
-      unique: true
+      allowNull:false
     },
     createdAt: {
       allowNull: false,
@@ -70,11 +68,6 @@ module.exports = (sequelize, DataTypes) => {
     Usuario.hasMany(modelos.Telefono, { 
       as: 'telefonos',
       foreignKey: 'id_usuario' 
-    });
-
-    Usuario.belongsTo(modelos.Imagen,{
-      as:'imagenes',
-      foreignKey: 'imagen_id'
     });
 
     Usuario.belongsToMany(modelos.Producto,{

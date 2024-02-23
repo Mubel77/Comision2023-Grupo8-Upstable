@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, DataTypes) {
-    await queryInterface.createTable('imagenes', {
+    await queryInterface.createTable('usuarios', {
       id: {
         unsigned: true,
         unique: true,
@@ -12,24 +12,37 @@ module.exports = {
         type: DataTypes.INTEGER
       },
       nombre: {
-        allowNull: false,
-        type: DataTypes.STRING(100)
+        type: DataTypes.STRING(100),
+        allowNull: false
       },
-      ubicacion: {
-        allowNull: false,
-        type: DataTypes.STRING(100)
+      apellido: {
+        type: DataTypes.STRING(100),
+        allowNull: false
       },
-      id_usuario: {
-        type: DataTypes.INTEGER,
+      email: {
+        type: DataTypes.STRING(100),
+        allowNull: false,
+        unique: true
+      },
+      password: {
+        type: DataTypes.STRING(100),
+        allowNull: false
+      },
+      rol_id: {
+        type: DataTypes.INTEGER(100),
         allowNull: false,
         unsigned: true,
         unique: true,
         references: {
           model: {
-            tableName: 'usuarios'
+            tableName: 'roles'
           },
           key: 'id'
         }
+      },
+      imagen: {
+        type: DataTypes.INTEGER,
+        allowNull:false
       },
       createdAt: {
         allowNull: false,
@@ -42,6 +55,6 @@ module.exports = {
     });
   },
   async down(queryInterface, DataTypes) {
-    await queryInterface.dropTable('imagenes');
+    await queryInterface.dropTable('usuarios');
   }
 };

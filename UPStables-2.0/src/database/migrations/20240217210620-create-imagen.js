@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, DataTypes) {
-    await queryInterface.createTable('telefonos', {
+    await queryInterface.createTable('imagenes', {
       id: {
         unsigned: true,
         unique: true,
@@ -11,24 +11,22 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      prefijo: {
-        type: DataTypes.INTEGER,
+      nombre: {
         allowNull: false,
-        unsigned: true
+        type: DataTypes.STRING(100)
       },
-      numero: {
-        type: DataTypes.INTEGER,
+      ubicacion: {
         allowNull: false,
-        unsigned: true
+        type: DataTypes.STRING(100)
       },
-      id_usuario: {
+      id_producto: {
         type: DataTypes.INTEGER,
         allowNull: false,
         unsigned: true,
         unique: true,
         references: {
           model: {
-            tableName: 'usuarios'
+            tableName: 'productos'
           },
           key: 'id'
         }
@@ -44,6 +42,6 @@ module.exports = {
     });
   },
   async down(queryInterface, DataTypes) {
-    await queryInterface.dropTable('telefonos');
+    await queryInterface.dropTable('imagenes');
   }
 };

@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, DataTypes) {
-    await queryInterface.createTable('usuarios', {
+    await queryInterface.createTable('telefonos', {
       id: {
         unsigned: true,
         unique: true,
@@ -11,39 +11,25 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      nombre: {
-        type: DataTypes.STRING,
-        allowNull: false
+      prefijo: {
+        type: DataTypes.INTEGER,
+        unsigned: true
       },
-      apellido: {
-        type: DataTypes.STRING,
-        allowNull: false
+      numero: {
+        type: DataTypes.INTEGER,
+        unsigned: true
       },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      rol_id: {
+      id_usuario: {
         type: DataTypes.INTEGER,
         allowNull: false,
         unsigned: true,
         unique: true,
         references: {
           model: {
-            tableName: 'roles'
+            tableName: 'usuarios'
           },
           key: 'id'
         }
-      },
-      imagen_id: {
-        type: DataTypes.INTEGER,
-        unsigned: true,
-        unique: true
       },
       createdAt: {
         allowNull: false,
@@ -56,6 +42,6 @@ module.exports = {
     });
   },
   async down(queryInterface, DataTypes) {
-    await queryInterface.dropTable('usuarios');
+    await queryInterface.dropTable('telefonos');
   }
 };
