@@ -24,6 +24,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER
     },
+    cantidad:{
+      unsigned: true,
+      type: DataTypes.INTEGER
+    },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE

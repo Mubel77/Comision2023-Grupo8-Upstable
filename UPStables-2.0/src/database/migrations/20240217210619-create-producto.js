@@ -24,10 +24,11 @@ module.exports = {
         type: DataTypes.DECIMAL(8,2)
       },
       descuento: {
+        unsigned: true,
         type: DataTypes.DECIMAL(2,1)
       },
       stock: {
-        allowNull: false,
+        allowNull:false,
         type: DataTypes.INTEGER
       },
       id_potencia: {

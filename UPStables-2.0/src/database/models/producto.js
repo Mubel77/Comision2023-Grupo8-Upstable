@@ -57,12 +57,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER
     },
-    id_imagen: {
-      unsigned: true,
-      unique: true,
-      allowNull: false,
-      type: DataTypes.INTEGER
-    },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE
@@ -100,9 +94,9 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey:'id_tomas'
     });
 
-    Producto.belongsTo(modelos.Imagen,{
+    Producto.HasMany(modelos.Imagen,{
       as:'imagenes',
-      foreignKey:'id_imagen'
+      foreignKey:'id_producto'
     });
 
     Producto.belongsToMany(modelos.Usuario,{

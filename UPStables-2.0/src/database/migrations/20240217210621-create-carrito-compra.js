@@ -35,6 +35,10 @@ module.exports = {
           key: 'id'
         }
       },
+      cantidad:{
+        unsigned: true,
+        type: DataTypes.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE
