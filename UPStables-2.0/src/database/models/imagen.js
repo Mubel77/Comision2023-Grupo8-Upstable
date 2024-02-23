@@ -23,8 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     id_producto: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      unsigned: true,
-      unique: true
+      unsigned: true
     },
     createdAt: {
       allowNull: false,
@@ -44,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
   Imagen.associate = (modelos) => {
     Imagen.belongsTo(modelos.Producto,{
       as: 'productos',
-      foreignKey: 'id_productos'
+      foreignKey: 'id_producto'
     })
   }
 

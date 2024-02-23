@@ -6,7 +6,6 @@ module.exports = (sequelize, DataTypes) => {
   const cols = {
     id: {
       unsigned: true,
-      unique: true,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
@@ -94,7 +93,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey:'id_tomas'
     });
 
-    Producto.HasMany(modelos.Imagen,{
+    Producto.hasMany(modelos.Imagen,{
       as:'imagenes',
       foreignKey:'id_producto'
     });

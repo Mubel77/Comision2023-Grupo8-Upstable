@@ -5,7 +5,6 @@ module.exports = {
     await queryInterface.createTable('productos', {
       id: {
         unsigned: true,
-        unique: true,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
