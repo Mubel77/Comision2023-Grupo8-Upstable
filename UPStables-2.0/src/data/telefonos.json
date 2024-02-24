@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1",
+        "prefijo": "11",
+        "numero": "12345678",
+        "id_usuario": "2"
+    },
+    {
+        "id": "2",
+        "prefijo": "11",
+        "numero": "87654321",
+        "id_usuario": "3"
+    }
+]
