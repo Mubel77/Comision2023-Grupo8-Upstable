@@ -29,10 +29,9 @@ module.exports = {
         allowNull: false
       },
       rol_id: {
-        type: DataTypes.INTEGER(100),
+        type: DataTypes.INTEGER,
         allowNull: false,
         unsigned: true,
-        unique: true,
         references: {
           model: {
             tableName: 'roles'
@@ -41,7 +40,7 @@ module.exports = {
         }
       },
       imagen: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING(100),
         allowNull:false
       },
       createdAt: {
@@ -49,6 +48,10 @@ module.exports = {
         type: DataTypes.DATE
       },
       updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE
+      },
+      fecha_nacimiento: {
         allowNull: false,
         type: DataTypes.DATE
       }

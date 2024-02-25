@@ -32,7 +32,6 @@ module.exports = {
         type: DataTypes.INTEGER,
         allowNull: false,
         unsigned: true,
-        unique: true,
         references: {
           model: {
             tableName: 'usuarios'
