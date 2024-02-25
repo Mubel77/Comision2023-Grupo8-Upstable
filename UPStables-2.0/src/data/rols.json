@@ -1,22 +1,22 @@
 [
     {
-        "id": "1",
+        "id": 1,
         "rol": "cliente"
     },
     {
-        "id": "2",
+        "id": 2,
         "rol": "supervisor"
     },
     {
-        "id": "3",
+        "id": 3,
         "rol": "vendedor"
     },
     {
-        "id": "4",
+        "id": 4,
         "rol": "proveedor"
     },
     {
-        "id": "3",
+        "id": 5,
         "rol": "distribuidor"
     }
 ]

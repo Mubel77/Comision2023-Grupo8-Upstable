@@ -32,8 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     id_usuario: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      unsigned: true,
-      unique: true
+      unsigned: true
     },
     createdAt: {
       allowNull: false,

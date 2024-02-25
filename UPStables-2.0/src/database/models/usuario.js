@@ -30,13 +30,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     rol_id: {
-      type: DataTypes.INTEGER(100),
+      type: DataTypes.INTEGER,
       allowNull: false,
       unsigned: true,
-      unique: true,
     },
     imagen: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(100),
       allowNull:false
     },
     createdAt: {
@@ -44,6 +43,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE
     },
     updatedAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    fecha_nacimiento: {
       allowNull: false,
       type: DataTypes.DATE
     }
