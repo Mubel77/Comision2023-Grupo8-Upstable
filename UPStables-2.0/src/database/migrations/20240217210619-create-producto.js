@@ -20,43 +20,26 @@ module.exports = {
       },
       precio: {
         allowNull: false,
-        type: DataTypes.DECIMAL(8,2)
+        type: DataTypes.DECIMAL
       },
       descuento: {
         unsigned: true,
-        type: DataTypes.DECIMAL(2,1)
+        type: DataTypes.DECIMAL
       },
       stock: {
         allowNull:false,
         type: DataTypes.INTEGER
       },
-      id_potencia: {
-        unsigned: true,
-        unique: true,
+      potencia: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        references: {
-          model: {
-            tableName: 'potencias'
-          },
-          key: 'id'
-        }
       },
-      id_tomas: {
-        unsigned: true,
-        unique: true,
+      tomas: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        references: {
-          model: {
-            tableName: 'tomas'
-          },
-          key: 'id'
-        }
       },
       id_marcas: {
         unsigned: true,
-        unique: true,
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
@@ -68,7 +51,6 @@ module.exports = {
       },
       id_categorias: {
         unsigned: true,
-        unique: true,
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
