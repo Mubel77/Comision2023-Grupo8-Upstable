@@ -22,31 +22,26 @@ module.exports = (sequelize, DataTypes) => {
     precio: {
       allowNull: false,
       unsigned: true,
-      type: DataTypes.DECIMAL(8,2)
+      type: DataTypes.DECIMAL
     },
     descuento: {
       unsigned: true,
-      type: DataTypes.DECIMAL(2,1)
+      type: DataTypes.DECIMAL
     },
     stock: {
       allowNull: false,
       type: DataTypes.INTEGER
     },
-    id_potencia: {
-      unsigned: true,
-      unique: true,
+    potencia: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
-    id_tomas: {
-      unsigned: true,
-      unique: true,
+    tomas: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     id_marcas: {
       unsigned: true,
-      unique: true,
       allowNull: false,
       type: DataTypes.INTEGER
     },
@@ -81,16 +76,6 @@ module.exports = (sequelize, DataTypes) => {
     Producto.belongsTo(modelos.Marca,{
       as:'marcas',
       foreignKey:'id_marcas'
-    });
-
-    Producto.belongsTo(modelos.Potencia,{
-      as:'potencias',
-      foreignKey:'id_potencias'
-    });
-
-    Producto.belongsTo(modelos.Toma,{
-      as:'tomas',
-      foreignKey:'id_tomas'
     });
 
     Producto.hasMany(modelos.Imagen,{
