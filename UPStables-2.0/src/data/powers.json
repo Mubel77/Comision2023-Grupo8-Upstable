@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "potencia": 500
+    },
+    {
+        "id": 2,
+        "potencia": 1000
+    },
+    {
+        "id": 3,
+        "potencia": 1500
+    },
+    {
+        "id": 4,
+        "potencia": 2000
+    }
+]
