@@ -92,8 +92,6 @@ const userController = {
           usuario: req.session.user });
         })
         .catch(err => console.log(err))
-         
-        res.render('./users/formUpdateUser', { title: 'Editar Usuario',subtitulo: "Editar Usuario", usuario: req.session.user });
       },
       processUpdate:(req,res)=>{
          const {id} = req.params;
