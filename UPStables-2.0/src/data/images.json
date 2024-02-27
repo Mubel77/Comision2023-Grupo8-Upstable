@@ -1,0 +1,141 @@
+[
+    {
+        "id": 1,
+        "nombre": "Upstable-imagen1703818680750.webp",
+        "ubicacion": "/images/products",
+        "id_producto": 1
+    },
+    {
+        "id": 2,
+        "nombre": "Upstable-imagen1703818680751.webp",
+        "ubicacion": "/images/products",
+        "id_producto": 1
+    },
+    {
+        "id": 3,
+        "nombre":"Upstable-imagen1703821420749.jpg",
+        "ubicacion":"/images/products",
+        "id_producto": 2
+    },
+    {
+        "id": 4,
+        "nombre": "Upstable-imagen1703819713305.jpg",
+        "ubicacion": "/images/products",
+        "id_producto": 4
+    },
+    {
+        "id": 5,
+        "nombre": "Upstable-imagen1703822241352.jpg",
+        "ubicacion": "/images/products",
+        "id_producto": 5
+    },
+    {
+        "id": 6,
+        "nombre":"Upstable-imagen1703822738920.webp",
+        "ubicacion": "/images/products",
+        "id_producto": 6
+    },
+    {
+        "id": 7,
+        "nombre": "Upstable-imagen1703822738922.webp",
+        "ubicacion": "/images/products",
+        "id_producto": 6
+    },
+    {
+        "id": 8,
+        "nombre": "Upstable-imagen1703822738922.webp",
+        "ubicacion": "/images/products",
+        "id_producto": 6
+    },
+    {
+        "id": 9,
+        "nombre":"Upstable-imagen1703823083944.webp",
+        "ubicacion":"/images/products",
+        "id_producto": 7
+    },
+    {
+        "id": 10,
+        "nombre": "Upstable-imagen1703823083946.webp",
+        "ubicacion": "/images/products",
+        "id_producto": 7
+    },
+    {
+        "id": 11,
+        "nombre":"Upstable-imagen1703823083946.webp",
+        "ubicacion":"/images/products",
+        "id_producto": 7
+    },
+    {
+        "id": 12,
+        "nombre": "Upstable-imagen1703823429436.webp",
+        "ubicacion":"/images/products",
+        "id_producto": 8
+    },
+    {
+        "id": 13,
+        "nombre": "Upstable-imagen1703823429437.webp",
+        "ubicacion": "/images/products",
+        "id_producto": 8
+    },
+    {
+        "id": 14,
+        "nombre": "Upstable-imagen1703823429437.webp",
+        "ubicacion": "/images/products",
+        "id_producto": 8
+    },
+    {
+        "id": 15,
+        "nombre": "Upstable-imagen1703823712053.webp",
+        "ubicacion": "/images/products",
+        "id_producto": 9
+    },
+    {
+        "id": 16,
+        "nombre": "Upstable-imagen1703823712054.webp",
+        "ubicacion": "/images/products",
+        "id_producto": 9
+    },
+
+    {
+        "id": 17,
+        "nombre": "Upstable-imagen1703823712055.webp",
+        "ubicacion": "/images/products",
+        "id_producto": 9
+    },
+    {
+        "id": 18,
+        "nombre": "Upstable-imagen1703824081383.webp",
+        "ubicacion": "/images/products",
+        "id_producto": 10
+    },
+    {
+        "id": 19,
+        "nombre": "Upstable-imagen1703824081384.webp",
+        "ubicacion": "/images/products",
+        "id_producto": 10
+    },
+    {
+        "id": 20,
+        "nombre": "Upstable-imagen1703824529019.webp",
+        "ubicacion": "/images/products",
+        "id_producto": 11
+    },
+    {
+        "id": 21,
+        "nombre": "Upstable-imagen1703824529020.webp",
+        "ubicacion": "/images/products",
+        "id_producto": 11
+    },
+    {
+        "id": 22,
+        "nombre": "Upstable-imagen1703825258170.webp",
+        "ubicacion": "/images/products",
+        "id_producto": 12
+    },
+    {
+        "id": 23,
+        "nombre": "Upstable-imagen1703825258171.webp",
+        "ubicacion": "/images/products",
+        "id_producto": 12
+    }
+]

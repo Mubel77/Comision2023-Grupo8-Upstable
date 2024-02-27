@@ -1,6 +1,5 @@
 const { body } = require('express-validator');
-const {leerArchivo} = require('../database/jsonFunctions')
-
+const db = require('../database/models/index')
 const validatorRegister = [
     body('nombre')
         .notEmpty().withMessage('Debes completar el nombre').bail()
@@ -15,9 +14,14 @@ const validatorRegister = [
         .isEmail().withMessage('Debe ser un correo con formato valido').bail()
         .custom(value => {
         console.log("value:",value);    
-        const users = leerArchivo('users');
-        const user = users.find(elemento => elemento.email == value);
-        return user ? false : true
+        // const users = leerArchivo('users');
+        // const user = users.find(elemento => elemento.email == value);
+        db.Usuario.findOne({
+            where:{
+                email:value
+            }
+        });
+        return value
         }).withMessage("El usuario ya existe, utilice otro correo electronico"),
     body('password').notEmpty().withMessage("El campo no puede estar vacio").bail()
         .custom((value,{req})=> {
@@ -44,9 +48,12 @@ const validatorRegisterAdmin = [
         body('email').notEmpty().withMessage("El campo no puede estar vacio").bail()
         .isEmail().withMessage('Debe ser un correo con formato valido').bail()
         .custom(value => {    
-        const users = leerArchivo('users');
-        const user = users.find(elemento => elemento.email == value);
-        return user ? false : true
+            db.Usuario.findOne({
+                where:{
+                    email:value
+                }
+            });
+            return value
         }).withMessage("El usuario ya existe, utilice otro correo electronico"),
     body('password').notEmpty().withMessage("El campo no puede estar vacio").bail()
         .custom((value,{req})=> {
