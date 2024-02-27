@@ -1,7 +1,7 @@
- const { title } = require('process');
-const {leerArchivo,escribirArchivo} = require('../data/jsonFunctions');
+const { title } = require('process');
 const bcrypt = require('bcryptjs');
-const {validationResult} = require('express-validator')
+const {validationResult} = require('express-validator');
+const db = require('../database/models/index.js');
 
 const userController = {
     register: function(req, res, next) {
@@ -13,19 +13,25 @@ const userController = {
         if (!errors.isEmpty()){
           res.render('users/register', { title: 'Registro',subtitulo:"Registrate", errors:errors.mapped(), oldData:req.body});
          } else {
-          const users = leerArchivo('users');
-          const {nombre,apellido,domicilio,email,password,image} = req.body;
+          const {nombre,apellido,domicilio,email,password,imagen,fecha_nacimiento} = req.body;
           const newUser = {
+            rol_id: 1,
             nombre: nombre.trim(),
             apellido: apellido.trim(),
             domicilio: domicilio,
             email: email.trim(),
-            image:req.file ? req.file.filename : "user-default.png", 
+            imagen:req.file ? req.file.filename : "user-default.png", 
+            fecha_nacimiento: fecha_nacimiento,
             password: bcrypt.hashSync(password,10),
           };
-          users.push(newUser);
-          escribirArchivo(users, 'users');
-          res.redirect('/users/login');
+          db.Usuario.create(newUser)
+          .then((newUser)=>{
+            res.redirect('/users/login');
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
+          
         }
       },
 
@@ -38,20 +44,25 @@ const userController = {
        if (!errors.isEmpty()){
            res.render('users/registerAdmin', { title: 'Registro', errors:errors.mapped(), oldData:req.body});
          } else {
-          const users = leerArchivo('users');
-         const {nombre,apellido,domicilio,email,password,categoria,image} = req.body;
-         const newAdmind = {
+         const {nombre,apellido,domicilio,email,password,categoria,imagen,fecha_nacimiento,rol_id} = req.body;
+         const newAdmin = {
+          rol_id: rol_id,
            nombre: nombre.trim(),
            apellido: apellido.trim(),
            domicilio: domicilio.trim(),
            email: email.trim(),
-           image:req.file ? req.file.filename : "user-default.png", 
+           imagen:req.file ? req.file.filename : "user-default.png", 
+           fecha_nacimiento: fecha_nacimiento,
            password: bcrypt.hashSync(password,10),
            categoria
          }
-         users.push( newAdmind);
-         escribirArchivo(users,'users');
-         res.redirect('/users/perfilAdmin')
+         db.Usuario.create(newAdmin)
+         .then((newAdmin)=>{
+          res.redirect('/users/perfilAdmin')
+         })
+         .catch((err)=>{
+          console.log(err);
+         })
        }
       },
 
@@ -64,11 +75,14 @@ const userController = {
       if(!errores.isEmpty()){
         res.render('./users/login', {errores:errores.mapped(), old: req.body, title: "Login"})
       }
-      const {email, password} = req.body;
-      const users = leerArchivo("users");
-      const user = users.find(usuario=> usuario.email == email);
-      
-        delete user.password;
+      const {email} = req.body;
+      db.Usuario.findOne({
+        attributes: {exclude: ["password"]},
+        where: {
+          email,
+        }
+      })
+      .then((user)=>{
         req.session.user = user;
         res.cookie('user',user,{maxAge: 1000 * 60 * 10 });
         
@@ -77,13 +91,15 @@ const userController = {
         }
         
       res.redirect('/')
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+        
       },
 
       // contralador de la actualizacion de usuario
       formUpdateUser:(req,res)=>{
-        // const {email} = req.params;
-        // const users = leerArchivo('users');
-        // const user = users.find(elemento => elemento.email == email);
         const {id}=req.session;
         db.User.findByPk(id)
         .then(response => {  res.render('./users/formUpdateUser',
@@ -120,40 +136,6 @@ const userController = {
               })
               .catch(err => console.log(err))
        },
-
-    // processUpdate:(req,res)=>{
-    //    // const {id} = req.params;
-    //     const {nombre,apellido,email,domicilio,age,date,categoria} = req.body;
-    //     const users = leerArchivo('users');
-    //     const usuarios = users.map(element => {
-    //       if (element.email == email) {
-    //         return {
-    //           nombre: nombre.trim(),
-    //           apellido:apellido.trim(),
-    //           email:email.trim(),
-    //           domicilio,
-    //           age,
-    //           date,
-    //           image:req.file ? req.file.filename : element.image, 
-    //           password: element.password,
-    //           categoria
-    //         }
-    //       }
-    //       return element
-    //     });
-    //     escribirArchivo(usuarios,'users');
-    //     const userUpdate = usuarios.find(elemento => elemento.email == email);
-    //     req.session.user = userUpdate;
-    //     console.log("This is sessionUserUpdate....",req.session.user);
-    //     delete userUpdate.password
-    //     res.cookie('user',(userUpdate))
-    //     if(userUpdate.categoria) {
-    //       res.redirect('/users/perfilAdmin');
-    //     } else {
-    //       res.redirect('/users/perfilUser');
-    //     }
-        
-    //   },
 
     perfilAdmin: function(req,res,next){
         res.render('users/perfil-admin', {title:'Mi Perfil', usuario: req.session.user})  
