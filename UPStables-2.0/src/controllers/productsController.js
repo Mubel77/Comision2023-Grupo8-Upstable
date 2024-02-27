@@ -131,7 +131,6 @@ const productsController = {
       })
       .catch((err) => {
         console.log(err);
-        next(err); // Pasa el error al siguiente middleware si ocurre
       });
   },
   formUpdate: function (req, res, next) {
