@@ -1,5 +1,5 @@
 const { body } = require('express-validator');
-const {leerArchivo} = require('../database/jsonFunctions')
+const {leerArchivo} = require('../data/jsonFunctions')
 
 const validatorRegister = [
     body('nombre')
