@@ -1,8 +1,8 @@
 const { title } = require('process');
-const {leerArchivo,escribirArchivo} = require('../database/jsonFunctions');
+const {leerArchivo,escribirArchivo} = require('../data/jsonFunctions');
 const bcrypt = require('bcryptjs');
 const {validationResult} = require('express-validator');
-const db = require('../database/models');
+const db = require('../database/models/index.js');
 
 const userController = {
     register: function(req, res, next) {
@@ -14,13 +14,15 @@ const userController = {
         if (!errors.isEmpty()){
           res.render('users/register', { title: 'Registro',subtitulo:"Registrate", errors:errors.mapped(), oldData:req.body});
          } else {
-          const {nombre,apellido,domicilio,email,password,image} = req.body;
+          const {nombre,apellido,domicilio,email,password,imagen,fecha_nacimiento} = req.body;
           const newUser = {
+            rol_id: 1,
             nombre: nombre.trim(),
             apellido: apellido.trim(),
             domicilio: domicilio,
             email: email.trim(),
-            image:req.file ? req.file.filename : "user-default.png", 
+            imagen:req.file ? req.file.filename : "user-default.png", 
+            fecha_nacimiento: fecha_nacimiento,
             password: bcrypt.hashSync(password,10),
           };
           db.Usuario.create(newUser)
@@ -43,13 +45,15 @@ const userController = {
        if (!errors.isEmpty()){
            res.render('users/registerAdmin', { title: 'Registro', errors:errors.mapped(), oldData:req.body});
          } else {
-         const {nombre,apellido,domicilio,email,password,categoria,image} = req.body;
+         const {nombre,apellido,domicilio,email,password,categoria,imagen,fecha_nacimiento,rol_id} = req.body;
          const newAdmin = {
+          rol_id: rol_id,
            nombre: nombre.trim(),
            apellido: apellido.trim(),
            domicilio: domicilio.trim(),
            email: email.trim(),
-           image:req.file ? req.file.filename : "user-default.png", 
+           imagen:req.file ? req.file.filename : "user-default.png", 
+           fecha_nacimiento: fecha_nacimiento,
            password: bcrypt.hashSync(password,10),
            categoria
          }

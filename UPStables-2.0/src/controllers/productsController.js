@@ -1,9 +1,9 @@
 const fs = require("fs");
 const path = require("path");
 const {v4:uuidv4}=require("uuid");
-const {leerArchivo,escribirArchivo}=require("../database/jsonFunctions");
+const {leerArchivo,escribirArchivo}=require("../data/jsonFunctions");
 const { log } = require("console");
-const db = require('../database/models')
+const db = require('../database/models/index.js')
 
 const productsController = {
 

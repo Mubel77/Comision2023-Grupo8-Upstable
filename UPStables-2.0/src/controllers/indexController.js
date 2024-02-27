@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const {leerArchivo,escribirArchivo}=require("../database/jsonFunctions");
+const {leerArchivo,escribirArchivo}=require("../data/jsonFunctions");
 
 publicidad=[
   {
