@@ -108,14 +108,10 @@ const productsController = {
           id: id,
       }
     })
-      console.log("imagen", product.imagen);
-      
       fs.unlink(`./public/images/${product.imagen}`, (err) => {
         if (err) throw err;
         console.log(`borrar el archivo ${product.imagen}`);
       });
-    
-      escribirArchivo(nuevaLista, "products");
       res.redirect('/products/dashboard');
     },
 
