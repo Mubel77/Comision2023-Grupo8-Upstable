@@ -1,5 +1,5 @@
-const { title } = require('process');
-const {leerArchivo,escribirArchivo} = require('../database/jsonFunctions');
+ const { title } = require('process');
+const {leerArchivo,escribirArchivo} = require('../data/jsonFunctions');
 const bcrypt = require('bcryptjs');
 const {validationResult} = require('express-validator')
 
@@ -7,7 +7,7 @@ const userController = {
     register: function(req, res, next) {
         res.render('users/register', { title: 'Registro', subtitulo:"Registrate" });
       },
-
+     
     createUser: function(req, res, next) {
         const errors= validationResult(req);
         if (!errors.isEmpty()){
