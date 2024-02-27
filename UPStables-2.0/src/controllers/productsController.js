@@ -227,4 +227,4 @@ const productsController = {
   },
 };
 
-module.exports = productsController;
+module.exports = productsController; 
