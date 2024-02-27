@@ -1,15 +1,20 @@
 const {body} = require('express-validator');
-const {leerArchivo} = require('../data/jsonFunctions');
+const db = require('../database/models/index.js');
 const bcrypt = require('bcryptjs');
-const users = leerArchivo("users");
+
 
 const loginValidator = [
     body('email').notEmpty().withMessage("El campo no puede estar vacío").bail()
     .isEmail().withMessage("Formato Incorrecto").bail()
     .custom(value =>{
         console.log("VALUE:", value);
-        const user = users.find(elemento => elemento.email == value);
-        return user ? true : false
+        //const user = users.find(elemento => elemento.email == value);
+        db.Usuario.findOne({
+            where:{
+                email: value
+            }
+        }); 
+        return value
     }).withMessage("Usuario o contraseña incorrectos"), 
 
     body('password').notEmpty().withMessage("El campo no puede estar vacío").bail()
