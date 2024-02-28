@@ -99,44 +99,52 @@ const userController = {
       },
 
       // contralador de la actualizacion de usuario
-      formUpdateUser:(req,res)=>{
-        const {id}=req.session;
-        db.User.findByPk(id)
-        .then(response => {  res.render('./users/formUpdateUser',
-         { title: 'Editar Usuario',subtitulo: "Editar Usuario",
-         user: response.dataValues,
-          usuario: req.session.user });
-        })
-        .catch(err => console.log(err))
+      formUpdateUser: (req, res) => {
+        const { id } = req.session;
+        db.Usuario.findByPk(id)
+          .then(response => {
+            res.render('./users/formUpdateUser', {
+              title: 'Editar Usuario',
+              subtitulo: 'Editar Usuario',
+              user: response.dataValues,
+              usuario: req.session.user
+            });
+          })
+          .catch(err => console.log(err));
       },
-      processUpdate:(req,res)=>{
-         const {id} = req.params;
-         const {nombre,apellido,email,domicilio,age,date,categoria,image} = req.body;
-          db.User.update(
-              {
-               nombre: nombre.trim(),
-               apellido:apellido.trim(),
-               email:email.trim(),
-               domicilio,
-               age,
-               date,
-               image:req.file ? req.file.filename : element.image, 
-               password: element.password,
-               categoria
-              },{
-                where:{
-                  id
-                }
-              }).then(UserUpDate => {
-                  if(userUpdate.categoria) {
-                    res.redirect(`/users/perfilAdmin/${id}`);
-                  } else {
-                  res.redirect(`/users/perfilUser/${id}`);
-                }
-              })
-              .catch(err => console.log(err))
-       },
-
+      //Proceso de actualizacion de usario del 6 sprint(Mauricio)
+      processUpdate: (req, res) => {
+        const { id } = req.params;
+        const { nombre, apellido, email, domicilio, age, date, categoria } = req.body;
+        const image = req.file ? req.file.filename : req.body.image; // corregir acceso a la imagen
+        db.Usuario.update(
+          {
+            nombre: nombre.trim(),
+            apellido: apellido.trim(),
+            email: email.trim(),
+            domicilio,
+            age,
+            date,
+            image,
+            categoria
+          },
+          {
+            where: {
+              id
+            }
+          }
+        )
+          .then(userUpdate => {
+            if (userUpdate.categoria) {
+              res.redirect(`/users/perfilAdmin/${id}`);
+            } else {
+              res.redirect(`/users/perfilUser/${id}`);
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      },
     perfilAdmin: function(req,res,next){
         res.render('users/perfil-admin', {title:'Mi Perfil', usuario: req.session.user})  
         console.log("This is sessionUsuario....",{usuario:req.session.user});

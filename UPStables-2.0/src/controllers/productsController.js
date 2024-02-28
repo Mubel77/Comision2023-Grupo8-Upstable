@@ -4,12 +4,26 @@ const productsController = {
   //pedido a base de datos, listar productos
   list: function (req, res, next) {
     db.Producto.findAll({
+<<<<<<< HEAD
       include: [
         {model: db.Categoria, as: "categorias"},
         {model: db.Marca, as: "marcas"},
         {model: db.Imagen, as: "imagenes" }
       ],
     })
+=======
+        include: [
+          {
+            model: Categoria,
+            as: "categorias",
+          },
+          {
+            model: marca,
+            as: "marcas",
+          },
+        ],
+      })
+>>>>>>> 87d17fc9761f688d0133ebbcbb594f74b70e5f33
       .then((productos) => {
         res.render("products/productsList", {
           title: "List Products",
@@ -60,8 +74,7 @@ const productsController = {
   dashboardSearch: function (req, res, next) {
     const { keywords } = req.query;
     const mensaje = "No hay elementos";
-    db.producto
-      .findAll({
+    db.producto.findAll({
         where: {
           marca: {
             [db.producto.Op.iLike]: `%${keywords}%`, // Buscar coincidencias parciales e ignorar mayúsculas/minúsculas
@@ -129,8 +142,7 @@ const productsController = {
   },
   formUpdate: function (req, res, next) {
     const { id } = req.params;
-    db.producto
-      .findByPk(id, {
+    db.Producto.findByPk(id, {
         include: [db.Categoria, db.Marca],
       })
       .then((response) => {
