@@ -4,20 +4,18 @@
     
     <main class="main_productDetail">
 
-        
-       
         <section class="producto">
             <article class="fotos_producto">
                 <div class="fotos_extras">
-                    <% for (let i = 1; i < producto.imagen.length; i++) { %>
-                        <img src="/images/<%= producto.imagen[i] %>" alt="Imagen Extra">
-                      <% } %>
+                    <% for (let i = 0; i < producto.imagenes.length; i++) { %>
+                        <img src="<%= producto.imagenes[i].ubicacion%>/<%= producto.imagenes[i].nombre %>" alt="<%= producto.categoria%> <%= producto.marca%>">
+                    <% } %>
                       <div class="mas_fotos_div">
                         <i id="mas_fotos" class="fa-solid fa-plus"></i>
                       </div>
                    
                 </div>
-                    <img  class="producto_img" src="/images/<%= producto.imagen[0] %>" alt="foto_ups"> 
+                    <img  class="producto_img" src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="<%= producto.categoria%> <%= producto.marca%>"> 
                 
                 <div class="circulos_fotos">
                     <i id="circle_color"class="fa-solid fa-circle"></i>
@@ -48,11 +46,13 @@
                     <i class="fa-solid fa-check"></i>
                     <p>Stock Disponible</p>
                 </div>
-               <button class="comprar_producto">Comprar Producto</button>
+               <a href="/products/productCart"><button class="comprar_producto">Comprar Producto</button></a>
+               <a href="/products/productCart"> 
                 <div class="agregar_carrito">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <p>Agregar al carrito</p>
                 </div>
+                </a>
             </article>
            
 
@@ -64,33 +64,9 @@
         </article>
             
 
-        <section class="intereses">
-            <p class="intereses_titulo">También podría interesarte</p>
-            <article class="productos_relacionados">
-                <div class="productos_relacionados_extras">
-                        <img src="/images/<%= producto.imagen[0] %>" alt="img-producto">
-                        <h4><%= producto.modelo %></h4>
-                        <p>$<%= producto.precio %></p>
-                    </div>
-                    
-                    <div class="productos_relacionados_extras">
-                        <img src="/images/<%= producto.imagen[1] %>" alt="img-producto">
-                        <h4><%= producto.modelo %></h4>
-                        <p>$<%= producto.precio %></p>
-                    </div>
-                    <div class="productos_relacionados_extras">
-                        <img src="/images/<%= producto.imagen[2] %>" alt="img-producto">
-                        <h4><%= producto.modelo%></h4>
-                        <p>$<%= producto.precio %></p>
-                    </div>
-                <div class="flecha_relacionados">
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
-                
-            </article>
-        </section>
+        
 
-       <section class="banners_producto">
+       <!--<section class="banners_producto">
         
         <img id="img_1"  src="/images/minibanner1-10-06-22.png" alt="img_banner">
         <img id="img_2" src="/images/minibanner2-28-06-22.png" alt="img_banner">
@@ -101,7 +77,7 @@
             <i id="circle_color_white"class="fa-regular fa-circle"></i>
             <i id="circle_color_white"class="fa-regular fa-circle"></i>
         </div>
-        </section>
+        </section>-->
 
     </main>
     <%- include("../partials/footer") %>

@@ -3,27 +3,21 @@ const db = require("../database/models");
 const productsController = {
   //pedido a base de datos, listar productos
   list: function (req, res, next) {
-    producto
-      .findAll({
-        include: [
-          {
-            model: Categoria,
-            as: "categorias",
-          },
-          {
-            model: marca,
-            as: "marcas",
-          },
-        ],
-      })
+    db.Producto.findAll({
+      include: [
+        {model: db.Categoria, as: "categorias"},
+        {model: db.Marca, as: "marcas"},
+        {model: db.Imagen, as: "imagenes" }
+      ],
+    })
       .then((productos) => {
         res.render("products/productsList", {
           title: "List Products",
-          usuario: req.session.user,
-          productos: productos,
+          //usuario: req.session.user,
+          productos
         });
       })
-      .catch((err) => console.log(err));
+      //.catch((err) => console.log(err));
   },
 
   // muestro el detalle del producto con base de datos
@@ -39,7 +33,7 @@ const productsController = {
         res.render("products/productDetail", {
           title: producto.modelo,
           producto: producto,
-          usuario: req.session.user,
+          //usuario: req.session.user,
         });
       })
       .catch((err) => console.log(err));
@@ -186,18 +180,18 @@ const productsController = {
       .catch((err) => console.log(err));
   },
 
-  delete: function(req, res, next) {
+  delete: function (req, res, next) {
     const { id } = req.params;
     db.Producto.destroy({
       where: {
         id: id,
-      }
-  })
+      },
+    });
     fs.unlink(`./public/images/${product.imagen}`, (err) => {
       if (err) throw err;
       console.log(`borrar el archivo ${product.imagen}`);
     });
-    res.redirect('/products/dashboard');
+    res.redirect("/products/dashboard");
   },
 
   cart: function (req, res, next) {
@@ -221,7 +215,7 @@ const productsController = {
         });
       })
       .catch((err) => console.log(err));
-      }
-    };    
+  },
+};
 
-module.exports = productsController; 
+module.exports = productsController;

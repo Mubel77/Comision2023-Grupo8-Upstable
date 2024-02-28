@@ -48,7 +48,7 @@
             </div> 
             <div class="div_config">
               <label for="password">Confirmar contraseña</label>
-              <input type="password" name="passwordConfirm" placeholder="Confirmar contraseña" value="<%= locals.oldData ? oldData.passwordConfirmation : null %>">
+              <input type="password" name="passwordConfirmation" placeholder="Confirmar contraseña" value="<%= locals.oldData ? oldData.passwordConfirmation : null %>">
               <p><%= locals.errors && errors.password ? errors.password.msg : null %> </p>
           </div>
             <div class="boton_registro">
