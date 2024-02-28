@@ -3,8 +3,7 @@ const db = require("../database/models");
 const productsController = {
   //pedido a base de datos, listar productos
   list: function (req, res, next) {
-    producto
-      .findAll({
+    db.Producto.findAll({
         include: [
           {
             model: Categoria,
@@ -66,8 +65,7 @@ const productsController = {
   dashboardSearch: function (req, res, next) {
     const { keywords } = req.query;
     const mensaje = "No hay elementos";
-    db.producto
-      .findAll({
+    db.producto.findAll({
         where: {
           marca: {
             [db.producto.Op.iLike]: `%${keywords}%`, // Buscar coincidencias parciales e ignorar mayúsculas/minúsculas
@@ -135,8 +133,7 @@ const productsController = {
   },
   formUpdate: function (req, res, next) {
     const { id } = req.params;
-    db.producto
-      .findByPk(id, {
+    db.Producto.findByPk(id, {
         include: [db.Categoria, db.Marca],
       })
       .then((response) => {
