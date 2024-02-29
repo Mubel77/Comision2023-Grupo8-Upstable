@@ -25,6 +25,17 @@
                     <p><%= locals.errors && errors.domicilio ? errors.domicilio.msg : null %> </p>
                 </div>
                 <div class="div_config">
+                    <label for="rol_id">Roles</label>
+                    <select name="rol_id"  id="rol_id" class="campo_select">
+                        <option value = "" selected> Indique un Rol </option>
+                        <option value = "2"> Supervisor </option>
+                        <option value = "3"> Vendedor </option>
+                        <option value = "4"> Proveedor </option>
+                        <option value = "5"> Distribuidor </option>
+                    </select>
+                    <p><%= locals.errors && errors.rol_id ? errors.rol_id.msg : null %> </p>
+             </div>
+                <div class="div_config">
                     <label for="email">Email</label>
                     <input type="email"  name="email" placeholder="Email" value="<%= locals.oldData ? oldData.email : null %>">
                     <p><%= locals.errors && errors.apellido ? errors.email.msg : null %> </p>
@@ -39,15 +50,6 @@
                   <input type="password" name="passwordConfirmation" placeholder="Confirmar contraseña" value="<%= locals.oldData ? oldData.passwordConfirmation : null %>">
                   <p><%= locals.errors && errors.password ? errors.password.msg : null %> </p>
               </div>
-              <div class="div_config">
-                    <label for="categoria">Categoria</label>
-                    <select name="categoria"  id="categoria" class="campo_select">
-                        <option value = "" selected> Indique una Categoria </option>
-                        <option value = "supervisor"> Supervisor </option>
-                        <option value = "vendedor"> Vendedor </option>
-                    </select>
-                    <p><%= locals.errors && errors.categoria ? errors.categoria.msg : null %> </p>
-             </div>
              <div class="div_config">
                 <label for="image" class="col-12 mt-3">Foto de perfil</label>
                 <input type="file" class="form-control" id="inputGroupFile02" name="image">

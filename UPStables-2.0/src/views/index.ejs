@@ -12,22 +12,22 @@
                             <% productos.forEach(producto=> { %>
                                 <% if (contadorCarrusel < 8) { %>
                                     <% for(x=0; x<producto.imagenes.length; x=producto.imagenes.length) { %>
-                                        <img src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>"
-                                            alt="Imagen Publicidad">
-                                        <% } %>
-                                            <% contadorCarrusel++;%>
-                                                <%} %>
-                                                    <% }) %>
+                                        <img src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="Imagen Publicidad">
+                                    <% } %>
+                                    <% contadorCarrusel++;%>
+                                <%} %>
+                            <% }) %>
                     </article>
 
                     <h3 class="titulo-carrusel">ARTICULOS</h3>
 
                     <article class="container-articulos">
                         <!--se utilizo un contador para limitar el numero de imagenes que se desean mostrar en el home-->
-                        <% let contador=0;%>
+                        <% let contador=0 %>
                             <!-- se uso un forEach para recorrer el array y mostrar todos los elementos con los metodos solicitados-->
                             <% productos.forEach(producto=> {%>
-                                <% if (contador < 4) {%>
+                                
+                                <% if (contador < 3) {%>
                                     <% for(x=0; x<producto.imagenes.length; x=producto.imagenes.length) { %>
                                         <article class="article_productos">
                                             <a class="main-enlace" href="/products/productDetail/<%= producto.id %>">
@@ -47,11 +47,11 @@
                                                 </p>
                                             </a>
                                         </article>
-                                        <% } %>
-
-                                            <% contador++;%>
-                                                <% }%>
-                                                    <%})%>
+                                    <% } %>
+                                    
+                                <% }%>
+                                <% contador++ %>
+                            <%})%>
                     </article>
 
                     <h3 class="titulo-carrusel">VER MAS</h3>
