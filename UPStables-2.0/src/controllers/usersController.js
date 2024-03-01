@@ -26,9 +26,11 @@ const userController = {
             fecha_nacimiento: fecha_nacimiento,
             password: bcrypt.hashSync(password,10),
           };
-          console.log("NEW USER!! :", nuevoUsuario);
+          console.log("NEW USER!! :", nuevoUsuario.imagen);
           const{nombre_calle,numero_calle} = req.body;
+          const id_usuario = 6
           const nuevoDomicilio ={
+            id_usuario : id_usuario +1,
             nombre_calle: nombre_calle,
             numero_calle: numero_calle
           }
@@ -99,8 +101,7 @@ const userController = {
           }
         })
         .then((user)=>{
-          
-          req.session.user = user;
+          req.session.user = user.dataValues;
           res.cookie('user',user,{maxAge: 1000 * 60 * 10 });
           
           if(req.body.remember == "on") {

@@ -31,7 +31,7 @@ const indexController = {
         { association: "imagenes" },
       ],
     }).then((productos) => {
-      res.render("index", { title: "UPStables", productos });
+      res.render("index", { title: "UPStables", productos, usuario:req.session.user });
     });
   },
 };
