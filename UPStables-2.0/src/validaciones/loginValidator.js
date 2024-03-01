@@ -20,7 +20,13 @@ const loginValidator = [
     body('password').notEmpty().withMessage("El campo no puede estar vacío").bail()
     .custom((value, {req})=>{
         console.log("PASSWORD:", value);
-        const user = users.find(elemento => elemento.email == req.body.email)
+        //const user = users.find(elemento => elemento.email == req.body.email)
+        console.log("EMAIL BODY...", req.body.email);
+        db.Usuario.findOne({
+            where:{
+                email: req.body.email
+            }
+        }); 
         console.log("USER:", user);
         console.log("USER-PASSWORD:", user.password);
         return bcrypt.compareSync(value, user.password);

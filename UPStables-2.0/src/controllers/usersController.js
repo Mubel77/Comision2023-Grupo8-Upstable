@@ -14,24 +14,32 @@ const userController = {
           res.render('users/register', { title: 'Registro',subtitulo:"Registrate", errors:errors.mapped(), oldData:req.body});
          } else {
           const {nombre,apellido,domicilio,email,password,imagen,fecha_nacimiento} = req.body;
-          const newUser = {
+          const nuevoUsuario = {
             rol_id: 1,
             nombre: nombre.trim(),
             apellido: apellido.trim(),
-            domicilio: domicilio,
             email: email.trim(),
             imagen:req.file ? req.file.filename : "user-default.png", 
             fecha_nacimiento: fecha_nacimiento,
             password: bcrypt.hashSync(password,10),
           };
-          db.Usuario.create(newUser)
+          const nuevoDomicilio ={
+            domicilio : domicilio,
+          }
+          db.Usuario.create(nuevoUsuario)
           .then((newUser)=>{
             res.redirect('/users/login');
           })
           .catch((err)=>{
             console.log(err);
           })
-          
+          db.Direccion.create(nuevoUsuario)
+          .then((newUser)=>{
+            res.redirect('/users/login');
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
         }
       },
 

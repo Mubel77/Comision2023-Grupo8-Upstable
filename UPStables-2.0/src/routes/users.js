@@ -17,11 +17,11 @@ router.get('/login', usersController.login);
 router.post('/login', loginValidator, usersController.loginUp);
 
 //ruta para editar usuario, tarea de santy y mauri, 
-router.get('/profile', sessionValidator, usersController.formUpdateUser)
+router.get('/profile', /*sessionValidator*/ usersController.formUpdateUser)
 router.put('/profile', upload.single('image'), usersController.processUpdate)
 
-router.get('/perfilAdmin',isAdmin, usersController.perfilAdmin);
-router.get('/perfilUser',sessionValidator, usersController.perfilUser);
+router.get('/perfilAdmin',/*isAdmin*/ usersController.perfilAdmin);
+router.get('/perfilUser',/*sessionValidator*/ usersController.perfilUser);
 
 router.get('/logout', usersController.logout);
 
