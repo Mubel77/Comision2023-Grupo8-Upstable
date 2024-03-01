@@ -7,10 +7,10 @@
         <main class="main_perfil-user">    
             <section class="section_izq_perfil-admin">
                 <div class="div_miPerfil-admin">
-                    <img src="/images/users/<%= usuario.image %>" alt="Avatar-Administrador">    
+                    <img src="<%= usuario.imagen %>" alt="Avatar-Administrador">    
                     <p class="div_p_subtitulos_perfil-user"><%= usuario.nombre %></p>
                     <p class="div_p_subtitulos_perfil-user"><%= usuario.email %></p>
-                    <p class="div_p_subtitulos_perfil-user"><%= usuario.categoria.toLocaleUpperCase() %></p>
+                    <p class="div_p_subtitulos_perfil-user"><%= usuario.roles.rol.toLocaleUpperCase() %></p>
                 </div>
                 <article class="section_izq_article_perfil-admin">
                     <a href="/products/dashboard">
@@ -37,7 +37,7 @@
                             <p class="">Editar Producto</p>
                         </div>
                     </a>
-                    <% if (usuario.categoria.toLowerCase() == 'supervisor') {%>
+                    <% if (usuario.roles.rol == 'supervisor') {%>
                         <a href="/users/registerAdmin">
                         <div class="div_enlaces_perfil-user">
                             <i class="fa-solid fa-screwdriver-wrench"></i>

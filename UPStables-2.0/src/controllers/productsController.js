@@ -74,7 +74,7 @@ const productsController = {
           { model: db.Categoria, as: "categorias" }, // Incluir la relación con Categoría
           { model: db.Marca, as: "marcas" }, // Incluir la relación con Marca
           { model: db.Imagen, as: "imagenes" }, // Incluir la relación con Imagen
-        ],
+        ]
       })
       .then((result) => {
         //console.log('THIS IS RESULT....',result);
@@ -89,12 +89,14 @@ const productsController = {
         console.log(err);
       });
   },
+
   formCreate: function (req, res, next) {
     res.render("products/formCreate", {
       title: "Formulario Crear",
       //usuario: req.session.user,
     });
   },
+
   //CREACCION DEL PRODUCTO CON BASE DATO
   create: function (req, res, next) {
     const {
@@ -222,7 +224,7 @@ const productsController = {
         { model: db.Marca, as: "marcas" }, // Relación con Marca
         { model: db.Imagen, as: "imagenes" }, // Relación con Imagen
       ],
-      limit: 3
+      limit: 2
     })
       .then((productos) => {
         //console.log('This is PRODUCTOOO...',productos.length);
@@ -231,9 +233,9 @@ const productsController = {
         let total = 0
         let impuestos = 0
         const cuenta = productos.forEach(element => {
-         subtotal = subtotal + element.precio
+         subtotal =  +element.precio + subtotal
          total = subtotal*1.21
-         impuestos = total*0.21
+         impuestos = subtotal*0.21
         });
         const data = {
           // cantidad,
