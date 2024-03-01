@@ -2,46 +2,49 @@
 <body>
     <%-include('../partials/header.ejs') %>
     <main>
-        <form action="/products/update/<%=productToEdit.id%>?_method=PUT"  method="POST"  class="form_create" enctype="multipart/form-data">
+        <div style="width: 200px;">
+            <a href="/products/dashboard"><button class="dashboard_add">Dashboard</button></a>
+        </div>
+        <form action="/products/update/<%=producto.id%>?_method=PUT"  method="POST"  class="form_create" enctype="multipart/form-data">
             <div class="div_config div_form_product">
                 <label for="modelo" id="modelo" class="div_config_label">Modelo</label>
-                <input type="text"  name="modelo" value="<%= productToEdit.modelo %>">
+                <input type="text"  name="modelo" value="<%= producto.modelo %>">
             </div>
             <div class="div_config div_form_product">
                 <label for="marca" id="marcas">Marca</label>
-                <input type="text"  name="marca" value="<%= productToEdit.marca %>">
+                <input type="text" name="marca" value="<%= producto.marcas.marca %>">
             </div>
             <div class="div_config div_form_product">
                 <label for="categoria" id="categoria">Categoria</label>
                 <select name="categoria"  id="categoria" class="div_config">
-                    <option value="" <%= productToEdit.categoria == "" ? "selected" :null %>>Elegi una Opcion</option>
-                    <option value="UPS" <%= productToEdit.categoria == "UPS" ? "selected" :null %>>UPS</option>
-                    <option value="Estabilizadores" <%= productToEdit.categoria == "Estabilizadores" ? "selected" :null %>>ESTABILIZADORES</option>
+                    <option value="" <%= producto.categorias.categoria == "" ? "selected" :null %>>Elegi una Opcion</option>
+                    <option value="UPS" <%= producto.categorias.categoria == "ups" ? "selected" :null %>>UPS</option>
+                    <option value="Estabilizadores" <%= producto.categorias.categoria == "estabilizadores" ? "selected" :null %>>ESTABILIZADORES</option>
                 </select>
             </div>
             <div class="div_config div_form_product" >
                 <label for="descripcion" id="descripcion">Descripcion</label>
-                <textarea name="descripcion" id="descripcion"  cols="60" rows="20"><%= productToEdit.descripcion %></textarea>
+                <textarea name="descripcion" id="descripcion"  cols="60" rows="20"><%= producto.descripcion %></textarea>
             </div>
             <div class="div_config div_form_product">
                 <label for="potencia" id="potencia">Potencia</label>
-                <input type="number"  name="potencia" value="<%= productToEdit.potencia %>" >
+                <input type="number"  name="potencia" value="<%= producto.potencia %>" >
             </div>
             <div class="div_config div_form_product">
                 <label for="tomas" id="tomas">Cantidad de tomas</label>
-                <input type="number"  name="tomas" value="<%= productToEdit.tomas %>" >
+                <input type="number"  name="tomas" value="<%= producto.tomas %>" >
             </div>
             <div class="div_config div_form_product">
                 <label for="precio" id="precio">Precio</label>
-                <input type="number"  name="precio" value="<%= productToEdit.precio %>" >
+                <input type="number"  name="precio" value="<%= producto.precio %>" >
             </div>
             <div class="div_config div_form_product">
                 <label for="descuento" id="descuento">Descuento</label>
-                <input type="number"  name="descuento" value="<%= productToEdit.descuento %>">
+                <input type="number"  name="descuento" value="<%= producto.descuento %>">
             </div>
             <div class="div_config div_form_product">
                 <label for="stock" id="stock">Stock</label>
-                <input type="number"  name="stock" value="<%= productToEdit.stock %>">
+                <input type="number"  name="stock" value="<%= producto.stock %>">
             </div>
             <div class="div_config">
                 <label for="imagenes" id="imagenes">Seleccione una imagen</label>
@@ -50,13 +53,13 @@
        
             <div class="boton_registro_update ">
                 <button type="submit">Editar Producto</button>
-            
-            
-    </form>
-                 <form action="/products/delete/<%=productToEdit.id%>?_method=DELETE" method="POST">
-                    <button type="submit">Eliminar </button>
-                </form>
-            </div> 
+        </form>
+
+        <form action="/products/delete/<%=producto.id%>?_method=DELETE" method="POST">
+            <button type="submit">Eliminar </button>
+        </form>
+    </div> 
+
     </main>
     <%-include('../partials/footer.ejs') %>
 </body>

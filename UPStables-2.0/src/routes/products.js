@@ -27,17 +27,17 @@ router.get('/dashboard',/*isAdmin,*/ productsController.dashboard);
 router.get('/dashboard/search', productsController.dashboardSearch);
 
 // Crear producto Admin
-router.get('/formCreate', isAdmin, productsController.formCreate);
+router.get('/formCreate', productsController.formCreate);
 router.post('/formCreate', upload.array('imagenes'), productsController.create);
 
 // Actualizar productos Admin
-router.get('/formUpdate/:id',isAdmin, productsController.formUpdate);
+router.get('/formUpdate/:id', productsController.formUpdate);
 router.put('/update/:id', upload.array('imagenes'), productsController.update);
 
 // Borrar productos Admin
 router.delete('/delete/:id', productsController.delete);
 
 // Ver carrito de compra
-router.get('/productCart', sessionValidator, productsController.cart);
+router.get('/productCart', productsController.cart);
 
 module.exports = router;
