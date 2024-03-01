@@ -30,6 +30,10 @@ module.exports = {
           key: 'id'
         }
       },
+      imagenes: {
+        allowNull: true,
+        type: DataTypes.JSON, 
+      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE

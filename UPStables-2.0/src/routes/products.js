@@ -3,15 +3,15 @@ var multer = require('multer')
 var path = require('path');
 var router = express.Router();
 
-const storage= multer.diskStorage({
-    destination:(req,file,cb)=>{
-        cb(null,path.join(__dirname,'../../public/images/'))
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+       cb(null, path.join(__dirname, '../../public/images/products'));
     },
-    filename: (req,file,cb)=>{
-        const newFilename='Upstable-imagen'+ Date.now() + path.extname(file.originalname);
-        cb(null,newFilename)
+    filename: (req, file, cb) => {
+       const newFilename = 'Upstable-imagen' + Date.now() + path.extname(file.originalname);
+       cb(null, newFilename);
     }
-});
+ });
 const upload=multer({storage});
 
 const {sessionValidator, isAdmin} = require('../middlewares/sessionValidator.js')
