@@ -26,10 +26,12 @@ const loginValidator = [
             where:{
                 email: req.body.email
             }
-        }); 
-        console.log("USER:", user);
-        console.log("USER-PASSWORD:", user.password);
-        return bcrypt.compareSync(value, user.password);
+        }).then((usuario)=>{
+            console.log("Contra Hash:",usuario.dataValues.password);
+            return bcrypt.compareSync(value, usuario.dataValues.password);
+           
+        })
+       
     }).withMessage("Usuario o contraseña incorrectos")
 ]
 

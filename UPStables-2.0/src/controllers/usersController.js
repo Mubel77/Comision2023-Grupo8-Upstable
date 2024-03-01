@@ -10,10 +10,13 @@ const userController = {
      
     createUser: function(req, res, next) {
         const errors= validationResult(req);
+        console.log("Esto es BODYY:",req.body);
         if (!errors.isEmpty()){
+          console.log("HAY ERRORES", errors);
           res.render('users/register', { title: 'Registro',subtitulo:"Registrate", errors:errors.mapped(), oldData:req.body});
          } else {
-          const {nombre,apellido,domicilio,email,password,imagen,fecha_nacimiento} = req.body;
+          const {nombre,apellido,email,password,imagen,fecha_nacimiento} = req.body;
+          
           const nuevoUsuario = {
             rol_id: 1,
             nombre: nombre.trim(),
@@ -23,18 +26,21 @@ const userController = {
             fecha_nacimiento: fecha_nacimiento,
             password: bcrypt.hashSync(password,10),
           };
+          console.log("NEW USER!! :", nuevoUsuario);
+          const{nombre_calle,numero_calle} = req.body;
           const nuevoDomicilio ={
-            domicilio : domicilio,
+            nombre_calle: nombre_calle,
+            numero_calle: numero_calle
           }
           db.Usuario.create(nuevoUsuario)
-          .then((newUser)=>{
+          .then((nuevoUsuario)=>{
             res.redirect('/users/login');
           })
           .catch((err)=>{
             console.log(err);
           })
-          db.Direccion.create(nuevoUsuario)
-          .then((newUser)=>{
+          db.Direccion.create(nuevoDomicilio)
+          .then((nuevoDomicilio)=>{
             res.redirect('/users/login');
           })
           .catch((err)=>{
@@ -81,29 +87,34 @@ const userController = {
     loginUp: function(req, res, next) {
       const errores = validationResult(req);
       if(!errores.isEmpty()){
+        console.log("HAY ERRORES EN LOGIN:", errores);
         res.render('./users/login', {errores:errores.mapped(), old: req.body, title: "Login"})
+      }else{
+        console.log("PASO, NO HAY ERRORES")
+        const {email} = req.body;
+        db.Usuario.findOne({
+          attributes: {exclude: ["password"]},
+          where: {
+            email,
+          }
+        })
+        .then((user)=>{
+          
+          req.session.user = user;
+          res.cookie('user',user,{maxAge: 1000 * 60 * 10 });
+          
+          if(req.body.remember == "on") {
+            res.cookie('rememberMe',"true", {maxAge: 1000 * 60 * 5 });        
+          }
+          
+        res.redirect('/')
+        })
+        .catch((err)=>{
+          console.log(err);
+        })
+          
       }
-      const {email} = req.body;
-      db.Usuario.findOne({
-        attributes: {exclude: ["password"]},
-        where: {
-          email,
-        }
-      })
-      .then((user)=>{
-        req.session.user = user;
-        res.cookie('user',user,{maxAge: 1000 * 60 * 10 });
-        
-        if(req.body.remember == "on") {
-          res.cookie('rememberMe',"true", {maxAge: 1000 * 60 * 5 });        
-        }
-        
-      res.redirect('/')
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
-        
+      
       },
 
       // contralador de la actualizacion de usuario
