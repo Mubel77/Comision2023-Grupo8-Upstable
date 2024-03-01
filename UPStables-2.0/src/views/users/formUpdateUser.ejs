@@ -7,6 +7,7 @@
             <p id="p_registro"><%= subtitulo %></p>
         </div>
         <form method="POST" action="/users/profile?_method=PUT" id="form_registro" enctype="multipart/form-data">
+            
             <div class="div_config nombre">
                 <label for="nombre">Nombre</label>
                 <input type="text" name="nombre" placeholder="Nombre" value="<%= usuario.nombre %>">
@@ -18,38 +19,53 @@
                 <p><%= locals.errors && errors.apellido ? errors.apellido.msg : null %></p>
             </div>
             <div class="div_config">
+                <label for="telefono">Telefono</label>
+                <input type="number"  name="prefijo" placeholder="Prefijo"  value="<%= locals.usuario ? usuario.prefijo : locals.old && old.prefijo ? old.prefijo : null %>">
+                <p><%= locals.errors && errors.prefijo ? errors.prefijo.msg : null %> </p>
+                <input type="number"  name="numero" placeholder="Numero"  value="<%= locals.usuario ? usuario.numero : locals.old && old.numero ? old.numero : null %>">
+                <p><%= locals.errors && errors.numero ? errors.numero.msg : null %> </p>
+            </div>
+            <div class="div_config">
+                <label for="telefono">Telefono</label>
+                <input type="number"  name="prefijo" placeholder="Prefijo"  value="<%= locals.usuario ? usuario.prefijo : locals.old && old.prefijo ? old.prefijo : null %>">
+                <p><%= locals.errors && errors.prefijo ? errors.prefijo.msg : null %> </p>
+                <input type="number"  name="numero" placeholder="Numero"  value="<%= locals.usuario ? usuario.numero : locals.old && old.numero ? old.numero : null %>">
+                <p><%= locals.errors && errors.numero ? errors.numero.msg : null %> </p>
+            </div>
+            <div class="div_config">
                 <label for="domicilio">Domicilio</label>
-                <input type="text" name="domicilio" placeholder="Domicilio" value="<%= usuario.domicilio %>">
-                <p><%= locals.errors && errors.domicilio ? errors.domicilio.msg : null %></p>
+                <input type="text"  name="nombre_calle" placeholder="Nombre Calle" value="<%= locals.usuario ? usuario.nombre_calle : locals.old && old.nombre_calle ? old.nombre_calle : null %>">
+                <p><%= locals.errors && errors.nombre_calle ? errors.nombre_calle.msg : null %> </p>
+                <input type="number"  name="numero_calle" placeholder="Numero Calle" value="<%= locals.usuario ? usuario.numero_calle : locals.old && old.numero_calle ? old.numero_calle : null %>">
+                <p><%= locals.errors && errors.numero_calle ? errors.numero_calle.msg : null %> </p>
+                <input type="number"  name="codigo_postal" placeholder="Codigo Postal" value="<%= locals.usuario ? usuario.codigo_postal : locals.old && old.codigo_postal ? old.codigo_postal : null %>">
+                <p><%= locals.errors && errors.codigo_postal ? errors.codigo_postal.msg : null %> </p>
+                <input type="text"  name="localidad" placeholder="Localidad" value="<%= locals.usuario ? usuario.localidad : locals.old && old.localidad ? old.localidad : null %>">
+                <p><%= locals.errors && errors.localidad ? errors.localidad.msg : null %> </p>
+                <input type="text"  name="provincia" placeholder="Provincia" value="<%= locals.usuario ? usuario.provincia : locals.old && old.provincia ? old.provincia : null %>">
+                <p><%= locals.errors && errors.provincia ? errors.provincia.msg : null %> </p>
             </div>
             <div class="div_config">
                 <label for="email">Email</label>
-                <input type="email" name="email" placeholder="Email" value="<%= usuario.email %>">
-                <p><%= locals.errors && errors.email ? errors.email.msg : null %></p>
-            </div>
-            <div class="div_config">
-                <label for="categoria">Categoría</label>
-                <select name="categoria" id="categoria" class="campo_select">
-                    <option value="supervisor" <%= usuario.categoria === "supervisor" ? "selected" : "" %>>Supervisor</option>
-                    <option value="vendedor" <%= usuario.categoria === "vendedor" ? "selected" : "" %>>Vendedor</option>
-                </select>
-                <p><%= locals.errors && errors.categoria ? errors.categoria.msg : null %></p>
+                <input type="email"  name="email" placeholder="Email" value="<%= locals.usuario ? usuario.email: locals.old && old.email? old.email: null %>">
+                <p><%= locals.errors && errors.apellido ? errors.email.msg : null %> </p>
             </div>
             <div class="div_config">
                 <label for="age">Edad</label>
-                <input type="number" name="age" id="age" value="<%= usuario.age %>">
-                <p><%= locals.errors && errors.age ? errors.age.msg : null %></p>
-            </div>
-            <div class="div_config">
+                <input type="number" name="age" id="age" value="<%= locals.usuario ? usuario.age : locals.oldData && oldData.age ? oldData.age : null %>">
+                <p><%= locals.errors && errors.age ? errors.age.msg : null %> </p>
+            </div> 
+            <div class="div_config"></div>
                 <label for="date">Fecha de Nacimiento</label>
-                <input type="date" name="date" id="date" value="<%= usuario.fecha_nacimiento.toISOString().split('T')[0] %>">
-                <p><%= locals.errors && errors.date ? errors.date.msg : null %></p>
-            </div>
+                <input type="date" name="date" id="date" value="<%= locals.usuario ? usuario.date : locals.oldData && oldData.date ? oldData.date : null %>">
+                <p><%= locals.errors && errors.date ? errors.date.msg : null %> </p>
+            </div> 
             <div class="div_config">
-                <label for="image" class="col-12 mt-3">Foto de perfil</label>
-                <input type="file" class="form-control" id="inputGroupFile02" name="image">
-                <p><%= locals.errors && errors.image ? errors.image.msg : null %></p>
-            </div>
+            <label for="image" class="col-12 mt-3">Foto de perfil</label>
+            <input type="file" class="form-control" id="inputGroupFile02" name="image">
+            <p><%= locals.errors && errors.image ? errors.image.msg : null %> </p>
+        </div>
+        <% } %>
             <div class="boton_registro">
                 <button type="submit">Guardar Cambios</button>
             </div>

@@ -9,7 +9,7 @@ const upload = require('../validaciones/uploadUser');
 router.get('/register', usersController.register);
 router.post('/register', upload.single('image'), validatorRegister, usersController.createUser);
 
-router.get('/registerAdmin', isAdmin, usersController.registerAdmin);
+router.get('/registerAdmin', usersController.registerAdmin);  //isAdmin
 router.post('/registerAdmin', upload.single('image'),validatorRegisterAdmin, usersController.createUserAdmin);
 
 
@@ -17,11 +17,11 @@ router.get('/login', usersController.login);
 router.post('/login', loginValidator, usersController.loginUp);
 
 //ruta para editar usuario, tarea de santy y mauri, 
-router.get('/profile', sessionValidator, usersController.formUpdateUser)
+router.get('/profile', usersController.formUpdateUser)  //sessionValidator, 
 router.put('/profile', upload.single('image'), usersController.processUpdate)
 
 router.get('/perfilAdmin',isAdmin, usersController.perfilAdmin);
-router.get('/perfilUser',sessionValidator, usersController.perfilUser);
+router.get('/perfilUser', usersController.perfilUser);  //sessionValidator, 
 
 router.get('/logout', usersController.logout);
 

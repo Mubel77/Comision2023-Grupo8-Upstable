@@ -1,0 +1,44 @@
+<%-include("../partials/head.ejs") %>
+
+<body>
+    <%-include("../partials/header.ejs") %>
+    <main style="display: flex;">
+      
+      <section class="column_items_products" >
+        <%  productos.forEach(producto => { %>    
+            <article class="item_product">
+              <div class="item_product_div">
+                <% for(x=0; x<producto.imagenes.length; x=producto.imagenes.length) { %>
+                    <img src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="Imagen Publicidad">
+                <% } %>
+              </div>
+                <div class="item_product_div">
+                  <span class=""><%= producto.descripcion %></span>
+                </div>
+                <div class="item_product_div">
+                  <p class="">$<%= producto.precio %></p>
+                </div>   
+            </article>
+        <% }) %>
+      </section>
+        
+      <section class="column_detail_facturacion">
+        <div  class="list_detail_facturacion">
+          <p class="title_detail"> Subtotal </p>
+          <p class="detail">$<%= data.subtotal %></p>
+          <p class="title_detail">Transporte</p>
+          <p class="detail">Envio gratis</p>
+          <p class="title_detail">Impuestos (IVA)</p>
+          <p class="detail">$<%= data.impuestos %></p>
+          <p class="title_detail">TOTAL</p>
+          <p class="detail">$<%= data.total %></p>
+          <div class="boton_cart_compra">
+            <button>Finalizar compra </button>
+          </div>
+        </div>   
+      </section>
+
+    </main>
+    <%-include("../partials/footer.ejs") %>
+
+</html>

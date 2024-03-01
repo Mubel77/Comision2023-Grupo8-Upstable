@@ -5,6 +5,7 @@
             <main class="dashboard_main">
                                 
                 <div class="dashboard_box_search-add">
+                    <a href="/products"><button class="dashboard_add">List Products</button></a>
                     <div class="dashboard_search">
                         <form action="/products/dashboard/search" method="GET">
                             <input type="text" name="keywords" placeholder="Buscar producto por Marca">
@@ -15,24 +16,26 @@
                 </div>
 
                 <section class="dashboard_section">
-                <% productos.forEach(element => {%>
+                <% productos.forEach(producto => {%>
                     <article class="dashboard_article">
                         <div class="dashboard_div_img">
-                            <img src="/images/<%= element.imagen[0]%>" alt="<%= element.categoria%>">
+                            <% for(x=0; x<producto.imagenes.length; x=producto.imagenes.length) { %>
+                                <img src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="Imagen Publicidad">
+                            <% } %>
                         </div>
                         <div class="dashboard_div_texto">
-                            <h2>Modelo: <%= element.modelo%></h2>
-                            <h3>Marca: <%= element.marca%></h3>
-                            <h4>Categoria: <%= element.categoria%></h4>
-                            <p><%= element.descripcion%></p>
-                            <h4>Potencia: <%= element.potencia%></h4>
-                            <h4>Tomas: <%= element.tomas%></h4>
-                            <h4>Precio: <%= element.precio%></h4>
-                            <h4>Descuento: <%= element.descuento%></h4>
-                            <h4>Stock: <%= element.stock%></h4>
+                            <h2>Modelo: <%= producto.modelo%></h2>
+                            <h3>Marca: <%= producto.marcas.marca%></h3>
+                            <h4>Categoria: <%= producto.categorias.categoria%></h4>
+                            <p><%= producto.descripcion%></p>
+                            <h4>Potencia: <%= producto.potencia%></h4>
+                            <h4>Tomas: <%= producto.tomas%></h4>
+                            <h4>Precio: $ <%= producto.precio%></h4>
+                            <h4>Descuento: <%= producto.descuento ? producto.descuento : 0 %>%</h4>
+                            <h4>Stock: <%= producto.stock%></h4>
                         </div>
                         <div class="dashboard_div_botones">
-                            <a href="/products/formUpdate/<%= element.id%>"><button>Modificar</button></a>
+                            <a href="/products/formUpdate/<%= producto.id %>"><button>Modificar</button></a>
                         </div>
                     </article>
                 <% })%>
