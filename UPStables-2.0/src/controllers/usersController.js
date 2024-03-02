@@ -42,9 +42,12 @@ const userController = {
     createUserAdmin: function(req,res,next){
        const errors= validationResult(req);
        if (!errors.isEmpty()){
+        //console.log("This is OLD-DATA...",{oldData:req.body});
            res.render('users/registerAdmin', { title: 'Registro', errors:errors.mapped(), oldData:req.body});
          } else {
          const {nombre,apellido,domicilio,email,password,categoria,imagen,fecha_nacimiento,rol_id} = req.body;
+        //  console.log("This is ADMIN...",req.body);
+        //  res.send("PASO LAS VALIDACIONES")
          const newAdmin = {
           rol_id: rol_id,
            nombre: nombre.trim(),
@@ -106,8 +109,8 @@ const userController = {
             res.render('./users/formUpdateUser', {
               title: 'Editar Usuario',
               subtitulo: 'Editar Usuario',
-              user: response.dataValues,
-              usuario: req.session.user
+              //user: response.dataValues,
+              //usuario: req.session.user
             });
           })
           .catch(err => console.log(err));

@@ -30,18 +30,28 @@
 #form_registro {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .div_config {
     display: flex;
     flex-wrap: wrap;
     width: 90%;
-    margin: 0% 5%;
+    margin: 5px;
 }
 
 .div_config label {
     display: none;
+    font-size: 20px;
+    font-style: italic;
 }
+
+.div_config p {
+    font-size: 20px;
+    font-style: italic;
+    color: red;
+}
+
 .div_form_product label{
     display: inline;
 }
@@ -50,20 +60,22 @@
     border: 1px solid #000;
     width: 100%;
     padding: 5%;
-    margin: 2% 0%;
+    margin: 5px 0px;
     border-radius: 15px;
     box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
     margin-bottom: 10px;
+    font-size: 18px;
 }
 
 .campo_select {
     border: 1px solid #000;
     width: 100%;
-    padding: 1%;
-    margin: 2% 0%;
+    padding: 10px;
+    margin: 5px 0px;
     border-radius: 15px;
     box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
     margin-bottom: 10px;
+    font-size: 18px;
 }
 
 .boton_registro {
