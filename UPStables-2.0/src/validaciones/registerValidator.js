@@ -7,9 +7,11 @@ const validatorRegister = [
     body('apellido')
         .notEmpty().withMessage('Debes completar el apellido').bail()
         .isLength({ min: 5 }).withMessage('El apellido debe tener al menos 5 caracteres'),
-    body('domicilio')
-        .notEmpty().withMessage('Debes completar el domicilio').bail()
-        .isLength({ min: 5 }).withMessage('El domicilio debe tener al menos 5 caracteres'),
+        body('nombre_calle')
+        .notEmpty().withMessage('Debes completar una calle para tu domicilio').bail(),
+    body('numero_calle')
+        .notEmpty().withMessage('Debes completar un numero para tu domicilio').bail()
+        .isInt().withMessage('Debes completar con un numero entero').bail(), 
     body('email').notEmpty().withMessage("El campo no puede estar vacio").bail()
         .isEmail().withMessage('Debe ser un correo con formato valido').bail()
         .custom(value => {
@@ -42,10 +44,12 @@ const validatorRegisterAdmin = [
     body('apellido')
         .notEmpty().withMessage('Debes completar el apellido').bail()
         .isLength({ min: 5 }).withMessage('El apellido debe tener al menos 5 caracteres'),
-    body('domicilio')
-        .notEmpty().withMessage('Debes completar el domicilio').bail()
-        .isLength({ min: 5 }).withMessage('El domicilio debe tener al menos 5 caracteres'),
-        body('email').notEmpty().withMessage("El campo no puede estar vacio").bail()
+    body('nombre_calle')
+        .notEmpty().withMessage('Debes completar una calle para tu domicilio').bail(),
+    body('numero_calle')
+        .notEmpty().withMessage('Debes completar un numero para tu domicilio').bail()
+        .isInt().withMessage('Debes completar con un numero entero').bail(),    
+    body('email').notEmpty().withMessage("El campo no puede estar vacio").bail()
         .isEmail().withMessage('Debe ser un correo con formato valido').bail()
         .custom(value => {    
             db.Usuario.findOne({
