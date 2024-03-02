@@ -19,22 +19,32 @@
                     <input type="text"  name="apellido" placeholder="Apellido"  value="<%= locals.oldData ? oldData.apellido : null %>">
                     <p><%= locals.errors && errors.apellido ? errors.apellido.msg : null %> </p>
                 </div>
-                <div class="div_config">
-                    <label for="domicilio">Domicilio</label>
-                    <input type="text"  name="domicilio" placeholder="Domicilio" value="<%= locals.oldData ? oldData.domicilio : null %>">
-                    <p><%= locals.errors && errors.domicilio ? errors.domicilio.msg : null %> </p>
+                <div class="div_config nombre">
+                    <label for="domicilio">Domicilio CALLE</label>
+                    <input type="text"  name="nombre_calle" placeholder="Nombre Calle" value="<%= locals.oldData ? oldData.nombre_calle : null %>">
+                    <p><%= locals.errors && errors.nombre_calle ? errors.nombre_calle.msg : null %> </p>
                 </div>
-                <div class="div_config">
-                    <label for="rol_id">Roles</label>
+                <div class="div_config nombre">
+                    <label for="domicilio">Domicilio NUMERO</label>
+                    <input type="text"  name="numero_calle" placeholder="Numero Calle" value="<%= locals.oldData ? oldData.numero_calle : null %>">
+                    <p><%= locals.errors && errors.numero_calle ? errors.numero_calle.msg : null %> </p>
+                </div>
+                <div class="div_config nombre">
+                    <label for="fecha_nacimiento">Fecha Nacimiento</label>
+                    <input type="date"  name="fecha_nacimiento" placeholder="Fecha Nacimiento"  value="<%= locals.oldData ? oldData.fecha_nacimiento : null %>">
+                    <p><%= locals.errors && errors.fecha_nacimiento ? errors.fecha_nacimiento.msg : null %> </p>
+                </div>
+                <div class="div_config nombre">
+                    <label for="rol_id">Rol</label>
                     <select name="rol_id"  id="rol_id" class="campo_select">
-                        <option value = "" selected> Indique un Rol </option>
-                        <option value = "2"> Supervisor </option>
-                        <option value = "3"> Vendedor </option>
-                        <option value = "4"> Proveedor </option>
-                        <option value = "5"> Distribuidor </option>
+                        <option value = "" > Indique un Rol </option>
+                        <option value = "2" <%= locals.oldData && oldData.rol_id == "2" ? 'selected' : null %>> Supervisor </option>
+                        <option value = "3" <%= locals.oldData && oldData.rol_id == "3" ? 'selected' : null %>> Vendedor </option>
+                        <option value = "4" <%= locals.oldData && oldData.rol_id == "4" ? 'selected' : null %>> Proveedor </option>
+                        <option value = "5" <%= locals.oldData && oldData.rol_id == "5" ? 'selected' : null %>> Distribuidor </option>
                     </select>
                     <p><%= locals.errors && errors.rol_id ? errors.rol_id.msg : null %> </p>
-             </div>
+                </div>
                 <div class="div_config">
                     <label for="email">Email</label>
                     <input type="email"  name="email" placeholder="Email" value="<%= locals.oldData ? oldData.email : null %>">
