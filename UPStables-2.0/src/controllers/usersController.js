@@ -106,11 +106,13 @@ const userController = {
             res.render('./users/formUpdateUser', {
               title: 'Editar Usuario',
               subtitulo: 'Editar Usuario',
-              user: response.dataValues,
-              usuario: req.session.user
+              // usuario: response.dataValues,
+              errors: req.locals.errors, // Asegúrate de pasar los errores si están disponibles
             });
           })
-          .catch(err => console.log(err));
+          .catch(err => {
+            console.log(err);
+          });
       },
       //Proceso de actualizacion de usario del 6 sprint(Mauricio)
       processUpdate: (req, res) => {

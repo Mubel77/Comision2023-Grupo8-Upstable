@@ -99,57 +99,55 @@ const productsController = {
   //CREACCION DEL PRODUCTO CON BASE DATO
   create: function (req, res, next) {
     const {
-      marca,
-      modelo,
-      descripcion,
-      precio,
-      stock,
-      potencia,
-      categoria,
-      tomas,
-      descuento,
+        marca,
+        modelo,
+        descripcion,
+        precio,
+        stock,
+        potencia,
+        categoria,
+        tomas,
+        descuento,
     } = req.body;
     const arrayImagenes = req.files.map((file) => file.filename); // Suponiendo que req.files contiene la información de los archivos cargados
     if (!categoria) {
-      return res.status(400).send("La categoría es requerida");
+        return res.status(400).send("La categoría es requerida");
     }
     // Agregar el id de la marca
     db.Marca.findOne({ where: { marca } })
-      .then((marcaEncontrada) => {
-        db.Categoria.findOne({ where: { categoria } })
-          .then((categoriaRes) => {
-            const categoriaEncontrada = categoriaRes.dataValues
-            const nuevoProducto = {
-              modelo: modelo.trim(),
-              descripcion: descripcion.trim(),
-              precio: +precio,
-              stock: +stock,
-              potencia: +potencia,
-              id_marcas: marcaEncontrada.id, // id marca
-              id_categorias: categoriaEncontrada.id, // id categoria
-              tomas: +tomas,
-              descuento: +descuento,
-              imagen:
-                arrayImagenes.length > 0 ? arrayImagenes : ["default.jpg"],
-            };
+        .then((marcaEncontrada) => {
+            db.Categoria.findOne({ where: { categoria } })
+                .then((categoriaEncontrada) => {
+                    const nuevoProducto = {
+                        modelo: modelo.trim(),
+                        descripcion: descripcion.trim(),
+                        precio: +precio,
+                        stock: +stock,
+                        potencia: +potencia,
+                        id_marcas: marcaEncontrada.id, // id marca
+                        id_categorias: categoriaEncontrada.id, // id categoria
+                        tomas: +tomas,
+                        descuento: +descuento,
+                        imagenes: arrayImagenes, // Agregar las imágenes al objeto del producto
+                    };
 
-            db.Producto.create(nuevoProducto)
-              .then((createProduct) => {
-                res.redirect(`/products/productDetail/${createProduct.id}`);
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-          })
-          .catch((err) => {
+                    db.Producto.create(nuevoProducto)
+                        .then((createProduct) => {
+                            res.redirect(`/products/productDetail/${createProduct.id}`);
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        })
+        .catch((err) => {
             console.log(err);
+        });
+},
 
-          });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  },
   formUpdate: function (req, res, next) {
     const { id } = req.params;
     db.Producto.findByPk(id, {
