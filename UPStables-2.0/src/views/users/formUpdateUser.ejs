@@ -33,7 +33,7 @@
                 <label for="domicilio">Domicilio</label>
                 <input type="text"  name="nombre_calle" placeholder="Nombre Calle" value="<%= locals.usuario ? usuario.nombre_calle : locals.old && old.nombre_calle ? old.nombre_calle : null %>">
                 <p><%= locals.errors && errors.nombre_calle ? errors.nombre_calle.msg : null %> </p>
-                <input type="text"  name="numero_calle" placeholder="Numero Calle" value="<%= locals.usuario ? usuario.numero_calle : locals.old && old.numero_calle ? old.numero_calle : null %>">
+                <input type="text"  name="numero_calle" placeholder="Numero Calle" value="<%= locals.usuario ? usuario.nombre_calle : locals.old && old.numero_calle ? old.numero_calle : null %>">
                 <p><%= locals.errors && errors.numero_calle ? errors.numero_calle.msg : null %> </p>
                 <input type="text"  name="codigo_postal" placeholder="Codigo Postal" value="<%= locals.usuario ? usuario.codigo_postal : locals.old && old.codigo_postal ? old.codigo_postal : null %>">
                 <p><%= locals.errors && errors.codigo_postal ? errors.codigo_postal.msg : null %> </p>

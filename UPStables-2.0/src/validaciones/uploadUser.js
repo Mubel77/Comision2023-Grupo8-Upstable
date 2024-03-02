@@ -7,8 +7,8 @@ const storage = multer.diskStorage({
         cb(null, path.join(__dirname,'/../../public/images/users'))
       },
       filename: (req, file, cb) => {
-        const uniqueSuffix = Date.now() + '-' + uuidv4();
-        cb(null, path.basename(file.originalname,path.extname(file.originalname)) + '-' + uniqueSuffix + path.extname(file.originalname))
+        const avatarFilename='Avatar-User'+ Date.now() + path.extname(file.originalname);
+        cb(null, avatarFilename)
       }
 });
 
@@ -23,6 +23,6 @@ const fileFilter = (req, file, cb) => {
   };
   
 
-module.exports = multer({storage,fileFilter})
+module.exports = multer({storage},fileFilter)
 
 //module.exports = {storage,fileFilter}

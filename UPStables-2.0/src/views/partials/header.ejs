@@ -23,11 +23,11 @@
          
        
         <% if(locals.usuario){%>
-            <% if(locals.usuario.roles.rol !== 1){%>
+            <% if(locals.usuario.rol_id !== 1){%>
                 <div class="icons_nav" id="img_user">
                     <a href="/users/perfilAdmin">
                         <img src="<%= locals.usuario.imagen %>"  alt="foto de perfil">
-                        <p class="texto_nav">¡ Hola !<br> <%= locals.usuario.nombre %></p> 
+                        <p class="texto_nav">¡ Hola !<br> <%= console.log(locals.usuario.nombre) %></p> 
                     </a>
                 </div>
            <% }else{%>
