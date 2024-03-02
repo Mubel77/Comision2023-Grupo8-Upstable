@@ -1,5 +1,5 @@
 'use strict';
-//import { parse } from "@formkit/tempo"
+
 const { parse } = require("@formkit/tempo") 
 const {leerArchivo} = require('../../data/jsonFunctions');
 const data = leerArchivo("users");
