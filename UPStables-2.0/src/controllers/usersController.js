@@ -120,20 +120,22 @@ const userController = {
 
       // contralador de la actualizacion de usuario
       formUpdateUser: (req, res) => {
-        const { id } = req.session;
+        const { id } = req.params; // Acceder al id desde los parámetros de la URL
         db.Usuario.findByPk(id)
-          .then(response => {
-            res.render('./users/formUpdateUser', {
-              title: 'Editar Usuario',
-              subtitulo: 'Editar Usuario',
-              // usuario: response.dataValues,
-              errors: req.locals.errors, // Asegúrate de pasar los errores si están disponibles
-            });
+          .then(user => {
+            if (user) {
+              res.render('./users/formUpdateUser', {
+                title: 'Editar Usuario',
+                subtitulo: 'Editar Usuario',
+                user: user // Pasar los datos del usuario recuperado a la vista
+              });
+            } 
           })
           .catch(err => {
             console.log(err);
           });
       },
+      
       //Proceso de actualizacion de usario del 6 sprint(Mauricio)
       processUpdate: (req, res) => {
         const { id } = req.params;
