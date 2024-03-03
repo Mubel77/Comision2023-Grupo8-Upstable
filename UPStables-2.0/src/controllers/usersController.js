@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 const db = require("../database/models/index.js");
 const { log } = require("console");
+const { parse } = require("@formkit/tempo") 
 
 const userController = {
   register: function (req, res, next) {
@@ -14,9 +15,7 @@ const userController = {
 
   createUser: function (req, res, next) {
     const errors = validationResult(req);
-    console.log("Esto es BODYY:", req.body);
     if (!errors.isEmpty()) {
-      console.log("HAY ERRORES", errors);
       res.render("users/register", {
         title: "Registro",
         subtitulo: "Registrate",
@@ -36,9 +35,7 @@ const userController = {
       };
       db.Usuario.create(nuevoUsuario)
         .then((usuario) => {
-          console.log("NEW USER....!! :", usuario);
           const { nombre_calle, numero_calle } = req.body;
-          //const id_usuario = usuario.id;
           const nuevoDomicilio = {
             id_usuario: usuario.id,
             nombre_calle: nombre_calle,
@@ -115,25 +112,27 @@ const userController = {
   loginUp: function (req, res, next) {
     const errores = validationResult(req);
     if (!errores.isEmpty()) {
-      console.log("HAY ERRORES EN LOGIN:", errores);
       res.render("./users/login", {
         errores: errores.mapped(),
         old: req.body,
         title: "Login",
       });
     } else {
-      console.log("PASO, NO HAY ERRORES");
       const { email } = req.body;
       db.Usuario.findOne({
-        attributes: { exclude: ["password"] },
         where: {
           email,
         },
+        include:[
+          {model: db.Rol, as:'roles'},
+          {model: db.Direccion, as:'direcciones'},
+          {model: db.Telefono, as:'telefonos'}
+        ],
+        attributes: { exclude: ["password"] } 
       })
         .then((user) => {
-          req.session.user = user.dataValues;
-          res.cookie("user", user, { maxAge: 1000 * 60 * 10 });
-
+          req.session.user = user;
+          res.cookie("user", user, { maxAge: 1000 * 60 * 30 });
           if (req.body.remember == "on") {
             res.cookie("rememberMe", "true", { maxAge: 1000 * 60 * 5 });
           }
@@ -148,68 +147,105 @@ const userController = {
 
   // contralador de la actualizacion de usuario
   formUpdateUser: (req, res) => {
-    const {email} = req.session.user
-    const user = db.Usuario.findOne({
-      where:{email:email},
-      include:[
-        {model: db.Direccion, as:'direcciones'},
-        {model: db.Telefono, as:'telefonos'}
-      ]
-    });
-    const domicilios = db.Direccion.findAll({
-      where:{id_usuario:req.session.user.id},
-      include:[{model: db.Usuario, as:'usuarios'}]
-    });
-    const telefonos = db.Telefono.findAll({
-      where:{id_usuario:req.session.user.id},
-      include:[{model: db.Usuario, as:'usuarios'}]
-    });
-
-    Promise.all([user,domicilios,telefonos])
-      .then((usuario)=>{
-        console.log('This is PROMISE ALL....',usuario);
+    db.Usuario.findByPk(req.session.user.id)
+      .then(()=>{
         res.render("./users/formUpdateUser", {
         title: "Editar Usuario",
         subtitulo: "Editar Usuario",
-        user: req.session.user,
-        usuario
+        usuario: req.session.user,
         })
       })
-
   },
   //Proceso de actualizacion de usario del 6 sprint(Mauricio)
   processUpdate: (req, res) => {
-    const { id } = req.params;
-    const { nombre, apellido, email, domicilio, age, date, categoria } =
-      req.body;
-    const image = req.file ? req.file.filename : req.body.image; // corregir acceso a la imagen
-    db.Usuario.update(
-      {
+    const { nombre, apellido, prefijo, numero, numero_calle, nombre_calle, codigo_postal, localidad, provincia, email, fecha_nacimiento } = req.body;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.render("./users/formUpdateUser", {
+        title: "Editar Usuario",
+        subtitulo: "Editar Usuario",
+        usuario: req.session.user,
+        errors: errors.mapped(),
+        old: req.body
+        })
+    } else {
+      db.Usuario.findByPk(req.session.user.id)
+      .then((usuario)=>{
+        
+      })
+      
+      let fecha = parse({
+        date: fecha_nacimiento,
+        format: "YYYY-MM-DD HH:mm:ss"
+        });
+      const usuarioUpdate = {
+        rol_id: 1,
         nombre: nombre.trim(),
         apellido: apellido.trim(),
         email: email.trim(),
-        domicilio,
-        age,
-        date,
-        image,
-        categoria,
-      },
-      {
-        where: {
-          id,
-        },
-      }
-    )
-      .then((userUpdate) => {
-        if (userUpdate.categoria) {
-          res.redirect(`/users/perfilAdmin/${id}`);
-        } else {
-          res.redirect(`/users/perfilUser/${id}`);
+        imagen: req.file ? `/images/users/${req.file.filename}` : "/images/users/user-default.png",
+        fecha_nacimiento: fecha
+      };
+      db.Usuario.update(usuarioUpdate, {where : {id: req.session.id}})
+      
+        .then((usuario) => {
+          const domicilioUpdate = {
+            id_usuario: usuario.id,
+            nombre_calle: nombre_calle,
+            numero_calle: numero_calle,
+            codigo_postal: codigo_postal,
+            localidad: localidad,
+            provincia: provincia
+          };
+      db.Direccion.update(domicilioUpdate, {where : {id: req.session.id}})
+        .then((usuario) => {
+          const telefonoUpdate = {
+          id_usuario: usuario.id,
+          prefijo: prefijo,
+          numero: numero
         }
+        })
+      db.Telefono.update(telefonoUpdate, {where : {id: req.session.id}})
+        // 
       })
-      .catch((err) => {
-        console.log(err);
-      });
+        
+
+      // const {fecha_nacimiento} = req.body
+      // let fecha = parse({
+      //   date: fecha_nacimiento,
+      //   format: "YYYY-MM-DD HH:mm:ss"
+      //   });
+      // console.log('..............................',fecha);
+      // res.send(req.body)
+    }
+    // const image = req.file ? req.file.filename : req.body.image; // corregir acceso a la imagen
+    // db.Usuario.update(
+    //   {
+    //     nombre: nombre.trim(),
+    //     apellido: apellido.trim(),
+    //     email: email.trim(),
+    //     domicilio,
+    //     age,
+    //     date,
+    //     image,
+    //     categoria,
+    //   },
+    //   {
+    //     where: {
+    //       id,
+    //     },
+    //   }
+    // )
+    //   .then((userUpdate) => {
+    //     if (userUpdate.categoria) {
+    //       res.redirect(`/users/perfilAdmin/${id}`);
+    //     } else {
+    //       res.redirect(`/users/perfilUser/${id}`);
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   },
   perfilAdmin: function (req, res, next) {
     res.render("users/perfil-admin", {
@@ -220,6 +256,7 @@ const userController = {
   },
 
   perfilUser: function (req, res, next) {
+    console.log(".........Estoy en session soy USUARIO Id ",req.session.user.id);
     res.render("users/perfil-user", {
       title: "Mi Perfil",
       usuario: req.session.user,
