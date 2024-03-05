@@ -38,6 +38,6 @@ router.put('/update/:id', upload.array('imagenes'), productsController.update);
 router.delete('/delete/:id', productsController.delete);
 
 // Ver carrito de compra
-router.get('/productCart', productsController.cart);
+router.get('/productCart', sessionValidator, productsController.cart);
 
 module.exports = router;
