@@ -1,15 +1,11 @@
-<!-- creacion de la vista de formUpdateuser -->
-
-<%- include('../partials/head')%>
-    
+<%- include('../partials/head') %>
 <body>
-        <%- include('../partials/header.ejs')%>    
-    
+    <%- include('../partials/header.ejs') %>
     <main class="main_registro">
-        <img src="/images/img_formulario_registro.png" alt="fomulario de registro" id="imagenFormulario">
+        <img src="/images/img_formulario_registro.png" alt="formulario de registro" id="imagenFormulario">
         <div class="subtitulo_registrate">
             <p id="p_registro"><%= subtitulo %></p>
-        </div>    
+        </div>
         <form method="POST" action="/users/profile?_method=PUT" id="form_registro" enctype="multipart/form-data">
             
             <div class="div_config nombre">
@@ -19,8 +15,15 @@
             </div>
             <div class="div_config nombre">
                 <label for="apellido">Apellido</label>
-                <input type="text"  name="apellido" placeholder="Apellido"  value="<%= locals.usuario ? usuario.apellido : locals.old && old.apellido ? old.apellido : null %>">
-                <p><%= locals.errors && errors.apellido ? errors.apellido.msg : null %> </p>
+                <input type="text" name="apellido" placeholder="Apellido" value="<%= usuario.apellido %>">
+                <p><%= locals.errors && errors.apellido ? errors.apellido.msg : null %></p>
+            </div>
+            <div class="div_config">
+                <label for="telefono">Telefono</label>
+                <input type="number"  name="prefijo" placeholder="Prefijo"  value="<%= locals.usuario ? usuario.prefijo : locals.old && old.prefijo ? old.prefijo : null %>">
+                <p><%= locals.errors && errors.prefijo ? errors.prefijo.msg : null %> </p>
+                <input type="number"  name="numero" placeholder="Numero"  value="<%= locals.usuario ? usuario.numero : locals.old && old.numero ? old.numero : null %>">
+                <p><%= locals.errors && errors.numero ? errors.numero.msg : null %> </p>
             </div>
 
             <% if(usuario.telefonos.length>0){ %>
@@ -58,25 +61,28 @@
                 <label for="email">Email</label>
                 <input type="email"  name="email" placeholder="Email" value="<%= locals.usuario ? usuario.email: locals.old && old.email? old.email: null %>">
                 <p><%= locals.errors && errors.apellido ? errors.email.msg : null %> </p>
+            </div>
+            <div class="div_config">
+                <label for="age">Edad</label>
+                <input type="number" name="age" id="age" value="<%= locals.usuario ? usuario.age : locals.oldData && oldData.age ? oldData.age : null %>">
+                <p><%= locals.errors && errors.age ? errors.age.msg : null %> </p>
             </div> 
-            <div class="div_config nombre">
-                <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-                <input type="text" name="fecha_nacimiento" id="fecha_nacimiento" value="<%= locals.usuario ? usuario.fecha_nacimiento : locals.oldData && oldData.fecha_nacimiento ? oldData.fecha_nacimiento : null %>">
-                <p><%= locals.errors && errors.fecha_nacimiento ? errors.fecha_nacimiento.msg : null %> </p>
+            <div class="div_config">
+                <label for="date">Fecha de Nacimiento</label>
+                <input type="date" name="date" id="date" value="<%= locals.usuario ? usuario.date : locals.oldData && oldData.date ? oldData.date : null %>">
+                <p><%= locals.errors && errors.date ? errors.date.msg : null %> </p>
             </div> 
-            <div class="div_config nombre">
-            <label for="imagen" class="col-12 mt-3">Foto de perfil</label>
-            <input type="file" class="form-control" id="inputGroupFile02" name="imagen">
-            <p><%= locals.errors && errors.imagen ? errors.imagen.msg : null %> </p>
+            <div class="div_config">
+            <label for="image" class="col-12 mt-3">Foto de perfil</label>
+            <input type="file" class="form-control" id="inputGroupFile02" name="image">
+            <p><%= locals.errors && errors.image ? errors.image.msg : null %> </p>
         </div>
-       
+        <% } %>
             <div class="boton_registro">
                 <button type="submit">Guardar Cambios</button>
-            </div>           
+            </div>
         </form>
     </main>
-    
     <%- include('../partials/footer') %>
-    
 </body>
 </html>

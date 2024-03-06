@@ -2,7 +2,7 @@ const { title } = require("process");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 const db = require("../database/models/index.js");
-const { log } = require("console");
+const { log, error } = require("console");
 const { parse } = require("@formkit/tempo") 
 
 const userController = {
@@ -155,7 +155,11 @@ const userController = {
         usuario: req.session.user,
         })
       })
+      .catch((err) => {
+        console.log(err);
+      });
   },
+  
   //Proceso de actualizacion de usario del 6 sprint(Mauricio)
   processUpdate: (req, res) => {
     const { nombre, apellido, prefijo, numero, numero_calle, nombre_calle, codigo_postal, localidad, provincia, email, fecha_nacimiento } = req.body;
@@ -247,6 +251,7 @@ const userController = {
     //     console.log(err);
     //   });
   },
+
   perfilAdmin: function (req, res, next) {
     res.render("users/perfil-admin", {
       title: "Mi Perfil",

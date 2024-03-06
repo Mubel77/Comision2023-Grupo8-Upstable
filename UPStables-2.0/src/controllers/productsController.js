@@ -1,21 +1,22 @@
 const db = require("../database/models");
-const {Op} = require("sequelize")
+const { Op } = require("sequelize");
+const { validationResult } = require("express-validator");
 
 const productsController = {
   //pedido a base de datos, listar productos
   list: function (req, res, next) {
     db.Producto.findAll({
       include: [
-        {model: db.Categoria, as: "categorias"},
-        {model: db.Marca, as: "marcas"},
-        {model: db.Imagen, as: "imagenes" }
+        { model: db.Categoria, as: "categorias" },
+        { model: db.Marca, as: "marcas" },
+        { model: db.Imagen, as: "imagenes" },
       ],
     })
       .then((productos) => {
         res.render("products/productsList", {
           title: "List Products",
           //usuario: req.session.user,
-          productos
+          productos,
         });
       })
       .catch((err) => console.log(err));
@@ -33,7 +34,7 @@ const productsController = {
       .then((producto) => {
         res.render("products/productDetail", {
           title: producto.modelo,
-          producto
+          producto,
           //usuario: req.session.user,
         });
       })
@@ -62,21 +63,20 @@ const productsController = {
   // Busacador del dashboard con base datos
   dashboardSearch: function (req, res, next) {
     const { keywords } = req.query;
-    const mensaje = "No hay elementos"; 
+    const mensaje = "No hay elementos";
     db.Producto.findAll({
-        where: {
-          id_marcas: {
-            [Op.like] : `%${keywords}%` // Buscar coincidencias parciales e ignorar mayúsculas/minúsculas
-          },
+      where: {
+        id_marcas: {
+          [Op.like]: `%${keywords}%`, // Buscar coincidencias parciales e ignorar mayúsculas/minúsculas
         },
-        include: [
-          { model: db.Categoria, as: "categorias" }, // Incluir la relación con Categoría
-          { model: db.Marca, as: "marcas" }, // Incluir la relación con Marca
-          { model: db.Imagen, as: "imagenes" }, // Incluir la relación con Imagen
-        ]
-      })
+      },
+      include: [
+        { model: db.Categoria, as: "categorias" }, // Incluir la relación con Categoría
+        { model: db.Marca, as: "marcas" }, // Incluir la relación con Marca
+        { model: db.Imagen, as: "imagenes" }, // Incluir la relación con Imagen
+      ],
+    })
       .then((result) => {
-        //console.log('THIS IS RESULT....',result);
         res.render("products/dashboardSearch", {
           title: "Dashboard",
           mensaje,
@@ -96,42 +96,79 @@ const productsController = {
     });
   },
 
-  //CREACCION DEL PRODUCTO CON BASE DATO
+  // CREACIÓN DEL PRODUCTO CON BASE DE DATOS
   create: function (req, res, next) {
     const {
-      marca,
+      id_categorias,
+      id_marcas,
       modelo,
       descripcion,
       precio,
       stock,
       potencia,
-      categoria,
       tomas,
       descuento,
     } = req.body;
 
-    const arrayImagenes = req.files.map((file) => file.filename); // Suponiendo que req.files contiene la información de los archivos cargados
-
-    const nuevoProducto = {
-      modelo: modelo.trim(),
-      marca: marca.trim(),
-      descripcion: descripcion.trim(),
-      precio: +precio,
-      stock: +stock,
-      potencia: +potencia,
-      categoria: +categoria,
-      tomas: +tomas,
-      descuento: +descuento,
-      imagen: arrayImagenes.length > 0 ? arrayImagenes : ["default.jpg"],
-    };
-
-    db.Producto.create(nuevoProducto)
-      .then((createProduct) => {
-        res.redirect(`/products/productDetail/${createProduct.id}`); // Redirige al detalle del producto recién creado
+    const errors = validationResult(req);
+    if (errors.isEmpty()) {
+      db.Producto.create({
+        modelo: modelo.trim(),
+        descripcion: descripcion.trim(),
+        precio: +precio,
+        stock: +stock,
+        potencia: +potencia,
+        id_marcas: +id_marcas,
+        id_categorias: +id_categorias,
+        tomas: +tomas,
+        descuento: +descuento,
       })
-      .catch((err) => {
-        console.log(err);
+        .then((producto) => {
+          const imagenes = req.files;
+          if (imagenes.length > 0) {
+            imagenes.forEach((imagen) => {
+              const imagenProducto = {
+                nombre: imagen.filename,
+                ubicacion: "/images/products/",
+                id_producto: producto.id,
+              };
+              db.Imagen.create(imagenProducto)
+                .then(() => {
+                  res.redirect(`/products/productDetail/${producto.id}`);
+                })
+                .catch((error) => {
+                  // Error al crear la imagen
+                  res.send(error);
+                });
+            });
+          } else {
+            const imagenDefault = {
+              nombre: "default.jpg",
+              ubicacion: "/images/products/",
+              id_producto: producto.id,
+            };
+            db.Imagen.create(imagenDefault)
+              .then(() => {
+                res.redirect(`/products/productDetail/${producto.id}`);
+              })
+              .catch((error) => {
+                // Error al crear la imagen
+                res.send(error);
+              });
+          }
+        })
+        .catch((error) => {
+          // Error al crear el producto
+          res.send(error);
+        });
+    } else {
+      res.render("products/formCreate", {
+        title: "Formulario Crear",
+        errors: errors.mapped(),
+        oldData: req.body,
+        //usuario: req.session.user,
       });
+    }
   },
 
   formUpdate: function (req, res, next) {
@@ -142,7 +179,7 @@ const productsController = {
         { model: db.Marca, as: "marcas" }, // Relación con Marca
         { model: db.Imagen, as: "imagenes" }, // Relación con Imagen
       ],
-      })
+    })
       .then((producto) => {
         res.render("products/formUpdate", {
           title: "Formulario Modificar",
@@ -152,9 +189,10 @@ const productsController = {
       })
       .catch((err) => console.log(err));
   },
+
   update: function (req, res, next) {
     const { id } = req.params;
-    const producto ={
+    const producto = ({
       marca,
       modelo,
       descripcion,
@@ -164,47 +202,77 @@ const productsController = {
       categoria,
       tomas,
       descuento,
-      imagen,
-    } = req.body;
-    const files = req.files;
-    // console.log('This is PRODUCTOOO...',producto);
-    // console.log('This is FILESSSSS...',files);
-
-    db.Producto.update(
-      {
-        modelo: modelo.trim(),
-        marca: marca.trim(),
-        id_categorias: categoria,
-        descripcion: descripcion.trim(),
-        potencia: +potencia,
-        tomas: +tomas,
-        precio: +precio,
-        descuento: +descuento,
-        stock: +stock,
-        imagen: imagen,
-      },
-      {
-        where: { id: id },
-      }
-    )
-      .then((updatedProduct) => {
-        res.redirect(`/products/productDetail/${id}`);
+    } = req.body);
+    //const files = req.files;
+    const errors = validationResult(req);
+    if (errors.isEmpty()) {
+      db.Producto.update(
+        {
+          modelo: modelo.trim(),
+          id_marcas: 1,
+          id_categorias: 1,
+          descripcion: descripcion.trim(),
+          potencia: +potencia,
+          tomas: +tomas,
+          precio: +precio,
+          descuento: +descuento,
+          stock: +stock,
+        },
+        {
+          where: { id: id },
+        }
+      )
+        .then((updatedProduct) => {
+          res.redirect(`/products/productDetail/${id}`);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      const { id } = req.params;
+      db.Producto.findByPk(id, {
+        include: [
+          { model: db.Categoria, as: "categorias" }, // Relación con Categoría
+          { model: db.Marca, as: "marcas" }, // Relación con Marca
+          { model: db.Imagen, as: "imagenes" }, // Relación con Imagen
+        ],
       })
-      .catch((err) => console.log(err));
+        .then((producto) => {
+          res.render("products/formUpdate", {
+            title: "Formulario Modificar",
+            producto,
+            errors: errors.mapped(),
+            oldData: req.body,
+            //usuario: req.session.user,
+          });
+        })
+        .catch((err) => console.log(err));
+    }
   },
 
   delete: function (req, res, next) {
     const { id } = req.params;
-    db.Producto.destroy({
-      where: {
-        id: id,
-      },
+    db.Producto.findByPk(id, {
+      include: [
+        { model: db.Categoria, as: "categorias" }, // Relación con Categoría
+        { model: db.Marca, as: "marcas" }, // Relación con Marca
+        { model: db.Imagen, as: "imagenes" }, // Relación con Imagen
+      ],
+    }).then((producto) => {
+      db.Producto.destroy({
+        where: {
+          id: producto.id,
+        },
+      })
+        .then((product) => {
+          fs.unlink(`./public/images/${product.imagen}`, (err) => {
+            if (err) throw new Error();
+            //console.log(`borrar el archivo ${product.imagen}`);
+          });
+          res.redirect("/products/list");
+        })
+        .catch((error) => {
+          console.log("....This is ERROR....", error);
+        });
     });
-    fs.unlink(`./public/images/${product.imagen}`, (err) => {
-      if (err) throw err;
-      //console.log(`borrar el archivo ${product.imagen}`);
-    });
-    res.redirect("/products/dashboard");
   },
 
   cart: function (req, res, next) {
@@ -214,27 +282,29 @@ const productsController = {
         { model: db.Marca, as: "marcas" }, // Relación con Marca
         { model: db.Imagen, as: "imagenes" }, // Relación con Imagen
       ],
-      limit: 2
+      limit: 2,
     })
       .then((productos) => {
         //let cantidad = 3
-        let subtotal = 0
-        let total = 0
-        let impuestos = 0
-        const cuenta = productos.forEach(element => {
-         subtotal =  +element.precio + subtotal
-         total = subtotal*1.21
-         impuestos = subtotal*0.21
+        let subtotal = 0;
+        let total = 0;
+        let impuestos = 0;
+        const cuenta = productos.forEach((element) => {
+          subtotal = +element.precio + subtotal;
+          total = subtotal * 1.21;
+          impuestos = subtotal * 0.21;
         });
         const data = {
           // cantidad,
-           subtotal,
-           total,
-           impuestos
-        }
+          subtotal,
+          total,
+          impuestos,
+        };
         res.render("products/productCart", {
           title: "Carrito de Compras",
-          productos, data
+          productos,
+          data,
+          //usuario: req.session.user,
         });
       })
       .catch((err) => console.log(err));

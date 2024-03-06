@@ -3,57 +3,68 @@
     <%- include('../partials/header.ejs')%>
     <main>
         <form action="/products/formCreate"  method=POST  class="form_create" enctype="multipart/form-data">
-                <div class="div_config div_form_product">
-                    <label for="modelo" id="modelo" class="div_config_label">Modelo</label>
-                    <input type="text"  name="modelo" >
-                </div>
+                
                 <div class="div_config div_form_product">
                     <label for="id_categorias" id="id_categorias">Categoria</label>
-                    <select name="id_categorias"  id="id_categorias" >
+                    <select name="id_categorias"  id="id_categorias" class="campo_select">
                         <option value="" selected>Elegí una Categoria</option>
-                        <option value="1">UPS</option>
-                        <option value="2">ESTABILIZADORES</option>
+                        <option value="1" <%= locals.oldData && oldData.id_categorias == '1' ? 'selected' : null %>>UPS</option>
+                        <option value="2" <%= locals.oldData && oldData.id_categorias == '2' ? 'selected' : null %>>ESTABILIZADORES</option>
                     </select>
+                    <p><%= locals.errors && errors.id_categorias ? errors.id_categorias.msg : null %></p>
                 </div>
                 <div class="div_config div_form_product">
                     <label for="id_marcas" id="id_marcas">Elegi una Marca</label>
-                    <select name="id_marcas"  id="id_marcas" >
+                    <select name="id_marcas" id="id_marcas" class="campo_select">
                         <option value="" selected>Elegí una Marca</option>
-                        <option value="1">Lyonn</option>
-                        <option value="2">APC</option>
-                        <option value="3">Eaton</option>
-                        <option value="4">Athom</option>
-                        <option value="5">TRV</option>
-                        <option value="6">Forza</option>
+                        <option value="1" <%= locals.oldData && oldData.id_marcas == '1' ? 'selected' : null %>>Lyonn</option>
+                        <option value="2" <%= locals.oldData && oldData.id_marcas == '2' ? 'selected' : null %>>APC</option>
+                        <option value="3" <%= locals.oldData && oldData.id_marcas == '3' ? 'selected' : null %>>Eaton</option>
+                        <option value="4" <%= locals.oldData && oldData.id_marcas == '4' ? 'selected' : null %>>Athom</option>
+                        <option value="5" <%= locals.oldData && oldData.id_marcas == '5' ? 'selected' : null %>>TRV</option>
+                        <option value="6" <%= locals.oldData && oldData.id_marcas == '6' ? 'selected' : null %>>Forza</option>
                     </select>
+                    <p><%= locals.errors && errors.id_marcas ? errors.id_marcas.msg : null %></p>
+                </div>
+                <div class="div_config div_form_product">
+                    <label for="modelo" id="modelo" class="div_config_label">Modelo</label>
+                    <input type="text"  name="modelo" value="<%= locals.oldData ? oldData.modelo : null %>">
+                    <p><%= locals.errors && errors.modelo ? errors.modelo.msg : null %></p>
                 </div>
                 <div class="div_config div_form_product">
                     <label for="descripcion" id="descripcion">Descripcion</label>
-                    <textarea name="descripcion" id="descripcion"  cols="60" rows="20"></textarea>
+                    <input type="text" name="descripcion" id="descripcion" value="<%= locals.oldData ? oldData.descripcion : null %>">
+                    <p><%= locals.errors && errors.descripcion ? errors.descripcion.msg : null %></p>
                 </div>
                 <div class="div_config div_form_product">
                     <label for="potencia" id="potencia">Potencia</label>
-                    <input type="number"  name="potencia" >
+                    <input type="number"  name="potencia" value="<%= locals.oldData ? oldData.potencia : null %>">
+                    <p><%= locals.errors && errors.potencia ? errors.potencia.msg : null %></p>
                 </div>
                 <div class="div_config div_form_product">
                     <label for="tomas" id="tomas">Cantidad de tomas</label>
-                    <input type="number"  name="tomas" >
+                    <input type="number"  name="tomas" value="<%= locals.oldData ? oldData.tomas : null %>">
+                    <p><%= locals.errors && errors.tomas ? errors.tomas.msg : null %></p>
                 </div>
                 <div class="div_config div_form_product">
                     <label for="precio" id="precio">Precio</label>
-                    <input type="number"  name="precio" >
+                    <input type="number"  name="precio" value="<%= locals.oldData ? oldData.precio : null %>">
+                    <p><%= locals.errors && errors.precio ? errors.precio.msg : null %></p>
                 </div>
                 <div class="div_config div_form_product">
                     <label for="descuento" id="descuento">Descuento</label>
-                    <input type="number"  name="descuento" >
+                    <input type="number"  name="descuento" value="<%= locals.oldData ? oldData.descuento : null %>">
+                    <p><%= locals.errors && errors.descuento ? errors.descuento.msg : null %></p>
                 </div>
                 <div class="div_config div_form_product">
                     <label for="stock" id="stock">Stock</label>
-                    <input type="number"  name="stock" >
+                    <input type="number"  name="stock" value="<%= locals.oldData ? oldData.stock : null %>">
+                    <p><%= locals.errors && errors.stock ? errors.stock.msg : null %></p>
                 </div>
                 <div class="div_config div_form_product">
                     <label for="imagenes" id="imagen">Seleccione una imagen</label>
-                    <input type="file"  name="imagenes" multiple>
+                    <input type="file"  name="imagenes" value="<%= locals.oldData ? oldData.imagenes : null %>" multiple>
+                    <p><%= locals.errors && errors.imagenes ? errors.imagenes.msg : null %></p>
                 </div>
            
                 <div class="boton_registro_create">
