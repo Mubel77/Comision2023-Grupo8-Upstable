@@ -11,15 +11,23 @@
                 <input type="text"  name="modelo" value="<%= producto.modelo %>">
             </div>
             <div class="div_config div_form_product">
-                <label for="marca" id="marcas">Marca</label>
-                <input type="text" name="marca" value="<%= producto.marcas.marca %>">
-            </div>
-            <div class="div_config div_form_product">
                 <label for="categoria" id="categoria">Categoria</label>
                 <select name="categoria"  id="categoria" class="div_config">
-                    <option value="" <%= producto.categorias.categoria == "" ? "selected" :null %>>Elegi una Opcion</option>
-                    <option value="UPS" <%= producto.categorias.categoria == "ups" ? "selected" :null %>>UPS</option>
-                    <option value="Estabilizadores" <%= producto.categorias.categoria == "estabilizadores" ? "selected" :null %>>ESTABILIZADORES</option>
+                    <option value="">Elegi una Opcion</option>
+                    <option value="1" selected>UPS</option>
+                    <option value="2">ESTABILIZADORES</option>
+                </select>
+            </div>
+            <div class="div_config div_form_product">
+                <label for="marca" id="marca">Elegi una Marca</label>
+                <select name="marca" id="marca">
+                    <option value="" >Elegí una Marca</option>
+                    <option value="1" selected>Lyonn</option>
+                    <option value="2">APC</option>
+                    <option value="3">Eaton</option>
+                    <option value="4">Athom</option>
+                    <option value="5">TRV</option>
+                    <option value="6">Forza</option>
                 </select>
             </div>
             <div class="div_config div_form_product" >

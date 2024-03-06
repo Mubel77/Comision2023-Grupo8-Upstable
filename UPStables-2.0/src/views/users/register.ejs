@@ -12,12 +12,22 @@
             <div class="div_config nombre">
                 <label for="nombre">Nombre</label>
                 <input type="text"  name="nombre" placeholder="Nombre" value="<%= locals.oldData ? oldData.nombre : null %>" >
-                <p><%= locals.errors&& errors.nombre ? errors.nombre.msg : null %> </p>
+                <p><%= locals.errors && errors.nombre ? errors.nombre.msg : null %> </p>
             </div>
             <div class="div_config nombre">
                 <label for="apellido">Apellido</label>
                 <input type="text"  name="apellido" placeholder="Apellido"  value="<%= locals.oldData ? oldData.apellido : null %>">
                 <p><%= locals.errors && errors.apellido ? errors.apellido.msg : null %> </p>
+            </div>
+            <div class="div_config nombre">
+                <label for="domicilio">Domicilio CALLE</label>
+                <input type="text"  name="nombre_calle" placeholder="Nombre Calle" value="<%= locals.oldData ? oldData.nombre_calle : null %>">
+                <p><%= locals.errors && errors.nombre_calle ? errors.nombre_calle.msg : null %> </p>
+            </div>
+            <div class="div_config nombre">
+                <label for="domicilio">Domicilio NUMERO</label>
+                <input type="text"  name="numero_calle" placeholder="Numero Calle" value="<%= locals.oldData ? oldData.numero_calle : null %>">
+                <p><%= locals.errors && errors.numero_calle ? errors.numero_calle.msg : null %> </p>
             </div>
             <div class="div_config nombre">
                 <label for="fecha_nacimiento">Fecha Nacimiento</label>
@@ -28,13 +38,6 @@
                 <label for="imagen" class="col-12 mt-3">Foto de perfil</label>
                 <input type="file" class="form-control" id="inputGroupFile02" name="imagen">
                 <p><%= locals.errors && errors.imagen ? errors.imagen.msg : null %> </p>
-            </div>
-            <div class="div_config">
-                <label for="domicilio">Domicilio</label>
-                <input type="text"  name="nombre_calle" placeholder="Nombre Calle" value="<%= locals.oldData ? oldData.nombre_calle : null %>">
-                <p><%= locals.errors && errors.nombre_calle ? errors.nombre_calle.msg : null %> </p>
-                <input type="number"  name="numero_calle" placeholder="Numero Calle" value="<%= locals.oldData ? oldData.numero_calle : null %>">
-                <p><%= locals.errors && errors.numero_calle ? errors.numero_calle.msg : null %> </p>
             </div>
             <div class="div_config">
                 <label for="email">Email</label>

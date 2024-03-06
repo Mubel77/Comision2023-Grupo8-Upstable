@@ -11,15 +11,13 @@ const productsController = {
         { model: db.Imagen, as: "imagenes" },
       ],
     }).then((productos) => {
-      //console.log("This is PRODUCTOS LIST...",productos);
-      //console.log("This is PRODUCTOS.IMAGENES...",productos.producto.dataValues);
       res.render("products/productsList", {
         title: "List Products",
         //usuario: req.session.user,
         productos,
       });
-    });
-    //.catch((err) => console.log(err));
+    })
+    .catch((err) => console.log(err));
   },
 
   // muestro el detalle del producto con base de datos
@@ -76,7 +74,6 @@ const productsController = {
       ],
     })
       .then((result) => {
-        //console.log('THIS IS RESULT....',result);
         res.render("products/dashboardSearch", {
           title: "Dashboard",
           mensaje,
@@ -95,57 +92,72 @@ const productsController = {
       //usuario: req.session.user,
     });
   },
-
-  //CREACCION DEL PRODUCTO CON BASE DATO
-  create: function (req, res, next) {
-    const {
-        marca,
-        modelo,
-        descripcion,
-        precio,
-        stock,
-        potencia,
-        categoria,
-        tomas,
-        descuento,
-    } = req.body;
-    const arrayImagenes = req.files.map((file) => file.filename); // Suponiendo que req.files contiene la información de los archivos cargados
-    if (!categoria) {
-        return res.status(400).send("La categoría es requerida");
-    }
-    // Agregar el id de la marca
-    db.Marca.findOne({ where: { marca } })
-        .then((marcaEncontrada) => {
-            db.Categoria.findOne({ where: { categoria } })
-                .then((categoriaEncontrada) => {
-                    const nuevoProducto = {
-                        modelo: modelo.trim(),
-                        descripcion: descripcion.trim(),
-                        precio: +precio,
-                        stock: +stock,
-                        potencia: +potencia,
-                        id_marcas: marcaEncontrada.id, // id marca
-                        id_categorias: categoriaEncontrada.id, // id categoria
-                        tomas: +tomas,
-                        descuento: +descuento,
-                        imagenes: arrayImagenes, // Agregar las imágenes al objeto del producto
-                    };
-
-                    db.Producto.create(nuevoProducto)
-                        .then((createProduct) => {
-                            res.redirect(`/products/productDetail/${createProduct.id}`);
-                        })
-                        .catch((err) => {
-                            console.log(err);
-                        });
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
+// CREACIÓN DEL PRODUCTO CON BASE DE DATOS
+create: function (req, res, next) {
+  const {
+    marca,
+    modelo,
+    descripcion,
+    precio,
+    stock,
+    potencia,
+    categoria,
+    tomas,
+    descuento,
+  } = req.body;
+// Crear el producto
+      db.Producto.create({
+        modelo: modelo.trim(),
+        descripcion: descripcion.trim(),
+        precio: +precio,
+        stock: +stock,
+        potencia: +potencia,
+        id_marcas: +marca,
+        id_categorias: +categoria,
+        tomas: +tomas,
+        descuento: +descuento,
+      })
+      .then((producto) => {
+        const imagenes = req.files;
+        console.log()
+        imagenes.forEach(imagen  =>  {
+          console.log(imagen)
+          if (imagen){
+            const imagenProducto = {
+              nombre:imagen.filename,
+              ubicacion:'/images/products/',
+              id_producto: producto.id
+            };
+            console.log('imagenes del producto',imagenProducto)
+            db.Imagen.create(imagenProducto)
+            .then((imagen) => { 
+              res.redirect(`/products/productDetail/${producto.id}`);
+            })
+            .catch((error) => {
+              // Error al crear la imagen
+              console.log("Error al crear la imagen asociada al producto:", error);
+            });
+          }else{
+            const imagenDefault = {
+              nombre:'default.png',
+              ubicacion:'/images/products/',
+              id_producto: producto.id
+            }
+            db.Imagen.create(imagenDefault)
+            .then((imagen) => { 
+              res.redirect(`/products/productDetail/${producto.id}`);
+            })
+            .catch((error) => {
+              // Error al crear la imagen
+              console.log("Error al crear la imagen asociada al producto:", error);
+            });
+          }
         })
-        .catch((err) => {
-            console.log(err);
-        });
+      })
+       .catch((error) => {
+          // Error al crear el producto
+          console.log("Error al crear el producto:", error);
+        })
 },
 
   formUpdate: function (req, res, next) {
@@ -178,30 +190,30 @@ const productsController = {
       categoria,
       tomas,
       descuento,
-      imagen,
     } = req.body);
     const files = req.files;
-    // console.log('This is PRODUCTOOO...',producto);
+    console.log('This is PRODUCTOOO...',producto);
     // console.log('This is FILESSSSS...',files);
 
     db.Producto.update(
       {
         modelo: modelo.trim(),
-        marca: marca.trim(),
-        id_categorias: categoria,
+        id_marcas: 1,
+        id_categorias: 1,
         descripcion: descripcion.trim(),
         potencia: +potencia,
         tomas: +tomas,
         precio: +precio,
         descuento: +descuento,
         stock: +stock,
-        imagen: imagen,
       },
+    
       {
         where: { id: id },
       }
     )
       .then((updatedProduct) => {
+        
         res.redirect(`/products/productDetail/${id}`);
       })
       .catch((err) => console.log(err));
