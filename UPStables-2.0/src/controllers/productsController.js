@@ -12,15 +12,13 @@ const productsController = {
       ],
     })
       .then((productos) => {
-        //console.log("This is PRODUCTOS LIST...",productos);
-        //console.log("This is PRODUCTOS.IMAGENES...",productos.producto.dataValues);
         res.render("products/productsList", {
           title: "List Products",
           //usuario: req.session.user,
           productos
         });
       })
-      //.catch((err) => console.log(err));
+      .catch((err) => console.log(err));
   },
 
   // muestro el detalle del producto con base de datos
@@ -33,7 +31,6 @@ const productsController = {
       ],
     })
       .then((producto) => {
-        //console.log("This is PRODUCTO DETAIL...",producto);
         res.render("products/productDetail", {
           title: producto.modelo,
           producto
@@ -42,6 +39,7 @@ const productsController = {
       })
       .catch((err) => console.log(err));
   },
+
   //dashboard con base de datos
   dashboard: function (req, res, next) {
     db.Producto.findAll({
@@ -60,6 +58,7 @@ const productsController = {
       })
       .catch((err) => console.log(err));
   },
+
   // Busacador del dashboard con base datos
   dashboardSearch: function (req, res, next) {
     const { keywords } = req.query;
@@ -110,6 +109,7 @@ const productsController = {
       tomas,
       descuento,
     } = req.body;
+
     const arrayImagenes = req.files.map((file) => file.filename); // Suponiendo que req.files contiene la información de los archivos cargados
 
     const nuevoProducto = {
@@ -133,6 +133,7 @@ const productsController = {
         console.log(err);
       });
   },
+
   formUpdate: function (req, res, next) {
     const { id } = req.params;
     db.Producto.findByPk(id, {
@@ -207,17 +208,6 @@ const productsController = {
   },
 
   cart: function (req, res, next) {
-    // db.Carrito_Compra.findAll({
-    //   where: {
-    //     usuario_id: req.session.user.id,
-    //   },
-    //   include: [
-    //     {
-    //       model: db.Producto,
-    //       as: "productos",
-    //     },
-    //   ],
-    // })
     db.Producto.findAll({
       include: [
         { model: db.Categoria, as: "categorias" }, // Relación con Categoría
@@ -227,7 +217,6 @@ const productsController = {
       limit: 2
     })
       .then((productos) => {
-        //console.log('This is PRODUCTOOO...',productos.length);
         //let cantidad = 3
         let subtotal = 0
         let total = 0
@@ -243,13 +232,9 @@ const productsController = {
            total,
            impuestos
         }
-        
-        //console.log('This is DATA...',data);
         res.render("products/productCart", {
           title: "Carrito de Compras",
           productos, data
-          //cartItemCount: productsCart.length,
-          //usuario: req.session.user,
         });
       })
       .catch((err) => console.log(err));
