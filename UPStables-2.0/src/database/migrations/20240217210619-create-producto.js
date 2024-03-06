@@ -60,6 +60,17 @@ module.exports = {
           key: 'id'
         }
       },
+      id_imagen: {
+        type: DataTypes.INTEGER,
+        allowNull: true, 
+        unsigned: true,
+        references: {
+          model: {
+            tableName: 'imagenes'
+          },
+          key: 'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE

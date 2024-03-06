@@ -2,7 +2,7 @@ const { title } = require("process");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 const db = require("../database/models/index.js");
-const { log } = require("console");
+const { log, error } = require("console");
 const { parse } = require("@formkit/tempo") 
 
 const userController = {
@@ -155,6 +155,9 @@ const userController = {
         usuario: req.session.user,
         })
       })
+      .catch((err) => {
+        console.log(err);
+      });
   },
   //Proceso de actualizacion de usario del 6 sprint(Mauricio)
   processUpdate: (req, res) => {
