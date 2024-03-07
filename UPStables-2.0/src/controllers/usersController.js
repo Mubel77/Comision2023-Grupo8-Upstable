@@ -144,6 +144,22 @@ const userController = {
         });
     }
   },
+    //pedido a base de datos, listar vendedor
+    list: function (req, res, next) {
+      db.Vendedor.findAll({
+        include:[
+          {model: db.Rol, as:'roles'},
+          {model: db.Direccion, as:'direcciones'},
+          {model: db.Telefono, as:'telefonos'}
+        ],
+      }).then((vendedores) => {
+        res.render("vendedores/vendedoresList", {
+          title: "List Vendedores",
+          vendedores,
+        });
+      })
+      .catch((err) => console.log(err));
+    },
 
   // contralador de la actualizacion de usuario
   formUpdateUser: (req, res) => {
