@@ -149,6 +149,7 @@ const userController = {
   formUpdateUser: (req, res) => {
     db.Usuario.findByPk(req.session.user.id)
       .then(()=>{
+        console.log(req.session.user.id);
         res.render("./users/formUpdateUser", {
         title: "Editar Usuario",
         subtitulo: "Editar Usuario",
@@ -161,9 +162,10 @@ const userController = {
   },
   //Proceso de actualizacion de usario del 6 sprint(Mauricio)
   processUpdate: (req, res) => {
-    const { nombre, apellido, prefijo, numero, numero_calle, nombre_calle, codigo_postal, localidad, provincia, email, fecha_nacimiento } = req.body;
+    const { nombre, apellido, password, prefijo, numero, numero_calle, nombre_calle, codigo_postal, localidad, provincia, email, fecha_nacimiento } = req.body;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      console.log("-->HAY ERRORES EN UPDATE<--", errors);
       res.render("./users/formUpdateUser", {
         title: "Editar Usuario",
         subtitulo: "Editar Usuario",
@@ -172,83 +174,51 @@ const userController = {
         old: req.body
         })
     } else {
-      db.Usuario.findByPk(req.session.user.id)
-      .then((usuario)=>{
-        
-      })
-      
+      console.log("-->NO HAY ERRORES<--");
       let fecha = parse({
         date: fecha_nacimiento,
         format: "YYYY-MM-DD HH:mm:ss"
         });
+        const hashPassword = bcrypt.hashSync(password, 10);
       const usuarioUpdate = {
         rol_id: 1,
         nombre: nombre.trim(),
+        password: hashPassword,
         apellido: apellido.trim(),
         email: email.trim(),
         imagen: req.file ? `/images/users/${req.file.filename}` : "/images/users/user-default.png",
         fecha_nacimiento: fecha
       };
+      console.log("-->ESTO ES USUARIO<--", usuarioUpdate);
       db.Usuario.update(usuarioUpdate, {where : {id: req.session.id}})
       
-        .then((usuario) => {
-          const domicilioUpdate = {
-            id_usuario: usuario.id,
-            nombre_calle: nombre_calle,
-            numero_calle: numero_calle,
-            codigo_postal: codigo_postal,
-            localidad: localidad,
-            provincia: provincia
-          };
-      db.Direccion.update(domicilioUpdate, {where : {id: req.session.id}})
-        .then((usuario) => {
-          const telefonoUpdate = {
-          id_usuario: usuario.id,
-          prefijo: prefijo,
-          numero: numero
-        }
-        })
-      db.Telefono.update(telefonoUpdate, {where : {id: req.session.id}})
-        // 
-      })
-        
+        // .then((usuario) => {
+        //   const domicilioUpdate = {
+        //     id_usuario: usuario.id,
+        //     nombre_calle: nombre_calle,
+        //     numero_calle: numero_calle,
+        //     codigo_postal: codigo_postal,
+        //     localidad: localidad,
+        //     provincia: provincia
+        //   };
 
-      // const {fecha_nacimiento} = req.body
-      // let fecha = parse({
-      //   date: fecha_nacimiento,
-      //   format: "YYYY-MM-DD HH:mm:ss"
-      //   });
-      // console.log('..............................',fecha);
-      // res.send(req.body)
-    }
-    // const image = req.file ? req.file.filename : req.body.image; // corregir acceso a la imagen
-    // db.Usuario.update(
-    //   {
-    //     nombre: nombre.trim(),
-    //     apellido: apellido.trim(),
-    //     email: email.trim(),
-    //     domicilio,
-    //     age,
-    //     date,
-    //     image,
-    //     categoria,
-    //   },
-    //   {
-    //     where: {
-    //       id,
-    //     },
-    //   }
-    // )
-    //   .then((userUpdate) => {
-    //     if (userUpdate.categoria) {
-    //       res.redirect(`/users/perfilAdmin/${id}`);
-    //     } else {
-    //       res.redirect(`/users/perfilUser/${id}`);
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+        //   db.Domicilio.create(domicilioUpdate)
+        //   .then((actualizar)=>{
+        //     const telefUpdate = {
+        //       numero : numero,
+        //       prefijo: prefijo
+        //     }
+        //     db.Telefono.create(telefUpdate)
+            .then((actualizarTel)=>{
+              res.send("Se actualizo el usuario!!")
+            })
+        //   })
+        // })
+        .catch((err)=>{
+          console.log(err);
+        })
+      }
+
   },
   perfilAdmin: function (req, res, next) {
     res.render("users/perfil-admin", {

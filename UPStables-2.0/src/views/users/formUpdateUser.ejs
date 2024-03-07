@@ -18,6 +18,11 @@
                 <input type="text" name="apellido" placeholder="Apellido" value="<%= usuario.apellido %>">
                 <p><%= locals.errors && errors.apellido ? errors.apellido.msg : null %></p>
             </div>
+            <div class="div_config nombre">
+                <label for="password">Contraseña</label>
+                <input type="text"  name="password" placeholder="password" value="<%= locals.usuario ? usuario.password : locals.old && old.password ? old.password : null %>" >
+                <p><%= locals.errors && errors.password ? errors.password.msg : null %> </p>
+            </div>
             <div class="div_config">
                 <label for="telefono">Telefono</label>
                 <input type="number"  name="prefijo" placeholder="Prefijo"  value="<%= locals.usuario ? usuario.prefijo : locals.old && old.prefijo ? old.prefijo : null %>">
@@ -26,7 +31,7 @@
                 <p><%= locals.errors && errors.numero ? errors.numero.msg : null %> </p>
             </div>
 
-            <% if(usuario.telefonos.length>0){ %>
+            <!-- <% if(usuario.telefonos.length>0){ %>
                 <div class="div_config">
                     <label for="telefono">Telefono</label>
                     <input type="text"  name="prefijo" placeholder="Prefijo"  value="<%= locals.usuario && usuario.telefonos[0].prefijo ? usuario.telefonos[0].prefijo : locals.old && old.telefonos[0].prefijo ? old.telefonos[0].prefijo : null %>">
@@ -42,7 +47,7 @@
                         <input type="text"  name="numero" placeholder="Numero"  value="<%= locals.old ? old.numero : null %>">
                         <p><%= locals.errors && errors.numero ? errors.numero.msg : null %> </p>
                     </div>
-                <% } %>
+                <% } %> -->
             
             <div class="div_config">
                 <label for="domicilio">Domicilio</label>
@@ -69,7 +74,7 @@
             </div> 
             <div class="div_config">
                 <label for="date">Fecha de Nacimiento</label>
-                <input type="date" name="date" id="date" value="<%= locals.usuario ? usuario.date : locals.oldData && oldData.date ? oldData.date : null %>">
+                <input type="date" name="fecha_nacimiento" id="date" value="<%= locals.usuario ? usuario.date : locals.oldData && oldData.date ? oldData.date : null %>">
                 <p><%= locals.errors && errors.date ? errors.date.msg : null %> </p>
             </div> 
             <div class="div_config">
@@ -77,7 +82,7 @@
             <input type="file" class="form-control" id="inputGroupFile02" name="image">
             <p><%= locals.errors && errors.image ? errors.image.msg : null %> </p>
         </div>
-        <% } %>
+        
             <div class="boton_registro">
                 <button type="submit">Guardar Cambios</button>
             </div>
