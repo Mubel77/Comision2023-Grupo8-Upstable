@@ -6,25 +6,38 @@ const bcrypt = require('bcryptjs');
 const loginValidator = [
     body('email').notEmpty().withMessage("El campo no puede estar vacío").bail()
     .isEmail().withMessage("Formato Incorrecto").bail()
-    .custom(value =>{
-        console.log("VALUE:", value);
-        //const user = users.find(elemento => elemento.email == value);
-        db.Usuario.findOne({
+    .custom(async (value) =>{
+        const usuario= await db.Usuario.findOne({
             where:{
                 email: value
             }
-        }); 
-        return value
-    }).withMessage("Usuario o contraseña incorrectos"), 
-
+        })
+        if(usuario){
+            return true
+        }else{
+            throw new Error("Usuario o contraseña incorrectos")
+        }
+        
+    }),
     body('password').notEmpty().withMessage("El campo no puede estar vacío").bail()
-    .custom((value, {req})=>{
-        console.log("PASSWORD:", value);
-        const user = users.find(elemento => elemento.email == req.body.email)
-        console.log("USER:", user);
-        console.log("USER-PASSWORD:", user.password);
-        return bcrypt.compareSync(value, user.password);
-    }).withMessage("Usuario o contraseña incorrectos")
+    .custom(async(value, {req})=>{
+        const usuario = await db.Usuario.findOne({
+            where:{
+                email: req.body.email
+            }
+        })
+        if(!usuario){ 
+            throw new Error("Usuario o contraseña incorrectos")
+        }
+        let resultado = bcrypt.compareSync(value, usuario.dataValues.password)
+
+        if(resultado){
+            return true
+        }else{
+            throw new Error("Usuario o contraseña incorrectos")
+        }
+        
+    })
 ]
 
 module.exports = loginValidator

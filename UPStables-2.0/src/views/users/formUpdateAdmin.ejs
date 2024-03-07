@@ -1,0 +1,65 @@
+<!-- creacion de la vista de formUpdateuser -->
+
+<%- include('../partials/head')%>
+    
+<body>
+        <%- include('../partials/header.ejs')%>    
+    
+    <main class="main_registro">
+        <img src="/images/img_formulario_registro.png" alt="fomulario de registro" id="imagenFormulario">
+        <div class="subtitulo_registrate">
+            <p id="p_registro"><%= subtitulo %></p>
+        </div>    
+        <form method="POST" action="/users/profile?_method=PUT" id="form_registro" enctype="multipart/form-data">
+           
+                <div class="div_config nombre">
+                    <label for="nombre">Nombre</label>
+                    <input type="text"  name="nombre" placeholder="Nombre" value="<%= locals.usuario ? usuario.nombre : locals.old && old.nombre ? old.nombre : null %>" >
+                    <p><%= locals.errors&& errors.nombre ? errors.nombre.msg : null %> </p>
+                </div>
+                <div class="div_config nombre">
+                    <label for="apellido">Apellido</label>
+                    <input type="text"  name="apellido" placeholder="Apellido"  value="<%= locals.usuario ? usuario.apellido : locals.old && old.apellido ? old.apellido : null %>">
+                    <p><%= locals.errors && errors.apellido ? errors.apellido.msg : null %> </p>
+                </div>
+                <div class="div_config">
+                    <label for="domicilio">Domicilio</label>
+                    <input type="text"  name="nombre_calle" placeholder="Nombre Calle" value="<%= locals.usuario ? usuario.nombre_calle : locals.old && old.nombre_calle ? old.nombre_calle : null %>">
+                    <p><%= locals.errors && errors.nombre_calle ? errors.nombre_calle.msg : null %> </p>
+                    <input type="number"  name="numero_calle" placeholder="Numero Calle" value="<%= locals.usuario ? usuario.numero_calle : locals.old && old.numero_calle ? old.numero_calle : null %>">
+                    <p><%= locals.errors && errors.numero_calle ? errors.numero_calle.msg : null %> </p>
+                </div>
+                <div class="div_config">
+                    <label for="email">Email</label>
+                    <input type="email"  name="email" placeholder="Email" value="<%= locals.usuario ? usuario.email: locals.old && old.email? old.email: null %>">
+                    <p><%= locals.errors && errors.apellido ? errors.email.msg : null %> </p>
+                </div>
+                <div class="div_config">
+                    <label for="categoria">Categoria</label>
+                    <select name="rol_id"  id="rol_id" class="campo_select">
+                        <option value="1" <%= usuario.rol_id == "1" ? "selected" : null %>>Supervisor</option>
+                        <option value="2" <%= usuario.rol_id == "2" ? "selected" : null %>>Vendedor</option>
+                    </select>
+                    <p><%= locals.errors && errors.categoria ? errors.email.msg : null %> </p>
+                </div> 
+                <div class="div_config">
+                    <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                    <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" >
+                    <p><%= locals.errors && errors.fecha_nacimiento ? errors.fecha_nacimiento.msg : null %> </p>
+                </div> 
+                <div class="div_config">
+                <label for="imagen" class="col-12 mt-3">Foto de perfil</label>
+                <input type="file" name="imagen" class="form-control" id="inputGroupFile02">
+                <p><%= locals.errors && errors.imagen ? errors.imagen.msg : null %> </p>
+            </div>
+            
+            <div class="boton_registro">
+                <button type="submit">Guardar Cambios</button>
+            </div>           
+        </form>
+    </main>
+    
+    <%- include('../partials/footer') %>
+    
+</body>
+</html>

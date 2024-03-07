@@ -33,7 +33,7 @@
             <section class="section_der_perfil-user">
                 <div class="div_miPerfil">
                     <p>Mi perfil</p>
-                    <img src="/images/users/<%= usuario.image %>" alt="Avatar-Usuario">
+                    <img src="<%= usuario.imagen %>" alt="Avatar-Usuario">
                 </div>
                 <article class="section_der_article_perfil-user">
                     <% if (usuario.nombre) { %>
@@ -48,10 +48,12 @@
                             <p class="div_p_subtitulos_perfil-user"><%= usuario.apellido %></p>
                         </div>
                     <%  } %>
-                    <% if (usuario.domicilio) { %>
+                    <% if (usuario.direcciones) { %>
                         <div>
                             <p class="div_p_titulos_perfil-user">Domicilio</p>
-                            <p class="div_p_subtitulos_perfil-user"><%= usuario.domicilio %></p>
+                            <% for(x=0; x<usuario.direcciones.length; x=usuario.direcciones.length) { %>
+                                <p class="div_p_subtitulos_perfil-user"><%= usuario.direcciones[0].nombre_calle %> <%= usuario.direcciones[0].numero_calle %></p>
+                              <% } %>
                         </div>
                     <%  } %>
                     <% if (usuario.email) { %>
@@ -60,16 +62,10 @@
                             <p class="div_p_subtitulos_perfil-user"><%= usuario.email %></p>
                         </div>
                     <%  } %>
-                    <% if (usuario.age) { %>
-                        <div>
-                            <p class="div_p_titulos_perfil-user">Edad</p>
-                            <p class="div_p_subtitulos_perfil-user"><%= usuario.age %> años</p>
-                        </div>
-                    <%  } %>
-                    <% if (usuario.date) { %>
+                    <% if (usuario.fecha_nacimiento) { %>
                         <div>
                             <p class="div_p_titulos_perfil-user">Fecha de Nacimiento</p>
-                            <p class="div_p_subtitulos_perfil-user"><%= usuario.date %></p>
+                            <p class="div_p_subtitulos_perfil-user"><%= usuario.fecha_nacimiento %></p>
                         </div>
                     <%  } %>
                 </article>

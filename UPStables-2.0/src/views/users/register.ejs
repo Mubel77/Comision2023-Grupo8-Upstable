@@ -12,17 +12,32 @@
             <div class="div_config nombre">
                 <label for="nombre">Nombre</label>
                 <input type="text"  name="nombre" placeholder="Nombre" value="<%= locals.oldData ? oldData.nombre : null %>" >
-                <p><%= locals.errors&& errors.nombre ? errors.nombre.msg : null %> </p>
+                <p><%= locals.errors && errors.nombre ? errors.nombre.msg : null %> </p>
             </div>
             <div class="div_config nombre">
                 <label for="apellido">Apellido</label>
                 <input type="text"  name="apellido" placeholder="Apellido"  value="<%= locals.oldData ? oldData.apellido : null %>">
                 <p><%= locals.errors && errors.apellido ? errors.apellido.msg : null %> </p>
             </div>
-            <div class="div_config">
-                <label for="domicilio">Domicilio</label>
-                <input type="text"  name="domicilio" placeholder="Domicilio" value="<%= locals.oldData ? oldData.domicilio : null %>">
-                <p><%= locals.errors && errors.domicilio ? errors.domicilio.msg : null %> </p>
+            <div class="div_config nombre">
+                <label for="domicilio">Domicilio CALLE</label>
+                <input type="text"  name="nombre_calle" placeholder="Nombre Calle" value="<%= locals.oldData ? oldData.nombre_calle : null %>">
+                <p><%= locals.errors && errors.nombre_calle ? errors.nombre_calle.msg : null %> </p>
+            </div>
+            <div class="div_config nombre">
+                <label for="domicilio">Domicilio NUMERO</label>
+                <input type="text"  name="numero_calle" placeholder="Numero Calle" value="<%= locals.oldData ? oldData.numero_calle : null %>">
+                <p><%= locals.errors && errors.numero_calle ? errors.numero_calle.msg : null %> </p>
+            </div>
+            <div class="div_config nombre">
+                <label for="fecha_nacimiento">Fecha Nacimiento</label>
+                <input type="date"  name="fecha_nacimiento" placeholder="Fecha Nacimiento"  value="<%= locals.oldData ? oldData.fecha_nacimiento : null %>">
+                <p><%= locals.errors && errors.fecha_nacimiento ? errors.fecha_nacimiento.msg : null %> </p>
+            </div>
+            <div class="div_config nombre">
+                <label for="imagen" class="col-12 mt-3">Foto de perfil</label>
+                <input type="file" class="form-control" id="inputGroupFile02" name="imagen">
+                <p><%= locals.errors && errors.imagen ? errors.imagen.msg : null %> </p>
             </div>
             <div class="div_config">
                 <label for="email">Email</label>
@@ -30,8 +45,8 @@
                 <p><%= locals.errors && errors.email ? errors.email.msg : null %> </p>
             </div>
             <div class="div_config">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Contrseña" value="<%= locals.oldData ? oldData.password : null %>">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Contraseña" value="<%= locals.oldData ? oldData.password : null %>">
                 <p> <%= locals.errors && errors.password ? errors.password.msg : null %> </p>
             </div> 
             <div class="div_config">
@@ -39,11 +54,6 @@
               <input type="password" name="passwordConfirmation" placeholder="Confirmar contraseña" value="<%= locals.oldData ? oldData.passwordConfirmation : null %>">
               <p><%= locals.errors && errors.password ? errors.password.msg : null %> </p>
           </div>
-          <div class="div_config">
-            <label for="image" class="col-12 mt-3">Foto de perfil</label>
-            <input type="file" class="form-control" id="inputGroupFile02" name="image">
-            <p><%= locals.errors && errors.image ? errors.image.msg : null %> </p>
-        </div>
             <div class="boton_registro">
                 <button type="submit">Crear cuenta</button>
             </div>           
