@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 const db = require("../database/models/index.js");
 const { log, error } = require("console");
-const { parse } = require("@formkit/tempo") 
+const { parse } = require("@formkit/tempo");
 
 const userController = {
   register: function (req, res, next) {
@@ -29,7 +29,9 @@ const userController = {
         nombre: nombre.trim(),
         apellido: apellido.trim(),
         email: email.trim(),
-        imagen: req.file ? `/images/users/${req.file.filename}` : "/images/users/user-default.png",
+        imagen: req.file
+          ? `/images/users/${req.file.filename}`
+          : "/images/users/user-default.png",
         fecha_nacimiento: fecha_nacimiento,
         password: bcrypt.hashSync(password, 10),
       };
@@ -42,16 +44,16 @@ const userController = {
             numero_calle: numero_calle,
           };
           db.Direccion.create(nuevoDomicilio)
-          .then(() => {
-            res.redirect("/users/login");
-          })
+            .then(() => {
+              res.redirect("/users/login");
+            })
             .catch((err) => {
-              res.send('No se puedo crear la direccion')
-            //console.log(err);
-          });
+              res.send("No se puedo crear la direccion");
+              //console.log(err);
+            });
         })
         .catch((err) => {
-          res.send('No se puedo crear el usuario')
+          res.send("No se puedo crear el usuario");
           //console.log(err);
         });
     }
@@ -123,12 +125,12 @@ const userController = {
         where: {
           email,
         },
-        include:[
-          {model: db.Rol, as:'roles'},
-          {model: db.Direccion, as:'direcciones'},
-          {model: db.Telefono, as:'telefonos'}
+        include: [
+          { model: db.Rol, as: "roles" },
+          { model: db.Direccion, as: "direcciones" },
+          { model: db.Telefono, as: "telefonos" },
         ],
-        attributes: { exclude: ["password"] } 
+        attributes: { exclude: ["password"] },
       })
         .then((user) => {
           req.session.user = user;
@@ -148,77 +150,103 @@ const userController = {
   // contralador de la actualizacion de usuario
   formUpdateUser: (req, res) => {
     db.Usuario.findByPk(req.session.user.id)
-      .then(()=>{
-        console.log(req.session.user.id);
+      .then(() => {
+        
         res.render("./users/formUpdateUser", {
-        title: "Editar Usuario",
-        subtitulo: "Editar Usuario",
-        usuario: req.session.user,
-        })
+          title: "Editar Usuario",
+          subtitulo: "Editar Usuario",
+          usuario: req.session.user,
+        });
       })
       .catch((err) => {
         console.log(err);
       });
   },
-  //Proceso de actualizacion de usario del 6 sprint(Mauricio)
-  processUpdate: (req, res) => {
-    const { nombre, apellido, password, prefijo, numero, numero_calle, nombre_calle, codigo_postal, localidad, provincia, email, fecha_nacimiento } = req.body;
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      console.log("-->HAY ERRORES EN UPDATE<--", errors);
-      res.render("./users/formUpdateUser", {
-        title: "Editar Usuario",
-        subtitulo: "Editar Usuario",
-        usuario: req.session.user,
-        errors: errors.mapped(),
-        old: req.body
-        })
-    } else {
-      console.log("-->NO HAY ERRORES<--");
-      let fecha = parse({
-        date: fecha_nacimiento,
-        format: "YYYY-MM-DD HH:mm:ss"
+  //Proceso de actualizacion de usario del 6 sprint(Santi)
+  processUpdate: async (req, res) => {
+    try {
+      const {
+        nombre,
+        apellido,
+        password,
+        prefijo,
+        numero,
+        numero_calle,
+        nombre_calle,
+        codigo_postal,
+        localidad,
+        provincia,
+        email,
+        fecha_nacimiento,
+      } = req.body;
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        console.log("-->HAY ERRORES EN UPDATE<--", errors);
+        res.render("./users/formUpdateUser", {
+          title: "Editar Usuario",
+          subtitulo: "Editar Usuario",
+          usuario: req.session.user,
+          errors: errors.mapped(),
+          old: req.body,
         });
-        const hashPassword = bcrypt.hashSync(password, 10);
-      const usuarioUpdate = {
-        rol_id: 1,
-        nombre: nombre.trim(),
-        password: hashPassword,
-        apellido: apellido.trim(),
-        email: email.trim(),
-        imagen: req.file ? `/images/users/${req.file.filename}` : "/images/users/user-default.png",
-        fecha_nacimiento: fecha
-      };
-      console.log("-->ESTO ES USUARIO<--", usuarioUpdate);
-      db.Usuario.update(usuarioUpdate, {where : {id: req.session.id}})
-      
-        // .then((usuario) => {
-        //   const domicilioUpdate = {
-        //     id_usuario: usuario.id,
-        //     nombre_calle: nombre_calle,
-        //     numero_calle: numero_calle,
-        //     codigo_postal: codigo_postal,
-        //     localidad: localidad,
-        //     provincia: provincia
-        //   };
-
-        //   db.Domicilio.create(domicilioUpdate)
-        //   .then((actualizar)=>{
-        //     const telefUpdate = {
-        //       numero : numero,
-        //       prefijo: prefijo
-        //     }
-        //     db.Telefono.create(telefUpdate)
-            .then((actualizarTel)=>{
-              res.send("Se actualizo el usuario!!")
-            })
-        //   })
-        // })
-        .catch((err)=>{
-          console.log(err);
-        })
-      }
-
+      } else {
+        
+        let fecha = parse({
+          date: fecha_nacimiento,
+          format: "YYYY-MM-DD HH:mm:ss",
+        });
+        console.log("IMAGEN:", req.file);
+        const usuarioUpdate = {
+          rol_id: 1,
+          nombre: nombre.trim(),
+          apellido: apellido.trim(),
+          email: email.trim(),
+          imagen: req.file ? `/images/users/${req.file.filename}`: "/images/users/user-default.png",
+          fecha_nacimiento: fecha,
+        };
+        const domicilioUpdate = {
+          id_usuario: req.session.user.id,
+          nombre_calle: nombre_calle,
+          numero_calle: numero_calle,
+          codigo_postal: codigo_postal,
+          localidad: localidad,
+          provincia: provincia,
+        };
+        const telefUpdate = {
+          id_usuario: req.session.user.id,
+          numero: numero,
+          prefijo: prefijo,
+        };
+        const actualizarUsuario = await db.Usuario.update(usuarioUpdate, {
+          where: { id: req.session.user.id },
+        });
+        
+        const actualizarDomicilio = await db.Direccion.update(domicilioUpdate, {
+          where: { id_usuario: req.session.user.id },
+        });
+        
+        async function telefono() {
+          try {
+            if (req.session.user.telefonos.length >= 1) { //Si existe un registro de telefono
+              return await db.Telefono.update(telefUpdate, {
+                where: { id_usuario: req.session.user.id },
+              });
+            } else { //Si no existe un registro de telefono
+              return await db.Telefono.create(telefUpdate);
+            }
+          } catch (error) {
+            console.log(error);
+          }
+          
+        }
+        Promise.all([actualizarUsuario, actualizarDomicilio, telefono()])
+          .then(() => {
+            res.redirect("/users/perfil-user");
+          })
+        }
+  } catch (error) {
+    console.log(error);
+  }
   },
   perfilAdmin: function (req, res, next) {
     res.render("users/perfil-admin", {
@@ -229,10 +257,17 @@ const userController = {
   },
 
   perfilUser: function (req, res, next) {
-    console.log(".........Estoy en session soy USUARIO Id ",req.session.user.id);
+    // console.log(
+    //   ".........Estoy en session soy USUARIO Id ",
+    //   req.session.user.id
+    // );
+    // console.log("-->USUARIO<--", req.session.user);
+    let fechas = new Date(req.session.user.fecha_nacimiento);
+    console.log("-->FECHAA<--", fechas);
     res.render("users/perfil-user", {
       title: "Mi Perfil",
       usuario: req.session.user,
+      fechas: fechas,
     });
   },
 
