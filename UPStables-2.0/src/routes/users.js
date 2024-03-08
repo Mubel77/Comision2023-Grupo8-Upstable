@@ -27,4 +27,7 @@ router.get('/perfilUser',sessionValidator, usersController.perfilUser);
 
 router.get('/logout', usersController.logout);
 
+//listar usuarios
+router.get('/usersList', usersController.list)  //sessionValidator, 
+
 module.exports = router;
