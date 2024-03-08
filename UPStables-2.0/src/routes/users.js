@@ -22,7 +22,7 @@ router.post('/login', loginValidator, usersController.loginUp);
 router.get('/profile',sessionValidator, usersController.formUpdateUser)  //sessionValidator, 
 router.put('/profile', upload.single('imagen'), validatorUpdateUser, usersController.processUpdate)
 
-router.get('/perfilAdmin',/*isAdmin*/ usersController.perfilAdmin);
+router.get('/perfilAdmin',isAdmin, usersController.perfilAdmin);
 router.get('/perfilUser',sessionValidator, usersController.perfilUser);
 
 router.get('/logout', usersController.logout);
