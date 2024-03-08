@@ -1,6 +1,7 @@
 const { body } = require('express-validator');
 const db = require('../database/models/index')
-const validatorRegister = [
+
+const validateRegister = [
     body('nombre')
         .notEmpty().withMessage('Debes completar con tu nombre').bail()
         .isLength({ min: 3 }).withMessage('El nombre debe tener al menos 3 caracteres'),
@@ -37,7 +38,7 @@ const validatorRegister = [
         }).withMessage("No es un tipo de archivo válido"),
 ];
 
-const validatorRegisterAdmin = [
+const validateRegisterAdmin = [
     body('nombre')
         .notEmpty().withMessage('Debes completar con tu nombre').bail()
         .isLength({ min: 3 }).withMessage('El nombre debe tener al menos 3 caracteres'),
@@ -76,4 +77,4 @@ const validatorRegisterAdmin = [
           }).withMessage("No es un tipo de archivo válido"),
 ];
 
-module.exports = { validatorRegister, validatorRegisterAdmin };
+module.exports = { validateRegister, validateRegisterAdmin };

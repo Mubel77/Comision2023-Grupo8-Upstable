@@ -2,7 +2,7 @@ const { body } = require('express-validator');
 const db = require('../database/models/index')
 const { parse } = require("@formkit/tempo") 
 
-const validatorUpdateUser= [
+const validateUpdateUser= [
     body('nombre')
         .notEmpty().withMessage('Debes completar con tu nombre').bail()
         .isLength({ min: 3 }).withMessage('El nombre debe tener al menos 3 caracteres'),
@@ -54,7 +54,7 @@ const validatorUpdateUser= [
         }).withMessage("No es un tipo de archivo válido"),
 ];
 
-const validatorUpdateAdmin = [
+const validateUpdateAdmin = [
     body('nombre')
         .notEmpty().withMessage('Debes completar con tu nombre').bail()
         .isLength({ min: 3 }).withMessage('El nombre debe tener al menos 3 caracteres'),
@@ -96,4 +96,4 @@ const validatorUpdateAdmin = [
         }).withMessage("No es un tipo de archivo válido"),
 ];
 
-module.exports = { validatorUpdateUser, validatorUpdateAdmin };
+module.exports = { validateUpdateUser, validateUpdateAdmin };

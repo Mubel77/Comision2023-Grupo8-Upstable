@@ -15,7 +15,7 @@ const productsController = {
       .then((productos) => {
         res.render("products/productsList", {
           title: "List Products",
-          //usuario: req.session.user,
+          usuario: req.session.user,
           productos,
         });
       })
@@ -35,7 +35,7 @@ const productsController = {
         res.render("products/productDetail", {
           title: producto.modelo,
           producto,
-          //usuario: req.session.user,
+          usuario: req.session.user,
         });
       })
       .catch((err) => console.log(err));
@@ -54,7 +54,7 @@ const productsController = {
         res.render("products/dashboard", {
           title: "Dashboard",
           productos: productos,
-          //usuario: req.session.user,
+          usuario: req.session.user,
         });
       })
       .catch((err) => console.log(err));
@@ -81,7 +81,7 @@ const productsController = {
           title: "Dashboard",
           mensaje,
           result,
-          //usuario: req.session.user,
+          usuario: req.session.user,
         });
       })
       .catch((err) => {
@@ -92,7 +92,7 @@ const productsController = {
   formCreate: function (req, res, next) {
     res.render("products/formCreate", {
       title: "Formulario Crear",
-      //usuario: req.session.user,
+      usuario: req.session.user,
     });
   },
 
@@ -166,7 +166,7 @@ const productsController = {
         title: "Formulario Crear",
         errors: errors.mapped(),
         oldData: req.body,
-        //usuario: req.session.user,
+        usuario: req.session.user,
       });
     }
   },
@@ -241,7 +241,7 @@ const productsController = {
             producto,
             errors: errors.mapped(),
             oldData: req.body,
-            //usuario: req.session.user,
+            usuario: req.session.user,
           });
         })
         .catch((err) => console.log(err));
@@ -304,7 +304,7 @@ const productsController = {
           title: "Carrito de Compras",
           productos,
           data,
-          //usuario: req.session.user,
+          usuario: req.session.user,
         });
       })
       .catch((err) => console.log(err));
