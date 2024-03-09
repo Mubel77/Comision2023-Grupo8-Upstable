@@ -119,7 +119,6 @@ create: function (req, res, next) {
       })
       .then((producto) => {
         const imagenes = req.files;
-        console.log()
         imagenes.forEach(imagen  =>  {
           console.log(imagen)
           if (imagen){
