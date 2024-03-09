@@ -77,32 +77,36 @@ const userController = {
       const {
         nombre,
         apellido,
-        domicilio,
+        nombre_calle,
+        numero_calle,
         email,
         password,
-        categoria,
-        imagen,
         fecha_nacimiento,
         rol_id,
       } = req.body;
       const newAdmin = {
-        rol_id: rol_id,
-        nombre: nombre.trim(),
-        apellido: apellido.trim(),
-        domicilio: domicilio.trim(),
-        email: email.trim(),
-        imagen: req.file ? req.file.filename : "user-default.png",
+        rol_id,
+        nombre,
+        apellido,
+        email,
+        imagen: req.file ? `/images/users/${req.file.filename}` : "/images/users/user-default.png",
         fecha_nacimiento: fecha_nacimiento,
-        password: bcrypt.hashSync(password, 10),
-        categoria,
+        password: bcrypt.hashSync(password, 10)
       };
       db.Usuario.create(newAdmin)
-        .then((newAdmin) => {
-          res.redirect("/users/perfilAdmin");
+        .then(admin => {
+          const nuevoDomicilio = {
+            id_usuario: admin.id,
+            nombre_calle,
+            numero_calle
+          };
+          db.Direccion.create(nuevoDomicilio)
+            .then(()=> {
+              res.redirect('/users/dashboard')
+             })
+             .catch((error)=> console.log(error))
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((error)=> console.log(error))
     }
   },
 
@@ -135,7 +139,7 @@ const userController = {
           req.session.user = user;
           res.cookie("user", user, { maxAge: 1000 * 60 * 30 });
           if (req.body.remember == "on") {
-            res.cookie("rememberMe", "true", { maxAge: 1000 * 60 * 5 });
+            res.cookie("rememberMe", "true", { maxAge: 1000 * 60 * 30 });
           }
           res.redirect("/");
         })
@@ -145,7 +149,6 @@ const userController = {
     }
   },
 
-  // dashboard de usuarios
   dashboardUsers: function (req, res, next) {
     db.Usuario.findAll({
       include: [
@@ -155,16 +158,16 @@ const userController = {
       ],
     })
       .then((usuarios) => {
-        console.log(usuarios);
+        console.log(req.session.user);
         res.render("users/dashboard", {
           title: "dashboard",
           usuarios,
+          usuario: req.session.user
         });
       })
       .catch((err) => console.log(err));
   },
 
-  // buscador de dashboard
   dashboardSearchUsers: function (req, res, next) {
     const { keywords } = req.query;
     let whereClause = {};
@@ -195,7 +198,6 @@ const userController = {
       .catch((err) => console.log(err));
   },
 
-  // contralador de la actualizacion de usuario
   formUpdateUser: (req, res) => {
     db.Usuario.findByPk(req.session.user.id)
       .then(() => {
@@ -210,7 +212,6 @@ const userController = {
       });
   },
 
-  //Proceso de actualizacion de usario del 6 sprint(Santi)
   processUpdate: async (req, res) => {
     try {
       const {
@@ -293,7 +294,7 @@ const userController = {
         }
         Promise.all([actualizarUsuario, actualizarDomicilio, telefono()])
         .then(() => {
-            res.redirect("/users/perfil-user");
+            res.redirect("/users/perfilUser");
           }
         );
       }
@@ -323,7 +324,7 @@ const userController = {
 
   updateAdmin: async (req, res) => {
     try {
-      const userId = req.params.id;
+    const userId = req.params.id;
     const errors = validationResult(req);
     const {
       nombre,
@@ -388,22 +389,11 @@ const userController = {
         where: { id_usuario: userId },
       });
 
-      async function telefono() {
-        try {
-          if (userId.telefonos.length >= 1) {
-            //Si existe un registro de telefono
-            return await db.Telefono.update(telefUpdate, {
-              where: { id_usuario: userId },
-            });
-          } else {
-            //Si no existe un registro de telefono
-            return await db.Telefono.create(telefUpdate);
-          }
-        } catch (error) {
-          console.log(error);
-        }
-      }
-      Promise.all([actualizarUsuario, actualizarDomicilio, telefono()])
+      const actualizarTelefono = await db.Telefono.update(telefUpdate, {
+        where: { id_usuario: userId },
+      });
+
+      Promise.all([actualizarUsuario, actualizarDomicilio, actualizarTelefono])
       .then(() => {
           res.redirect("/users/dashboard");
         }

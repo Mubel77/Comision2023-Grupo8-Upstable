@@ -31,6 +31,6 @@ router.get('/dashboard', isAdmin, usersController.dashboardUsers);
 router.get('/dashboard/search', usersController.dashboardSearchUsers);
 
 router.get('/formUpdateAdmin/:id', isAdmin, usersController.formUpdateAdmin)
-router.put('/formUpdateAdmin/:id', validateUpdateAdmin, usersController.formUpdateAdmin)
+router.put('/updateAdmin/:id', upload.single('imagen'), validateUpdateAdmin, usersController.updateAdmin)
 
 module.exports = router;

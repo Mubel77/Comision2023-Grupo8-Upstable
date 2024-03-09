@@ -80,8 +80,7 @@ const validateUpdateAdmin = [
         .notEmpty().withMessage("El campo no puede estar vacio").bail()
         .isEmail().withMessage('Debe ser un correo con formato valido').bail(),
     body('fecha_nacimiento')
-        .notEmpty().withMessage('Debes completar la fecha de nacimiento con el formato "YYYY-MM-DD').bail()
-        .isDate(['YYYY-MM-DD']).withMessage('Debes respetar el formato "YYYY-MM-DD'),
+        .notEmpty().withMessage('Debes completar la fecha de nacimiento con el formato "YYYY-MM-DD'),
     body('image')
         .custom((value, { req }) => {
             if (req.errorValidationImage) {

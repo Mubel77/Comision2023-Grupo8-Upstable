@@ -21,9 +21,9 @@
 
             <div class="div_config">
                 <label for="telefono">Telefono</label>
-                <input type="text"  name="prefijo" placeholder="Prefijo"  value="<%= locals.old && old.prefijo ? old.prefijo : locals.usuario && usuario.telefonos[0].prefijo ? usuario.telefonos[0].prefijo : null %>">
+                <input type="text"  name="prefijo" placeholder="Prefijo"  value="<%= locals.old && old.prefijo ? old.prefijo : locals.usuario && usuario.telefonos.length > 0 ? usuario.telefonos[0].prefijo : null %>">
                 <p><%= locals.errors && errors.prefijo ? errors.prefijo.msg : null %> </p>
-                <input type="text"  name="numero" placeholder="Numero"  value="<%= locals.old && old.numero ? old.numero : locals.usuario && usuario.telefonos[0].numero ? usuario.telefonos[0].numero : null %>">
+                <input type="text"  name="numero" placeholder="Numero"  value="<%= locals.old && old.numero ? old.numero : locals.usuario && usuario.telefonos.length > 0 ? usuario.telefonos[0].numero : null %>">
                 <p><%= locals.errors && errors.numero ? errors.numero.msg : null %> </p>
             </div>
 

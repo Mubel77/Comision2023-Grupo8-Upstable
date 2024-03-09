@@ -1,6 +1,5 @@
 const sessionValidator = (req,res,next)=>{
     if(req.session.user){
-    console.log(".........Estoy en session soy USUARIO Id ",req.session.user.id);
         next()
     } else {
         res.redirect("/users/login");

@@ -57,7 +57,6 @@ const productsController = {
           title: "Dashboard",
           productos: productos,
           usuario: req.session.user,
-          usuario: req.session.user,
         });
       })
       .catch((err) => console.log(err));

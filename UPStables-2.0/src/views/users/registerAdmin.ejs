@@ -37,12 +37,6 @@
                 </div>
                 
                 <div class="div_config nombre">
-                    <label for="telefono">Telefono</label>
-                    <input type="text"  name="telefono" placeholder="Numero Calle" value="<%= locals.oldData ? oldData.telefono : null %>">
-                    <p><%= locals.errors && errors.telefono ? errors.telefono.msg : null %> </p>
-                </div>
-                
-                <div class="div_config nombre">
                     <label for="fecha_nacimiento">Fecha Nacimiento</label>
                     <input type="date"  name="fecha_nacimiento" placeholder="Fecha Nacimiento"  value="<%= locals.oldData ? oldData.fecha_nacimiento : null %>">
                     <p><%= locals.errors && errors.fecha_nacimiento ? errors.fecha_nacimiento.msg : null %> </p>
@@ -79,8 +73,8 @@
                 </div>
             
                 <div class="div_config">
-                    <label for="image" class="col-12 mt-3">Foto de perfil</label>
-                    <input type="file" class="form-control" id="inputGroupFile02" name="image">
+                    <label for="imagen" class="col-12 mt-3">Foto de perfil</label>
+                    <input type="file" class="form-control" id="inputGroupFile02" name="imagen">
                     <p><%= locals.errors && errors.image ? errors.image.msg : null %> </p>
                 </div>
 

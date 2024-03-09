@@ -12,7 +12,7 @@
             <p id="p_registro">Editar datos </p>
         </div>    
 
-        <form action="/users/profileAdmin/<%= userId %>?_method=PUT" method="POST" id="form_registro" enctype="multipart/form-data">
+        <form action="/users/updateAdmin/<%= userId %>?_method=PUT" method="POST" id="form_registro" enctype="multipart/form-data">
            
                 <div class="div_config nombre">
                     <label for="nombre">Nombre</label>
@@ -42,9 +42,9 @@
 
                 <div class="div_config">
                     <label for="telefono">Telefono</label>
-                    <input type="text"  name="prefijo" placeholder="Prefijo"  value="<%= locals.old && old.prefijo ? old.prefijo : locals.userUpdate && userUpdate.telefonos[0].prefijo ? userUpdate.telefonos[0].prefijo : null %>">
+                    <input type="text"  name="prefijo" placeholder="Prefijo"  value="<%= locals.old && old.prefijo ? old.prefijo : locals.userUpdate && userUpdate.telefonos.length > 0 ? userUpdate.telefonos[0].prefijo : null %>">
                     <p><%= locals.errors && errors.prefijo ? errors.prefijo.msg : null %> </p>
-                    <input type="text"  name="numero" placeholder="Numero"  value="<%= locals.old && old.numero ? old.numero : locals.userUpdate && userUpdate.telefonos[0].numero ? userUpdate.telefonos[0].numero : null %>">
+                    <input type="text"  name="numero" placeholder="Numero"  value="<%= locals.old && old.numero ? old.numero : locals.userUpdate && userUpdate.telefonos.length > 0 ? userUpdate.telefonos[0].numero : null %>">
                     <p><%= locals.errors && errors.numero ? errors.numero.msg : null %> </p>
                 </div>
 
