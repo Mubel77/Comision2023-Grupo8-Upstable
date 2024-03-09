@@ -1,0 +1,40 @@
+<%- include('../partials/head.ejs') %>
+<body>
+    <%- include('../partials/header.ejs') %>
+    <main>
+      <div class="dashboard_box_search-add">
+        <div class="dashboard_search">
+            <form action="/users/dashboard/search" method="GET">
+                <input type="text" name="keywords" placeholder="Buscar usuario por nombre o apellido ">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+        <a href="/users/registerAdmin"><button class="dashboard_add">+ Agregar Usuario</button></a>
+    </div>
+        <article class="Conteiner_articule_users">
+            <% usuarios.forEach(usuario => { %>
+              <% if (usuario.roles.id !== 1){%>
+              <article class="article_listUsers">
+                <div class="box-image-listUsers"><img class="imagen-usuario imagen-listProducts" src="<%= usuario.imagen %>" alt="foto-usuario"></div>
+                <div class="dashboardUsers_div_botones">
+                  <a href="/users/formUpdateAdmin/<%= usuario.id %>"><button class="boton_verificar ">Modificar</button></a>
+                </div>
+                <div class="users_list p_texto">
+                  <p>Nombre: <%= usuario.nombre %></p>
+                  <p>Apellido: <%= usuario.apellido %></p>
+                  <p>Email: <%= usuario.email %></p>
+                  <p>Rol: <%= usuario.roles.rol %></p>
+                  <p>Fecha de nacimiento: <%=usuario.fecha_nacimiento%></p>
+                  <p>Direccion: <%= usuario.direcciones[0].nombre_calle %> <%= usuario.direcciones[0].numero_calle %></p> 
+                  <% if(usuario.telefonos.length > 0){%>
+                    <p>Telefono: <%= usuario.telefonos[0].prefijo%> <%= usuario.telefonos[0].numero%></p> 
+                  <% }%>
+                </div>
+              </article>
+              <%} %>
+            <% }) %>
+          </article>
+    </main>
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html> 

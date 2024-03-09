@@ -4,6 +4,8 @@ const { validationResult } = require("express-validator");
 const db = require("../database/models/index.js");
 const { log, error } = require("console");
 const { parse } = require("@formkit/tempo") 
+const { Op } = require("sequelize");
+
 
 const userController = {
   register: function (req, res, next) {
@@ -144,7 +146,8 @@ const userController = {
         });
     }
   },
-  list: function (req, res, next) {
+// dashboard de usuarios
+  dashboardUsers: function (req, res, next) {
     db.Usuario.findAll({
       include:[
         {model: db.Rol, as:'roles'},
@@ -153,13 +156,44 @@ const userController = {
       ],
     }).then((usuarios) => {
       console.log(usuarios)
-      res.render("users/usersList", {  
-        title: "List Vendedores",
+      res.render("users/dashboard", {  
+        title: "dashboard",
         usuarios, 
       });
     })
     .catch((err) => console.log(err));
   },
+// buscador de dashboard 
+dashboardSearchUsers: function (req, res, next) {
+  const { keywords } = req.query;
+  let whereClause = {}; 
+
+  if (keywords) {
+    whereClause = {
+      [Op.or]: [
+        { nombre: { [Op.like]: `%${keywords}%` } }, // Buscar por nombre
+        { apellido: { [Op.like]: `%${keywords}%` } }, // Buscar por apellido
+      ],
+    };
+  }
+  db.Usuario.findAll({
+    where: whereClause,
+    include: [
+      { model: db.Rol, as: 'roles' },
+      { model: db.Direccion, as: 'direcciones' },
+      { model: db.Telefono, as: 'telefonos' }
+    ],
+  })
+  .then((usuarios) => {
+    console.log(usuarios);
+    res.render("users/dashboard", {
+      title: "Dashboard",
+      usuarios,
+    });
+  })
+  .catch((err) => console.log(err));
+},
+
   // contralador de la actualizacion de usuario
   formUpdateUser: (req, res) => {
     db.Usuario.findByPk(req.session.user.id)
