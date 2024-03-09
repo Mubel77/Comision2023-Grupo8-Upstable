@@ -1,6 +1,6 @@
 const db = require("../database/models");
 const { Op } = require("sequelize");
-
+const fs = require('fs')
 const productsController = {
   //pedido a base de datos, listar productos
   list: function (req, res, next) {
@@ -13,7 +13,7 @@ const productsController = {
     }).then((productos) => {
       res.render("products/productsList", {
         title: "List Products",
-        //usuario: req.session.user,
+        usuario: req.session.user,
         productos,
       });
     })
@@ -34,7 +34,7 @@ const productsController = {
         res.render("products/productDetail", {
           title: producto.modelo,
           producto,
-          //usuario: req.session.user,
+          usuario: req.session.user,
         });
       })
       .catch((err) => console.log(err));
@@ -52,7 +52,7 @@ const productsController = {
         res.render("products/dashboard", {
           title: "Dashboard",
           productos: productos,
-          //usuario: req.session.user,
+          usuario: req.session.user,
         });
       })
       .catch((err) => console.log(err));
@@ -78,7 +78,7 @@ const productsController = {
           title: "Dashboard",
           mensaje,
           result,
-          //usuario: req.session.user,
+          usuario: req.session.user,
         });
       })
       .catch((err) => {
@@ -89,7 +89,7 @@ const productsController = {
   formCreate: function (req, res, next) {
     res.render("products/formCreate", {
       title: "Formulario Crear",
-      //usuario: req.session.user,
+      usuario: req.session.user,
     });
   },
 // CREACIÓN DEL PRODUCTO CON BASE DE DATOS
@@ -172,7 +172,7 @@ create: function (req, res, next) {
         res.render("products/formUpdate", {
           title: "Formulario Modificar",
           producto,
-          //usuario: req.session.user,
+          usuario: req.session.user,
         });
       })
       .catch((err) => console.log(err));
@@ -219,17 +219,33 @@ create: function (req, res, next) {
   },
 
   delete: function (req, res, next) {
-    const { id } = req.params;
-    db.Producto.destroy({
-      where: {
-        id: id,
-      },
-    });
-    fs.unlink(`./public/images/${product.imagen}`, (err) => {
-      if (err) throw err;
-      //console.log(`borrar el archivo ${product.imagen}`);
-    });
-    res.redirect("/products/dashboard");
+      const { id } = req.params;
+      db.Imagen.findAll({
+        where:{
+          id_producto:id
+        }
+      }).then((imagenes)=>{
+        
+        imagenes.forEach(imagen => {
+          fs.unlink(`./public/${imagen.ubicacion}/${imagen.nombre}`, (err) => {
+            if (err) throw err;
+          });
+        });
+        db.Imagen.destroy({
+          where:{
+            id_producto:id
+          }
+        })
+        .then(()=>{
+          db.Producto.destroy({
+            where:{
+              id: id
+            }
+          }).then(()=>{
+            res.redirect("/products/dashboard");
+          })
+        })
+      }).catch((err) => console.log(err));   
   },
 
   cart: function (req, res, next) {
