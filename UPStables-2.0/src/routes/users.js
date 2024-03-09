@@ -14,7 +14,6 @@ router.post('/register', upload.single('imagen'), validateRegister, usersControl
 router.get('/registerAdmin', isAdmin, usersController.registerAdmin); 
 router.post('/registerAdmin', upload.single('imagen'),validateRegisterAdmin, usersController.createUserAdmin);
 
-
 router.get('/login', usersController.login);
 router.post('/login', loginValidator, usersController.loginUp);
 
@@ -24,6 +23,10 @@ router.put('/profile', upload.single('imagen'), validateUpdateUser, usersControl
 
 router.get('/perfilAdmin', isAdmin, usersController.perfilAdmin);
 router.get('/perfilUser',sessionValidator, usersController.perfilUser);
+
+//router.get('/userList', isAdmin, userController.list) Dashboard de empleados
+router.get('/profileAdmin/:id',  usersController.formUpdateAdmin) // Formulario de edicion del perfil empleado
+router.put('/profileAdmin/:id', upload.single('imagen'), validateUpdateAdmin, usersController.updateAdmin) // Editar perfil del empleado
 
 router.get('/logout', usersController.logout);
 

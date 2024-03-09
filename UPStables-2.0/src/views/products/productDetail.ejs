@@ -8,14 +8,14 @@
             <article class="fotos_producto">
                 <div class="fotos_extras">
                     <% for (let i = 0; i < producto.imagenes.length; i++) { %>
-                        <img src="<%= producto.imagenes[i].ubicacion%>/<%= producto.imagenes[i].nombre %>" alt="<%= producto.categoria%> <%= producto.marca%>">
+                        <img src="<%= producto.imagenes[i].ubicacion%>/<%= producto.imagenes[i].nombre %>" alt="<%= producto.id_categorias.categoria%> <%= producto.marca%>">
                     <% } %>
                       <div class="mas_fotos_div">
                         <i id="mas_fotos" class="fa-solid fa-plus"></i>
                       </div>
                    
                 </div>
-                    <img  class="producto_img" src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="<%= producto.categoria%> <%= producto.marca%>"> 
+                    <img  class="producto_img" src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="<%= producto.id_categorias.categoria%> <%= producto.marca%>"> 
                 
                 <div class="circulos_fotos">
                     <i id="circle_color"class="fa-solid fa-circle"></i>

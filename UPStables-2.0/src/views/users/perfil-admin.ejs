@@ -39,11 +39,17 @@
                     </a>
                     <% if (usuario.roles.rol == 'supervisor') {%>
                         <a href="/users/registerAdmin">
-                        <div class="div_enlaces_perfil-user">
-                            <i class="fa-solid fa-screwdriver-wrench"></i>
-                            <p class="">Crear Admin</p>
-                        </div>
-                    </a>
+                            <div class="div_enlaces_perfil-user">
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                                <p class="">Crear Admin</p>
+                            </div>
+                        </a>
+                        <a href="/users/listEmployed">
+                            <div class="div_enlaces_perfil-user">
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                                <p class="">Lista de Empleados</p>
+                            </div>
+                        </a>
                     <% } %>
                     
                 </article>
@@ -53,12 +59,6 @@
                     <div class="div_enlaces_perfil-admin">
                         <i class="fa-solid fa-user"></i>
                         <p class="">Mi cuenta</p>
-                    </div>
-                </a>
-                <a href="/users/profile">
-                    <div class="div_enlaces_perfil-admin">
-                        <i class="fa-solid fa-user-pen"></i>
-                        <p>Editar perfil</p>
                     </div>
                 </a>
                 <a href="/users/logout">

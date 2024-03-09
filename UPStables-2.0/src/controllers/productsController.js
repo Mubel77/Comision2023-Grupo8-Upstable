@@ -137,8 +137,7 @@ const productsController = {
                   res.redirect(`/products/productDetail/${producto.id}`);
                 })
                 .catch((error) => {
-                  // Error al crear la imagen
-                  res.send(error);
+                  console.log(error);
                 });
             });
           } else {
@@ -153,13 +152,13 @@ const productsController = {
               })
               .catch((error) => {
                 // Error al crear la imagen
-                res.send(error);
+                console.log(error);
               });
           }
         })
         .catch((error) => {
           // Error al crear el producto
-          res.send(error);
+          console.log(error);
         });
     } else {
       res.render("products/formCreate", {
@@ -184,7 +183,7 @@ const productsController = {
         res.render("products/formUpdate", {
           title: "Formulario Modificar",
           producto,
-          //usuario: req.session.user,
+          usuario: req.session.user,
         });
       })
       .catch((err) => console.log(err));
@@ -193,24 +192,24 @@ const productsController = {
   update: function (req, res, next) {
     const { id } = req.params;
     const producto = ({
-      marca,
+      id_marcas,
       modelo,
       descripcion,
       precio,
       stock,
       potencia,
-      categoria,
+      id_categorias,
       tomas,
       descuento,
     } = req.body);
-    //const files = req.files;
+
     const errors = validationResult(req);
     if (errors.isEmpty()) {
       db.Producto.update(
         {
           modelo: modelo.trim(),
-          id_marcas: 1,
-          id_categorias: 1,
+          id_marcas: id_marcas,
+          id_categorias: id_categorias,
           descripcion: descripcion.trim(),
           potencia: +potencia,
           tomas: +tomas,
@@ -249,30 +248,30 @@ const productsController = {
   },
 
   delete: function (req, res, next) {
-    const { id } = req.params;
-    db.Producto.findByPk(id, {
-      include: [
-        { model: db.Categoria, as: "categorias" }, // Relación con Categoría
-        { model: db.Marca, as: "marcas" }, // Relación con Marca
-        { model: db.Imagen, as: "imagenes" }, // Relación con Imagen
-      ],
-    }).then((producto) => {
-      db.Producto.destroy({
-        where: {
-          id: producto.id,
-        },
-      })
-        .then((product) => {
-          fs.unlink(`./public/images/${product.imagen}`, (err) => {
-            if (err) throw new Error();
-            //console.log(`borrar el archivo ${product.imagen}`);
-          });
-          res.redirect("/products/list");
-        })
-        .catch((error) => {
-          console.log("....This is ERROR....", error);
-        });
-    });
+    // const { id } = req.params;
+    // db.Producto.findByPk(id, {
+    //   include: [
+    //     { model: db.Categoria, as: "categorias" }, // Relación con Categoría
+    //     { model: db.Marca, as: "marcas" }, // Relación con Marca
+    //     { model: db.Imagen, as: "imagenes" }, // Relación con Imagen
+    //   ],
+    // }).then((producto) => {
+    //   db.Producto.destroy({
+    //     where: {
+    //       id: producto.id,
+    //     },
+    //   })
+    //     .then((product) => {
+    //       fs.unlink(`./public/images/${product.imagen}`, (err) => {
+    //         if (err) throw new Error();
+    //         console.log(`borrar el archivo ${product.imagen}`);
+    //       });
+    //       res.redirect("/products/list");
+    //     })
+    //     .catch((error) => {
+    //       console.log("....This is ERROR....", error);
+    //     });
+    // });
   },
 
   cart: function (req, res, next) {

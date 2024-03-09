@@ -4,36 +4,50 @@
         <%- include('../partials/header.ejs')%>    
     
         <main class="main_registro">
+
             <img src="/img/img_formulario_registro.png" alt="fomulario de registro" id="imagenFormulario">
             <div class="subtitulo_registrate">
                 <p id="p_registro">registrate</p>
             </div>    
+
             <form action="/users/registerAdmin" method="post" id="form_registro" enctype="multipart/form-data">
+                
                 <div class="div_config nombre">
                     <label for="nombre">Nombre</label>
                     <input type="text"  name="nombre" placeholder="Nombre" value="<%= locals.oldData ? oldData.nombre : null %>" >
                     <p><%= locals.errors&& errors.nombre ? errors.nombre.msg : null %> </p>
                 </div>
+                
                 <div class="div_config nombre">
                     <label for="apellido">Apellido</label>
                     <input type="text"  name="apellido" placeholder="Apellido"  value="<%= locals.oldData ? oldData.apellido : null %>">
                     <p><%= locals.errors && errors.apellido ? errors.apellido.msg : null %> </p>
                 </div>
+                
                 <div class="div_config nombre">
                     <label for="domicilio">Domicilio CALLE</label>
                     <input type="text"  name="nombre_calle" placeholder="Nombre Calle" value="<%= locals.oldData ? oldData.nombre_calle : null %>">
                     <p><%= locals.errors && errors.nombre_calle ? errors.nombre_calle.msg : null %> </p>
                 </div>
+                
                 <div class="div_config nombre">
                     <label for="domicilio">Domicilio NUMERO</label>
                     <input type="text"  name="numero_calle" placeholder="Numero Calle" value="<%= locals.oldData ? oldData.numero_calle : null %>">
                     <p><%= locals.errors && errors.numero_calle ? errors.numero_calle.msg : null %> </p>
                 </div>
+                
+                <div class="div_config nombre">
+                    <label for="telefono">Telefono</label>
+                    <input type="text"  name="telefono" placeholder="Numero Calle" value="<%= locals.oldData ? oldData.telefono : null %>">
+                    <p><%= locals.errors && errors.telefono ? errors.telefono.msg : null %> </p>
+                </div>
+                
                 <div class="div_config nombre">
                     <label for="fecha_nacimiento">Fecha Nacimiento</label>
                     <input type="date"  name="fecha_nacimiento" placeholder="Fecha Nacimiento"  value="<%= locals.oldData ? oldData.fecha_nacimiento : null %>">
                     <p><%= locals.errors && errors.fecha_nacimiento ? errors.fecha_nacimiento.msg : null %> </p>
                 </div>
+                
                 <div class="div_config nombre">
                     <label for="rol_id">Rol</label>
                     <select name="rol_id"  id="rol_id" class="campo_select">
@@ -45,30 +59,37 @@
                     </select>
                     <p><%= locals.errors && errors.rol_id ? errors.rol_id.msg : null %> </p>
                 </div>
+                
                 <div class="div_config">
                     <label for="email">Email</label>
                     <input type="email"  name="email" placeholder="Email" value="<%= locals.oldData ? oldData.email : null %>">
                     <p><%= locals.errors && errors.apellido ? errors.email.msg : null %> </p>
                 </div>
+                
                 <div class="div_config">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="Contrseña" value="<%= locals.oldData ? oldData.password : null %>">
                     <p> <%= locals.errors && errors.password ? errors.password.msg : null %> </p>
                 </div> 
+                
                 <div class="div_config">
                   <label for="password">Confirmar contraseña</label>
                   <input type="password" name="passwordConfirmation" placeholder="Confirmar contraseña" value="<%= locals.oldData ? oldData.passwordConfirmation : null %>">
                   <p><%= locals.errors && errors.password ? errors.password.msg : null %> </p>
-              </div>
-             <div class="div_config">
-                <label for="image" class="col-12 mt-3">Foto de perfil</label>
-                <input type="file" class="form-control" id="inputGroupFile02" name="image">
-                <p><%= locals.errors && errors.image ? errors.image.msg : null %> </p>
-            </div>
-             <div class="boton_registro">
-                <button type="submit">Crear cuenta</button>
-            </div>           
+                </div>
+            
+                <div class="div_config">
+                    <label for="image" class="col-12 mt-3">Foto de perfil</label>
+                    <input type="file" class="form-control" id="inputGroupFile02" name="image">
+                    <p><%= locals.errors && errors.image ? errors.image.msg : null %> </p>
+                </div>
+
+                <div class="boton_registro">
+                    <button type="submit">Crear cuenta</button>
+                </div>
+
             </form>
+            
         </main>
     
     <%- include('../partials/footer') %>

@@ -48,13 +48,11 @@ const userController = {
               res.redirect("/users/login");
             })
             .catch((err) => {
-              res.send("No se puedo crear la direccion");
-              //console.log(err);
+              console.log(err);
             });
         })
         .catch((err) => {
-          res.send("No se puedo crear el usuario");
-          //console.log(err);
+          console.log(err);
         });
     }
   },
@@ -163,16 +161,68 @@ const userController = {
 
   //Proceso de actualizacion de usario del 6 sprint(Mauricio)
   processUpdate: (req, res) => {
+    // const errors = validationResult(req);
+    // if (!errors.isEmpty()) {
+    //   res.render("./users/formUpdateUser", {
+    //     title: "Editar Usuario",
+    //     subtitulo: "Editar Usuario",
+    //     usuario: req.session.user,
+    //     errors: errors.mapped(),
+    //     old: req.body,
+    //   });
+    // } else {
+    // }
+  },
+
+  formUpdateAdmin: (req, res) => {
+    //const {id} = req.params;
+    const userId = req.params.id;
+    db.Usuario.findByPk(userId,{
+      include: [
+        { model: db.Rol, as: "roles" },
+        { model: db.Direccion, as: "direcciones" },
+        { model: db.Telefono, as: "telefonos" },
+      ],
+      attributes: { exclude: ["password"] }
+    })
+      .then((userUpdate) => {
+        res.render("./users/formUpdateAdmin",{title:"Editar Empleado", userId, usuario: req.session.user, userUpdate})
+      })
+  },
+
+  updateAdmin: (req, res) => {
+    const userId = req.params.id;
     const errors = validationResult(req);
+    const { nombre, apellido, nombre_calle, numero_calle, codigo_postal, localidad, provincia, prefijo, numero, email, rol_id, fecha_nacimiento} = req.body
+    console.log('....This is REQ.BODY 1.....',req.body);
     if (!errors.isEmpty()) {
-      res.render("./users/formUpdateUser", {
-        title: "Editar Usuario",
-        subtitulo: "Editar Usuario",
+      res.render("./users/formUpdateAdmin", {
+        title: "Editar Empleado",
+        userId,
         usuario: req.session.user,
         errors: errors.mapped(),
-        old: req.body,
-      });
+        old: req.body})
+      // db.Usuario.findByPk(id,{
+      //   include: [
+      //     { model: db.Rol, as: "roles" },
+      //     { model: db.Direccion, as: "direcciones" },
+      //     { model: db.Telefono, as: "telefonos" },
+      //   ],
+      //   attributes: { exclude: ["password"] }
+      // })
+      //   .then((userUpdate) => {
+      //     console.log('....This is REQ.BODY 2.....',req.body);
+      //     res.render("./users/formUpdateAdmin", {
+      //       title: "Editar Empleado",
+      //       userUpdate,
+      //       usuario: req.session.user,
+      //       errors: errors.mapped(),
+      //       old: req.body,
+      //     });
+      //   })
+      //   .catch((error) => console.log(error))
     } else {
+      res.send(req.body)
     }
   },
 
@@ -184,7 +234,6 @@ const userController = {
   },
 
   perfilUser: function (req, res, next) {
-    //console.log(".........Estoy en session soy USUARIO Id ",req.session.user.id);
     res.render("users/perfil-user", {
       title: "Mi Perfil",
       usuario: req.session.user,

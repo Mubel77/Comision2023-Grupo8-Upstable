@@ -5,6 +5,8 @@ const router = express.Router();
 const {validateCreation} = require('../validaciones/productCreateValidations.js')
 const {sessionValidator, isAdmin} = require('../middlewares/sessionValidator.js')
 
+const productsController = require ('../controllers/productsController.js');
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
        cb(null, path.join(__dirname, '../../public/images/products'));
@@ -16,8 +18,7 @@ const storage = multer.diskStorage({
  });
 const upload=multer({storage});
 
-// const {sessionValidator, isAdmin} = require('../middlewares/sessionValidator.js')
- const productsController = require ('../controllers/productsController.js');
+
 //Ver todos productos listados
 router.get('/productsList', isAdmin, productsController.list)
 
@@ -34,7 +35,7 @@ router.post('/formCreate', upload.array('imagenes'), validateCreation, productsC
 
 // Actualizar productos Admin
 router.get('/formUpdate/:id', isAdmin, productsController.formUpdate);
-router.put('/update/:id', upload.array('imagenes'), validateCreation, productsController.update);
+router.put('/update/:id', upload.array('imagenes',3), validateCreation, productsController.update);
 
 // Borrar productos Admin
 router.delete('/delete/:id', isAdmin, productsController.delete);
