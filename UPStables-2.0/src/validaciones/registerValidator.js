@@ -1,6 +1,7 @@
 const { body } = require('express-validator');
 const db = require('../database/models/index')
-const validatorRegister = [
+
+const validateRegister = [
     body('nombre')
         .notEmpty().withMessage('Debes completar con tu nombre').bail()
         .isLength({ min: 3 }).withMessage('El nombre debe tener al menos 3 caracteres'),
@@ -15,21 +16,27 @@ const validatorRegister = [
     body('nombre_calle')
         .notEmpty().withMessage('Debes completar el nombre de la CALLE').bail()
         .isLength({ min: 3 }).withMessage('El domicilio debe tener al menos 3 caracteres'),
-    body('email').notEmpty().withMessage("El campo no puede estar vacio").bail()
+    body('email')
+        .notEmpty().withMessage("El campo no puede estar vacio").bail()
         .isEmail().withMessage('Debe ser un correo con formato valido').bail()
-        .custom(value => { 
-        db.Usuario.findOne({
-            where:{
-                email:value
-            }
-        });
-        return value
+        .custom((value) => {  
+            db.Usuario.findOne({where:{email:value}})
+                .then((user)=>{
+                    if(user){
+                        throw new Error
+                    } else {    
+                        next()
+                    }
+                })
+                .catch((error) => {return error})
         }).withMessage("El usuario ya existe, utilice otro correo electronico"),
-    body('password').notEmpty().withMessage("El campo no puede estar vacio").bail()
+    body('password')
+        .notEmpty().withMessage("El campo no puede estar vacio").bail()
         .custom((value,{req})=> {
         return value == req.body.passwordConfirmation ;
         }).withMessage("Los password no coinciden"),
-    body('image').custom((value, { req }) => {
+    body('image')
+        .custom((value, { req }) => {
             if (req.errorValidationImage) {
                 return false;
             }
@@ -37,7 +44,7 @@ const validatorRegister = [
         }).withMessage("No es un tipo de archivo válido"),
 ];
 
-const validatorRegisterAdmin = [
+const validateRegisterAdmin = [
     body('nombre')
         .notEmpty().withMessage('Debes completar con tu nombre').bail()
         .isLength({ min: 3 }).withMessage('El nombre debe tener al menos 3 caracteres'),
@@ -54,21 +61,30 @@ const validatorRegisterAdmin = [
         .notEmpty().withMessage('Debes completar la fecha de nacimiento con el formato "MM-DD-AAAA').bail(),
     body('rol_id')
         .notEmpty().withMessage('Debes elegir un Rol para el administrador').bail(),
-    body('email').notEmpty().withMessage("El campo no puede estar vacio").bail()
+    body('email')
+        .notEmpty().withMessage("El campo no puede estar vacio").bail()
         .isEmail().withMessage('Debe ser un correo con formato valido').bail()
-        .custom(value => {    
-            db.Usuario.findOne({
-                where:{
-                    email:value
-                }
-            });
-            return value
+        .custom(async (value) => {  
+            try {
+                await db.Usuario.findOne({where:{email:value}})
+                .then((user)=>{
+                    if(user){
+                        console.log('HOLA.......');
+                        throw new Error
+                    } else {
+                        console.log('CHAU.......')
+                        return next()
+                    }
+                })
+            } catch (error) {return error}  
         }).withMessage("El usuario ya existe, utilice otro correo electronico"),
-    body('password').notEmpty().withMessage("El campo no puede estar vacio").bail()
+    body('password')
+        .notEmpty().withMessage("El campo no puede estar vacio").bail()
         .custom((value,{req})=> {
         return value == req.body.passwordConfirmation ;
         }).withMessage("Los password no coinciden"),
-    body('image').custom((value, { req }) => {
+    body('image')
+        .custom((value, { req }) => {
             if (req.errorValidationImage) {
               return false;
             }
@@ -76,4 +92,4 @@ const validatorRegisterAdmin = [
           }).withMessage("No es un tipo de archivo válido"),
 ];
 
-module.exports = { validatorRegister, validatorRegisterAdmin };
+module.exports = { validateRegister, validateRegisterAdmin };

@@ -10,49 +10,50 @@
             
             <div class="div_config nombre">
                 <label for="nombre">Nombre</label>
-                <input type="text"  name="nombre" placeholder="Nombre" value="<%= locals.usuario ? usuario.nombre : locals.old && old.nombre ? old.nombre : null %>" >
+                <input type="text"  name="nombre" placeholder="Nombre" value="<%= locals.old && old.nombre ? old.nombre : locals.usuario ? usuario.nombre : null %>" >
                 <p><%= locals.errors && errors.nombre ? errors.nombre.msg : null %> </p>
             </div>
             <div class="div_config nombre">
                 <label for="apellido">Apellido</label>
-                <input type="text" name="apellido" placeholder="Apellido" value="<%= usuario.apellido %>">
+                <input type="text" name="apellido" placeholder="Apellido" value="<%= locals.old && old.apellido ? old.apellido : locals.usuario ? usuario.apellido : null %>">
                 <p><%= locals.errors && errors.apellido ? errors.apellido.msg : null %></p>
             </div>
+
             <div class="div_config">
                 <label for="telefono">Telefono</label>
-                <input type="number"  name="prefijo" placeholder="Prefijo"  value="<%= locals.usuario ? usuario.telefonos[0].prefijo : locals.old && old.telefonos[0].prefijo ? old.telefonos[0].prefijo : null %>">
+                <input type="text"  name="prefijo" placeholder="Prefijo"  value="<%= locals.old && old.prefijo ? old.prefijo : locals.usuario && usuario.telefonos[0].prefijo ? usuario.telefonos[0].prefijo : null %>">
                 <p><%= locals.errors && errors.prefijo ? errors.prefijo.msg : null %> </p>
-                <input type="number"  name="numero" placeholder="Numero"  value="<%= locals.usuario ? usuario.telefonos[0].numero : locals.old && old.telefonos[0].numero ? old.telefonos[0].numero : null %>">
+                <input type="text"  name="numero" placeholder="Numero"  value="<%= locals.old && old.numero ? old.numero : locals.usuario && usuario.telefonos[0].numero ? usuario.telefonos[0].numero : null %>">
                 <p><%= locals.errors && errors.numero ? errors.numero.msg : null %> </p>
             </div>
+
             <div class="div_config">
                 <label for="domicilio">Domicilio</label>
-                <input type="text"  name="nombre_calle" placeholder="Nombre Calle" value="<%= locals.usuario ? usuario.direcciones[0].nombre_calle : locals.old && old.direcciones[0].nombre_calle ? old.direcciones[0].nombre_calle : null %>">
+                <input type="text"  name="nombre_calle" placeholder="Nombre Calle" value="<%= locals.old && old.nombre_calle ? old.nombre_calle : locals.usuario && usuario.direcciones[0].nombre_calle ? usuario.direcciones[0].nombre_calle : null %>">
                 <p><%= locals.errors && errors.nombre_calle ? errors.nombre_calle.msg : null %> </p>
-                <input type="text"  name="numero_calle" placeholder="Numero Calle" value="<%= locals.usuario ? usuario.direcciones[0].numero_calle : locals.old && old.direcciones[0].numero_calle ? old.direcciones[0].numero_calle : null %>">
+                <input type="number"  name="numero_calle" placeholder="Numero Calle" value="<%= locals.old && old.numero_calle ? old.numero_calle : locals.usuario && usuario.direcciones[0].numero_calle ? usuario.direcciones[0].numero_calle : null %>">
                 <p><%= locals.errors && errors.numero_calle ? errors.numero_calle.msg : null %> </p>
-                <input type="text"  name="codigo_postal" placeholder="Codigo Postal" value="<%= locals.usuario ? usuario.direcciones[0].codigo_postal : locals.old && old.direcciones[0].codigo_postal ? old.direcciones[0].codigo_postal : null %>">
+                <input type="number"  name="codigo_postal" placeholder="Codigo Postal" value="<%= locals.old && old.codigo_postal ? old.codigo_postal : locals.usuario && usuario.direcciones[0].codigo_postal ? usuario.direcciones[0].codigo_postal : null %>">
                 <p><%= locals.errors && errors.codigo_postal ? errors.codigo_postal.msg : null %> </p>
-                <input type="text"  name="localidad" placeholder="Localidad" value="<%= locals.usuario ? usuario.direcciones[0].localidad : locals.old && old.direcciones[0].localidad ? old.direcciones[0].localidad : null %>">
+                <input type="text"  name="localidad" placeholder="Localidad" value="<%= locals.old && old.localidad ? old.localidad : locals.usuario && usuario.direcciones[0].localidad ? usuario.direcciones[0].localidad : null %>">
                 <p><%= locals.errors && errors.localidad ? errors.localidad.msg : null %> </p>
-                <input type="text"  name="provincia" placeholder="Provincia" value="<%= locals.usuario ? usuario.direcciones[0].provincia : locals.old && old.direcciones[0].provincia ? old.direcciones[0].provincia : null %>">
+                <input type="text"  name="provincia" placeholder="Provincia" value="<%= locals.old && old.provincia ? old.provincia : locals.usuario && usuario.direcciones[0].provincia ? usuario.direcciones[0].provincia : null %>">
                 <p><%= locals.errors && errors.provincia ? errors.provincia.msg : null %> </p>
+            </div>
+            
+            <div class="div_config">
+                <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                <input type="text" name="fecha_nacimiento" id="fecha_nacimiento" value="<%= locals.old && old.fecha_nacimiento ? old.fecha_nacimiento : locals.usuario ? usuario.fecha_nacimiento : null %>">
+                <p><%= locals.errors && errors.fecha_nacimiento ? errors.fecha_nacimiento.msg : null %> </p>
             </div>
             <div class="div_config">
                 <label for="email">Email</label>
-                <input type="email"  name="email" placeholder="Email" value="<%= locals.usuario ? usuario.email: locals.old && old.email? old.email: null %>">
+                <input type="email"  name="email" placeholder="Email" value="<%= locals.old && old.email? old.email : locals.usuario ? usuario.email : null %>">
                 <p><%= locals.errors && errors.apellido ? errors.email.msg : null %> </p>
             </div>
-            <div class="div_config">
-                <label for="date">Fecha de Nacimiento</label>
-                <input type="date" name="fecha_nacimiento" id="date" value="<%= usuario.fecha_nacimiento %>">
-                <p><%= locals.errors && errors.date ? errors.date.msg : null %> </p>
-            </div> 
-            <div class="div_config">
-            <label for="image" class="col-12 mt-3">Foto de perfil</label>
-            <input type="file" class="form-control" id="inputGroupFile02" name="image">
-            <p><%= locals.errors && errors.image ? errors.image.msg : null %> </p>
+           
         </div>
+        
         
             <div class="boton_registro">
                 <button type="submit">Guardar Cambios</button>
