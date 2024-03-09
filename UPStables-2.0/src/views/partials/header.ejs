@@ -23,17 +23,17 @@
          
        
         <% if(locals.usuario){%>
-            <% if(locals.usuario.categoria){%>
+            <% if(locals.usuario.roles.rol_id){%>
                 <div class="icons_nav" id="img_user">
                     <a href="/users/perfilAdmin">
-                        <img src="/images/users/<%= locals.usuario.image %>"  alt="foto de perfil">
+                        <img src="<%= locals.usuario.imagen %>"  alt="foto de perfil">
                         <p class="texto_nav">¡ Hola !<br> <%= locals.usuario.nombre %></p> 
                     </a>
                 </div>
            <% }else{%>
             <div class="icons_nav" id="img_user">
                 <a href="/users/perfilUser">
-                    <img src="/images/users/<%= locals.usuario.image %>"  alt="foto de perfil">
+                    <img src="<%= locals.usuario.imagen %>"  alt="foto de perfil">
                     <p class="texto_nav">¡ Hola !<br> <%= locals.usuario.nombre %></p> 
                 </a>
             </div>

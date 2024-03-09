@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "nombre": "Mauricio",
+    "apellido": "Cuellar",
+    "email": "mau@cuellar.com",
+    "password":"Casa-123",
+    "rol_id": 2,
+    "imagen": "/images/users/no-user-img.jpg",
+    "fecha_nacimiento": "1995-8-23"
+  },
+  {
+    "id": 2,
+    "nombre": "Santiago",
+    "apellido": "Barrios",
+    "email": "santi@barrios.com",
+    "password":"Casa-123",
+    "rol_id": 3,
+    "imagen": "/images/users/no-user-img.jpg",
+    "fecha_nacimiento": "1990-5-12"
+  },
+  {
+    "id": 3,
+    "nombre": "Emiliano",
+    "apellido": "Ferreyra",
+    "email": "emi@ferreyra.com",
+    "password":"Casa-123",
+    "rol_id": 3,
+    "imagen": "/images/users/no-user-img.jpg",
+    "fecha_nacimiento": "1989-11-15"
+  },
+  {
+    "id": 4,
+    "nombre": "Jose",
+    "apellido": "Perez",
+    "email": "jose@perez.com",
+    "password":"Casa-123",
+    "rol_id": 1,
+    "imagen": "/images/users/no-user-img.jpg",
+    "fecha_nacimiento": "2000-2-16"
+  },
+  {
+    "id": 5,
+    "nombre": "Maria",
+    "apellido": "Solis",
+    "email": "maru@solis.com",
+    "password":"Casa-123",
+    "rol_id": 1,
+    "imagen": "/images/users/no-user-img.jpg",
+    "fecha_nacimiento": "2005-4-28"
+  } 
+]
