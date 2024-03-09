@@ -36,11 +36,12 @@ const validatorUpdateUser= [
         .isEmail().withMessage('Debe ser un correo con formato valido').bail(),
     body('fecha_nacimiento')
         .custom((value) => {
+            console.log('..............................This is FECHA......',value);
             let fecha = parse({
                 date: value,
                 format: "YYYY-MM-DD HH:mm:ss"
                 });
-        console.log('..............................This is FECHA......',fecha);
+       
             if (1>0) {       
                 return fecha
             }

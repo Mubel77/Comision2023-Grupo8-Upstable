@@ -27,4 +27,8 @@ router.get('/perfilUser',sessionValidator, usersController.perfilUser);
 
 router.get('/logout', usersController.logout);
 
+//dashboard de usuarios
+router.get('/dashboard',/*isAdmin,*/ usersController.dashboardUsers);
+router.get('/dashboard/search', usersController.dashboardSearchUsers);
+
 module.exports = router;
