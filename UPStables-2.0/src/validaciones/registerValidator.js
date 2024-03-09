@@ -19,13 +19,16 @@ const validateRegister = [
     body('email')
         .notEmpty().withMessage("El campo no puede estar vacio").bail()
         .isEmail().withMessage('Debe ser un correo con formato valido').bail()
-        .custom(value => { 
-        db.Usuario.findOne({
-            where:{
-                email:value
-            }
-        });
-        return value
+        .custom((value) => {  
+            db.Usuario.findOne({where:{email:value}})
+                .then((user)=>{
+                    if(user){
+                        throw new Error
+                    } else {    
+                        next()
+                    }
+                })
+                .catch((error) => {return error})
         }).withMessage("El usuario ya existe, utilice otro correo electronico"),
     body('password')
         .notEmpty().withMessage("El campo no puede estar vacio").bail()
@@ -61,13 +64,19 @@ const validateRegisterAdmin = [
     body('email')
         .notEmpty().withMessage("El campo no puede estar vacio").bail()
         .isEmail().withMessage('Debe ser un correo con formato valido').bail()
-        .custom(value => {    
-            db.Usuario.findOne({
-                where:{
-                    email:value
-                }
-            });
-            return value
+        .custom(async (value) => {  
+            try {
+                await db.Usuario.findOne({where:{email:value}})
+                .then((user)=>{
+                    if(user){
+                        console.log('HOLA.......');
+                        throw new Error
+                    } else {
+                        console.log('CHAU.......')
+                        return next()
+                    }
+                })
+            } catch (error) {return error}  
         }).withMessage("El usuario ya existe, utilice otro correo electronico"),
     body('password')
         .notEmpty().withMessage("El campo no puede estar vacio").bail()

@@ -12,7 +12,7 @@ router.get('/register', usersController.register);
 router.post('/register', upload.single('imagen'), validateRegister, usersController.createUser);
 
 router.get('/registerAdmin', isAdmin, usersController.registerAdmin); 
-router.post('/registerAdmin', upload.single('imagen'),validateRegisterAdmin, usersController.createUserAdmin);
+router.post('/registerAdmin', upload.single('imagen'), validateRegisterAdmin, usersController.createUserAdmin);
 
 router.get('/login', usersController.login);
 router.post('/login', loginValidator, usersController.loginUp);
@@ -22,12 +22,15 @@ router.get('/profile', sessionValidator, usersController.formUpdateUser);
 router.put('/profile', upload.single('imagen'), validateUpdateUser, usersController.processUpdate);
 
 router.get('/perfilAdmin', isAdmin, usersController.perfilAdmin);
-router.get('/perfilUser',sessionValidator, usersController.perfilUser);
-
-//router.get('/userList', isAdmin, userController.list) Dashboard de empleados
-router.get('/profileAdmin/:id',  usersController.formUpdateAdmin) // Formulario de edicion del perfil empleado
-router.put('/profileAdmin/:id', upload.single('imagen'), validateUpdateAdmin, usersController.updateAdmin) // Editar perfil del empleado
+router.get('/perfilUser', sessionValidator, usersController.perfilUser);
 
 router.get('/logout', usersController.logout);
+
+//dashboard de usuarios
+router.get('/dashboard', isAdmin, usersController.dashboardUsers);
+router.get('/dashboard/search', usersController.dashboardSearchUsers);
+
+router.get('/formUpdateAdmin/:id', isAdmin, usersController.formUpdateAdmin)
+router.put('/formUpdateAdmin/:id', validateUpdateAdmin, usersController.formUpdateAdmin)
 
 module.exports = router;

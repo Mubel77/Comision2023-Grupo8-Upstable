@@ -4,6 +4,7 @@ const { validationResult } = require("express-validator");
 const db = require("../database/models/index.js");
 const { log, error } = require("console");
 const { parse } = require("@formkit/tempo");
+const { Op } = require("sequelize");
 
 const userController = {
   register: function (req, res, next) {
@@ -144,6 +145,56 @@ const userController = {
     }
   },
 
+  // dashboard de usuarios
+  dashboardUsers: function (req, res, next) {
+    db.Usuario.findAll({
+      include: [
+        { model: db.Rol, as: "roles" },
+        { model: db.Direccion, as: "direcciones" },
+        { model: db.Telefono, as: "telefonos" },
+      ],
+    })
+      .then((usuarios) => {
+        console.log(usuarios);
+        res.render("users/dashboard", {
+          title: "dashboard",
+          usuarios,
+        });
+      })
+      .catch((err) => console.log(err));
+  },
+
+  // buscador de dashboard
+  dashboardSearchUsers: function (req, res, next) {
+    const { keywords } = req.query;
+    let whereClause = {};
+
+    if (keywords) {
+      whereClause = {
+        [Op.or]: [
+          { nombre: { [Op.like]: `%${keywords}%` } }, // Buscar por nombre
+          { apellido: { [Op.like]: `%${keywords}%` } }, // Buscar por apellido
+        ],
+      };
+    }
+    db.Usuario.findAll({
+      where: whereClause,
+      include: [
+        { model: db.Rol, as: "roles" },
+        { model: db.Direccion, as: "direcciones" },
+        { model: db.Telefono, as: "telefonos" },
+      ],
+    })
+      .then((usuarios) => {
+        console.log(usuarios);
+        res.render("users/dashboard", {
+          title: "Dashboard",
+          usuarios,
+        });
+      })
+      .catch((err) => console.log(err));
+  },
+
   // contralador de la actualizacion de usuario
   formUpdateUser: (req, res) => {
     db.Usuario.findByPk(req.session.user.id)
@@ -159,71 +210,208 @@ const userController = {
       });
   },
 
-  //Proceso de actualizacion de usario del 6 sprint(Mauricio)
-  processUpdate: (req, res) => {
-    // const errors = validationResult(req);
-    // if (!errors.isEmpty()) {
-    //   res.render("./users/formUpdateUser", {
-    //     title: "Editar Usuario",
-    //     subtitulo: "Editar Usuario",
-    //     usuario: req.session.user,
-    //     errors: errors.mapped(),
-    //     old: req.body,
-    //   });
-    // } else {
-    // }
+  //Proceso de actualizacion de usario del 6 sprint(Santi)
+  processUpdate: async (req, res) => {
+    try {
+      const {
+        nombre,
+        apellido,
+        password,
+        prefijo,
+        numero,
+        numero_calle,
+        nombre_calle,
+        codigo_postal,
+        localidad,
+        provincia,
+        email,
+        fecha_nacimiento,
+      } = req.body;
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        res.render("./users/formUpdateUser", {
+          title: "Editar Usuario",
+          subtitulo: "Editar Usuario",
+          usuario: req.session.user,
+          errors: errors.mapped(),
+          old: req.body,
+        });
+      } else {
+        let fecha = parse({
+          date: fecha_nacimiento,
+          format: "YYYY-MM-DD HH:mm:ss",
+        });
+
+        const usuarioUpdate = {
+          rol_id: 1,
+          nombre: nombre.trim(),
+          apellido: apellido.trim(),
+          email: email.trim(),
+          imagen: req.file
+            ? `/images/users/${req.file.filename}`
+            : "/images/users/user-default.png",
+          fecha_nacimiento: fecha,
+        };
+
+        const domicilioUpdate = {
+          id_usuario: req.session.user.id,
+          nombre_calle: nombre_calle,
+          numero_calle: numero_calle,
+          codigo_postal: codigo_postal,
+          localidad: localidad,
+          provincia: provincia,
+        };
+
+        const telefUpdate = {
+          id_usuario: req.session.user.id,
+          numero: numero,
+          prefijo: prefijo,
+        };
+
+        const actualizarUsuario = await db.Usuario.update(usuarioUpdate, {
+          where: { id: req.session.user.id },
+        });
+
+        const actualizarDomicilio = await db.Direccion.update(domicilioUpdate, {
+          where: { id_usuario: req.session.user.id },
+        });
+
+        async function telefono() {
+          try {
+            if (req.session.user.telefonos.length >= 1) {
+              //Si existe un registro de telefono
+              return await db.Telefono.update(telefUpdate, {
+                where: { id_usuario: req.session.user.id },
+              });
+            } else {
+              //Si no existe un registro de telefono
+              return await db.Telefono.create(telefUpdate);
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        }
+        Promise.all([actualizarUsuario, actualizarDomicilio, telefono()])
+        .then(() => {
+            res.redirect("/users/perfil-user");
+          }
+        );
+      }
+    } catch (error) {
+      console.log(error);
+    }
   },
 
   formUpdateAdmin: (req, res) => {
-    //const {id} = req.params;
     const userId = req.params.id;
-    db.Usuario.findByPk(userId,{
+    db.Usuario.findByPk(userId, {
       include: [
         { model: db.Rol, as: "roles" },
         { model: db.Direccion, as: "direcciones" },
         { model: db.Telefono, as: "telefonos" },
       ],
-      attributes: { exclude: ["password"] }
-    })
-      .then((userUpdate) => {
-        res.render("./users/formUpdateAdmin",{title:"Editar Empleado", userId, usuario: req.session.user, userUpdate})
-      })
+      attributes: { exclude: ["password"] },
+    }).then((userUpdate) => {
+      res.render("./users/formUpdateAdmin", {
+        title: "Editar Empleado",
+        userId,
+        usuario: req.session.user,
+        userUpdate,
+      });
+    });
   },
 
-  updateAdmin: (req, res) => {
-    const userId = req.params.id;
+  updateAdmin: async (req, res) => {
+    try {
+      const userId = req.params.id;
     const errors = validationResult(req);
-    const { nombre, apellido, nombre_calle, numero_calle, codigo_postal, localidad, provincia, prefijo, numero, email, rol_id, fecha_nacimiento} = req.body
-    console.log('....This is REQ.BODY 1.....',req.body);
+    const {
+      nombre,
+      apellido,
+      nombre_calle,
+      numero_calle,
+      codigo_postal,
+      localidad,
+      provincia,
+      prefijo,
+      numero,
+      email,
+      rol_id,
+      fecha_nacimiento,
+    } = req.body;
+
     if (!errors.isEmpty()) {
       res.render("./users/formUpdateAdmin", {
         title: "Editar Empleado",
         userId,
         usuario: req.session.user,
         errors: errors.mapped(),
-        old: req.body})
-      // db.Usuario.findByPk(id,{
-      //   include: [
-      //     { model: db.Rol, as: "roles" },
-      //     { model: db.Direccion, as: "direcciones" },
-      //     { model: db.Telefono, as: "telefonos" },
-      //   ],
-      //   attributes: { exclude: ["password"] }
-      // })
-      //   .then((userUpdate) => {
-      //     console.log('....This is REQ.BODY 2.....',req.body);
-      //     res.render("./users/formUpdateAdmin", {
-      //       title: "Editar Empleado",
-      //       userUpdate,
-      //       usuario: req.session.user,
-      //       errors: errors.mapped(),
-      //       old: req.body,
-      //     });
-      //   })
-      //   .catch((error) => console.log(error))
+        old: req.body,
+      });
     } else {
-      res.send(req.body)
+      let fecha = parse({
+        date: fecha_nacimiento,
+        format: "YYYY-MM-DD HH:mm:ss",
+      });
+
+      const usuarioUpdate = {
+        rol_id,
+        nombre: nombre.trim(),
+        apellido: apellido.trim(),
+        email: email.trim(),
+        imagen: req.file
+          ? `/images/users/${req.file.filename}`
+          : "/images/users/user-default.png",
+        fecha_nacimiento: fecha,
+      };
+
+      const domicilioUpdate = {
+        id_usuario: userId,
+        nombre_calle: nombre_calle,
+        numero_calle: numero_calle,
+        codigo_postal: codigo_postal,
+        localidad: localidad,
+        provincia: provincia,
+      };
+
+      const telefUpdate = {
+        id_usuario: userId,
+        numero: numero,
+        prefijo: prefijo,
+      };
+
+      const actualizarUsuario = await db.Usuario.update(usuarioUpdate, {
+        where: { id: userId },
+      });
+
+      const actualizarDomicilio = await db.Direccion.update(domicilioUpdate, {
+        where: { id_usuario: userId },
+      });
+
+      async function telefono() {
+        try {
+          if (userId.telefonos.length >= 1) {
+            //Si existe un registro de telefono
+            return await db.Telefono.update(telefUpdate, {
+              where: { id_usuario: userId },
+            });
+          } else {
+            //Si no existe un registro de telefono
+            return await db.Telefono.create(telefUpdate);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      Promise.all([actualizarUsuario, actualizarDomicilio, telefono()])
+      .then(() => {
+          res.redirect("/users/dashboard");
+        }
+      );
     }
+    } catch (error) {
+        console.log(error);
+    } 
   },
 
   perfilAdmin: function (req, res, next) {
@@ -236,7 +424,7 @@ const userController = {
   perfilUser: function (req, res, next) {
     res.render("users/perfil-user", {
       title: "Mi Perfil",
-      usuario: req.session.user,
+      usuario: req.session.user
     });
   },
 
@@ -244,8 +432,8 @@ const userController = {
     res.clearCookie("user");
     req.session.destroy();
     return res.redirect("/");
-  },
-
+  }
+  
 };
 
 module.exports = userController;

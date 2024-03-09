@@ -1,5 +1,6 @@
 const db = require("../database/models");
 const { Op } = require("sequelize");
+const fs = require('fs')
 const { validationResult } = require("express-validator");
 
 const productsController = {
@@ -19,7 +20,7 @@ const productsController = {
           productos,
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
   },
 
   // muestro el detalle del producto con base de datos
@@ -35,6 +36,7 @@ const productsController = {
         res.render("products/productDetail", {
           title: producto.modelo,
           producto,
+          usuario: req.session.user,
           usuario: req.session.user,
         });
       })
@@ -54,6 +56,7 @@ const productsController = {
         res.render("products/dashboard", {
           title: "Dashboard",
           productos: productos,
+          usuario: req.session.user,
           usuario: req.session.user,
         });
       })
@@ -82,6 +85,7 @@ const productsController = {
           mensaje,
           result,
           usuario: req.session.user,
+          usuario: req.session.user,
         });
       })
       .catch((err) => {
@@ -92,6 +96,7 @@ const productsController = {
   formCreate: function (req, res, next) {
     res.render("products/formCreate", {
       title: "Formulario Crear",
+      usuario: req.session.user,
       usuario: req.session.user,
     });
   },
@@ -111,6 +116,7 @@ const productsController = {
     } = req.body;
 
     const errors = validationResult(req);
+
     if (errors.isEmpty()) {
       db.Producto.create({
         modelo: modelo.trim(),
@@ -139,7 +145,27 @@ const productsController = {
                 .catch((error) => {
                   console.log(error);
                 });
-            });
+        })      
+
+      // .then((producto) => {
+      //   const imagenes = req.files;
+      //   imagenes.forEach(imagen  =>  {
+      //     console.log(imagen)
+      //     if (imagen){
+      //       const imagenProducto = {
+      //         nombre:imagen.filename,
+      //         ubicacion:'/images/products/',
+      //         id_producto: producto.id
+      //       };
+      //       console.log('imagenes del producto',imagenProducto)
+      //       db.Imagen.create(imagenProducto)
+      //       .then((imagen) => { 
+      //         res.redirect(`/products/productDetail/${producto.id}`);
+      //       })
+      //       .catch((error) => {
+      //         // Error al crear la imagen
+      //         console.log("Error al crear la imagen asociada al producto:", error);
+      //       });
           } else {
             const imagenDefault = {
               nombre: "default.jpg",
@@ -183,6 +209,7 @@ const productsController = {
         res.render("products/formUpdate", {
           title: "Formulario Modificar",
           producto,
+          usuario: req.session.user,
           usuario: req.session.user,
         });
       })
@@ -248,6 +275,33 @@ const productsController = {
   },
 
   delete: function (req, res, next) {
+      const { id } = req.params;
+      db.Imagen.findAll({
+        where:{
+          id_producto:id
+        }
+      }).then((imagenes)=>{
+        
+        imagenes.forEach(imagen => {
+          fs.unlink(`./public/${imagen.ubicacion}/${imagen.nombre}`, (err) => {
+            if (err) throw err;
+          });
+        });
+        db.Imagen.destroy({
+          where:{
+            id_producto:id
+          }
+        })
+        .then(()=>{
+          db.Producto.destroy({
+            where:{
+              id: id
+            }
+          }).then(()=>{
+            res.redirect("/products/dashboard");
+          })
+        })
+      }).catch((err) => console.log(err));   
     // const { id } = req.params;
     // db.Producto.findByPk(id, {
     //   include: [

@@ -26,8 +26,8 @@ router.get('/productsList', isAdmin, productsController.list)
 router.get('/productDetail/:id', productsController.detail);
 
 // Listar productos Admin
-router.get('/dashboard', isAdmin, productsController.dashboard);
-router.get('/dashboard/search', isAdmin, productsController.dashboardSearch);
+router.get('/dashboard',isAdmin, productsController.dashboard);
+router.get('/dashboard/search', productsController.dashboardSearch);
 
 // Crear producto Admin
 router.get('/formCreate', isAdmin, productsController.formCreate);
