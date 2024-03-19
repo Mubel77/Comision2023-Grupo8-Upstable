@@ -115,7 +115,10 @@ input::placeholder {
     .boton_registro_update button {
         width: 150px;
     }
-
+    .imagen_product{
+        margin-left: 120px;
+        margin-top: 37px;
+    }
 }
 /*-------media query para desktop----------*/
 @media(min-width:1024px){

@@ -1,5 +1,7 @@
 const db = require("../database/models");
 const { Op } = require("sequelize");
+const fs = require('fs');
+const path = require('path');
 
 const productsController = {
   //pedido a base de datos, listar productos
@@ -159,65 +161,69 @@ create: function (req, res, next) {
         })
 },
 
-  formUpdate: function (req, res, next) {
+formUpdate: async function(req, res, next) {
+  try {
     const { id } = req.params;
-    db.Producto.findByPk(id, {
-      include: [
-        { model: db.Categoria, as: "categorias" }, // Relación con Categoría
-        { model: db.Marca, as: "marcas" }, // Relación con Marca
-        { model: db.Imagen, as: "imagenes" }, // Relación con Imagen
-      ],
-    })
-      .then((producto) => {
-        res.render("products/formUpdate", {
-          title: "Formulario Modificar",
-          producto,
-          //usuario: req.session.user,
-        });
-      })
-      .catch((err) => console.log(err));
-  },
-  update: function (req, res, next) {
-    const { id } = req.params;
-    const producto = ({
-      marca,
-      modelo,
-      descripcion,
-      precio,
-      stock,
-      potencia,
-      categoria,
-      tomas,
-      descuento,
-    } = req.body);
-    const files = req.files;
-    console.log('This is PRODUCTOOO...',producto);
-    // console.log('This is FILESSSSS...',files);
+    const producto = await db.Producto.findByPk(id);
+    const imagenActual = await db.Imagen.findOne({ where: { id_producto: id } });
+    res.render('products/formUpdate', { title: 'Editar Producto', producto, imagenActual });
+  } catch (error) {
+    console.error('Error al mostrar formulario de edición:', error);
+  }
+},
 
-    db.Producto.update(
-      {
-        modelo: modelo.trim(),
-        id_marcas: 1,
-        id_categorias: 1,
-        descripcion: descripcion.trim(),
-        potencia: +potencia,
-        tomas: +tomas,
-        precio: +precio,
-        descuento: +descuento,
-        stock: +stock,
-      },
-    
-      {
-        where: { id: id },
+
+// Procesar la edición de producto
+update: async function(req, res, next) {
+  try {
+    const { id } = req.params;
+    const { modelo, categoria, marca, descripcion, potencia, tomas, precio, descuento, stock } = req.body;
+
+    // Obtén el producto por su ID
+    const producto = await db.Producto.findByPk(id);
+    if (!producto) {
+      res.status(404).send('Producto no encontrado');
+      return;
+    }
+
+    // Actualiza los campos del producto
+    producto.modelo = modelo;
+    producto.id_categoria = categoria;
+    producto.id_marca = marca;
+    producto.descripcion = descripcion;
+    producto.potencia = +potencia;
+    producto.tomas = +tomas;
+    producto.precio = +precio;
+    producto.descuento = +descuento;
+    producto.stock = +stock;
+
+    // Guarda los cambios en la base de datos
+    await producto.save();
+
+    // Manejar las imágenes
+    const imagenes = req.files;
+    if (imagenes && imagenes.length > 0) {
+      // Eliminar imágenes anteriores del producto
+      await db.Imagen.destroy({ where: { id_producto: id } });
+
+      // Crear nuevas imágenes asociadas al producto
+      for (const imagen of imagenes) {
+        const nuevaImagen = {
+          nombre: imagen.filename,
+          ubicacion: '/images/products/',
+          id_producto: id
+        };
+        await db.Imagen.create(nuevaImagen);
       }
-    )
-      .then((updatedProduct) => {
-        
-        res.redirect(`/products/productDetail/${id}`);
-      })
-      .catch((err) => console.log(err));
-  },
+    }
 
+    // Redirige al usuario al detalle del producto
+    res.redirect(`/products/productDetail/${id}`);
+  } catch (error) {
+    console.error('Error al procesar la edición de producto:', error);
+    res.status(500).send('Error interno del servidor');
+  }
+},
   delete: function (req, res, next) {
     const { id } = req.params;
     db.Producto.destroy({
@@ -225,8 +231,7 @@ create: function (req, res, next) {
         id: id,
       },
     });
-    fs.unlink(`./public/images/${product.imagen}`, (err) => {
-      if (err) throw err;
+    fs.unlink(`./public/images/product`, (err) => {
       //console.log(`borrar el archivo ${product.imagen}`);
     });
     res.redirect("/products/dashboard");
