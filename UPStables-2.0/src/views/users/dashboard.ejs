@@ -25,7 +25,9 @@
                   <p>Email: <%= usuario.email %></p>
                   <p>Rol: <%= usuario.roles.rol %></p>
                   <p>Fecha de nacimiento: <%=usuario.fecha_nacimiento%></p>
-                  <p>Direccion: <%= usuario.direcciones[0].nombre_calle %> <%= usuario.direcciones[0].numero_calle %></p> 
+                  <p>Direccion: <%= usuario.direcciones[0].nombre_calle %> <%= usuario.direcciones[0].numero_calle %></p>
+                  <p>Localidad: <%= usuario.direcciones[0].localidad %></p>
+                  <p>Provincia: <%= usuario.direcciones[0].provincia %></p> 
                   <% if(usuario.telefonos.length > 0){%>
                     <p>Telefono: <%= usuario.telefonos[0].prefijo%> <%= usuario.telefonos[0].numero%></p> 
                   <% }%>
