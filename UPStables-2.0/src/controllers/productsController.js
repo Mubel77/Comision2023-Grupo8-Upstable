@@ -2,7 +2,7 @@ const db = require("../database/models");
 const { Op } = require("sequelize");
 const fs = require('fs')
 const { validationResult } = require("express-validator");
-const fs = require('fs');
+
 const path = require('path');
 
 const productsController = {
@@ -197,25 +197,27 @@ const productsController = {
     }
   },
 
-formUpdate: async function(req, res, next) {
-  try {
-    const { id } = req.params;
-    db.Producto.findByPk(id, {
-      include: [
-        { model: db.Categoria, as: "categorias" }, // Relación con Categoría
-        { model: db.Marca, as: "marcas" }, // Relación con Marca
-        { model: db.Imagen, as: "imagenes" }, // Relación con Imagen
-      ],
-    })
-      .then((producto) => {
-        res.render("products/formUpdate", {
-          title: "Formulario Modificar",
-          producto,
-          //usuario: req.session.user,
-        });
-      })
-      .catch((err) => console.log(err));
+  formUpdate: async function(req, res) {
+    try {
+      const { id } = req.params;
+      const producto = await db.Producto.findByPk(id, {
+        include: [
+          { model: db.Categoria, as: "categorias" }, // Relación con Categoría
+          { model: db.Marca, as: "marcas" }, // Relación con Marca
+          { model: db.Imagen, as: "imagenes" }, // Relación con Imagen
+        ],
+      });
+      res.render("products/formUpdate", {
+        title: "Formulario Modificar",
+        producto,
+        //usuario: req.session.user,
+      });
+    } catch (err) {
+      console.log("Error en la actualización del formulario:", err);
+      // No enviamos ninguna respuesta al cliente
+    }
   },
+  
   update: function (req, res, next) {
     const { id } = req.params;
     const producto = ({
