@@ -199,8 +199,12 @@ const userController = {
   },
 
   formUpdateUser: (req, res) => {
-    db.Usuario.findByPk(req.session.user.id)
-      .then(() => {
+    db.Usuario.findByPk(req.session.user.id,{include: [
+      { model: db.Direccion, as: 'direcciones' },
+      { model: db.Telefono, as: 'telefonos' }
+    ]}, )
+      .then((respuesta) => {
+        // res.send(respuesta)
         res.render("./users/formUpdateUser", {
           title: "Editar Usuario",
           subtitulo: "Editar Usuario",
@@ -293,14 +297,13 @@ const userController = {
           }
         }
         Promise.all([actualizarUsuario, actualizarDomicilio, telefono()])
-        .then(() => {
+          .then(() => {
             res.redirect("/users/perfilUser");
-          }
-        );
-      }
-    } catch (error) {
-      console.log(error);
-    }
+          })
+        }
+  } catch (error) {
+    console.log(error);
+  }
   },
 
   formUpdateAdmin: (req, res) => {
