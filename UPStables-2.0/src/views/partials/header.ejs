@@ -1,76 +1,78 @@
 <header>
     <a class="link_to_home_header" href="/">
         <img class="logo_header" src="/images/logo_upstables.jpg" alt="logo_upstables">
-            <div class="titular">
-                <h1 class="titulo">UPSTABLES</h1>
-                <p class="subtitulo">Proteccion para tu tecnología, garantizada.</p>
-            </div>
+        <div class="titular">
+            <h1 class="titulo">UPSTABLES</h1>
+            <p class="subtitulo">Proteccion para tu tecnología, garantizada.</p>
+        </div>
     </a>
+
     <div class="buscador_header">
-        <form >
+        <form>
             <input type="text" name="buscador" placeholder="¿Qué estás buscando?">
             <div class="lupa_header">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-           
         </form>
     </div>
-    
+
     <nav class="nav_header">
-        <div class="burguer_header" >
+        <div class="burguer_header">
             <i class="fas fa-bars"></i>
         </div>
-         
-       
-        <% if(locals.usuario){%>
-            <% if(locals.usuario.roles.rol_id){%>
+
+        <% if ( locals.usuario ){ %>
+            <% if ( locals.usuario.roles.id !==1 ){%>
                 <div class="icons_nav" id="img_user">
                     <a href="/users/perfilAdmin">
-                        <img src="<%= locals.usuario.imagen %>"  alt="foto de perfil">
-                        <p class="texto_nav">¡ Hola !<br> <%= locals.usuario.nombre %></p> 
+                        <img src="<%= locals.usuario.imagen %>" alt="foto de perfil">
+                        <p class="texto_nav">¡ Hola !<br>
+                            <%= locals.usuario.nombre %>
+                        </p>
                     </a>
                 </div>
-           <% }else{%>
-            <div class="icons_nav" id="img_user">
-                <a href="/users/perfilUser">
-                    <img src="<%= locals.usuario.imagen %>"  alt="foto de perfil">
-                    <p class="texto_nav">¡ Hola !<br> <%= locals.usuario.nombre %></p> 
-                </a>
-            </div>
-            <div class="icons_nav">
-                <a href="/products/productCart"> 
-                    <p class="texto_nav">Carrito</p> 
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </a>
-            </div>
-           <% } %>
-           
-                
-                   <% }else{ %>
-                    <div class="icons_nav">
-                        <a href="/users/register"> 
-                            <p class="texto_nav">Creá tu cuenta</p> 
-                            <i class="fa-solid fa-pen"></i>
-                            </a>
-                    </div>
-                    <div class="icons_nav">
-                        <a href="/users/login"> 
-                            <p class="texto_nav">Ingresar</p> 
-                            <i class="fa-solid fa-user"></i>
+                <% } else {%>
+                    <div class="icons_nav" id="img_user">
+                        <a href="/users/perfilUser">
+                            <img src="<%= locals.usuario.imagen %>" alt="foto de perfil">
+                            <p class="texto_nav">¡ Hola !<br>
+                                <%= locals.usuario.nombre %>
+                            </p>
                         </a>
                     </div>
-            
-            
-           
-            <% } %>
-           
-           
+
+                    <div class="icons_nav">
+                        <a href="/products/productCart">
+                            <p class="texto_nav">Carrito</p>
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
+                    </div>
+                    <% } %>
+
+
+                        <% }else{ %>
+                            <div class="icons_nav">
+                                <a href="/users/register">
+                                    <p class="texto_nav">Creá tu cuenta</p>
+                                    <i class="fa-solid fa-pen"></i>
+                                </a>
+                            </div>
+
+                            <div class="icons_nav">
+                                <a href="/users/login">
+                                    <p class="texto_nav">Ingresar</p>
+                                    <i class="fa-solid fa-user"></i>
+                                </a>
+                            </div>
+                        <% } %>
     </nav>
+
     <div class="on-off">
         <i class="fa-solid fa-toggle-off"></i>
     </div>
 
 </header>
+
 <nav class="nav_header_2">
     <h4>UPS</h4>
     <div class="linea"></div>
@@ -78,4 +80,3 @@
     <div class="linea"></div>
     <h4>OFERTAS</h4>
 </nav>
-
