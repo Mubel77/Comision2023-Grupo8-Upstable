@@ -198,9 +198,12 @@ dashboardSearchUsers: function (req, res, next) {
 
   // contralador de la actualizacion de usuario
   formUpdateUser: (req, res) => {
-    db.Usuario.findByPk(req.session.user.id)
-      .then(() => {
-        
+    db.Usuario.findByPk(req.session.user.id,{include: [
+      { model: db.Direccion, as: 'direcciones' },
+      { model: db.Telefono, as: 'telefonos' }
+    ]}, )
+      .then((respuesta) => {
+        // res.send(respuesta)
         res.render("./users/formUpdateUser", {
           title: "Editar Usuario",
           subtitulo: "Editar Usuario",
@@ -290,7 +293,7 @@ dashboardSearchUsers: function (req, res, next) {
         }
         Promise.all([actualizarUsuario, actualizarDomicilio, telefono()])
           .then(() => {
-            res.redirect("/users/perfil-user");
+            res.redirect("/users/perfilUser");
           })
         }
   } catch (error) {
