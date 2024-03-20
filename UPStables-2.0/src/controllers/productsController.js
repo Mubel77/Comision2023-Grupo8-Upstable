@@ -1,5 +1,7 @@
 const db = require("../database/models");
 const { Op } = require("sequelize");
+const fs = require('fs')
+const { validationResult } = require("express-validator");
 
 const productsController = {
   //pedido a base de datos, listar productos
@@ -10,14 +12,15 @@ const productsController = {
         { model: db.Marca, as: "marcas" },
         { model: db.Imagen, as: "imagenes" },
       ],
-    }).then((productos) => {
-      res.render("products/productsList", {
-        title: "List Products",
-        //usuario: req.session.user,
-        productos,
-      });
     })
-    .catch((err) => console.log(err));
+      .then((productos) => {
+        res.render("products/productsList", {
+          title: "List Products",
+          usuario: req.session.user,
+          productos,
+        });
+      })
+      .catch((err) => console.log(err))
   },
 
   // muestro el detalle del producto con base de datos
@@ -30,15 +33,16 @@ const productsController = {
       ],
     })
       .then((producto) => {
-        //console.log("This is PRODUCTO DETAIL...",producto);
         res.render("products/productDetail", {
           title: producto.modelo,
           producto,
-          //usuario: req.session.user,
+          usuario: req.session.user,
+          usuario: req.session.user,
         });
       })
       .catch((err) => console.log(err));
   },
+
   //dashboard con base de datos
   dashboard: function (req, res, next) {
     db.Producto.findAll({
@@ -52,11 +56,12 @@ const productsController = {
         res.render("products/dashboard", {
           title: "Dashboard",
           productos: productos,
-          //usuario: req.session.user,
+          usuario: req.session.user,
         });
       })
       .catch((err) => console.log(err));
   },
+
   // Busacador del dashboard con base datos
   dashboardSearch: function (req, res, next) {
     const { keywords } = req.query;
@@ -78,7 +83,8 @@ const productsController = {
           title: "Dashboard",
           mensaje,
           result,
-          //usuario: req.session.user,
+          usuario: req.session.user,
+          usuario: req.session.user,
         });
       })
       .catch((err) => {
@@ -89,75 +95,105 @@ const productsController = {
   formCreate: function (req, res, next) {
     res.render("products/formCreate", {
       title: "Formulario Crear",
-      //usuario: req.session.user,
+      usuario: req.session.user,
+      usuario: req.session.user,
     });
   },
-// CREACIÓN DEL PRODUCTO CON BASE DE DATOS
-create: function (req, res, next) {
-  const {
-    marca,
-    modelo,
-    descripcion,
-    precio,
-    stock,
-    potencia,
-    categoria,
-    tomas,
-    descuento,
-  } = req.body;
-// Crear el producto
+
+  // CREACIÓN DEL PRODUCTO CON BASE DE DATOS
+  create: function (req, res, next) {
+    const {
+      id_categorias,
+      id_marcas,
+      modelo,
+      descripcion,
+      precio,
+      stock,
+      potencia,
+      tomas,
+      descuento,
+    } = req.body;
+
+    const errors = validationResult(req);
+
+    if (errors.isEmpty()) {
       db.Producto.create({
         modelo: modelo.trim(),
         descripcion: descripcion.trim(),
         precio: +precio,
         stock: +stock,
         potencia: +potencia,
-        id_marcas: +marca,
-        id_categorias: +categoria,
+        id_marcas: +id_marcas,
+        id_categorias: +id_categorias,
         tomas: +tomas,
         descuento: +descuento,
       })
-      .then((producto) => {
-        const imagenes = req.files;
-        imagenes.forEach(imagen  =>  {
-          console.log(imagen)
-          if (imagen){
-            const imagenProducto = {
-              nombre:imagen.filename,
-              ubicacion:'/images/products/',
-              id_producto: producto.id
-            };
-            console.log('imagenes del producto',imagenProducto)
-            db.Imagen.create(imagenProducto)
-            .then((imagen) => { 
-              res.redirect(`/products/productDetail/${producto.id}`);
-            })
-            .catch((error) => {
-              // Error al crear la imagen
-              console.log("Error al crear la imagen asociada al producto:", error);
-            });
-          }else{
+        .then((producto) => {
+          const imagenes = req.files;
+          if (imagenes.length > 0) {
+            imagenes.forEach((imagen) => {
+              const imagenProducto = {
+                nombre: imagen.filename,
+                ubicacion: "/images/products/",
+                id_producto: producto.id,
+              };
+              db.Imagen.create(imagenProducto)
+                .then(() => {
+                  res.redirect(`/products/productDetail/${producto.id}`);
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+        })      
+
+      // .then((producto) => {
+      //   const imagenes = req.files;
+      //   imagenes.forEach(imagen  =>  {
+      //     console.log(imagen)
+      //     if (imagen){
+      //       const imagenProducto = {
+      //         nombre:imagen.filename,
+      //         ubicacion:'/images/products/',
+      //         id_producto: producto.id
+      //       };
+      //       console.log('imagenes del producto',imagenProducto)
+      //       db.Imagen.create(imagenProducto)
+      //       .then((imagen) => { 
+      //         res.redirect(`/products/productDetail/${producto.id}`);
+      //       })
+      //       .catch((error) => {
+      //         // Error al crear la imagen
+      //         console.log("Error al crear la imagen asociada al producto:", error);
+      //       });
+          } else {
             const imagenDefault = {
-              nombre:'default.png',
-              ubicacion:'/images/products/',
-              id_producto: producto.id
-            }
+              nombre: "default.jpg",
+              ubicacion: "/images/products/",
+              id_producto: producto.id,
+            };
             db.Imagen.create(imagenDefault)
-            .then((imagen) => { 
-              res.redirect(`/products/productDetail/${producto.id}`);
-            })
-            .catch((error) => {
-              // Error al crear la imagen
-              console.log("Error al crear la imagen asociada al producto:", error);
-            });
+              .then(() => {
+                res.redirect(`/products/productDetail/${producto.id}`);
+              })
+              .catch((error) => {
+                // Error al crear la imagen
+                console.log(error);
+              });
           }
         })
-      })
-       .catch((error) => {
+        .catch((error) => {
           // Error al crear el producto
-          console.log("Error al crear el producto:", error);
-        })
-},
+          console.log(error);
+        });
+    } else {
+      res.render("products/formCreate", {
+        title: "Formulario Crear",
+        errors: errors.mapped(),
+        oldData: req.body,
+        usuario: req.session.user,
+      });
+    }
+  },
 
   formUpdate: function (req, res, next) {
     const { id } = req.params;
@@ -172,78 +208,126 @@ create: function (req, res, next) {
         res.render("products/formUpdate", {
           title: "Formulario Modificar",
           producto,
-          //usuario: req.session.user,
+          usuario: req.session.user,
+          usuario: req.session.user,
         });
       })
       .catch((err) => console.log(err));
   },
+
   update: function (req, res, next) {
     const { id } = req.params;
     const producto = ({
-      marca,
+      id_marcas,
       modelo,
       descripcion,
       precio,
       stock,
       potencia,
-      categoria,
+      id_categorias,
       tomas,
       descuento,
     } = req.body);
-    const files = req.files;
-    console.log('This is PRODUCTOOO...',producto);
-    // console.log('This is FILESSSSS...',files);
 
-    db.Producto.update(
-      {
-        modelo: modelo.trim(),
-        id_marcas: 1,
-        id_categorias: 1,
-        descripcion: descripcion.trim(),
-        potencia: +potencia,
-        tomas: +tomas,
-        precio: +precio,
-        descuento: +descuento,
-        stock: +stock,
-      },
-    
-      {
-        where: { id: id },
-      }
-    )
-      .then((updatedProduct) => {
-        
-        res.redirect(`/products/productDetail/${id}`);
+    const errors = validationResult(req);
+    if (errors.isEmpty()) {
+      db.Producto.update(
+        {
+          modelo: modelo.trim(),
+          id_marcas: id_marcas,
+          id_categorias: id_categorias,
+          descripcion: descripcion.trim(),
+          potencia: +potencia,
+          tomas: +tomas,
+          precio: +precio,
+          descuento: +descuento,
+          stock: +stock,
+        },
+        {
+          where: { id: id },
+        }
+      )
+        .then((updatedProduct) => {
+          res.redirect(`/products/productDetail/${id}`);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      const { id } = req.params;
+      db.Producto.findByPk(id, {
+        include: [
+          { model: db.Categoria, as: "categorias" }, // Relación con Categoría
+          { model: db.Marca, as: "marcas" }, // Relación con Marca
+          { model: db.Imagen, as: "imagenes" }, // Relación con Imagen
+        ],
       })
-      .catch((err) => console.log(err));
+        .then((producto) => {
+          res.render("products/formUpdate", {
+            title: "Formulario Modificar",
+            producto,
+            errors: errors.mapped(),
+            oldData: req.body,
+            usuario: req.session.user,
+          });
+        })
+        .catch((err) => console.log(err));
+    }
   },
 
   delete: function (req, res, next) {
-    const { id } = req.params;
-    db.Producto.destroy({
-      where: {
-        id: id,
-      },
-    });
-    fs.unlink(`./public/images/${product.imagen}`, (err) => {
-      if (err) throw err;
-      //console.log(`borrar el archivo ${product.imagen}`);
-    });
-    res.redirect("/products/dashboard");
+      const { id } = req.params;
+      db.Imagen.findAll({
+        where:{
+          id_producto:id
+        }
+      }).then((imagenes)=>{
+        
+        imagenes.forEach(imagen => {
+          fs.unlink(`./public/${imagen.ubicacion}/${imagen.nombre}`, (err) => {
+            if (err) throw err;
+          });
+        });
+        db.Imagen.destroy({
+          where:{
+            id_producto:id
+          }
+        })
+        .then(()=>{
+          db.Producto.destroy({
+            where:{
+              id: id
+            }
+          }).then(()=>{
+            res.redirect("/products/dashboard");
+          })
+        })
+      }).catch((err) => console.log(err));   
+    // const { id } = req.params;
+    // db.Producto.findByPk(id, {
+    //   include: [
+    //     { model: db.Categoria, as: "categorias" }, // Relación con Categoría
+    //     { model: db.Marca, as: "marcas" }, // Relación con Marca
+    //     { model: db.Imagen, as: "imagenes" }, // Relación con Imagen
+    //   ],
+    // }).then((producto) => {
+    //   db.Producto.destroy({
+    //     where: {
+    //       id: producto.id,
+    //     },
+    //   })
+    //     .then((product) => {
+    //       fs.unlink(`./public/images/${product.imagen}`, (err) => {
+    //         if (err) throw new Error();
+    //         console.log(`borrar el archivo ${product.imagen}`);
+    //       });
+    //       res.redirect("/products/list");
+    //     })
+    //     .catch((error) => {
+    //       console.log("....This is ERROR....", error);
+    //     });
+    // });
   },
 
   cart: function (req, res, next) {
-    // db.Carrito_Compra.findAll({
-    //   where: {
-    //     usuario_id: req.session.user.id,
-    //   },
-    //   include: [
-    //     {
-    //       model: db.Producto,
-    //       as: "productos",
-    //     },
-    //   ],
-    // })
     db.Producto.findAll({
       include: [
         { model: db.Categoria, as: "categorias" }, // Relación con Categoría
@@ -253,7 +337,6 @@ create: function (req, res, next) {
       limit: 2,
     })
       .then((productos) => {
-        //console.log('This is PRODUCTOOO...',productos.length);
         //let cantidad = 3
         let subtotal = 0;
         let total = 0;
@@ -269,14 +352,11 @@ create: function (req, res, next) {
           total,
           impuestos,
         };
-
-        //console.log('This is DATA...',data);
         res.render("products/productCart", {
           title: "Carrito de Compras",
           productos,
           data,
-          //cartItemCount: productsCart.length,
-          //usuario: req.session.user,
+          usuario: req.session.user,
         });
       })
       .catch((err) => console.log(err));

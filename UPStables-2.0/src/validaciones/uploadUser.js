@@ -1,5 +1,4 @@
 const multer = require('multer');
-const { v4: uuidv4 } = require('uuid');
 const path = require('path')
 
 const storage = multer.diskStorage({
@@ -24,5 +23,3 @@ const fileFilter = (req, file, cb) => {
   
 
 module.exports = multer({storage},fileFilter)
-
-//module.exports = {storage,fileFilter}
