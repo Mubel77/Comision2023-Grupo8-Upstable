@@ -1,14 +1,15 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var productsRouter = require('./routes/products');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const productsRouter = require('./routes/products');
+const productsApiRouter = require('./routes/api/productsApi');
 
-var app = express();
+const app = express();
 
 const methodOverride =  require('method-override');
 const session = require('express-session')
@@ -34,6 +35,8 @@ app.use(rememberMe);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
+app.use('/products/api', productsApiRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
