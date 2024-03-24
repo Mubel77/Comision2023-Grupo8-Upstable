@@ -5,7 +5,7 @@ const loginValidator = require('../validaciones/loginValidator.js')
 const { validateRegister, validateRegisterAdmin } = require('../validaciones/registerValidator.js');
 const { validateUpdateUser, validateUpdateAdmin } = require('../validaciones/updateUserValidator.js');
 const {sessionValidator, isAdmin} = require('../middlewares/sessionValidator.js')
-const upload = require('../validaciones/uploadUser');
+const upload = require('../middlewares/uploadAvatarUser.js');
 
 /* GET users listing. */
 router.get('/register', usersController.register);
