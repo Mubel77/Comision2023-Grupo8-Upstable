@@ -148,25 +148,6 @@ const productsController = {
                 });
         })      
 
-      // .then((producto) => {
-      //   const imagenes = req.files;
-      //   imagenes.forEach(imagen  =>  {
-      //     console.log(imagen)
-      //     if (imagen){
-      //       const imagenProducto = {
-      //         nombre:imagen.filename,
-      //         ubicacion:'/images/products/',
-      //         id_producto: producto.id
-      //       };
-      //       console.log('imagenes del producto',imagenProducto)
-      //       db.Imagen.create(imagenProducto)
-      //       .then((imagen) => { 
-      //         res.redirect(`/products/productDetail/${producto.id}`);
-      //       })
-      //       .catch((error) => {
-      //         // Error al crear la imagen
-      //         console.log("Error al crear la imagen asociada al producto:", error);
-      //       });
           } else {
             const imagenDefault = {
               nombre: "default.jpg",
