@@ -455,3 +455,69 @@
     - Qué hizo ayer: reunion grupal para definir la reparticion de tareas y realizar la retrospectiva
     - Si se encontró con algún impedimento:
     - Qué va a hacer hoy: configuracion de Sequelize y definicion de modelos relacionados con la entidad Usuario
+
+# SPRINT 7
+
+### Lunes 25/03/24
+* Mauri: 
+-Qué hizo ayer:
+-Si se encontró con algún impedimento:
+-Qué va a hacer hoy: reunion grupal para retrospectiva
+
+* Santi: 
+-Qué hizo ayer:
+-Si se encontró con algún impedimento:
+-Qué va a hacer hoy: reunion grupal para retrospectiva
+
+* Emi:
+-Qué hizo ayer:
+-Si se encontró con algún impedimento:
+-Qué va a hacer hoy: reunion grupal para retrospectiva, corregir validaciones del back-end para la cargar de archivos con multer
+
+### Martes 26/3/24
+* Mauri: 
+-Qué hizo ayer:  reunion grupal para retrospectiva
+-Si se encontró con algún impedimento: 
+-Qué va a hacer hoy: 
+
+* Santi: 
+-Qué hizo ayer:  reunion grupal para retrospectiva
+-Si se encontró con algún impedimento:
+-Qué va a hacer hoy: 
+
+* Emi:
+-Qué hizo ayer: reunion grupal para retrospectiva, corregir validaciones del back-end para la cargar de archivos con multer
+-Si se encontró con algún impedimento: errores en la configuracion de multer
+-Qué va a hacer hoy: corregir errores de configuracion de multer
+
+### Miercoles 27/3/24
+* Mauri: 
+-Qué hizo ayer: reunion grupal para retrospectiva
+-Si se encontró con algún impedimento:
+-Qué va a hacer hoy:
+
+* Santi: 
+-Qué hizo ayer: reunion grupal para retrospectiva
+-Si se encontró con algún impedimento:
+-Qué va a hacer hoy:
+
+* Emi:
+-Qué hizo ayer: corregir errores de configuracion de multer
+-Si se encontró con algún impedimento: tuve problemas para filtrar los archivos segun su extension y capturar los errores de ese proceso
+-Qué va a hacer hoy: aplicar validaciones front-end al formulario de creacion de producto
+
+### Jueves 28/3/24
+* Mauri: 
+-Qué hizo ayer: reunion grupal para retrospectiva
+-Si se encontró con algún impedimento:
+-Qué va a hacer hoy:
+
+* Santi: 
+-Qué hizo ayer: reunion grupal para retrospectiva
+-Si se encontró con algún impedimento:
+-Qué va a hacer hoy:
+
+* Emi:
+-Qué hizo ayer: aplicar validaciones front-end al formulario de creacion de producto
+-Si se encontró con algún impedimento: hubo problemas para filtrar los archivos segun su extension y mostrar los errores pero esta vez desde el lado del front-end con JavaScript
+-Qué va a hacer hoy: aplicar validaciones front-end al formulario de actualizacion de perfil del usuario CLIENTE
