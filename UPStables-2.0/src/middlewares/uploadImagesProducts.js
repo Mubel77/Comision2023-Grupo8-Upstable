@@ -21,7 +21,7 @@ const fileFilter = (req, file, cb) => {
    if (filtro.test(file.originalname)) {
      cb(null, true);
    } else {
-      req.imageInvalid = "Image in-valid"
+      req.imageInvalid = file.originalname
       cb(null, false);
    }
  }

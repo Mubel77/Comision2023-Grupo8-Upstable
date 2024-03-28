@@ -14,7 +14,7 @@ const validateCreation = [
   body('potencia').notEmpty().withMessage('Debes especificar la potencia del producto').bail()
   .isInt({min:0}).withMessage('Debes ingresar un numero mayor a 0 (cero)'),
   body('tomas').notEmpty().withMessage('Debes especificar la cantidad de tomas del producto').bail()
-  .isInt({min:1}).withMessage('Debes ingresar un numero mayor a 1 (uno)'),
+  .isInt({min:0}).withMessage('Debes ingresar un numero mayor a 0 (cero)'),
   body('descuento').notEmpty().withMessage('Debes especificar un descuento para el producto, 0 (cero) en caso que no lo tenga').bail()
   .isInt({min:0, max:100}).withMessage('El descuento debe oscilar entre 0 (cero) y 100 (cien)'),
   body('imagenes').custom((value, { req }) => {
