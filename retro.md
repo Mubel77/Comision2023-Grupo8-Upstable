@@ -77,3 +77,25 @@ Mantener la comunicacion y el compromiso que tenemos hasta ahora con el proyecto
 Evitar agregar nuevas funcionalidades a fin de mejorar el diseño grafico de la pagina.
 ### Dejar de hacer...
 Dejar de restarle importancia a la retrospectiva por sobre las demas tareas.
+
+
+# SPRINT 6
+
+En el sprint número 6 nos encontramos realmente con un verdadero problema. En principio nos atrasamos con los contenidos y nos costaba poder comprender los mismos, por ende, las actividades del sprint se fueron atrasando cada vez más. 
+No pudimos cumplir con la fecha de entrega, pero unos días más tarde concluimos nuestras tareas, con errores a corregir en el próximo sprint. 
+
+### Comenzar a hacer...
+Asimilar los contenidos antes de empezar el sprint.
+
+### Hacer mas... 
+Realizar más prácticas de los nuevos contenidos.
+
+### Continuar haciendo...
+Mantener el compromiso con el grupo y con el proyecto.
+
+### Hacer menos...
+Evitar posponer la práctica para más tarde. 
+
+### Dejar de hacer...
+Practicar o asimilar los contenidos durante el sprint.
+
