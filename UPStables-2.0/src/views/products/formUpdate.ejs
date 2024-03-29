@@ -1,89 +1,86 @@
-<%- include('../partials/head')%>
+<%- include('../partials/head.ejs') %>
 
-<body>
-    <%- include('../partials/header.ejs')%>
-    <main>
-        <div style="width: 200px;">
-            <a href="/products/dashboard"><button class="dashboard_add">Dashboard</button></a>
-        </div>
-        <form action="/products/update/<%=producto.id%>?_method=PUT" method="POST" class="form_create"
-            enctype="multipart/form-data">
-            <div class="div_config div_form_product">
-                    <label for="id_categorias" id="id_categorias">Categoria</label>
-                    <select name="id_categorias"  id="id_categorias" class="campo_select">
-                        <option value= "" <%= locals.oldData && oldData.id_categorias ==  '' ? 'selected' : locals.producto && producto.id_categorias ==  '' ? 'selected' : null %>>Elegí una Categoria</option>
-                        <option value="1" <%= locals.oldData && oldData.id_categorias == '1' ? 'selected' : locals.producto && producto.id_categorias == '1' ? 'selected' : null %>>UPS</option>
-                        <option value="2" <%= locals.oldData && oldData.id_categorias == '2' ? 'selected' : locals.producto && producto.id_categorias == '2' ? 'selected' : null %>>ESTABILIZADORES</option>
-                    </select>
-                    <p><%= locals.errors && errors.id_categorias ? errors.id_categorias.msg : null %></p>
-                </div>
-                <div class="div_config div_form_product">
-                    <label for="id_marcas" id="id_marcas">Elegi una Marca</label>
-                    <select name="id_marcas" id="id_marcas" class="campo_select">
-                        <option value= "" <%= locals.oldData && oldData.id_marcas ==  '' ? 'selected' : locals.producto && producto.id_marcas ==  '' ? 'selected' : null %>>Elegí una Marca</option>
-                        <option value="1" <%= locals.oldData && oldData.id_marcas == '1' ? 'selected' : locals.producto && producto.id_marcas == '1' ? 'selected' : null %>>Lyonn</option>
-                        <option value="2" <%= locals.oldData && oldData.id_marcas == '2' ? 'selected' : locals.producto && producto.id_marcas == '2' ? 'selected' : null %>>APC</option>
-                        <option value="3" <%= locals.oldData && oldData.id_marcas == '3' ? 'selected' : locals.producto && producto.id_marcas == '3' ? 'selected' : null %>>Eaton</option>
-                        <option value="4" <%= locals.oldData && oldData.id_marcas == '4' ? 'selected' : locals.producto && producto.id_marcas == '4' ? 'selected' : null %>>Athom</option>
-                        <option value="5" <%= locals.oldData && oldData.id_marcas == '5' ? 'selected' : locals.producto && producto.id_marcas == '5' ? 'selected' : null %>>TRV</option>
-                        <option value="6" <%= locals.oldData && oldData.id_marcas == '6' ? 'selected' : locals.producto && producto.id_marcas == '6' ? 'selected' : null %>>Forza</option>
-                    </select>
-                    <p><%= locals.errors && errors.id_marcas ? errors.id_marcas.msg : null %></p>
-                </div>
-                <div class="div_config div_form_product">
-                    <label for="modelo" id="modelo" class="div_config_label">Modelo</label>
-                    <input type="text"  name="modelo" value="<%= locals.oldData && oldData.modelo ? oldData.modelo : locals.producto ? producto.modelo : null %>">
-                    <p><%= locals.errors && errors.modelo ? errors.modelo.msg : null %></p>
-                </div>
-                <div class="div_config div_form_product">
-                    <label for="descripcion" id="descripcion">Descripcion</label>
-                    <input type="text" name="descripcion" id="descripcion" value="<%= locals.oldData && oldData.descripcion ? oldData.descripcion : locals.producto ? producto.descripcion : null %>">
-                    <p><%= locals.errors && errors.descripcion ? errors.descripcion.msg : null %></p>
-                </div>
-                <div class="div_config div_form_product">
-                    <label for="potencia" id="potencia">Potencia</label>
-                    <input type="number"  name="potencia" value="<%= locals.oldData && oldData.potencia ? oldData.potencia : locals.producto ? producto.potencia : null %>">
-                    <p><%= locals.errors && errors.potencia ? errors.potencia.msg : null %></p>
-                </div>
-                <div class="div_config div_form_product">
-                    <label for="tomas" id="tomas">Cantidad de tomas</label>
-                    <input type="number"  name="tomas" value="<%= locals.oldData && oldData.tomas ? oldData.tomas : locals.producto ? producto.tomas : null %>">
-                    <p><%= locals.errors && errors.tomas ? errors.tomas.msg : null %></p>
-                </div>
-                <div class="div_config div_form_product">
-                    <label for="precio" id="precio">Precio</label>
-                    <input type="number"  name="precio" value="<%= locals.oldData && oldData.precio ? oldData.precio : locals.producto ? producto.precio : null %>">
-                    <p><%= locals.errors && errors.precio ? errors.precio.msg : null %></p>
-                </div>
-                <div class="div_config div_form_product">
-                    <label for="descuento" id="descuento">Descuento</label>
-                    <input type="number"  name="descuento" value="<%= locals.oldData && oldData.descuento ? oldData.descuento : locals.producto ? producto.descuento : null %>">
-                    <p><%= locals.errors && errors.descuento ? errors.descuento.msg : null %></p>
-                </div>
-                <div class="div_config div_form_product">
-                    <label for="stock" id="stock">Stock</label>
-                    <input type="number"  name="stock" value="<%= locals.oldData && oldData.stock ? oldData.stock : locals.producto ? producto.stock : null %>">
-                    <p><%= locals.errors && errors.stock ? errors.stock.msg : null %></p>
-                </div>
-                <div class="div_config div_form_product">
-                    <label for="imagenes" id="imagen">Seleccione una imagen</label>
-                    <input type="file"  name="imagenes" multiple>
-                    <p><%= locals.errors && errors.imagenes ? errors.imagenes.msg : null %></p>
-                </div>
+    <body>
+        <%- include('../partials/header.ejs') %>
+            <main>
+                <form action="/products/update/<%=producto.id%>?_method=PUT" method="POST" class="form_create"
+                    enctype="multipart/form-data">
+                    <div class="div_config div_form_product" id="div_id_categorias">
+                        <label for="id_categorias">Categoría</label>
+                        <select name="id_categorias" id="id_categorias" class="campo_select">
+                            <option value="" selected>Elegí una Categoría</option>
+                            <option value="1" <%=producto && producto.categorias && producto.categorias.id=='1'
+                                ? 'selected' : null %>>UPS</option>
+                            <option value="2" <%=producto && producto.categorias && producto.categorias.id=='2'
+                                ? 'selected' : null %>>Estabilizadores</option>
+                        </select>
+                    </div>
+                    <div class="div_config div_form_product" id="div_id_marcas">
+                        <label for="id_marcas">Elegí una Marca</label>
+                        <select name="id_marcas" id="id_marcas" class="campo_select">
+                            <option value="" selected>Elegí una Marca</option>
+                            <option value="1" <%=producto && producto.marcas && producto.marcas.id=='1' ? 'selected' :
+                                null %>>Lyonn</option>
+                            <option value="2" <%=producto && producto.marcas && producto.marcas.id=='2' ? 'selected' :
+                                null %>>APC</option>
+                            <option value="3" <%=producto && producto.marcas && producto.marcas.id=='3' ? 'selected' :
+                                null %>>Eaton</option>
+                            <option value="4" <%=producto && producto.marcas && producto.marcas.id=='4' ? 'selected' :
+                                null %>>Athom</option>
+                            <option value="5" <%=producto && producto.marcas && producto.marcas.id=='5' ? 'selected' :
+                                null %>>TRV</option>
+                            <option value="6" <%=producto && producto.marcas && producto.marcas.id=='6' ? 'selected' :
+                                null %>>Forza</option>
+                        </select>
+                    </div>
+                    <div class="div_config div_form_product" id="div_modelo">
+                        <label for="modelo" class="div_config_label">Modelo</label>
+                        <input type="text" name="modelo" id="modelo" value="<%= producto && producto.modelo %>">
+                    </div>
+                    <div class="div_config div_form_product" id="div_descripcion">
+                        <label for="descripcion">Descripción</label>
+                        <input type="text" name="descripcion" id="descripcion"
+                            value="<%= producto && producto.descripcion %>">
+                    </div>
+                    <div class="div_config div_form_product" id="div_potencia">
+                        <label for="potencia">Potencia</label>
+                        <input type="number" name="potencia" id="potencia" value="<%= producto && producto.potencia %>">
+                    </div>
+                    <div class="div_config div_form_product" id="div_tomas">
+                        <label for="tomas">Cantidad de tomas</label>
+                        <input type="number" name="tomas" id="tomas" value="<%= producto && producto.tomas %>">
+                    </div>
+                    <div class="div_config div_form_product" id="div_precio">
+                        <label for="precio">Precio</label>
+                        <input type="number" name="precio" id="precio" value="<%= producto && producto.precio %>">
+                    </div>
+                    <div class="div_config div_form_product" id="div_descuento">
+                        <label for="descuento">Descuento</label>
+                        <input type="number" name="descuento" id="descuento"
+                            value="<%= producto && producto.descuento %>">
+                    </div>
+                    <div class="div_config div_form_product" id="div_stock">
+                        <label for="stock">Stock</label>
+                        <input type="number" name="stock" id="stock" value="<%= producto && producto.stock %>">
+                    </div>
+                    <div class="div_config div_form_product" id="div_imagen">
+                        <label for="imagen">Imagen actual</label>
+                        <img src="/images/products/<%= producto && producto.imagenes && producto.imagenes.length > 0 ? producto.imagenes[0].nombre : 'default.jpg' %>"
+                            alt="Imagen del producto" class="centered-img producto">
+                    </div>
+                    <div class="div_config div_form_product" id="div_modificar_imagen">
+                        <label for="modificar_imagen">Modificar imagen</label>
+                        <input type="file" name="modificar_imagen" id="modificar_imagen" multiple>
+                    </div>
+                    <div class="boton_registro_create">
+                        <button type="submit" id="button-submit">Actualizar Producto</button>
+                    </div>
+                </form>
+            </main>
 
-            <div class="boton_registro_update ">
-                <button type="submit">Editar Producto</button>
-            </div>
-        </form>
+            <script src="/javascripts/validations-Form-EditProduct.js"></script>
 
-        <form action="/products/delete/<%=producto.id%>?_method=DELETE" method="POST">
-            <button type="submit">Eliminar </button>
-        </form>
-    </div> 
+            <%- include('../partials/footer.ejs') %>
+    </body>
 
-    </main>
-
-    <%- include('../partials/footer') %>
-</body>
-
-</html>
+    </html>

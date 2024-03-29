@@ -176,69 +176,85 @@ const productsController = {
         usuario: req.session.user,
       });
     }
-  },
+  },  
 
-  formUpdate: async function(req, res) {
-    try {
-      const { id } = req.params;
-      const producto = await db.Producto.findByPk(id, {
-        include: [
-          { model: db.Categoria, as: "categorias" }, // Relación con Categoría
-          { model: db.Marca, as: "marcas" }, // Relación con Marca
-          { model: db.Imagen, as: "imagenes" }, // Relación con Imagen
-        ],
+  formUpdate: (req, res) => {
+    const { id } = req.params;
+    db.Producto.findByPk(id, {
+      include: [
+        { model: db.Categoria, as: "categorias" }, // Relación con Categoría
+        { model: db.Marca, as: "marcas" }, // Relación con Marca
+        { model: db.Imagen, as: "imagenes" }, // Relación con Imagen
+      ],
+    })
+      .then((producto) => {
+        if (!producto) {
+          throw new Error('Producto no encontrado');
+        }
+        res.render("products/formUpdate", {
+          title: "Formulario Modificar",
+          producto,
+        });
+      })
+      .catch((err) => {
+        console.log("Error en la actualización del formulario:", err);
+        res.status(500).send("Error interno del servidor");
       });
-      res.render("products/formUpdate", {
-        title: "Formulario Modificar",
-        producto,
-        //usuario: req.session.user,
-      });
-    } catch (err) {
-      console.log("Error en la actualización del formulario:", err);
-      // No enviamos ninguna respuesta al cliente
-    }
   },
-  
   update: function (req, res, next) {
     const { id } = req.params;
-    const producto = ({
-      marca,
-      modelo,
-      descripcion,
-      precio,
-      stock,
-      potencia,
-      categoria,
-      tomas,
-      descuento,
-    } = req.body);
-    const files = req.files;
-    console.log('This is PRODUCTOOO...',producto);
-    // console.log('This is FILESSSSS...',files);
-
-    db.Producto.update(
-      {
-        modelo: modelo.trim(),
-        id_marcas: 1,
-        id_categorias: 1,
-        descripcion: descripcion.trim(),
-        potencia: +potencia,
-        tomas: +tomas,
-        precio: +precio,
-        descuento: +descuento,
-        stock: +stock,
-      },
+    const {
+        marca,
+        modelo,
+        descripcion,
+        precio,
+        stock,
+        potencia,
+        categoria,
+        tomas,
+        descuento,
+    } = req.body;
     
-      {
-        where: { id: id },
-      }
-    )
-      .then((updatedProduct) => {
-        
-        res.redirect(`/products/productDetail/${id}`);
-      })
-      .catch((err) => console.log(err));
-  },
+    // Procesar los archivos de imagen si se han subido
+    const files = req.files;
+
+    db.Producto.findByPk(id)
+        .then(producto => {
+            if (!producto) {
+                throw new Error('Producto no encontrado');
+            }
+
+            // Actualizar los campos del producto con los valores del formulario
+            producto.modelo = modelo.trim();
+            producto.descripcion = descripcion.trim();
+            producto.potencia = +potencia;
+            producto.tomas = +tomas;
+            producto.precio = +precio;
+            producto.descuento = +descuento;
+            producto.stock = +stock;
+
+            // Si hay una nueva marca seleccionada en el formulario, actualizarla
+            if (marca) {
+                producto.id_marcas = marca;
+            }
+
+            // Si hay una nueva categoría seleccionada en el formulario, actualizarla
+            if (categoria) {
+                producto.id_categorias = categoria;
+            }
+
+            // Guardar los cambios en la base de datos
+            return producto.save();
+        })
+        .then(updatedProduct => {
+            // Redirigir al usuario a la página de detalles del producto actualizado
+            res.redirect(`/products/productDetail/${id}`);
+        })
+        .catch(err => {
+            console.log('Error al actualizar el producto:', err);
+            res.status(500).send('Error interno del servidor');
+        });
+},
 
   delete: function (req, res, next) {
     const { id } = req.params;
