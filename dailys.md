@@ -477,8 +477,8 @@
 ### Martes 26/3/24
 * Mauri: 
 -Qué hizo ayer:  reunion grupal para retrospectiva
--Si se encontró con algún impedimento: 
--Qué va a hacer hoy: 
+-Si se encontró con algún impedimento: falta asimilar algunos conceptos sobre las validaciones del lado del front-end
+-Qué va a hacer hoy: buscar informacion, repasar contenido, playground y videos
 
 * Santi: 
 -Qué hizo ayer:  reunion grupal para retrospectiva
@@ -492,12 +492,12 @@
 
 ### Miercoles 27/3/24
 * Mauri: 
--Qué hizo ayer: reunion grupal para retrospectiva
+-Qué hizo ayer: buscar informacion y repasar contenido para asimilar y comenzar las tareas del sprint
 -Si se encontró con algún impedimento:
--Qué va a hacer hoy:
+-Qué va a hacer hoy: implementar validaciones front-end al formulario de actualizacion de Producto
 
 * Santi: 
--Qué hizo ayer: reunion grupal para retrospectiva
+-Qué hizo ayer: 
 -Si se encontró con algún impedimento:
 -Qué va a hacer hoy:
 
@@ -508,12 +508,12 @@
 
 ### Jueves 28/3/24
 * Mauri: 
--Qué hizo ayer: reunion grupal para retrospectiva
+-Qué hizo ayer: implementar validaciones front-end al formulario de actualizacion de Producto
 -Si se encontró con algún impedimento:
--Qué va a hacer hoy:
+-Qué va a hacer hoy: corregir detalles y cerrar la tarea de validaciones front-end para la actualizacion del Producto
 
 * Santi: 
--Qué hizo ayer: reunion grupal para retrospectiva
+-Qué hizo ayer: 
 -Si se encontró con algún impedimento:
 -Qué va a hacer hoy:
 
