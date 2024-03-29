@@ -12,19 +12,26 @@
             <form action="/users/login" method="post" id="form_login">
                 <div class="div_config">
                     <label for="email">Email</label>
-                    <input type="email"  name="email" placeholder="Email">
-                    <% if (locals.errores && errores.email) { %>
-                        <p style="color: red;"> <%= errores.email.msg %> </p> 
-                   <% } %>
+                    <input type="email"  name="email" id="email" placeholder="Email">
+                   
+                   <p id="p_login_email"></p>
                 </div>
                 
                 <div class="div_config">
                     <label for="password">Contraseña</label>
-                    <input type="password" name="password" placeholder="Contraseña">
+                    <input type="password" name="password" id="password" placeholder="Contraseña">
                     <% if (locals.errores && errores.password) { %>
-                        <p style="color: red;"> <%= errores.password.msg %> </p> 
+                        <p style="color: red;" > <%= errores.password.msg %> </p> <br>
+                        
+                        <br>
                    <% } %>
+                   <div class="div_config">
+                    <p id="p_login_pass"></p>
+                   </div>
+                   
+                   <br>
                 </div>
+               
                 <div>
                     <label for="remember">Recuerdame</label>
                     <input type="checkbox" name="remember">
@@ -38,7 +45,7 @@
                 </div> 
             </form>
         </main>
-    
+    <script src="/javascripts/validations-login.js"></script>
         <%- include('../partials/footer') %>
     
 </body>
