@@ -225,7 +225,6 @@ const userController = {
       const {
         nombre,
         apellido,
-        password,
         prefijo,
         numero,
         numero_calle,
