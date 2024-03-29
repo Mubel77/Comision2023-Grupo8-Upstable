@@ -13,13 +13,14 @@ window.onload = function() {
   const localidad = document.querySelector('#localidad')
   const provincia = document.querySelector('#provincia')
   const email = document.querySelector('#email')
+  const imagen = document.querySelector('#imagen')
   const fecha_nacimiento = document.querySelector('#fecha_nacimiento')
 
   const msgError = document.createElement('p') 
   msgError.style.color = 'red'
   msgError.style.fontStyle = 'italic'
 
-  const file = '';
+  let file;
   const errores = {};
 
   function printError(input,msj) {
@@ -180,15 +181,15 @@ window.onload = function() {
 
       case (file):
         const filtro = /\.(jpg|jpeg|png|gif)$/;
-        if(files[0]){
-          if (filtro.test(files[0].name)) {
-            return cleanError(imagenes)
+        if(file[0]){
+          if (filtro.test(file[0].name)) {
+            return cleanError(imagen)
           } else {
-            msj = ""
-            printError(imagenes,msj)
+            msj = "El formato elegido no es valido, solo se admite 'JPG','JPGE','PNG','GIF'"
+            printError(imagen,msj)
           }
         } else {
-          return cleanError(imagenes)
+          return cleanError(imagen)
         }
       break;
   
@@ -250,6 +251,12 @@ window.onload = function() {
   email.addEventListener('blur', (e)=> {
     if(e){
       validate(email)
+    }
+  })
+  imagen.addEventListener('blur', (e)=> {
+    file = e.target.files
+    if(file){
+      validate(file)
     }
   })
 
