@@ -37,13 +37,13 @@ const validateUpdateUser= [
         .isEmail().withMessage('Debe ser un correo con formato valido').bail(),
     body('fecha_nacimiento')
         .notEmpty().withMessage('Debes completar la fecha de nacimiento con el formato "YYYY-MM-DD'),
-    body('image')
+    body('imagen')
         .custom((value, { req }) => {
             if (req.errorValidationImage) {
                 return false;
             }
             return true;
-        }).withMessage("No es un tipo de archivo válido"),
+        }).withMessage("El formato elegido no es valido, solo se admite 'JPG','JPGE','PNG','GIF"),
 ];
 
 const validateUpdateAdmin = [
