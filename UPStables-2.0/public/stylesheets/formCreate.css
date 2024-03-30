@@ -37,6 +37,10 @@ textarea{
 .image-create{
     width: 100%;
 }
+.producto{
+    width: 30%;
+    margin: auto;
+}
 .boton_registro_create {
     
     width: 100%;
