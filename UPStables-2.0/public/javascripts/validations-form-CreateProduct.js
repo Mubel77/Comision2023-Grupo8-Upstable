@@ -15,7 +15,7 @@ window.onload = function() {
   const boton = document.querySelector('#button-submit')
   const divs = document.querySelectorAll('.div_config')
 
-  const msgError = document.createElement('p') // p
+  const msgError = document.createElement('p')
   msgError.style.color = 'red'
   msgError.style.fontStyle = 'italic'
 
@@ -35,7 +35,7 @@ window.onload = function() {
   
   function cleanError(input) {
     msgError.remove()
-    input.style.borderColor = 'green'
+    input.style.borderColor = '#2DD4DA'
     delete errores[input.name]
   }
 
@@ -225,8 +225,8 @@ window.onload = function() {
     selects.forEach(select => {
       validate(select)
     })
-    console.log('esto es ERRORES...',errores);
     if (Object.keys(errores).length > 0) {
+      msgError.remove()
       alert('Verifica que todos los campos esten completos')
       e.preventDefault()
     } else {
