@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 const db = require("../database/models/index.js");
 const { log, error } = require("console");
-const { parse } = require("@formkit/tempo");
+const { parse, format } = require("@formkit/tempo");
 const { Op } = require("sequelize");
 
 const userController = {
@@ -202,13 +202,17 @@ const userController = {
     db.Usuario.findByPk(req.session.user.id,{include: [
       { model: db.Direccion, as: 'direcciones' },
       { model: db.Telefono, as: 'telefonos' }
-    ]}, )
+    ]})
       .then((respuesta) => {
-        // res.send(respuesta)
+        let dato = respuesta.dataValues.fecha_nacimiento
+        let fecha = format(dato,"DD/MM/YYYY");
+        respuesta.dataValues.fecha_nacimiento = fecha
+
         res.render("./users/formUpdateUser", {
           title: "Editar Usuario",
           subtitulo: "Editar Usuario",
           usuario: req.session.user,
+          respuesta
         });
       })
       .catch((err) => {
@@ -221,7 +225,6 @@ const userController = {
       const {
         nombre,
         apellido,
-        password,
         prefijo,
         numero,
         numero_calle,
@@ -232,19 +235,21 @@ const userController = {
         email,
         fecha_nacimiento,
       } = req.body;
+      
       const errors = validationResult(req);
+
       if (!errors.isEmpty()) {
         res.render("./users/formUpdateUser", {
           title: "Editar Usuario",
           subtitulo: "Editar Usuario",
           usuario: req.session.user,
-          errors: errors.mapped(),
+          //errors: errors.mapped(),
           old: req.body,
         });
       } else {
         let fecha = parse({
           date: fecha_nacimiento,
-          format: "YYYY-MM-DD HH:mm:ss",
+          format: "DD-MM-YYYY"
         });
 
         const usuarioUpdate = {
@@ -301,9 +306,9 @@ const userController = {
             res.redirect("/users/perfilUser");
           })
         }
-  } catch (error) {
-    console.log(error);
-  }
+    } catch (error) {
+        console.log(error);
+      }
   },
 
   formUpdateAdmin: (req, res) => {
