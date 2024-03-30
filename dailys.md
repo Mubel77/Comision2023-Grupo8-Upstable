@@ -521,3 +521,19 @@
 -Qué hizo ayer: aplicar validaciones front-end al formulario de creacion de producto
 -Si se encontró con algún impedimento: hubo problemas para filtrar los archivos segun su extension y mostrar los errores pero esta vez desde el lado del front-end con JavaScript
 -Qué va a hacer hoy: aplicar validaciones front-end al formulario de actualizacion de perfil del usuario CLIENTE
+
+### Viernes 29/3/24
+* Mauri: 
+-Qué hizo ayer: corregir detalles y cerrar la tarea de validaciones front-end para la actualizacion del Producto
+-Si se encontró con algún impedimento:
+-Qué va a hacer hoy: 
+
+* Santi: 
+-Qué hizo ayer: 
+-Si se encontró con algún impedimento:
+-Qué va a hacer hoy:
+
+* Emi:
+-Qué hizo ayer: aplicar validaciones front-end al formulario de actualizacion de perfil del usuario CLIENTE
+-Si se encontró con algún impedimento: consegui validar la fecha de nacimiento como formato string pero falta validarla como una fecha real
+-Qué va a hacer hoy: intentar solucionar validacion del campo fecha
