@@ -40,7 +40,7 @@ window.onload = function() {
         if (errorElement) {
             errorElement.remove();
         }
-        input.style.borderColor = 'green';
+        input.style.borderColor = '#2DD4DA';
         delete errores[input.name];
     }
 
