@@ -1,4 +1,15 @@
 //const { parse } = require("@formkit/tempo");
+//import { format } from "https://unpkg.com/date-fns/format.mjs";
+//const { format, parse } = require("date-fns");
+
+import { getYear } from "https://unpkg.com/date-fns/getYear.mjs";
+import { getMonth } from "https://unpkg.com/date-fns/getMonth.mjs";
+import { getDate } from "https://unpkg.com/date-fns/getDate.mjs";
+
+// const { getYear } = require("date-fns");
+// const { getMonth } = require("date-fns");
+// const { getDate } = require("date-fns");
+
 
 window.onload = function() {
   const form = document.querySelector('form')
@@ -42,11 +53,30 @@ window.onload = function() {
     delete errores[input.name]
   }
 
+  // function calcularEdad (fecha) {
+  //   const hoy = new Date();
+  //   const year = hoy.getFullYear() - fecha.getFullYear();
+  //   const month = hoy.getMonth() - fecha.getMonth();
+  //   const day = hoy.getDate() - fecha.getDate();
+  //   if (month < 0 || (month == 0 && day < 0)) {
+  //     return year - 1
+  //   } else {
+  //     return year
+  //   }
+  // }
+
   function calcularEdad (fecha) {
+    
+    console.log("esto es FECHA in function...",fecha);
     const hoy = new Date();
-    const year = hoy.getFullYear() - fecha.getFullYear();
-    const month = hoy.getMonth() - fecha.getMonth();
-    const day = hoy.getDate() - fecha.getDate();
+    console.log("esto es HOY...",hoy);
+
+    const year = getYear(fecha);
+    console.log("esto es YEAR...",year);
+    const month = getMonth(fecha);
+    console.log("esto es MONTH...",month);
+    const day = getDate(fecha);
+    console.log("esto es DAY...",day);
     if (month < 0 || (month == 0 && day < 0)) {
       return year - 1
     } else {
@@ -184,16 +214,21 @@ window.onload = function() {
 
       case (fecha_nacimiento):
         const expRegDate = /^(0?[1-9]|[12][0-9]|3[01])\/(0?[1-9]|1[012])\/([1-9][0-9]{3})$/
+        let fecha = fecha_nacimiento.value
+        console.log("esto es FECHA...",fecha);
 
-        if(expRegDate.test(fecha_nacimiento.value)) {
-
-          let fechaNac = parse({
-            date: fecha_nacimiento,
-            format: "DD-MM-YYYY"
-          });
+        if(expRegDate.test(fecha)) {
           
-          const edad = calcularEdad(fechaNac)
-          if (edad >= 18) {
+          // let fechaNac = parse({
+          //   date: fecha_nacimiento,
+          //   format: "DD-MM-YYYY"
+          // });
+          // let fechaValue = format(fecha_nacimiento.value,"yyyy/dd/MM")
+          // let fechaNac = new Date(fechaValue)
+          // console.log("esto es fechaNac..",fechaNac);
+          const edad = calcularEdad(fecha)
+          console.log("edad..",edad);
+          if (edad >= 18 && edad < 100) {
             return cleanError(fecha_nacimiento)
           } else {
             msj = "La fecha indicada no correponde a una persona mayor de edad"

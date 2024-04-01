@@ -72,8 +72,12 @@
 
         </form>
     </main>
-
-    <script src="/javascripts/validations-form-UpdateUser.js"></script>
+    <script type="module" src="/javascripts/validations-form-UpdateUser.js">
+        import dateFns from "https://cdn.jsdelivr.net/npm/date-fns@VERSION/locale/cdn.js";
+        //import { getYear } from "https://unpkg.com/date-fns/getYear.mjs";
+        //import { getMonth } from "https://unpkg.com/date-fns/getMonth.mjs";
+        //import { getDate } from "https://unpkg.com/date-fns/getDate.mjs";
+    </script>
 
     <%- include('../partials/footer') %>
 </body>
