@@ -26,7 +26,7 @@ window.onload = function(){
 
     password.addEventListener("blur",(e)=>{
 
-        if(password.value.length < 8){
+        if(password.value.length < 7){
             password.style.borderColor = "red"
             msgPass.innerHTML = `La contraseña debe tener al menos 8 caracteres`
             sinError = false
