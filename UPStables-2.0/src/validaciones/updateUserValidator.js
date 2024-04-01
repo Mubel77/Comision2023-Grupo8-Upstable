@@ -5,10 +5,10 @@ const db = require('../database/models/index')
 const validateUpdateUser= [
     body('nombre')
         .notEmpty().withMessage('Debes completar con tu nombre').bail()
-        .isLength({ min: 3 }).withMessage('El nombre debe tener al menos 3 caracteres'),
+        .isLength({ min: 2 }).withMessage('El nombre debe tener al menos 2 caracteres'),
     body('apellido')
         .notEmpty().withMessage('Debes completar con tu apellido').bail()
-        .isLength({ min: 3 }).withMessage('El apellido debe tener al menos 3 caracteres'),
+        .isLength({ min: 2 }).withMessage('El apellido debe tener al menos 2 caracteres'),
 // TELEFONO
     body('prefijo')
         .notEmpty().withMessage('Debes completar el PREFIJO de tu region').bail()
@@ -37,13 +37,13 @@ const validateUpdateUser= [
         .isEmail().withMessage('Debe ser un correo con formato valido').bail(),
     body('fecha_nacimiento')
         .notEmpty().withMessage('Debes completar la fecha de nacimiento con el formato "YYYY-MM-DD'),
-    body('image')
+    body('imagen')
         .custom((value, { req }) => {
             if (req.errorValidationImage) {
                 return false;
             }
             return true;
-        }).withMessage("No es un tipo de archivo válido"),
+        }).withMessage("El formato elegido no es valido, solo se admite 'JPG','JPGE','PNG','GIF"),
 ];
 
 const validateUpdateAdmin = [
