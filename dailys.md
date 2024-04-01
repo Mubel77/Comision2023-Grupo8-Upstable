@@ -481,9 +481,10 @@
 -Qué va a hacer hoy: buscar informacion, repasar contenido, playground y videos
 
 * Santi: 
--Qué hizo ayer:  reunion grupal para retrospectiva
--Si se encontró con algún impedimento:
--Qué va a hacer hoy: 
+-Qué hizo ayer: reunion grupal para retrospectiva
+-Si se encontró con algún impedimento: 
+-Qué va a hacer hoy: comenzar con validación del lado del frontend en vista login
+ 
 
 * Emi:
 -Qué hizo ayer: reunion grupal para retrospectiva, corregir validaciones del back-end para la cargar de archivos con multer
@@ -497,9 +498,9 @@
 -Qué va a hacer hoy: implementar validaciones front-end al formulario de actualizacion de Producto
 
 * Santi: 
--Qué hizo ayer: 
+-Qué hizo ayer: comenzar con validación del lado del frontend en vista login
 -Si se encontró con algún impedimento:
--Qué va a hacer hoy:
+-Qué va a hacer hoy: continuar con validación del lado del frontend en vista login
 
 * Emi:
 -Qué hizo ayer: corregir errores de configuracion de multer
@@ -513,9 +514,9 @@
 -Qué va a hacer hoy: corregir detalles y cerrar la tarea de validaciones front-end para la actualizacion del Producto
 
 * Santi: 
--Qué hizo ayer: 
+-Qué hizo ayer: continuar con validación del lado del frontend en vista login
 -Si se encontró con algún impedimento:
--Qué va a hacer hoy:
+-Qué va a hacer hoy: comenzar con las validaciones del lado del frontend en vista registro
 
 * Emi:
 -Qué hizo ayer: aplicar validaciones front-end al formulario de creacion de producto
@@ -529,9 +530,9 @@
 -Qué va a hacer hoy: 
 
 * Santi: 
--Qué hizo ayer: 
+-Qué hizo ayer: comenzar con las validaciones del lado del frontend en vista registro
 -Si se encontró con algún impedimento:
--Qué va a hacer hoy:
+-Qué va a hacer hoy: continuar con las validaciones del lado del frontend en vista registro
 
 * Emi:
 -Qué hizo ayer: aplicar validaciones front-end al formulario de actualizacion de perfil del usuario CLIENTE
