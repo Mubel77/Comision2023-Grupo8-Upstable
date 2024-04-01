@@ -1,3 +1,5 @@
+//const { parse } = require("@formkit/tempo");
+
 window.onload = function() {
   const form = document.querySelector('form')
   const inputs = document.querySelectorAll('input')
@@ -38,6 +40,18 @@ window.onload = function() {
     msgError.remove()
     input.style.borderColor = '#2DD4DA'
     delete errores[input.name]
+  }
+
+  function calcularEdad (fecha) {
+    const hoy = new Date();
+    const year = hoy.getFullYear() - fecha.getFullYear();
+    const month = hoy.getMonth() - fecha.getMonth();
+    const day = hoy.getDate() - fecha.getDate();
+    if (month < 0 || (month == 0 && day < 0)) {
+      return year - 1
+    } else {
+      return year
+    }
   }
 
   function validate(input) {
@@ -172,11 +186,25 @@ window.onload = function() {
         const expRegDate = /^(0?[1-9]|[12][0-9]|3[01])\/(0?[1-9]|1[012])\/([1-9][0-9]{3})$/
 
         if(expRegDate.test(fecha_nacimiento.value)) {
-          return cleanError(fecha_nacimiento)
-        } else {
-          msj = "Debes completar la fecha de nacimiento con el formato '' DD / MM / YYYY ''"
-          printError(fecha_nacimiento,msj)
-        }
+
+          let fechaNac = parse({
+            date: fecha_nacimiento,
+            format: "DD-MM-YYYY"
+          });
+          
+          const edad = calcularEdad(fechaNac)
+          if (edad >= 18) {
+            return cleanError(fecha_nacimiento)
+          } else {
+            msj = "La fecha indicada no correponde a una persona mayor de edad"
+            return printError(fecha_nacimiento,msj)
+          }
+
+          //return cleanError(fecha_nacimiento)
+          } else {
+            msj = "Debes completar la fecha de nacimiento con el formato '' DD / MM / YYYY ''"
+            printError(fecha_nacimiento,msj)
+          }
       break;
 
       case (file):
@@ -200,6 +228,7 @@ window.onload = function() {
 
   nombre.addEventListener('blur', (e)=> {
     if(e){
+      console.log('HOLA.....!!!!!');
       validate(nombre)
     }
   })
