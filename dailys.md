@@ -527,7 +527,7 @@
 * Mauri: 
 -Qué hizo ayer: corregir detalles y cerrar la tarea de validaciones front-end para la actualizacion del Producto
 -Si se encontró con algún impedimento:
--Qué va a hacer hoy: 
+-Qué va a hacer hoy: terminar la tarea de registro de usuario admin y su actulizacion .
 
 * Santi: 
 -Qué hizo ayer: comenzar con las validaciones del lado del frontend en vista registro
