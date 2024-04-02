@@ -17,6 +17,7 @@ window.onload = function(){
     const msg= document.querySelectorAll(".div_config p")
     const expRegLetter = /^[A-Za-z ]+$/
     const emailVal = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    const filtro = /\.(jpg|jpeg|png|gif)$/;
     let sinError= false
     let error; 
     const email = variables.email
@@ -25,6 +26,12 @@ window.onload = function(){
     function mostrarError(input, mensaje) {
         const errorP = input.parentElement.querySelector('.error-mensaje');
         if (!errorP) {
+            const error = document.createElement("p");
+            error.className = 'error-mensaje';
+            error.innerHTML = mensaje;
+            input.parentElement.appendChild(error);
+        }else{
+            errorP.remove();
             const error = document.createElement("p");
             error.className = 'error-mensaje';
             error.innerHTML = mensaje;
@@ -41,14 +48,19 @@ window.onload = function(){
     const nombreInput= [];
     inputs.forEach(input => {
         nombreInput.push(input.placeholder)
-        input.addEventListener('blur', () => {
-            if (input.value.trim() === "") {
+      //  console.log("solo imagen",  variables.imagen)
+        input.addEventListener('blur', (e) => {
+           let file = e.target.files
+           console.log("esto es file", file)
+            console.log("quiero ver:", variables);
+            if (input.value.trim() === "" && input !== variables.imagen) {
                 input.style.borderColor = "red"
                 mostrarError(input, `Debes completar con tu ${input.placeholder}`);
                 sinError = false;
             } else {
                 ocultarError(input);
                 input.style.borderColor = "#2DD4DA"
+                if(input === variables.imagen)
                 if (input === variables.email && !emailVal.test(input.value)) {
                     mostrarError(input, "Email inválido");
                     input.style.borderColor = "red"
@@ -58,9 +70,25 @@ window.onload = function(){
                     mostrarError(input, "Sólo se pueden ingresar letras");
                     input.style.borderColor = "red"
                     sinError = false;
+                }else if(input.value.length <2 && input != variables.imagen){
+                    mostrarError(input, "El nombre debe ser de mas de dos letras");
+                    input.style.borderColor = "red"
+                    sinError = false;
                 }
                 if (input === variables.apellido && !expRegLetter.test(input.value)) {
                     mostrarError(input, "Sólo se pueden ingresar letras");
+                    input.style.borderColor = "red"
+                    sinError = false;
+                }else if(input.value.length <2 && input != variables.imagen){
+                    mostrarError(input, "El apellido debe ser de mas de dos letras");
+                    console.log("a ver este:",input);
+                    input.style.borderColor = "red"
+                    sinError = false;
+                }
+                
+                if(variables.imagen && !filtro.test(file[0].name)){
+                    console.log("paso filtro:",filtro.test(file[0].name));
+                    mostrarError(input, "El formato elegido no es válido, solo se admite 'JPG','JPGE','PNG','GIF'");
                     input.style.borderColor = "red"
                     sinError = false;
                 }
@@ -86,17 +114,25 @@ window.onload = function(){
     
     form.onsubmit = (e)=>{
         if(sinError === false){
+
             console.log("antes de enviar:", sinError)
             e.preventDefault()
+            
             const valInputs = [];
+
         inputs.forEach(element => {
-            valInputs.push(element.value)
+            if(element.placeholder != "Imagen" ){
+                valInputs.push(element.value)
+                ocultarError(element);
+            }
+            element.style.borderColor = "red"
         });
             console.log("valInput:",valInputs)
              valInputs.forEach((valorInput, index) => {
                 
                     if (valorInput === "") {
                         msg[index].innerHTML = `Debes completar con tu ${nombreInput[index]}`;
+                        
                         sinError = false
                     };
             
