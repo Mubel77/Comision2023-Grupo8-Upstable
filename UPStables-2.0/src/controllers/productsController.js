@@ -24,6 +24,77 @@ const productsController = {
       })
       .catch((err) => console.log(err))
   },
+// Vistas de los estabilizadores, ups y ofertas
+
+Ups: function (req, res, next) {
+  db.Producto.findAll({
+    include: [
+      {
+        model: db.Categoria,
+        as: "categorias",
+        where: { categoria: 'UPS' } // Filtra por la categoría UPS
+      },
+      { model: db.Marca, as: "marcas" },
+      { model: db.Imagen, as: "imagenes" },
+    ],
+  })
+  .then((productos) => {
+    res.render("products/UPS", {
+      title: "UPS",
+      usuario: req.session.user,
+      productos,
+    });
+  })
+  .catch((err) => console.log(err));
+},
+
+Estabilizadores: function (req, res, next) {
+  db.Producto.findAll({
+    include: [
+      {
+        model: db.Categoria,
+        as: "categorias",
+        where: { categoria: 'Estabilizadores' } // Filtra por la categoría Estabilizadores
+      },
+      { model: db.Marca, as: "marcas" },
+      { model: db.Imagen, as: "imagenes" },
+    ],
+  })
+  .then((productos) => {
+    res.render("products/Estabilizadores", {
+      title: "Estabilizadores",
+      usuario: req.session.user,
+      productos,
+    });
+  })
+  .catch((err) => console.log(err));
+},
+
+Ofertas: function (req, res, next) {
+  db.Producto.findAll({
+    include: [
+      { model: db.Marca, as: "marcas" },
+      { model: db.Imagen, as: "imagenes" },
+      { model: db.Categoria, as: "categorias" } // Incluir la asociación con la categoría
+    ],
+    where: { 
+      id_categorias: {
+        [db.Sequelize.Op.ne]: null // Excluye los productos que no tienen categoría asignada
+      },
+      descuento: {
+        [db.Sequelize.Op.ne]: 0 // Filtra por productos con descuento diferente de cero
+      }
+    }
+  })
+  .then((productos) => {
+    res.render("products/ofertas", {
+      title: "Ofertas",
+      usuario: req.session.user,
+      productos,
+    });
+  })
+  .catch((err) => console.log(err));
+},
 
   // muestro el detalle del producto con base de datos
   detail: function (req, res, next) {
