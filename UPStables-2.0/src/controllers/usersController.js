@@ -321,6 +321,9 @@ const userController = {
       ],
       attributes: { exclude: ["password"] },
     }).then((userUpdate) => {
+        let dato = userUpdate.dataValues.fecha_nacimiento
+        let fecha = format(dato,"DD/MM/YYYY");
+        userUpdate.dataValues.fecha_nacimiento = fecha
       res.render("./users/formUpdateAdmin", {
         title: "Editar Empleado",
         userId,
@@ -360,7 +363,7 @@ const userController = {
     } else {
       let fecha = parse({
         date: fecha_nacimiento,
-        format: "YYYY-MM-DD HH:mm:ss",
+        format: "DD/MM/YYYY",
       });
 
       const usuarioUpdate = {
