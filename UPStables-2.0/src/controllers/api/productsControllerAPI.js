@@ -1,6 +1,8 @@
 const db = require('../../database/models')
 const { Op } = require("sequelize");
 const {validationResult} = require('express-validator')
+const fs = require('fs')
+const path = require('path')
 
 const productsControllerAPI = {
 // Listar todos los productos
@@ -29,46 +31,28 @@ list: async (req, res) => {
 
 // Dashboard de productos paginado, incluye busqueda por Marca
 dashboard: async (req, res) => {
-  let {page=1 ,limit=10 , keywords} = req.query
-  limit = parseInt(limit)
-  const offSet = limit * (parseInt(page) -1)
-  const arraySearch = [{
-    name: {
-      [Op.like]:`%${keywords}`
-    }
-  }]
-  const query = {limit, offSet, include:{association:'marcas'}}
-  let idMarca;
-  const where = {
-    [Op.or]: arraySearch,
-  };
-
-  if (keywords) {
-    query.where = where;
-    idMarca = await db.Marca.findOne({
-      where: {
-        marca: {
-          [Op.like]: `%${keywords}%`,
-        },
-      },
-    });
-
-    if (idMarca) {
-    idMarca = idMarca.id;
-    const searchCategory = {
-      marcaId: {
-        [Op.like]: `${idMarca}`,
-      },
-    };
-    arraySearch.push(searchCategory);
-    }
+  let {page=1 ,limit=10 , keywords} = req.query;
+  limit = parseInt(limit);
+  const offSet = limit * (parseInt(page) -1);
+  const query = {limit, offset:offSet, include:{association:'marcas'}};
+  
+  const url = `http://localhost:3000/products/api/dashboard?page=${page}&limit=${limit}&keywords=${keywords}`
+  const next = `http://localhost:3000/products/api/dashboard?page=${parseInt(page)+1}`
+  let previous;
+  if(page > 1){
+    previous = `http://localhost:3000/products/api/dashboard?page=${parseInt(page)-1}`
   }
-
+ 
   try {
-    await db.Producto.findAndCountAll(query)
+    await db.Producto.findAndCountAll(query,
+    {where:{marca:{[Op.like]:`%${keywords}%`}}})
       .then((productos) => {
         res.status(200).json({
-          productos
+        countRows : productos.rows.length,
+        productos,
+        url : url,
+        previous : previous,
+        next : productos.rows.length < limit ? '' : next
         })
       })
   } catch (error) {
@@ -76,6 +60,29 @@ dashboard: async (req, res) => {
   }
 },
 
+// Detalle del producto
+detail: async (req, res) => {
+  const id = parseInt(req.params.id)
+
+  try {
+    const producto = await db.Producto.findByPk(id, {
+      include: [
+        { model: db.Categoria, as: "categorias" },
+        { model: db.Marca, as: "marcas" },
+        { model: db.Imagen, as: "imagenes" }
+      ],
+    })
+    res.status(200).json({
+      url:`http://localhost:3000/products/api/detail/${id}`,
+      status: 200,
+      producto
+    })
+  } catch (error) {
+    res.status(400).send(error.message)
+  }
+},
+
+// Crear un producto
 create: async (req, res) => {
   const errors = validationResult(req)
   const files = req.files
@@ -86,8 +93,7 @@ create: async (req, res) => {
   try {
 
     if (errors.isEmpty()) {
-      // const producto = await db.Producto.create(req.body)
-      const producto = req.body
+      const producto = await db.Producto.create(req.body)
 
       if (files.length>0) {
         files.forEach((file) => {
@@ -96,7 +102,7 @@ create: async (req, res) => {
             ubicacion: "/images/products/",
             id_producto: producto.id,
           };
-      //     const imageProduct = db.Imagen.create(image)
+      const imageProduct = db.Imagen.create(image)
           arrayImages.push(image)
            images = arrayImages
         })
@@ -107,7 +113,7 @@ create: async (req, res) => {
           id_producto: producto.id,
         };
            images = imageDefault
-      //   const imageProduct = db.Imagen.create(imageDefault)
+      const imageProduct = db.Imagen.create(imageDefault)
       }
 
       res.status(200).json({
@@ -135,6 +141,7 @@ create: async (req, res) => {
   }
 },
 
+// Actualizar un producto
 update: async (req, res) => {
   const id = parseInt(req.params.id)
   const errors = validationResult(req)
@@ -143,15 +150,15 @@ update: async (req, res) => {
   try {
     if (errors.isEmpty()) {
 
-      await db.Producto.update(
-        {marca, modelo, descripcion, precio, stock, potencia, categoria, tomas, descuento},
+      const producto = await db.Producto.update(
+        (req.body),
         { where: {id} }
       )
       res.status(200).json({
         producto: id,
         status: 200,
-        updtate: 'Ok',
-        url: 'http://localhost:3000/products/api/update/:id'
+        update: 'Ok',
+        url: `http://localhost:3000/products/api/update/${id}`
       })
     } else {
       const errorsMapped = errors.mapped()
@@ -168,8 +175,37 @@ update: async (req, res) => {
   }
 },
 
+// Eliminar un producto
 delete: async (req, res) => {
-  
+  const id = parseInt(req.params.id)
+  let pathFile;
+  const producto = await db.Producto.findByPk(
+    id,
+    {include:[{ model: db.Imagen, as: "imagenes" }]}
+  )
+  producto.imagenes.forEach(imagen => {
+    db.Imagen.destroy({
+      where: {id_producto:id}
+    })
+    pathFile = path.join('public',imagen.ubicacion,'/',imagen.nombre)
+    fs.unlink(pathFile, (err) => {
+      if (err) throw new Error;
+    })
+  })
+
+  try {
+    const removeProduct = await db.Producto.destroy({
+      where: {id}
+    })
+    res.status(200).json({
+      producto: id,
+      status: 200,
+      delete: 'Ok',
+      url: `http://localhost:3000/products/api/delete/${id}`
+    })
+  } catch (error) {
+    res.status(400).send(error.message)
+  }
 }
 
 }
