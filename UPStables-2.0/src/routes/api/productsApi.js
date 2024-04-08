@@ -11,6 +11,9 @@ router.get('/list', productsControllerAPI.list)
 //Dashboard de productos
 router.get('/dashboard', productsControllerAPI.dashboard)
 
+//Detalle de producto
+router.get('/detail/:id', productsControllerAPI.detail)
+
 //Crear un producto
 router.post('/create', upload.array('imagenes',3), validateCreation, productsControllerAPI.create)
 
