@@ -2,19 +2,18 @@
 
 <body>
     <%- include('../partials/header.ejs') %>
-    <main class="dashboard_main">
-        
-
-        <section class="dashboard_section">
+    <main class="main">
+        <section class="section_productos caja_padre ">
             <% productos.forEach(producto => {%>
-            <article class="dashboard_article">
-                <div class="dashboard_div_img">
+            <article class="article_productos hijo_producto">
+                <div class="imagen-container">
                     <% for(x=0; x<producto.imagenes.length; x=producto.imagenes.length) { %>
-                    <img src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>"
-                        alt="Imagen Publicidad">
+                    <img class="imagen-producto nuevo_imagen_producto "
+                        src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>"
+                        alt="Imagen Producto">
                     <% } %>
                 </div>
-                <div class="dashboard_div_texto">
+                <div class="detalle-container">
                     <h2>Modelo: <%= producto.modelo%></h2>
                     <h3>Marca: <%= producto.marcas.marca%></h3>
                     <h4>Categoria: <%= producto.categorias.categoria%></h4>
@@ -28,7 +27,6 @@
             </article>
             <% })%>
         </section>
-
     </main>
     <%- include('../partials/footer.ejs') %>
 </body>

@@ -150,6 +150,28 @@ main{
         margin: 0 auto; 
     }
     
+    .caja_padre {
+        text-align: center;
+        width: 90%;
+        margin: 0 auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .hijo_producto {
+        border: 5px solid #ddd;
+        background-color: white;
+        cursor: pointer;
+        width: 32%;
+        /* flex-direction: row; */
+    }
+    .nuevo_imagen_producto {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
    
 }
 

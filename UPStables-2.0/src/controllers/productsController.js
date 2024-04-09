@@ -329,11 +329,14 @@ Ofertas: function (req, res, next) {
 
   delete: function (req, res, next) {
     const { id } = req.params;
-    db.Producto.destroy({
-      where: {
-        id: id,
-      },
-    });
+    db.Producto.findByPk(id)({
+      include: [
+        { model: db.Categoria, as: "categorias" }, // Relación con Categoría
+        { model: db.Marca, as: "marcas" }, // Relación con Marca
+        { model: db.Imagen, as: "imagenes" }, // Relación con Imagen
+      ],
+    })
+    then(eliminar )
     fs.unlink(`./public/images/${product.imagen}`, (err) => {
       if (err) throw err;
       //console.log(`borrar el archivo ${product.imagen}`);
