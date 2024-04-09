@@ -11,12 +11,15 @@ window.onload = function(){
          confirmPass : document.getElementById("confirm_pass"),
     }
     
-    const form = document.getElementById("form_registro")
-    // const msg = document.querySelectorAll("form p");
+    const form = document.getElementById("form_registro");
     const inputs = document.querySelectorAll(".div_config input");
-    const msg= document.querySelectorAll(".div_config p")
-    const expRegLetter = /^[A-Za-z ]+$/
-    const emailVal = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    const msg= document.querySelectorAll(".div_config p");
+
+    const expRegLetter = /^[A-Za-z ]+$/;
+    const expRegNums = /^[0-9]\d*$/;
+    const emailVal = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const filtro = /\.(jpg|jpeg|png|gif)$/;
+
     let sinError= false
     let error; 
     const email = variables.email
@@ -25,6 +28,12 @@ window.onload = function(){
     function mostrarError(input, mensaje) {
         const errorP = input.parentElement.querySelector('.error-mensaje');
         if (!errorP) {
+            const error = document.createElement("p");
+            error.className = 'error-mensaje';
+            error.innerHTML = mensaje;
+            input.parentElement.appendChild(error);
+        }else{
+            errorP.remove();
             const error = document.createElement("p");
             error.className = 'error-mensaje';
             error.innerHTML = mensaje;
@@ -38,24 +47,57 @@ window.onload = function(){
             errorP.remove();
         }
     }
+
     const nombreInput= [];
+
     inputs.forEach(input => {
+
         nombreInput.push(input.placeholder)
-        input.addEventListener('blur', () => {
-            if (input.value.trim() === "") {
+      
+        input.addEventListener('blur', (e) => {
+            const targetForm = e.target.form; 
+        const formData = new FormData(targetForm); 
+        
+        const files = formData.getAll('imagen');
+           console.log("esto es file", files)
+            
+           
+            if (input.value.trim() === "" && input !== variables.imagen) {
                 input.style.borderColor = "red"
                 mostrarError(input, `Debes completar con tu ${input.placeholder}`);
                 sinError = false;
+
+                
             } else {
+
                 ocultarError(input);
-                input.style.borderColor = "#2DD4DA"
+                input.style.borderColor = "#2DD4DA";
+                sinError=true;
+
+                files.forEach(file => {
+                    if (!filtro.test(file.name)) {
+                        mostrarError(input, "El formato elegido no es válido, solo se admite 'JPG', 'JPGE', 'PNG', 'GIF'");
+                        input.style.borderColor = "red";
+                        sinError = false;
+                    }
+                });
                 if (input === variables.email && !emailVal.test(input.value)) {
                     mostrarError(input, "Email inválido");
                     input.style.borderColor = "red"
                     sinError = false;
                 }
+                if(input === variables.password && input.value.length < 7){
+                        mostrarError(input, "La contraseña debe tener al menos 8 caracteres");
+                        input.style.borderColor = "red"
+                        sinError = false;
+                }
+                
                 if (input === variables.nombre && !expRegLetter.test(input.value)) {
                     mostrarError(input, "Sólo se pueden ingresar letras");
+                    input.style.borderColor = "red"
+                    sinError = false;
+                }else if(input === variables.nombre && input.value.length <2 ){
+                    mostrarError(input, "El nombre debe ser de mas de dos letras");
                     input.style.borderColor = "red"
                     sinError = false;
                 }
@@ -63,144 +105,53 @@ window.onload = function(){
                     mostrarError(input, "Sólo se pueden ingresar letras");
                     input.style.borderColor = "red"
                     sinError = false;
+                }else if(input === variables.apellido && input.value.length <2 ){
+                    mostrarError(input, "El apellido debe ser de mas de dos letras");
+                    input.style.borderColor = "red"
+                    sinError = false;
                 }
+                if (input === variables.dom_num && !expRegNums.test(input.value)) {
+                    mostrarError(input, "Sólo se pueden ingresar números");
+                    input.style.borderColor = "red"
+                    sinError = false;
+                }
+               
             }
         });
     });
-    const password = variables.password
-    password.addEventListener("blur",(e)=>{
-       
-        if(password.value.length < 7){
-            password.style.borderColor = "red"
-                mostrarError(password, "Debe tener al menos 8 caracteres");
-                sinError = false;
-        }else{
-            ocultarError(password);
-                password.style.borderColor = "#2DD4DA"
-        }
-    })
-   
 
-    console.log("antes de entrar al form:", sinError)
-
-    
     form.onsubmit = (e)=>{
-        if(sinError === false){
-            console.log("antes de enviar:", sinError)
-            e.preventDefault()
-            const valInputs = [];
-        inputs.forEach(element => {
-            valInputs.push(element.value)
-        });
-            console.log("valInput:",valInputs)
-             valInputs.forEach((valorInput, index) => {
-                
-                    if (valorInput === "") {
-                        msg[index].innerHTML = `Debes completar con tu ${nombreInput[index]}`;
-                        sinError = false
-                    };
-            
-             
-        });
-           inputs.forEach((input, index) => {
-        input.addEventListener('input', () => {
-            if (input.value !== "") {
-                msg[index].innerHTML = "";
-                sinError = true
+
+        const formData = new FormData(e.target);
+        const files = formData.getAll('imagen');
+        e.preventDefault()      
+        
+        inputs.forEach(input=>{
+            if (input.value.trim() === "" && input !== variables.imagen) {
+                input.style.borderColor = "red"
+                mostrarError(input, `Debes completar con tu ${input.placeholder}`);
+                sinError = false;
             }
-        });
-    }); 
-        }else{
-            console.log("todo ok:", sinError)
-            form.submit()
-        }
-     
-            
-        
-        
-       } 
+            if(input === variables.confirmPass && variables.password.value != variables.confirmPass.value){
+                mostrarError(input, "La contraseña debe ser igual a la anterior");
+                input.style.borderColor = "red"
+                sinError = false;
+            }
+            if (input === variables.imagen && files.length > 1) {
+                files.forEach(file => {
+                    if (files.name !="" && !filtro.test(file.name)) {
+                        mostrarError(input, "El formato elegido no es válido, solo se admite 'JPG', 'JPGE', 'PNG', 'GIF'");
+                        input.style.borderColor = "red";
+                        sinError = false;
+                    }
+                });
+            }
+        })
        
-       // email.addEventListener("blur",(e)=>{
-        
-    //     if(!emailVal.test(email.value)){
-    //         email.style.borderColor = "red"
-    //         error = document.createElement("p");
-    //         error.innerHTML = "Email inválido"
-    //         sinError = false
-    //         console.log("EMAIL:",sinError)
-    //     };
-    //     email.onchange = function(e){
-    //         email.style.borderColor = "#2DD4DA"
-    //         sinError = true
-    //         console.log("CAMBIO EMAIL:",sinError)
-    //         error.innerHTML = ""
-    //     }   
-    // })
-   
-    // email.addEventListener("blur", () => {
-    //     if (!emailVal.test(email.value)) {
-    //         console.log("email no valido")
-    //         email.style.borderColor = "red";
-    //         error = document.createElement("p");
-    //         error.innerHTML = "Email inválido";
-    //         email.parentNode.insertBefore(error, email.nextSibling);
-    //     } else {
-    //         email.style.borderColor = "#2DD4DA";
-    //         const error = email.nextSibling;
-    //         if (error && error.tagName === "P") {
-    //             error.remove();
-    //         }
-    //     }
-    // });
-
-    // const nombreInput= [];
-    // inputs.forEach(input => {
-    //     inpute.push(input.placeholder)
-        
-    //     input.addEventListener('blur', () => {
-            
-    //         if(input.value == ""){
-    //             console.log("se ejecuta blur");
-    //             error = document.createElement("p");
-    //             error.innerHTML = `Debes completar con ${input.placeholder}`;
-                
-    //             input.parentNode.insertBefore(error, input.nextSibling);
-    //         }else{
-    //            if(error){
-    //             error.innerHTML = "";
-    //             sinError = true
-    //            }
-    //         }
-            
-
-           
-    //     });
-
-    // });
+        if(sinError === true){
+            form.submit()
+        }   
     
-    // inputs.forEach(el => {  
-    //  input.push(el.placeholder)
-    //  for (const key in variables) {
-    //     //console.log(`valor: ${key}`)
-    //     const element = variables[key];
-    //     element.onclick=(e)=>{
-    //         console.log("se ejecuta click");
-    //      let error = document.createElement("p");
-    //      error.innerHTML = `Debes completar con ${el.placeholder}`
-    //      el.parentNode.insertBefore(error, el.nextSibling);
-    //     }
-    //  }
-    // //  el.onblur = (e)=>{
-    // //     if(el.value == ""){
-
-    // //         msg.forEach((element, index)=> {
-    // //             console.log(input[1]);
-    // //             element.innerHTML = `Debes completar con tu ${input[index]}`
-    // //         });
-        
-    // //     }
-    // // }
-    // });
+    }
    
-    
 }
