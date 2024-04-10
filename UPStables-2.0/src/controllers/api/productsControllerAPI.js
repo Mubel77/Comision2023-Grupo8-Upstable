@@ -22,21 +22,30 @@ list: async (req, res) => {
   
   const url = `http://localhost:3000/products/api/list?page=${page}&limit=${limit}`
   const next = `http://localhost:3000/products/api/list?page=${parseInt(page)+1}`
-  let previous;
-  if(page > 1){
-    previous = `http://localhost:3000/products/api/list?page=${parseInt(page)-1}`
+  const previous = `http://localhost:3000/products/api/list?page=${parseInt(page)-1}`
+  
+  const countPage = (elements,limit)=> {
+    if (elements % limit == 0) {
+      return (elements/limit)
+    } else {
+      return (Math.ceil(elements/limit))
+    }
   }
 
   try {
-    await db.Producto.findAndCountAll(query)
+    const total = await db.Producto.findAll()
+    const totalLength = total.length
+    await db.Producto.findAll(query)
       .then((productos) => {
         return res.status(200).json({
-          data: productos,
-          countRows: productos.rows.length,
+          productos,
+          count: totalLength,
+          countRows: productos.length,
+          pages: countPage(totalLength,limit),
           status: 200,
           url : url,
-          previous : previous,
-          next : productos.rows.length < limit ? '' : next
+          previous : page > 1 ? previous : '',
+          next : productos.length < limit ? '' : next
         })
       })
   } catch (error) {
@@ -46,14 +55,45 @@ list: async (req, res) => {
 
 // Listar todos los UPS
 listUps: async (req, res) => {
+  let {page=1 ,limit=10 } = req.query;
+  limit = parseInt(limit);
+  const offSet = limit * (parseInt(page) -1);
+  const query = {
+    limit, 
+    offset:offSet,
+    include: [
+      { model: db.Marca, as: "marcas" },
+      { model: db.Imagen, as: "imagenes" },
+    ],
+    where: {id_categorias:1}
+  };
+  
+  const url = `http://localhost:3000/products/api/list/ups?page=${page}&limit=${limit}`
+  const next = `http://localhost:3000/products/api/list/ups?page=${parseInt(page)+1}`
+  const previous = `http://localhost:3000/products/api/list/ups?page=${parseInt(page)-1}`
+  
+  const countPage = (elements,limit)=> {
+    if (elements % limit == 0) {
+      return (elements/limit)
+    } else {
+      return (Math.ceil(elements/limit))
+    }
+  }
+
   try {
-    await db.Producto.findAndCountAll({
-      where: {id_categorias:1}
-    })
-      .then((productos) => {
+    const total = await db.Producto.findAll({where: {id_categorias:1}})
+    const totalLength = total.length
+    await db.Producto.findAll(query)
+      .then((upsList) => {
         return res.status(200).json({
-          data: productos,
+          upsList,
+          count: totalLength,
+          countRows: upsList.length,
+          pages: countPage(totalLength,limit),
           status: 200,
+          url : url,
+          previous : page > 1 ? previous : '',
+          next : upsList.length < limit ? '' : next
         })
       })
   } catch (error) {
@@ -63,14 +103,45 @@ listUps: async (req, res) => {
 
 // Listar todos los Estabilizadores
 listEstabilizadores: async (req, res) => {
+  let {page=1 ,limit=10 } = req.query;
+  limit = parseInt(limit);
+  const offSet = limit * (parseInt(page) -1);
+  const query = {
+    limit, 
+    offset:offSet,
+    include: [
+      { model: db.Marca, as: "marcas" },
+      { model: db.Imagen, as: "imagenes" },
+    ],
+    where: {id_categorias:2}
+  };
+  
+  const url = `http://localhost:3000/products/api/list/estabilizadores?page=${page}&limit=${limit}`
+  const next = `http://localhost:3000/products/api/list/estabilizadores?page=${parseInt(page)+1}`
+  const previous = `http://localhost:3000/products/api/list/estabilizadores?page=${parseInt(page)-1}`
+  
+  const countPage = (elements,limit)=> {
+    if (elements % limit == 0) {
+      return (elements/limit)
+    } else {
+      return (Math.ceil(elements/limit))
+    }
+  }
+
   try {
-    await db.Producto.findAndCountAll({
-      where: {id_categorias:2}
-    })
-      .then((productos) => {
+    const total = await db.Producto.findAll({where: {id_categorias:2}})
+    const totalLength = total.length
+    await db.Producto.findAll(query)
+      .then((estabilizadoresList) => {
         return res.status(200).json({
-          data: productos,
+          estabilizadoresList,
+          count: totalLength,
+          countRows: estabilizadoresList.length,
+          pages: countPage(totalLength,limit),
           status: 200,
+          url : url,
+          previous : page > 1 ? previous : '',
+          next : estabilizadoresList.length < limit ? '' : next
         })
       })
   } catch (error) {
@@ -80,12 +151,36 @@ listEstabilizadores: async (req, res) => {
 
 // Listar todas las Categorias
 listCategories: async (req, res) => {
+  let {page=1 ,limit=10 } = req.query;
+  limit = parseInt(limit);
+  const offSet = limit * (parseInt(page) -1);
+  const query = {
+    limit, 
+    offset:offSet
+  };
+  
+  const url = `http://localhost:3000/products/api/list/categories?page=${page}&limit=${limit}`
+  const next = `http://localhost:3000/products/api/list/categories?page=${parseInt(page)+1}`
+  const previous = `http://localhost:3000/products/api/list/categories?page=${parseInt(page)-1}`
+  
+  const countPage = (elements,limit)=> {
+    if (elements % limit == 0) {
+      return (elements/limit)
+    } else {
+      return (Math.ceil(elements/limit))
+    }
+  }
   try {
     await db.Categoria.findAndCountAll()
       .then((categorias) => {
         return res.status(200).json({
-          data: categorias,
+          categorias,
+          countRows: categorias.rows.length,
+          pages: countPage(categorias.count,limit),
           status: 200,
+          url : url,
+          previous : page > 1 ? previous : '',
+          next : categorias.rows.length < limit ? '' : next
         })
       })
   } catch (error) {

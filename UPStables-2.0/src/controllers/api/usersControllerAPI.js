@@ -15,10 +15,8 @@ const userControllerApi = {
 
     const url = `http://localhost:3000/users/api/allUsers?page=${page}&limit=${limit}`
     const next = `http://localhost:3000/users/api/allUsers?page=${parseInt(page)+1}`
-    let previous;
-    if(page > 1){
-      previous = `http://localhost:3000/users/api/allUsers?page=${parseInt(page)-1}`
-    }
+    const previous = `http://localhost:3000/users/api/allUsers?page=${parseInt(page)-1}`
+    
     const countPage = (elements,limit)=> {
       if (elements % limit == 0) {
         return (elements/limit)
@@ -34,8 +32,8 @@ const userControllerApi = {
         countRows : usersList.rows.length,
         pages: countPage(usersList.count,limit),
         url : url,
-        previous : previous,
-        next : usersList.rows.length < limit ? '' : next
+        previous : page > 1 ? previous : '',
+        next : page < countPage(usersList.count,limit) ? next : ''
       })
     } catch (error) {
       res.status(400).send(error.message)
@@ -52,10 +50,8 @@ const userControllerApi = {
 
     const url = `http://localhost:3000/users/api/allClients?page=${page}&limit=${limit}`
     const next = `http://localhost:3000/users/api/allClients?page=${parseInt(page)+1}`
-    let previous;
-    if(page > 1){
-      previous = `http://localhost:3000/users/api/allClients?page=${parseInt(page)-1}`
-    }
+    const previous = `http://localhost:3000/users/api/allClients?page=${parseInt(page)-1}`
+    
     const countPage = (elements,limit)=> {
       if (elements % limit == 0) {
         return (elements/limit)
@@ -71,8 +67,8 @@ const userControllerApi = {
         countRows : clientsList.rows.length,
         pages: countPage(clientsList.count,limit),
         url : url,
-        previous : previous,
-        next : clientsList.rows.length < limit ? '' : next
+        previous : page > 1 ? previous : '',
+        next : page < countPage(clientsList.count,limit) ? next : ''
       })
     } catch (error) {
       res.status(400).send(error.message)
@@ -88,10 +84,8 @@ const userControllerApi = {
 
     const url = `http://localhost:3000/users/api/allAdmin?page=${page}&limit=${limit}`
     const next = `http://localhost:3000/users/api/allAdmin?page=${parseInt(page)+1}`
-    let previous;
-    if(page > 1){
-      previous = `http://localhost:3000/users/api/allAdmin?page=${parseInt(page)-1}`
-    }
+    const previous = `http://localhost:3000/users/api/allAdmin?page=${parseInt(page)-1}`
+    
     const countPage = (elements,limit)=> {
       if (elements % limit == 0) {
         return (elements/limit)
@@ -107,8 +101,8 @@ const userControllerApi = {
         countRows : adminList.rows.length,
         pages: countPage(adminList.count,limit),
         url : url,
-        previous : previous,
-        next : adminList.rows.length < limit ? '' : next
+        previous : page > 1 ? previous : '',
+        next : page < countPage(adminList.count,limit) ? next : ''
       })
     } catch (error) {
       res.status(400).send(error.message)
@@ -124,10 +118,8 @@ const userControllerApi = {
 
     const url = `http://localhost:3000/users/api/allSellers?page=${page}&limit=${limit}`
     const next = `http://localhost:3000/users/api/allSellers?page=${parseInt(page)+1}`
-    let previous;
-    if(page > 1){
-      previous = `http://localhost:3000/users/api/allSellers?page=${parseInt(page)-1}`
-    }
+    const previous = `http://localhost:3000/users/api/allSellers?page=${parseInt(page)-1}`
+    
     const countPage = (elements,limit)=> {
       if (elements % limit == 0) {
         return (elements/limit)
@@ -143,8 +135,8 @@ const userControllerApi = {
         countRows : sellersList.rows.length,
         pages: countPage(sellersList.count,limit),
         url : url,
-        previous : previous,
-        next : sellersList.rows.length < limit ? '' : next
+        previous : page > 1 ? previous : '',
+        next : page < countPage(sellersList.count,limit) ? next : ''
       })
     } catch (error) {
       res.status(400).send(error.message)
