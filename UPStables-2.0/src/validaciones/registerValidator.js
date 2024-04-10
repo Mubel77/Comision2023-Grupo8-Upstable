@@ -121,7 +121,7 @@ const validateRegisterAdmin = [
       return value == req.body.passwordConfirmation;
     })
     .withMessage("Los password no coinciden"),
-  body("image")
+  body("imagen")
     .custom((value, { req }) => {
       if (req.errorValidationImage) {
         return false;

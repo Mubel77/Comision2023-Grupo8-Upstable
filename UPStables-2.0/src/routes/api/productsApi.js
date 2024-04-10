@@ -8,8 +8,20 @@ const productsControllerAPI = require ('../../controllers/api/productsController
 //Listar todos los productos 
 router.get('/list', productsControllerAPI.list)
 
+//Listar todos los UPS
+router.get('/list/ups', productsControllerAPI.listUps)
+
+//Listar todos los Estabilizadores
+router.get('/list/estabilizadores', productsControllerAPI.listEstabilizadores)
+
+//Listar todas las Categorias
+router.get('/list/categories', productsControllerAPI.listCategories)
+
 //Dashboard de productos
-router.get('/dashboard', productsControllerAPI.dashboard)
+//router.get('/dashboard', productsControllerAPI.dashboard)
+
+//Detalle de producto
+router.get('/detail/:id', productsControllerAPI.detail)
 
 //Crear un producto
 router.post('/create', upload.array('imagenes',3), validateCreation, productsControllerAPI.create)
