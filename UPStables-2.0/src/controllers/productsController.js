@@ -327,22 +327,34 @@ Ofertas: function (req, res, next) {
         });
 },
 
-  delete: function (req, res, next) {
-    const { id } = req.params;
-    db.Producto.findByPk(id)({
-      include: [
-        { model: db.Categoria, as: "categorias" }, // Relación con Categoría
-        { model: db.Marca, as: "marcas" }, // Relación con Marca
-        { model: db.Imagen, as: "imagenes" }, // Relación con Imagen
-      ],
+delete: async (req, res) => {
+  const id = parseInt(req.params.id)
+  let pathFile;
+  const producto = await db.Producto.findByPk(
+    id,
+    {include:[{ model: db.Imagen, as: "imagenes" }]}
+  )
+  console.log(producto.imagenes)
+  if(producto.imagenes) {
+  producto.imagenes.forEach(imagen => {
+    db.Imagen.destroy({
+      where: {id_producto:id}
     })
-    then(eliminar )
-    fs.unlink(`./public/images/${product.imagen}`, (err) => {
-      if (err) throw err;
-      //console.log(`borrar el archivo ${product.imagen}`);
-    });
+    pathFile = path.join('public',imagen.ubicacion,'/',imagen.nombre)
+    fs.unlink(pathFile, (err) => {
+      if (err) throw new Error;
+    })
+  })
+ }
+  try {
+    const removeProduct = await db.Producto.destroy({
+      where: {id}
+    })
     res.redirect("/products/dashboard");
-  },
+  } catch (error) {
+    console.log(error);
+  }
+},
 
   cart: function (req, res, next) {
     db.Producto.findAll({
