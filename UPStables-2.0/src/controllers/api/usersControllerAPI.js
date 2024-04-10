@@ -6,6 +6,7 @@ const { parse } = require("@formkit/tempo");
 
 
 const userControllerApi = {
+  // Listar todos los usuarios
   listUsers: async (req, res) => {
     let {page=1 ,limit=5 } = req.query;
     limit = parseInt(limit);
@@ -16,14 +17,22 @@ const userControllerApi = {
     const next = `http://localhost:3000/users/api/allUsers?page=${parseInt(page)+1}`
     let previous;
     if(page > 1){
-    previous = `http://localhost:3000/users/api/allUsers?page=${parseInt(page)-1}`
-  }
+      previous = `http://localhost:3000/users/api/allUsers?page=${parseInt(page)-1}`
+    }
+    const countPage = (elements,limit)=> {
+      if (elements % limit == 0) {
+        return (elements/limit)
+      } else {
+        return (Math.ceil(elements/limit))
+      }
+    }
 
     try {
       const usersList = await db.Usuario.findAndCountAll(query)
       res.status(200).json({
-        countRows : usersList.rows.length,
         usersList,
+        countRows : usersList.rows.length,
+        pages: countPage(usersList.count,limit),
         url : url,
         previous : previous,
         next : usersList.rows.length < limit ? '' : next
@@ -34,64 +43,115 @@ const userControllerApi = {
     
   },
 
+  // Listar todos los clientes
   listClient: async (req, res) => {
     let {page=1 ,limit=5 } = req.query;
     limit = parseInt(limit);
     const offSet = limit * (parseInt(page) -1);
-    const query = {limit, offset:offSet, include:{association:'roles'}};
+    const query = {limit, offset:offSet, include:{association:'roles'}, where:{rol_id : 1}};
 
     const url = `http://localhost:3000/users/api/allClients?page=${page}&limit=${limit}`
     const next = `http://localhost:3000/users/api/allClients?page=${parseInt(page)+1}`
     let previous;
     if(page > 1){
-    previous = `http://localhost:3000/users/api/allClients?page=${parseInt(page)-1}`
-  }
+      previous = `http://localhost:3000/users/api/allClients?page=${parseInt(page)-1}`
+    }
+    const countPage = (elements,limit)=> {
+      if (elements % limit == 0) {
+        return (elements/limit)
+      } else {
+        return (Math.ceil(elements/limit))
+      }
+    }
 
     try {
-      const usersList = await db.Usuario.findAndCountAll( query,
-        {where : {rol_id : 1}}
-      )
+      const clientsList = await db.Usuario.findAndCountAll(query)
       res.status(200).json({
-        countRows : usersList.rows.length,
-        usersList,
+        clientsList,
+        countRows : clientsList.rows.length,
+        pages: countPage(clientsList.count,limit),
         url : url,
         previous : previous,
-        next : usersList.rows.length < limit ? '' : next
+        next : clientsList.rows.length < limit ? '' : next
       })
     } catch (error) {
       res.status(400).send(error.message)
     }
   },
 
+  // Listar todos los administradores
   listAdmin: async (req, res) => {
     let {page=1 ,limit=5 } = req.query;
     limit = parseInt(limit);
     const offSet = limit * (parseInt(page) -1);
-    const query = {limit, offset:offSet, include:{association:'roles'}};
+    const query = {limit, offset:offSet, include:{association:'roles'}, where : {rol_id : {[Op.gt]:1}}};
 
     const url = `http://localhost:3000/users/api/allAdmin?page=${page}&limit=${limit}`
     const next = `http://localhost:3000/users/api/allAdmin?page=${parseInt(page)+1}`
     let previous;
     if(page > 1){
-    previous = `http://localhost:3000/users/api/allAdmin?page=${parseInt(page)-1}`
-  }
+      previous = `http://localhost:3000/users/api/allAdmin?page=${parseInt(page)-1}`
+    }
+    const countPage = (elements,limit)=> {
+      if (elements % limit == 0) {
+        return (elements/limit)
+      } else {
+        return (Math.ceil(elements/limit))
+      }
+    }
 
     try {
-      const usersList = await db.Usuario.findAndCountAll( query,
-        {where : {rol_id : 2}}
-      )
+      const adminList = await db.Usuario.findAndCountAll(query)
       res.status(200).json({
-        countRows : usersList.rows.length,
-        usersList,
+        adminList,
+        countRows : adminList.rows.length,
+        pages: countPage(adminList.count,limit),
         url : url,
         previous : previous,
-        next : usersList.rows.length < limit ? '' : next
+        next : adminList.rows.length < limit ? '' : next
       })
     } catch (error) {
       res.status(400).send(error.message)
     }
   },
 
+  // Listar todos los vendedores
+  listVendedores: async (req, res) => {
+    let {page=1 ,limit=5 } = req.query;
+    limit = parseInt(limit);
+    const offSet = limit * (parseInt(page) -1);
+    const query = {limit, offset:offSet, include:{association:'roles'}, where : {rol_id : 3}};
+
+    const url = `http://localhost:3000/users/api/allSellers?page=${page}&limit=${limit}`
+    const next = `http://localhost:3000/users/api/allSellers?page=${parseInt(page)+1}`
+    let previous;
+    if(page > 1){
+      previous = `http://localhost:3000/users/api/allSellers?page=${parseInt(page)-1}`
+    }
+    const countPage = (elements,limit)=> {
+      if (elements % limit == 0) {
+        return (elements/limit)
+      } else {
+        return (Math.ceil(elements/limit))
+      }
+    }
+
+    try {
+      const sellersList = await db.Usuario.findAndCountAll(query)
+      res.status(200).json({
+        sellersList,
+        countRows : sellersList.rows.length,
+        pages: countPage(sellersList.count,limit),
+        url : url,
+        previous : previous,
+        next : sellersList.rows.length < limit ? '' : next
+      })
+    } catch (error) {
+      res.status(400).send(error.message)
+    }
+  },
+
+  //Detalle del usuario
   userDetail: async (req, res) => {
     const id = parseInt(req.params.id)
 
@@ -113,6 +173,7 @@ const userControllerApi = {
     }
   },
 
+  //Registrar un cliente
   registerClient: async (req, res) => {
     const { nombre, apellido, email, password, fecha_nacimiento, nombre_calle, numero_calle } = req.body;
     const errors = validationResult(req)
@@ -166,6 +227,7 @@ const userControllerApi = {
     }
   },
 
+  //Registrar un administrador
   registerAdmin: async (req, res) => {
     const { nombre, apellido, email, password, fecha_nacimiento, nombre_calle, numero_calle, rol_id } = req.body;
     const errors = validationResult(req)
@@ -219,6 +281,7 @@ const userControllerApi = {
     }
   },
 
+  //Actualizar datos del cliente
   updateClient: async (req, res) => {
     const {
       nombre, apellido, prefijo, numero, numero_calle, nombre_calle, codigo_postal, localidad, provincia, email, fecha_nacimiento,
@@ -293,6 +356,7 @@ const userControllerApi = {
     }
   },
 
+  //Actualizar datos del administrador
   updateAdmin: async (req, res) => {
     const id = parseInt(req.params.id)
     const errors = validationResult(req);

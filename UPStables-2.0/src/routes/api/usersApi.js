@@ -11,10 +11,13 @@ const userControllerApi = require('../../controllers/api/usersControllerAPI')
 router.get('/allUsers', userControllerApi.listUsers)
 
 // Listar todos los clientes
-router.get('/allClients', userControllerApi.listUsers)
+router.get('/allClients', userControllerApi.listClient)
 
 // Listar todos los admin
 router.get('/allAdmin', userControllerApi.listAdmin)
+
+// Listar todos los vendedores
+router.get('/allSellers', userControllerApi.listVendedores)
 
 // Detalle del usuario
 router.get('/userDetail/:id', userControllerApi.userDetail)
