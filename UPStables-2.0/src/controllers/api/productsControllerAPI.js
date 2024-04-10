@@ -7,21 +7,36 @@ const path = require('path')
 const productsControllerAPI = {
 // Listar todos los productos
 list: async (req, res) => {
+  let {page=1 ,limit=10 } = req.query;
+  limit = parseInt(limit);
+  const offSet = limit * (parseInt(page) -1);
+  const query = {
+    limit, 
+    offset:offSet,
+    include: [
+      { model: db.Categoria, as: "categorias" },
+      { model: db.Marca, as: "marcas" },
+      { model: db.Imagen, as: "imagenes" },
+    ]
+  };
+  
+  const url = `http://localhost:3000/products/api/list?page=${page}&limit=${limit}`
+  const next = `http://localhost:3000/products/api/list?page=${parseInt(page)+1}`
+  let previous;
+  if(page > 1){
+    previous = `http://localhost:3000/products/api/list?page=${parseInt(page)-1}`
+  }
+
   try {
-    await db.Producto.findAll({
-      include: [
-        { model: db.Categoria, as: "categorias" },
-        { model: db.Marca, as: "marcas" },
-        { model: db.Imagen, as: "imagenes" },
-      ],
-    })
+    await db.Producto.findAndCountAll(query)
       .then((productos) => {
         return res.status(200).json({
           data: productos,
-          total: productos.length,
+          countRows: productos.rows.length,
           status: 200,
-          url:'/api/productsList',
-          casa:"direccion"
+          url : url,
+          previous : previous,
+          next : productos.rows.length < limit ? '' : next
         })
       })
   } catch (error) {
@@ -29,36 +44,86 @@ list: async (req, res) => {
   }
 },
 
-// Dashboard de productos paginado, incluye busqueda por Marca
-dashboard: async (req, res) => {
-  let {page=1 ,limit=10 , keywords} = req.query;
-  limit = parseInt(limit);
-  const offSet = limit * (parseInt(page) -1);
-  const query = {limit, offset:offSet, include:{association:'marcas'}};
-  
-  const url = `http://localhost:3000/products/api/dashboard?page=${page}&limit=${limit}&keywords=${keywords}`
-  const next = `http://localhost:3000/products/api/dashboard?page=${parseInt(page)+1}`
-  let previous;
-  if(page > 1){
-    previous = `http://localhost:3000/products/api/dashboard?page=${parseInt(page)-1}`
-  }
- 
+// Listar todos los UPS
+listUps: async (req, res) => {
   try {
-    await db.Producto.findAndCountAll(query,
-    {where:{marca:{[Op.like]:`%${keywords}%`}}})
+    await db.Producto.findAndCountAll({
+      where: {id_categorias:1}
+    })
       .then((productos) => {
-        res.status(200).json({
-        countRows : productos.rows.length,
-        productos,
-        url : url,
-        previous : previous,
-        next : productos.rows.length < limit ? '' : next
+        return res.status(200).json({
+          data: productos,
+          status: 200,
         })
       })
   } catch (error) {
     res.status(400).send(error.message)
   }
 },
+
+// Listar todos los Estabilizadores
+listEstabilizadores: async (req, res) => {
+  try {
+    await db.Producto.findAndCountAll({
+      where: {id_categorias:2}
+    })
+      .then((productos) => {
+        return res.status(200).json({
+          data: productos,
+          status: 200,
+        })
+      })
+  } catch (error) {
+    res.status(400).send(error.message)
+  }
+},
+
+// Listar todas las Categorias
+listCategories: async (req, res) => {
+  try {
+    await db.Categoria.findAndCountAll()
+      .then((categorias) => {
+        return res.status(200).json({
+          data: categorias,
+          status: 200,
+        })
+      })
+  } catch (error) {
+    res.status(400).send(error.message)
+  }
+},
+
+// Dashboard de productos paginado, incluye busqueda por Marca
+// dashboard: async (req, res) => {
+//   let {page=1 ,limit=10 , keywords} = req.query;
+//   limit = parseInt(limit);
+//   const offSet = limit * (parseInt(page) -1);
+//   const query = {limit, offset:offSet, include:{association:'marcas'},
+//   where:{marcas: {marca:{[Op.like]:`%${keywords}%`}}}
+//   };
+  
+//   const url = `http://localhost:3000/products/api/dashboard?page=${page}&limit=${limit}&keywords=${keywords}`
+//   const next = `http://localhost:3000/products/api/dashboard?page=${parseInt(page)+1}`
+//   let previous;
+//   if(page > 1){
+//     previous = `http://localhost:3000/products/api/dashboard?page=${parseInt(page)-1}`
+//   }
+ 
+//   try {
+//     await db.Producto.findAndCountAll(query)
+//       .then((productos) => {
+//         res.status(200).json({
+//         countRows : productos.rows.length,
+//         productos,
+//         url : url,
+//         previous : previous,
+//         next : productos.rows.length < limit ? '' : next
+//         })
+//       })
+//   } catch (error) {
+//     res.status(400).send(error.message)
+//   }
+// },
 
 // Detalle del producto
 detail: async (req, res) => {
