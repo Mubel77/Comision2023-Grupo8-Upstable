@@ -1,10 +1,10 @@
 import '../App.css'
-
+import Header from "./Header"
 function App() {
 
   return (
     <>
-      <header className="header">
+      {/* <header className="header">
         <div className="div_header">
           <h1>LOGO</h1>
         </div>
@@ -14,7 +14,8 @@ function App() {
         <div className="div_header">
           <h1>Iconos</h1>
         </div>
-      </header>
+      </header> */}
+      <Header/>
 
       <main className="main">
         <section className="column-izq">
