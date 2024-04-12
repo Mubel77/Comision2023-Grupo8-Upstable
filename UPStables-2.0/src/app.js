@@ -4,7 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors')
-const corsOptions = { origin:'*'}
+//const corsOptions = { origin:'*'}
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -36,7 +36,10 @@ app.use(session({
 app.use(rememberMe);
 
 // Cors configuraciones de la apis
-
+const corsOptions = {
+  origin: 'http://localhost:5173', // Reemplaza esto con el origen de tu aplicación React
+  credentials: true // Incluye las cookies en las solicitudes
+};
 
 app.use(cors(corsOptions));
 let allowCrossDomain = function(req, res, next) {
@@ -44,6 +47,8 @@ let allowCrossDomain = function(req, res, next) {
     res.header("Access-Control-Allow-Methods", "OPTIONS, POST, GET, PUT, DELETE");
     res.header('Access-Control-Allow-Headers', "*");
     res.header("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With")
+    res.header('Access-Control-Allow-Headers', "*");
+    res.header('Access-Control-Allow-Credentials', 'true'); 
     next();
   }
 

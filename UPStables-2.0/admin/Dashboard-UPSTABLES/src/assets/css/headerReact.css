@@ -82,7 +82,7 @@ header a{
     
 } 
     .icons_nav img{
-       
+        margin-top: 15px;
         border-radius: 180px;
         width: 40px;
         height:40px;
