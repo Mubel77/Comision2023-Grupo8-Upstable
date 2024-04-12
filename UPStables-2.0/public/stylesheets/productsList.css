@@ -6,6 +6,7 @@
 .main_listProducts {
     display: flex;
     flex-wrap: wrap;
+    height: 460px;
 }
 
 .box-image-listProducts {
@@ -43,11 +44,16 @@
 
 .products_list_descuento {
     background-color: var(--color-celeste);
-    width: 60px;
+    width: 70px;
 }
 
 .products_list_marca {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 16px;
+}
+.products_list_categoria{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px; 
 }

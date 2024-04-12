@@ -1,0 +1,39 @@
+<%- include('../partials/head.ejs') %>
+
+<body>
+    <%- include('../partials/header.ejs') %>
+    <main>
+        <section class="container-articulos">
+            <% productos.forEach(producto => { %>
+                <article class="article_productos article_listProducts">
+                    <a class="main-enlace main_listProducts " href="/products/productDetail/<%= producto.id %>" 
+                    ;">
+                    <div class="box-image-listProducts">
+                        <% for(x=0; x<producto.imagenes.length; x=producto.imagenes.length) { %>
+                        <img class="image-listProducts"
+                            src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>"
+                            alt="Imagen Producto">
+                        <% } %>
+                    </div>
+                    <div class="products_list">
+                        <% if (producto.descuento > 0) { %>
+                        <p class="products_list_precio">
+                            $<%= (producto.precio) - ((producto.precio * producto.descuento) / 100) %>
+                        </p>
+                        <p class="products_list_precio-off"><%= "$" + producto.precio %></p>
+                        <p class="products_list_descuento"><%= producto.descuento + "% OFF" %></p>
+                        <% } else { %>
+                        <p class="products_list_precio">$<%= producto.precio %></p>
+                        <% } %>
+                        <p class="products_list_marca"><%= producto.marcas.marca %> <%= producto.modelo %></p>
+                        <p class="products_list_categoria"> Categoría: <%= producto.categorias.categoria %></p>
+                    </div>
+                </a>
+            </article>
+            <% }) %>
+        </article>
+    </main>
+    <%- include('../partials/footer.ejs') %>
+</body>
+
+</html>

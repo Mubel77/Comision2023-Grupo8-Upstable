@@ -1,4 +1,6 @@
 import '../App.css'
+import './componentsListProduct'
+import Product from './componentsListProduct'
 import Header from "./Header"
 function App() {
 
@@ -83,56 +85,9 @@ function App() {
             </div>
           </article>
 
-          <article className="article-2">
-            <div className="list-entidades">
-              <ul>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-              </ul>
-            </div>
-            <div className="list-entidades">
-              <ul>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-              </ul>
-            </div>
-          </article>
+          <Product>
+
+          </Product>
 
           <article className="article-3">
             <div className="box-lastCreation">

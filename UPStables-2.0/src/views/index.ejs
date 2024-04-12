@@ -27,24 +27,29 @@
                             <!-- se uso un forEach para recorrer el array y mostrar todos los elementos con los metodos solicitados-->
                             <% productos.forEach(producto=> {%>
                                 
-                                <% if (contador < 3) {%>
+                                <% if (contador < 10) {%>
                                     <% for(x=0; x<producto.imagenes.length; x=producto.imagenes.length) { %>
-                                        <article class="article_productos">
-                                            <a class="main-enlace" href="/products/productDetail/<%= producto.id %>">
-                                                <img class="imagen-producto"
-                                                    src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>"
-                                                    alt="foto-producto">
-                                                <p class="p-detalle-producto">
-                                                    <%= producto.categoria %>
-                                                </p>
-                                                <p class="p-detalle-producto">
-                                                    <%= producto.marca %>
-                                                </p>
-                                                <p class="p-detalle-producto">
-                                                    <%= producto.modelo %>
-                                                </p>
-                                                <p class="h3-precio">$<%= producto.precio %>
-                                                </p>
+                                        <article class="article_productos article_listProducts">
+                                            <a class="main-enlace main_listProducts" href="/products/productDetail/<%= producto.id %>">
+                                                <div class="box-image-listProducts">
+                                                <% for(x=0; x<producto.imagenes.length; x=producto.imagenes.length) { %>
+                                                    <img class="image-listProducts" src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>"
+                                                    alt="Imagen Publicidad">
+                                                <% } %>
+                                                </div>
+                                                <div class="products_list">
+                                                    <% if (producto.descuento > 0) { %>
+                                                        <p class="products_list_precio">
+                                                            $<%= (producto.precio) - ((producto.precio * producto.descuento) / 100) %>
+                                                        </p>
+                                                        <p class="products_list_precio-off"><%= "$" + producto.precio %></p>
+                                                        <p class="products_list_descuento"><%= producto.descuento + "% OFF" %></p>
+                                                        <% } else { %>
+                                                        <p class="products_list_precio">$<%= producto.precio %></p>
+                                                        <% } %>
+                                                        <p class="products_list_marca"><%= producto.marcas.marca %> <%= producto.modelo %></p>
+                                                        <p class="products_list_categoria"> Categoría: <%= producto.categorias.categoria %></p>
+                                                </div>
                                             </a>
                                         </article>
                                     <% } %>
