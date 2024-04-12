@@ -61,12 +61,16 @@
 }
 
 /* //////////--- MAIN ---\\\\\\\\\\ */
+body{
+  background-image: url("http://localhost:3000/images/circuit_bg 14.png");
+  background-color: #D1D4DE;
+  
+}
 .main {
   width: 100%;
   display: flex;
   border: white 2px solid;
-  /* background-image: url(images/circuit_bg.webp);
-  background-color: #D1D4DE; */
+ 
 }
 .column-izq {
   width: 30%;
@@ -85,7 +89,6 @@
 .article-1 {
   display: flex;
   flex-direction: column;
-  border: white 2px solid;
 }
 .div_box-counts {
   display: flex;
@@ -93,12 +96,17 @@
   padding: 10px;
 }
 .box-counts {
+  background-color: #D1D4DE;
   width: 20%;
-  /* border: orange 2px solid; */
+  border-bottom: #2DD4DA 2px solid;
+  border-right: #2DD4DA 3px solid;
   border-radius: 5px;
-  box-shadow: 0 0 5px rgba(230, 227, 227, 0.5);;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 1);;
   padding: 5px;
 }
+  .box-counts h3{
+    color: black;
+  }
 
 .article-2 {
   display: flex;

@@ -3,22 +3,14 @@ import '../App.css'
 import Header from "./Header"
 import Users from './componenteListUsarios'
 import Product from './componentsListProduct'
-
+import BoxCountData from './BoxCountData'
 function App() {
 
   return (
     <>
-      {/* <header className="header">
-        <div className="div_header">
-          <h1>LOGO</h1>
-        </div>
-        <div className="div_header">
-          <input type="text" placeholder="Buscador" />
-        </div>
-        <div className="div_header">
-          <h1>Iconos</h1>
-        </div>
-      </header> */}
+    <body>
+
+  
       <Header/>
 
       <main className="main">
@@ -48,44 +40,9 @@ function App() {
         </section>
 
         <section className="column-der">
-          <article className="article-1">
-            <div className="div_box-counts">
-              <div className="box-counts">
-                <h3>Count</h3>
-                <h3>1</h3>
-              </div>
-              <div className="box-counts">
-                <h3>Count</h3>
-                <h3>2</h3>
-              </div>
-              <div className="box-counts">
-                <h3>Count</h3>
-                <h3>3</h3>
-              </div>
-              <div className="box-counts">
-                <h3>Count</h3>
-                <h3>4</h3>
-              </div>
-            </div>
-            <div className="div_box-counts">
-              <div className="box-counts">
-                <h3>Count</h3>
-                <h3>5</h3>
-              </div>
-              <div className="box-counts">
-                <h3>Count</h3>
-                <h3>5</h3>
-              </div>
-              <div className="box-counts">
-                <h3>Count</h3>
-                <h3>5</h3>
-              </div>
-                <div className="box-counts">
-                  <h3>Count</h3>
-                  <h3>5</h3>
-                </div>
-            </div>
-          </article>
+        <article className="article-1">
+        <BoxCountData/>
+        </article>
           <article className="article-2 clase_de_fondo">
            <Product></Product>
            <Users></Users>
@@ -111,6 +68,7 @@ function App() {
          <h1>UPSTABLES</h1>
         </div>
       </footer>
+      </body>
     </>
   )
 }
