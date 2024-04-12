@@ -2,6 +2,7 @@ import '../App.css'
 
 import Header from "./Header"
 import Users from './componenteListUsarios'
+import Product from './componentsListProduct'
 
 function App() {
 
