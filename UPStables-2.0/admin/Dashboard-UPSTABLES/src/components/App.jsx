@@ -1,4 +1,5 @@
 import '../App.css'
+import SideBar from './SideBar'
 import './componentsListProduct'
 import Product from './componentsListProduct'
 
@@ -20,28 +21,7 @@ function App() {
 
       <main className="main">
         <section className="column-izq">
-            <ul>
-              <li>
-                <i></i>
-                <p>Mi Cuenta</p>
-              </li>
-              <li>
-                <i></i>
-                <p>Editar Productos</p>
-              </li>
-              <li>
-                <i></i>
-                <p>Editar Empleados</p>
-              </li>
-              <li>
-                <i></i>
-                <p>Editar perfil</p>
-              </li>
-              <li>
-                <i></i>
-                <p>Salir</p>
-              </li>
-            </ul>
+            <SideBar />
         </section>
 
         <section className="column-der">
