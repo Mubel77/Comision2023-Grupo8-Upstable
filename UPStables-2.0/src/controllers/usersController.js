@@ -26,7 +26,7 @@ const userController = {
     } else {
       const { nombre, apellido, email, password, fecha_nacimiento } = req.body;
       const nuevoUsuario = {
-        rol_id: 1,
+        rol_id: 2,
         nombre: nombre.trim(),
         apellido: apellido.trim(),
         email: email.trim(),

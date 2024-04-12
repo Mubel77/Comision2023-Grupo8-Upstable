@@ -1,10 +1,11 @@
 import '../App.css'
 
+import Header from "./Header"
 function App() {
 
   return (
     <>
-      <header className="header">
+      {/* <header className="header">
         <div className="div_header">
           <h1>LOGO</h1>
         </div>
@@ -14,7 +15,8 @@ function App() {
         <div className="div_header">
           <h1>Iconos</h1>
         </div>
-      </header>
+      </header> */}
+      <Header/>
 
       <main className="main">
         <section className="column-izq">
@@ -82,56 +84,6 @@ function App() {
             </div>
           </article>
 
-          <article className="article-2">
-            <div className="list-entidades">
-              <ul>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-              </ul>
-            </div>
-            <div className="list-entidades">
-              <ul>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-                <li>
-                  <img src="" alt="" />
-                  <p>Entidad 1</p>
-                </li>
-              </ul>
-            </div>
-          </article>
 
           <article className="article-3">
             <div className="box-lastCreation">
