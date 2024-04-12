@@ -1,27 +1,32 @@
 import {useState, useEffect} from 'react'
 import '../App.css'
+import {useSearchParams} from 'react-router-dom'
+
 function Header() {
+    
 const [usuario, setUsuario] = useState();
+const [searchParams] = useSearchParams()
+const id = searchParams.get('id')
+
 useEffect(()=>{
     async function fetchUsuario(){
         try {
-            const response = await fetch('http://localhost:3000/users/api/allUsers');
+            const response = await fetch(`http://localhost:3000/users/api/userDetail/${id}`);
             const data = await response.json()
             //console.log("esto es api:", data.usersList.rows)
-            setUsuario(data.usersList.rows)
+            setUsuario(data.user)
         } catch (error) {
             console.error('Error al obtener los datos del usuario:', error);
         }
     }
     fetchUsuario()
-},[])
-console.log("esto es usuario:",usuario)
+},[id])
+
     return (
-        
+      
         <>
-        {console.log("esto es usuario dentro:",usuario)}
       <header>
-    <a className="link_to_home_header" href="/">
+    <a className="link_to_home_header" href="http://localhost:3000/">
         <img className="logo_header" src="/images/logo_upstables.jpg" alt="logo_upstables"/>
         <div className="titular">
             <h1 className="titulo">UPSTABLES</h1>
@@ -29,14 +34,14 @@ console.log("esto es usuario:",usuario)
         </div>
     </a>
 
-    {/* <div className="buscador_header">
+    <div className="buscador_header">
         <form>
             <input type="text" name="buscador" placeholder="¿Qué estás buscando?"/>
             <div className="lupa_header">
                 <i className="fa-solid fa-magnifying-glass"></i>
             </div>
         </form>
-    </div> */}
+    </div>
 
     <nav className="nav_header">
         <div className="burguer_header">
@@ -45,23 +50,21 @@ console.log("esto es usuario:",usuario)
 
         
                 <div className="icons_nav" id="img_user">
-                    {usuario && usuario.map((user)=>{
-                        return(
+                    {usuario&&(
 
                         <>
-                        {console.log("esto es userr:",user)}
-                        <a href="/users/perfilAdmin" key={user.id}>
-                        <img src={user.imagen} alt="foto de perfil"/>
+                        <a href="http://localhost:3000/users/perfilAdmin" key={usuario.id}>
+                        <img src={`http://localhost:3000${usuario.imagen}`} alt="foto de perfil"/>
                         <p className="texto_nav">¡ Hola !<br/>
-                            {user.nombre}
+                            {usuario.nombre}
                         </p>
                         </a>
                         
                         </>
                         )
-                    })
-                       
                     }
+                       
+                    
                     
                 </div>
 

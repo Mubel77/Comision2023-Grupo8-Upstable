@@ -1,6 +1,5 @@
 import '../App.css'
-import './componentsListProduct'
-import Product from './componentsListProduct'
+
 import Header from "./Header"
 import Users from './componenteListUsarios'
 

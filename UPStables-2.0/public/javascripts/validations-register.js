@@ -75,7 +75,7 @@ window.onload = function(){
                 sinError=true;
 
                 files.forEach(file => {
-                    if (!filtro.test(file.name)) {
+                    if (input === variables.imagen && !filtro.test(file.name)) {
                         mostrarError(input, "El formato elegido no es válido, solo se admite 'JPG', 'JPGE', 'PNG', 'GIF'");
                         input.style.borderColor = "red";
                         sinError = false;
