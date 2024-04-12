@@ -5,6 +5,7 @@
   text-align: center;
 }
 
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -99,36 +100,35 @@
   box-shadow: 0 0 5px rgba(230, 227, 227, 0.5);;
   padding: 5px;
 }
-
+/* lista de usuarios y productos */
 .article-2 {
   display: flex;
   justify-content: space-around;
   border: white 2px solid;
 }
-.clase_de_fondo{
-  background-color: #ffffff;
-}
 .list-entidades {
-  overflow:auto;
+  overflow: auto;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   height: 500px;
   width: 100%;
-  padding: 5px;
-  margin: 0px 10px;
-  border: yellow 1px solid
+  /* padding: 5px; */
+  /* margin: 0px 3px; */
+  /* border: yellow 1px solid; */
+  align-content: flex-start;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
 }
-.entidades-estilos {
-  border: 1px solid #ddd; 
-  background-color: white;
-  cursor: pointer;
-}
-.entidades-estilos{
-  box-shadow: 0px 0px 10px rgb(100, 100, 100);
-    background-color: rgba(33,33,33,0.3);
-    color: white;
-    transform: scale(1.01);
-    transition: background-color 2.5s, color 1s,transform 1s;
+.box_li {
+  /* border: 1px solid black; */
+  /* padding: 5px; */
+  /* margin: 3px 0px; */
+  display: flex;
+  flex-direction: row;
+  /* width: 80%; */
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 
 .article-3 {
@@ -145,13 +145,6 @@
   padding: 5px;
 }
 
-.box_li {
-  border: 1px solid black;
-  padding: 5px;
-  margin: 3px 0px;
-  display: flex;
-  flex-direction: row;
-}
 /* //////////--- FOOTER ---\\\\\\\\\\ */
 .footer {
   width: 100%;

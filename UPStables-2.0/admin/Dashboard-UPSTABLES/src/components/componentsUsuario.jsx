@@ -22,7 +22,7 @@ function Usuario (props) {
       }
       return (
         <>
-        <div className='caja_imagenes'>
+        <div className='caja_imagen_usuario'>
          <img style={estilo} src={`http://localhost:3000${props.imagen}`} alt="Imagen de Producto" />
         </div>
         <div className='caja_de_texto'>
