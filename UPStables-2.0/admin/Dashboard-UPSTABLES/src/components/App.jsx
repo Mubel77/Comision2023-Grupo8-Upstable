@@ -1,4 +1,6 @@
 import '../App.css'
+import LastProduct from './LastProduct'
+import LastAdmin from './LastAdmin'
 import SideBar from './SideBar'
 
 import Header from "./Header"
@@ -66,14 +68,16 @@ function App() {
 
 
           <article className="article-3">
-            <div className="box-lastCreation">
+            {/* <div className="box-lastCreation">
               <img src="" alt=""/>
               <p>Ultimo Producto</p>
-            </div>
-            <div className="box-lastCreation">
+            </div> */}
+            <LastProduct/>
+            {/* <div className="box-lastCreation">
               <img src="" alt=""/>
               <p>Ultimo Admin</p>
-            </div>
+            </div> */}
+            <LastAdmin/>
           </article>
         </section>
       </main>
