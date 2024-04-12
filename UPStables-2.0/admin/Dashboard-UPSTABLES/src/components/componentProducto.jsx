@@ -26,19 +26,23 @@ function Producto (props) {
         stock: 0,
         imagenes: []
     };
+    const estilo = {
+        width: '100px',
+        height: "100px"
+      }
     return (
-        <div className="producto">
+        <>
+        <div className='caja_imagenes'>
+         {props.imagenes && props.imagenes.length > 0 && (
+         <img style={estilo} src={`http://localhost:3000${props.imagenes[0].ubicacion}/${props.imagenes[0].nombre}`} alt="Imagen de Producto" />
+            )}
+        </div>
+        <div className='caja_de_texto'>
             <p>Modelo: {props.modelo}</p>
             <p>Marca: {props.marca}</p>
             <p>Potencia: {props.potencia}</p>
-            <p>Tomas: {props.tomas}</p>
-            <p>Precio: ${props.precio}</p>
-            <p>Descuento: {props.descuento ? props.descuento : 0}</p>
-            <p>Stock: {props.stock}</p>
-            {props.imagenes && props.imagenes.length > 0 && (
-                <img src={`http://localhost:3000${props.imagenes[0].ubicacion}/${props.imagenes[0].nombre}`} alt="Imagen de Producto" />
-            )}
         </div>
+     </>
     );
 
 }

@@ -2,6 +2,8 @@ import '../App.css'
 import './componentsListProduct'
 import Product from './componentsListProduct'
 import Header from "./Header"
+import Users from './componenteListUsarios'
+
 function App() {
 
   return (
@@ -84,11 +86,10 @@ function App() {
                 </div>
             </div>
           </article>
-
-          <Product>
-
-          </Product>
-
+          <article className="article-2 clase_de_fondo">
+           <Product></Product>
+           <Users></Users>
+          </article>
           <article className="article-3">
             <div className="box-lastCreation">
               <img src="" alt=""/>

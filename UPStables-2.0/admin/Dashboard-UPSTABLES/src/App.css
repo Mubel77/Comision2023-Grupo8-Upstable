@@ -65,6 +65,8 @@
   width: 100%;
   display: flex;
   border: white 2px solid;
+  /* background-image: url(images/circuit_bg.webp);
+  background-color: #D1D4DE; */
 }
 .column-izq {
   width: 30%;
@@ -103,12 +105,30 @@
   justify-content: space-around;
   border: white 2px solid;
 }
+.clase_de_fondo{
+  background-color: #ffffff;
+}
 .list-entidades {
-  width: 50%;
+  overflow:auto;
   display: flex;
-  flex-direction: column;
-  border: yellow 2px solid;
+  flex-wrap: wrap;
+  height: 500px;
+  width: 100%;
   padding: 5px;
+  margin: 0px 10px;
+  border: yellow 1px solid
+}
+.entidades-estilos {
+  border: 1px solid #ddd; 
+  background-color: white;
+  cursor: pointer;
+}
+.entidades-estilos{
+  box-shadow: 0px 0px 10px rgb(100, 100, 100);
+    background-color: rgba(33,33,33,0.3);
+    color: white;
+    transform: scale(1.01);
+    transition: background-color 2.5s, color 1s,transform 1s;
 }
 
 .article-3 {
@@ -125,6 +145,13 @@
   padding: 5px;
 }
 
+.box_li {
+  border: 1px solid black;
+  padding: 5px;
+  margin: 3px 0px;
+  display: flex;
+  flex-direction: row;
+}
 /* //////////--- FOOTER ---\\\\\\\\\\ */
 .footer {
   width: 100%;
