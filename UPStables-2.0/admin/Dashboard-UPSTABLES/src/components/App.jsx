@@ -1,6 +1,5 @@
 import '../App.css'
-import './componentsListProduct'
-import Product from './componentsListProduct'
+
 import Header from "./Header"
 function App() {
 
@@ -85,9 +84,6 @@ function App() {
             </div>
           </article>
 
-          <Product>
-
-          </Product>
 
           <article className="article-3">
             <div className="box-lastCreation">
