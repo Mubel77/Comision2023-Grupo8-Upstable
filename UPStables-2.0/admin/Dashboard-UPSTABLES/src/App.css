@@ -65,13 +65,13 @@
 body{
   background-image: url("http://localhost:3000/images/circuit_bg 14.png");
   background-color: #D1D4DE;
-  
+
 }
 .main {
   width: 100%;
   display: flex;
   border: white 2px solid;
- 
+
 }
 .column-izq {
   width: 30%;
@@ -118,7 +118,7 @@ body{
   overflow: auto;
   display: flex;
   flex-wrap: nowrap;
-  height: 500px;
+  height: 510px;
   width: 100%;
   border: 1px solid black;
   /* padding: 5px; */
@@ -155,7 +155,7 @@ body{
 }
 
 /* //////////--- FOOTER ---\\\\\\\\\\ */
-.footer {
+/* .footer {
   width: 100%;
   height: 100px;
   display: flex;
@@ -169,4 +169,4 @@ body{
   justify-content: space-around;
   align-items: center;
   border: white 2px solid;
-}
+} */

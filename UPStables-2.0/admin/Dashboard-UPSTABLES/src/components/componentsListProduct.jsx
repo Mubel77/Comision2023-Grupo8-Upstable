@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Producto from './componentProducto';
-import { Link } from 'react-router-dom';
 
 const Product = () => {
     const [products, setProducts] = useState({ productos: [] });
     const [page, setPage] = useState(1);
-    const [limit, setLimit] = useState(6); 
+    const [limit, setLimit] = useState(5); 
     const [isLastPage, setIsLastPage] = useState(false);
 
     useEffect(() => {
@@ -13,13 +12,13 @@ const Product = () => {
             .then(response => response.json())
             .then(data => {
                 setProducts({ ...products, productos: data.productos });
-                setIsLastPage(data.productos.length <= 0); // verifico si hay hay productos
+                setIsLastPage(data.productos.length < limit); // verifico si hay hay productos
             })
             .catch(error => {
                 console.log(error);
             });
     }, [page, limit]);
-
+console.log(page, limit, "quiero ver");
     return (
         <>
             <div className="list-entidades entidades-estilos">
@@ -40,8 +39,8 @@ const Product = () => {
                 </ul>
                 {isLastPage && <p className='p_estilo'>No hay más productos</p>} 
                 <div className="pagination-buttons">
-                    <button onClick={() => setPage(page - 1)} disabled={page === 1}>Anterior</button>
-                    <button onClick={() => setPage(page + 1)} disabled={isLastPage}>Siguiente</button>
+                    <button className='style-button' onClick={() => setPage(page - 1)} disabled={page === 1}>Anterior</button>
+                    <button className='style-button' onClick={() => setPage(page + 1)} disabled={isLastPage}>Siguiente</button>
                 </div>
             </div>                  
         </>

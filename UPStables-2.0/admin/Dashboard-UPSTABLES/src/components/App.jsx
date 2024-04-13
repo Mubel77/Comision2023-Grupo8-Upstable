@@ -4,6 +4,8 @@ import Header from "./Header"
 import Users from './componenteListUsarios'
 import Product from './componentsListProduct'
 import BoxCountData from './BoxCountData'
+import Footer from './componentFooter'
+
 function App() {
 
   return (
@@ -61,12 +63,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        <div className="box_footer">
-          <h1>Iconos</h1>
-        </div>
-        <div className="box_footer">
-         <h1>UPSTABLES</h1>
-        </div>
+      <Footer></Footer>
       </footer>
       </body>
     </>

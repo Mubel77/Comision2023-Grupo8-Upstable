@@ -1,46 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import Usuario from './componentsUsuario';
 
-
 const Users = () => {
-    const [users, setUsers] = useState({adminList:[]});
+    const [users, setUsers] = useState({ adminList: [] });
+    const [page, setPage] = useState(1);
+    const [limit, setLimit] = useState(5); 
+    const [isLastPage, setIsLastPage] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:3000/users/api/allAdmin')
+        fetch(`http://localhost:3000/users/api/allAdmin?page=${page}&limit=${limit}`)
             .then(response => response.json())
             .then(data => {
-                setUsers({...users,adminList:data.adminList.rows});
+                setUsers({ ...users, adminList: data.adminList.rows });
+                setIsLastPage(page >= data.pages); // Verifica si es la última página
             })
             .catch(error => {
                 console.log(error);
             });
-    }, []);
+    }, [page, limit]);
 
-    const colorH1= {
-        color:'black'
-    }
     return (
         <>
-                <div className="list-entidades entidades-estilos">
-                        <p className='p_estilo' >Lista de Administradores</p>
-                    <ul className='ul_estilo' style={colorH1}>
-                        {users.adminList.map((item, i) => (
-                            <li className="box_li caja_estilos estilos_usuario" key={i + item}>
-                                    <Usuario
-                                        nombre={item.nombre}
-                                        apellido={item.apellido}
-                                        email={item.email}
-                                        rol= {item.roles.rol}
-                                        imagen={item.imagen}
-                                        key={i}
-                                    />
-                            </li>
-                        ))}
-                    </ul>
+            <div className="list-entidades entidades-estilos">
+                <p className='p_estilo'>Lista de Administradores</p>
+                <ul className='ul_estilo'>
+                    {users.adminList.map((item, i) => (
+                        <li className="box_li caja_estilos estilos_usuario" key={i + item}>
+                            <Usuario
+                                nombre={item.nombre}
+                                apellido={item.apellido}
+                                email={item.email}
+                                rol={item.rol}
+                                imagen={item.imagen}
+                                id={item.id}
+                                key={i}
+                            />
+                        </li>
+                    ))}
+                </ul>
+                {isLastPage && <p className='p_estilo'>No hay más administradores</p>}
+                <div className="pagination-buttons">
+                    <button className='style-button' onClick={() => setPage(page - 1)} disabled={page === 1}>Anterior</button>
+                    <button className='style-button' onClick={() => setPage(page + 1)} disabled={isLastPage}>Siguiente</button>
                 </div>
-      
-    </>
-    )
-
+            </div>
+        </>
+    );
 };
+
 export default Users;

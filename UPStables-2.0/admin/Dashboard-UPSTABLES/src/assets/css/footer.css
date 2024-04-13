@@ -1,0 +1,19 @@
+footer{
+    font-weight: bold;
+    unicode-bidi: isolate;
+    background-color: #222222;
+}
+.footer-logo{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.titulo_footer{
+    text-align: center;
+    font-size: 30px;
+}
+.footer-texto-bottom{
+    margin: auto;
+    text-align: center;
+}
