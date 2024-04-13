@@ -1,0 +1,60 @@
+:root{
+    --color-gris: #d1d4de;
+    --color-negro: #000000;
+    --color-celeste: #04b2d9;
+    --color-background: #FFFFFF;
+    --color-verde_agua: #2DD4DA;
+
+}
+
+
+.clase_de_fondo{
+    background-color: var(--color-background)
+  } */
+
+  .caja_h1{
+color: #000;
+}
+
+.caja_estilos {
+    border: 2px solid var(--color-verde_agua);
+    width: 100%;
+    margin: 8px 0px;
+    background-color:grey;
+    color: black;
+    cursor: pointer;
+}
+.caja_estilos:hover{
+    box-shadow: 0px 0px 10px rgb(100, 100, 100);
+      background-color: rgba(33,33,33,0.3);
+      color: white;
+      transform: scale(1.01);
+      transition: background-color 2.5s, color 1s,transform 1s;
+}
+.estilos_productos{
+    width: 90%;
+    border: 2px solid var(--color-verde_agua);
+    margin: 8px 0px;
+}
+.caja_imagenes{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    align-items: center;
+}
+.caja_imagen_usuario{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+.caja_de_texto{
+    padding: 0px 5px;
+}
+.ul_estilo{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 0px;
+}
