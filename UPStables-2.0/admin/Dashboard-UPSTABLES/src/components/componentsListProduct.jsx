@@ -10,14 +10,13 @@ const Product = () => {
         fetch('http://localhost:3000/products/api/list')
             .then(response => response.json())
             .then(data => {
-                // console.log(response,'holaaa');
                 setProducts({...products,productos:data.productos});
             })
             .catch(error => {
                 console.log(error);
             });
     }, []);
-    console.log(products, 'chauuuuu');
+    
     return (
         <>
                 <div className="list-entidades entidades-estilos">

@@ -2,7 +2,6 @@ import '../App.css'
 import LastProduct from './LastProduct'
 import LastAdmin from './LastAdmin'
 import SideBar from './SideBar'
-
 import Header from "./Header"
 import Users from './componenteListUsarios'
 import Product from './componentsListProduct'
