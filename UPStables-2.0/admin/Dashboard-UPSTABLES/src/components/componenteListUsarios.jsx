@@ -22,10 +22,10 @@ const Users = () => {
     return (
         <>
                 <div className="list-entidades entidades-estilos">
-                        <h2 className='caja_h1' >Lista de Administradores</h2>
+                        <p className='p_estilo' >Lista de Administradores</p>
                     <ul className='ul_estilo' style={colorH1}>
                         {users.adminList.map((item, i) => (
-                            <li className="box_li caja_estilos caja_estilos_productos" key={i + item}>
+                            <li className="box_li caja_estilos estilos_usuario" key={i + item}>
                                     <Usuario
                                         nombre={item.nombre}
                                         apellido={item.apellido}

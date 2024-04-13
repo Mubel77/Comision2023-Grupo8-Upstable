@@ -120,6 +120,7 @@ body{
   flex-wrap: nowrap;
   height: 500px;
   width: 100%;
+  border: 1px solid black;
   /* padding: 5px; */
   /* margin: 0px 3px; */
   /* border: yellow 1px solid; */
@@ -136,7 +137,7 @@ body{
   flex-direction: row;
   /* width: 80%; */
   flex-wrap: nowrap;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .article-3 {

@@ -106,6 +106,7 @@ Ofertas: function (req, res, next) {
       ],
     })
       .then((producto) => {
+        console.log(producto,"holaaa")
         res.render("products/productDetail", {
           title: producto.modelo,
           producto,

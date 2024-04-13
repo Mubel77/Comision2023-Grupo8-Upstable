@@ -9,12 +9,11 @@
 
 
 .clase_de_fondo{
-    background-color: var(--color-background)
+    background-color: var(--color-gris);
+        font-family: 'Roboto', sans-serif;
   } */
 
-  .caja_h1{
-color: #000;
-}
+
 
 .caja_estilos {
     border: 2px solid var(--color-verde_agua);
@@ -23,6 +22,9 @@ color: #000;
     background-color:grey;
     color: black;
     cursor: pointer;
+}
+.estilos_usuario{
+    border: 2px solid var(--color-verde_agua);
 }
 .caja_estilos:hover{
     box-shadow: 0px 0px 10px rgb(100, 100, 100);
@@ -43,12 +45,14 @@ color: #000;
     flex-wrap: nowrap;
     align-content: stretch;
     align-items: center;
+    padding: 5px;
 }
 .caja_imagen_usuario{
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: space-around;
+    padding: 5px;
 }
 .caja_de_texto{
     padding: 0px 5px;
@@ -57,4 +61,14 @@ color: #000;
     margin-top: 0px;
     margin-bottom: 0px;
     padding-left: 0px;
+}
+.pagination-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.p_estilo {
+    color: #000000;
 }
