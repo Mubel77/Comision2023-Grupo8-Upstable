@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 
 function Producto (props) {
     Producto.propTypes = {
+        id: PropTypes.string,
         modelo: PropTypes.string,
         marca: PropTypes.string,
         potencia: PropTypes.number,
@@ -24,19 +25,22 @@ function Producto (props) {
         precio: 0,
         descuento: 0,
         stock: 0,
-        imagenes: []
+        imagenes: [],
+        id:"",
     };
     const estilo = {
         width: '100px',
         height: "100px",
-        padding: "8px" & '8px'
+        padding: "5"
       }
     return (
         <>
         <div className='caja_imagenes'>
+            <a href={`http://localhost:3000/products/productDetail/${props.id}`}>
          {props.imagenes && props.imagenes.length > 0 && (
          <img style={estilo} src={`http://localhost:3000${props.imagenes[0].ubicacion}/${props.imagenes[0].nombre}`} alt="Imagen de Producto" />
             )}
+            </a>
         </div>
         <div className='caja_de_texto'>
             <p>Modelo: {props.modelo}</p>
