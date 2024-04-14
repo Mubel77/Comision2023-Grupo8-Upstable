@@ -1,6 +1,7 @@
 header{
     font-family: 'Alumni Sans Collegiate One', sans-serif;
     background-color: #222222;
+    width: 100vw;
 }
 header a{
     text-decoration: none;
@@ -46,7 +47,7 @@ header a{
 .nav_header{
     margin:5% 5% 0% 5%;
     padding: 10px;
-    width:90%;
+    width:100vw;
     display:flex;
     justify-content: space-around;
     align-items: center;
