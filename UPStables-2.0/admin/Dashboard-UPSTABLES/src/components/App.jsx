@@ -1,5 +1,7 @@
 import '../App.css'
-
+import LastProduct from './LastProduct'
+import LastAdmin from './LastAdmin'
+import SideBar from './SideBar'
 import Header from "./Header"
 import Users from './componenteListUsarios'
 import Product from './componentsListProduct'
@@ -12,33 +14,11 @@ function App() {
     <>
     <body>
 
-  
       <Header/>
 
       <main className="main">
         <section className="column-izq">
-            <ul>
-              <li>
-                <i></i>
-                <p>Mi Cuenta</p>
-              </li>
-              <li>
-                <i></i>
-                <p>Editar Productos</p>
-              </li>
-              <li>
-                <i></i>
-                <p>Editar Empleados</p>
-              </li>
-              <li>
-                <i></i>
-                <p>Editar perfil</p>
-              </li>
-              <li>
-                <i></i>
-                <p>Salir</p>
-              </li>
-            </ul>
+            <SideBar />
         </section>
 
         <section className="column-der">
@@ -50,14 +30,8 @@ function App() {
            <Users></Users>
           </article>
           <article className="article-3">
-            <div className="box-lastCreation">
-              <img src="" alt=""/>
-              <p>Ultimo Producto</p>
-            </div>
-            <div className="box-lastCreation">
-              <img src="" alt=""/>
-              <p>Ultimo Admin</p>
-            </div>
+            <LastProduct/>
+            <LastAdmin/>
           </article>
         </section>
       </main>

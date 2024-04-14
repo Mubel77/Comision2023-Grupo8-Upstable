@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 
 function Usuario (props) {
-    console.log('heeeee',props);
     Usuario.propTypes = {
         id: PropTypes.string,
         nombre: PropTypes.string,
