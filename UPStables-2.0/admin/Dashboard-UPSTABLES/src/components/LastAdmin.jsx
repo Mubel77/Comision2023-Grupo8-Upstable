@@ -34,14 +34,14 @@ function LastAdmin() {
   },[last])
 
   // console.log('Last..',last);
-  console.log('Admin..',item);
+  //console.log('Admin..',item);
   const estilo = {
     width: '200px',
     height: "200px"
   }
   return(
     <div className="content-box-lastCreation">
-      <h2>Ultimo Producto</h2>
+      <h2>Ultimo Administrador</h2>
       <div className="box-lastCreation">
         <div className="box-image"> 
             <img style={estilo} src={`http://localhost:3000/${item.imagen}`} alt="Avatar Usuario" />
