@@ -7,7 +7,7 @@ const upload = require('../middlewares/uploadImagesProducts.js');
 const productsController = require ('../controllers/productsController.js');
 
 //Ver todos productos listados
-router.get('/productsList', isAdmin, productsController.list)
+router.get('/productsList',/* isAdmin,*/ productsController.list)
 router.get('/UPS', productsController.Ups)
 router.get('/Estabilizadores', productsController.Estabilizadores)
 router.get('/Ofertas', productsController.Ofertas)

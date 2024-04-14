@@ -17,10 +17,7 @@ publicidad = [
     idPublicidad: 3,
     imagen: "minibanner3-10-06-22.png",
   },
-  {
-    idPublicidad: 4,
-    imagen: "minibanner1-10-06-22.png",
-  },
+  
 ];
 const indexController = {
   home: function (req, res, next) {

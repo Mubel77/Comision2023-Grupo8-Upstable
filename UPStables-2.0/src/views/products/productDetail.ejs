@@ -10,9 +10,7 @@
                     <% for (let i = 0; i < producto.imagenes.length; i++) { %>
                         <img src="<%= producto.imagenes[i].ubicacion%>/<%= producto.imagenes[i].nombre %>" alt="<%= producto.id_categorias.categoria%> <%= producto.marca%>">
                     <% } %>
-                      <div class="mas_fotos_div">
-                        <i id="mas_fotos" class="fa-solid fa-plus"></i>
-                      </div>
+                      
                    
                 </div>
                     <img  class="producto_img" src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="<%= producto.id_categorias.categoria%> <%= producto.marca%>"> 
@@ -34,9 +32,9 @@
                     <h3 class="precio_producto">$<%= producto.precio %></h3>
                 </div>
                 <div class="unidades">
-                    <i class="fa-solid fa-minus"></i>
-                    <p>1 unidad</p>
-                    <i class="fa-solid fa-plus"></i>
+                    <i class="fa-solid fa-minus" id="botonMenos"></i>
+                    <p id="numeroUnidades">1 unidad</p>
+                    <i class="fa-solid fa-plus" id="botonMas"></i>
                 </div>
                 <div class="stock_disponible">
                     <i class="fa-solid fa-check"></i>
@@ -59,6 +57,38 @@
             <p><%= producto.descripcion %></p>
         </article>
 
+        <section class="intereses">
+            <p class="intereses_titulo">También podría interesarte</p>
+            <article class="productos_relacionados">
+                
+                <div class="productos_relacionados_extras">
+                    <a class="main-enlace main_listProducts" href="/products/productDetail/<%= producto.id %>">
+                    <img  class="producto_img" src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="<%= producto.id_categorias.categoria%> <%= producto.marca%>"> 
+                    <h4><%= producto.modelo %></h4>
+                    <p>$<%= producto.precio %></p>
+                </a>
+                </div>
+                <div class="productos_relacionados_extras">
+                    <a class="main-enlace main_listProducts" href="/products/productDetail/<%= producto.id %>">
+                    <img  class="producto_img" src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="<%= producto.id_categorias.categoria%> <%= producto.marca%>"> 
+                    <h4><%= producto.modelo %></h4>
+                    <p>$<%= producto.precio %></p>
+                </a>
+                </div>
+                <div class="productos_relacionados_extras">
+                    <a class="main-enlace main_listProducts" href="/products/productDetail/<%= producto.id %>">
+                    <img  class="producto_img" src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="<%= producto.id_categorias.categoria%> <%= producto.marca%>"> 
+                    <h4><%= producto.modelo %></h4>
+                    <p>$<%= producto.precio %></p>
+                </a>
+                </div>
+                <div class="flecha_relacionados">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+                
+            </article>
+        </section>
+
        <section class="banners_producto">
         
         <img id="img_1"  src="/images/minibanner1-10-06-22.png" alt="img_banner">
@@ -71,7 +101,7 @@
             <i id="circle_color_white"class="fa-regular fa-circle"></i>
         </div>
         </section>
-
+        <script src="/javascripts/contador-unidades.js"></script>
     </main>
     <%- include("../partials/footer") %>
 </body>
