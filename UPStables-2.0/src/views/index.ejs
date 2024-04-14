@@ -6,17 +6,39 @@
                 <img class="icono-fijo" src="/images/icon-whasap2.png" alt="">
                 <section class="section_productos">
                     <h3 class="titulo-carrusel">NOVEDADES</h3>
-                    <article class="carrusel">
-                        <!-- se aplico logica de js para mostrar las imagen en el carrusel    -->
-                        <% let contadorCarrusel=0 %>
-                            <% productos.forEach(producto=> { %>
-                                <% if (contadorCarrusel < 8) { %>
-                                    <% for(x=0; x<producto.imagenes.length; x=producto.imagenes.length) { %>
-                                        <img src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="Imagen Publicidad">
-                                    <% } %>
-                                    <% contadorCarrusel++;%>
-                                <%} %>
-                            <% }) %>
+                    <article class="slider">
+                        <div class="slide-track">
+                            <div class="slide">
+                                <img src="/images/estabilizador 1.png" alt="">
+                            </div>
+                            <div class="slide">
+                                <img src="/images/estabilizador3.png" alt="">
+                            </div>
+                            <div class="slide">
+                                <img src="/images/estabilizador4.png" alt="">
+                            </div>
+                            <div class="slide">
+                                <img src="/images/ups_img.jpg" alt="">
+                            </div>
+                            <div class="slide">
+                                <img src="/images/ups6kva_img.jpg" alt="">
+                            </div>
+                            <div class="slide">
+                                <img src="/images/estabilizador 1.png" alt="">
+                            </div>
+                            <div class="slide">
+                                <img src="/images/estabilizador3.png" alt="">
+                            </div>
+                            <div class="slide">
+                                <img src="/images/estabilizador4.png" alt="">
+                            </div>
+                            <div class="slide">
+                                <img src="/images/ups_img.jpg" alt="">
+                            </div>
+                            <div class="slide">
+                                <img src="/images/ups6kva_img.jpg" alt="">
+                            </div>
+                        </div>
                     </article>
 
                     <h3 class="titulo-carrusel">ARTICULOS</h3>
@@ -59,7 +81,10 @@
                             <%})%>
                     </article>
 
-                    <h3 class="titulo-carrusel">VER MAS</h3>
+                    <a href="products/productsList/">
+                        <h3 class="titulo-carrusel">VER MAS</h3>
+                    </a>
+                    
 
                     <article class="article_publicidad">
                         <% publicidad.forEach(element=> {%>
