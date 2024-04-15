@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./src/bin/www"
+    "dev": "nodemon ./src/bin/www",
+    "react:start": "cd admin/Dashboard-UPSTABLES & npm run dev",
+    "start": "concurrently \"npm run dev\" \"npm run react:start\""
   },
   "dependencies": {
     "@formkit/tempo": "^0.0.11",
@@ -26,6 +28,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "sequelize-cli": "^6.6.2"
   }
 }
