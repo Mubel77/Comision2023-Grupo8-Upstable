@@ -2,7 +2,7 @@ const db = require("../database/models");
 const { Op } = require("sequelize");
 const fs = require('fs')
 const { validationResult } = require("express-validator");
-
+const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const path = require('path');
 
 const productsController = {
@@ -20,6 +20,7 @@ const productsController = {
           title: "List Products",
           usuario: req.session.user,
           productos,
+          toThousand
         });
       })
       .catch((err) => console.log(err))
@@ -43,6 +44,7 @@ Ups: function (req, res, next) {
       title: "UPS",
       usuario: req.session.user,
       productos,
+      toThousand
     });
   })
   .catch((err) => console.log(err));
@@ -65,6 +67,7 @@ Estabilizadores: function (req, res, next) {
       title: "Estabilizadores",
       usuario: req.session.user,
       productos,
+      toThousand
     });
   })
   .catch((err) => console.log(err));
@@ -91,6 +94,7 @@ Ofertas: function (req, res, next) {
       title: "Ofertas",
       usuario: req.session.user,
       productos,
+      toThousand
     });
   })
   .catch((err) => console.log(err));
@@ -112,6 +116,7 @@ Ofertas: function (req, res, next) {
           producto,
           usuario: req.session.user,
           usuario: req.session.user,
+          toThousand
         });
       })
       .catch((err) => console.log(err));

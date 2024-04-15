@@ -29,17 +29,25 @@
                 <div class="marca_producto">
                     <p id="marca">Marca:</p> 
                     <p><%= producto.marcas.marca %></p>
-                    <h3 class="precio_producto">$<%= producto.precio %></h3>
+                    <h3 class="precio_producto">$<%= toThousand(producto.precio) %></h3>
                 </div>
                 <div class="unidades">
                     <i class="fa-solid fa-minus" id="botonMenos"></i>
                     <p id="numeroUnidades">1 unidad</p>
                     <i class="fa-solid fa-plus" id="botonMas"></i>
                 </div>
-                <div class="stock_disponible">
-                    <i class="fa-solid fa-check"></i>
-                    <p>Stock Disponible</p>
+                <% if(producto.stock>0){ %>
+                    <div class="stock_disponible">
+                        <i class="fa-solid fa-check"></i>
+                        <p>Stock Disponible: <%= producto.stock %></p>
+                    </div>
+                <% } else { %>
+                   <div class="stock_disponible">
+                    <i class="fa-solid fa-x"></i>
+                    <p>No hay stock</p>
                 </div>
+                <% } %>
+               
                <a href="/products/productCart"><button class="comprar_producto">Comprar Producto</button></a>
                <a href="/products/productCart"> 
                 <div class="agregar_carrito">
@@ -65,21 +73,21 @@
                     <a class="main-enlace main_listProducts" href="/products/productDetail/<%= producto.id %>">
                     <img  class="producto_img" src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="<%= producto.id_categorias.categoria%> <%= producto.marca%>"> 
                     <h4><%= producto.modelo %></h4>
-                    <p>$<%= producto.precio %></p>
+                    <p>$<%= toThousand(producto.precio)  %></p>
                 </a>
                 </div>
                 <div class="productos_relacionados_extras">
                     <a class="main-enlace main_listProducts" href="/products/productDetail/<%= producto.id %>">
                     <img  class="producto_img" src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="<%= producto.id_categorias.categoria%> <%= producto.marca%>"> 
                     <h4><%= producto.modelo %></h4>
-                    <p>$<%= producto.precio %></p>
+                    <p>$<%= toThousand(producto.precio)  %></p>
                 </a>
                 </div>
                 <div class="productos_relacionados_extras">
                     <a class="main-enlace main_listProducts" href="/products/productDetail/<%= producto.id %>">
                     <img  class="producto_img" src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="<%= producto.id_categorias.categoria%> <%= producto.marca%>"> 
                     <h4><%= producto.modelo %></h4>
-                    <p>$<%= producto.precio %></p>
+                    <p>$<%= toThousand(producto.precio)  %></p>
                 </a>
                 </div>
                 <div class="flecha_relacionados">

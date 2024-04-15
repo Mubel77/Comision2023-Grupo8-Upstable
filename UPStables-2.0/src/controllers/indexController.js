@@ -3,7 +3,7 @@ const path = require("path");
 //const {leerArchivo,escribirArchivo}=require("../data/jsonFunctions");
 const db = require("../database/models/index.js");
 const { log } = require("console");
-
+const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 publicidad = [
   {
     idPublicidad: 1,
@@ -28,7 +28,7 @@ const indexController = {
         { association: "imagenes" },
       ],
     }).then((productos) => {
-      res.render("index", { title: "UPStables", productos, usuario:req.session.user });
+      res.render("index", { title: "UPStables", productos, usuario:req.session.user, toThousand });
     });
   },
 };

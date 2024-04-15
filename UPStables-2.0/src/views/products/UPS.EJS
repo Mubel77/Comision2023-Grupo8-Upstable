@@ -19,12 +19,12 @@
                             <div class="products_list">
                                 <% if (producto.descuento > 0) { %>
                                     <p class="products_list_precio">
-                                        $<%= (producto.precio) - ((producto.precio * producto.descuento) / 100) %>
+                                        $<%= toThousand (producto.precio - ((producto.precio * producto.descuento) / 100)) %>
                                     </p>
-                                    <p class="products_list_precio-off"><%= "$" + producto.precio %></p>
+                                    <p class="products_list_precio-off"><%= "$" + toThousand(producto.precio)  %></p>
                                     <p class="products_list_descuento"><%= producto.descuento + "% OFF" %></p>
                                     <% } else { %>
-                                    <p class="products_list_precio">$<%= producto.precio %></p>
+                                    <p class="products_list_precio">$<%= toThousand(producto.precio)  %></p>
                                     <% } %>
                                     <p class="products_list_marca"><%= producto.marcas.marca %> <%= producto.modelo %></p>
                                     <p class="products_list_categoria"> Categoría: <%= producto.categorias.categoria %></p>

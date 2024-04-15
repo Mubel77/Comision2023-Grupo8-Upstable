@@ -4,6 +4,7 @@
         <%- include('./partials/header.ejs') %>
             <main>
                 <img class="icono-fijo" src="/images/icon-whasap2.png" alt="">
+               
                 <section class="section_productos">
                     <h3 class="titulo-carrusel">NOVEDADES</h3>
                     <article class="slider">
@@ -40,7 +41,15 @@
                             </div>
                         </div>
                     </article>
-
+                    <article class="banner">
+                        <div class="capa">
+    
+                        </div>
+                        <div class="info">
+                            <h1>Upstables</h1>
+                            <p>Completa seguridad para tu hogar.</p>
+                        </div>
+                    </article>
                     <h3 class="titulo-carrusel">ARTICULOS</h3>
 
                     <article class="container-articulos">
@@ -62,12 +71,12 @@
                                                 <div class="products_list">
                                                     <% if (producto.descuento > 0) { %>
                                                         <p class="products_list_precio">
-                                                            $<%= (producto.precio) - ((producto.precio * producto.descuento) / 100) %>
+                                                            $<%= toThousand (producto.precio - ((producto.precio * producto.descuento)) / 100) %>
                                                         </p>
-                                                        <p class="products_list_precio-off"><%= "$" + producto.precio %></p>
+                                                        <p class="products_list_precio-off"><%= "$" + toThousand (producto.precio) %></p>
                                                         <p class="products_list_descuento"><%= producto.descuento + "% OFF" %></p>
                                                         <% } else { %>
-                                                        <p class="products_list_precio">$<%= producto.precio %></p>
+                                                        <p class="products_list_precio">$<%= toThousand (producto.precio  ) %></p>
                                                         <% } %>
                                                         <p class="products_list_marca"><%= producto.marcas.marca %> <%= producto.modelo %></p>
                                                         <p class="products_list_categoria"> Categoría: <%= producto.categorias.categoria %></p>
