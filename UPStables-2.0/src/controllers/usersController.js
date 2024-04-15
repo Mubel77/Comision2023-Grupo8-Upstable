@@ -423,7 +423,7 @@ const userController = {
   },
 
   perfilUser: function (req, res, next) {
-    res.render("users/perfil-user", {
+    res.render("users/perfilClient", {
       title: "Mi Perfil",
       usuario: req.session.user
     });

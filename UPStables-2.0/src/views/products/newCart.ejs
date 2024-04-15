@@ -2,20 +2,20 @@
 
 <body>
     <%-include("../partials/header.ejs") %>
-    <main style="display: flex;">
+    <main class="main_newCart">
       
       <section class="column_items_products" >
         <%  productos.forEach(producto => { %>    
             <article class="item_product">
-              <div class="item_product_div">
+              <div class="item_product_div div_image">
                 <% for(x=0; x<producto.imagenes.length; x=producto.imagenes.length) { %>
                     <img src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="Imagen Publicidad">
                 <% } %>
               </div>
-                <div class="item_product_div">
+                <div class="item_product_div  div_description">
                   <span class=""><%= producto.descripcion %></span>
                 </div>
-                <div class="item_product_div">
+                <div class="item_product_div  div_price">
                   <p class="">$<%= producto.precio %></p>
                 </div>   
             </article>
@@ -24,14 +24,22 @@
         
       <section class="column_detail_facturacion">
         <div  class="list_detail_facturacion">
-          <p class="title_detail"> Subtotal </p>
-          <p class="detail">$<%= data.subtotal %></p>
-          <p class="title_detail">Transporte</p>
-          <p class="detail">Envio gratis</p>
-          <p class="title_detail">Impuestos (IVA)</p>
-          <p class="detail">$<%= data.impuestos %></p>
-          <p class="title_detail">TOTAL</p>
-          <p class="detail">$<%= data.total %></p>
+          <div class="div_detail_facturacion">
+            <p class="title_detail"> Subtotal </p>
+            <p class="detail">$<%= data.subtotal %></p>
+          </div>
+          <div class="div_detail_facturacion">
+            <p class="title_detail">Transporte</p>
+            <p class="detail">Envio gratis</p>
+          </div>
+          <div class="div_detail_facturacion">
+            <p class="title_detail">Impuestos (IVA)</p>
+            <p class="detail">$<%= data.impuestos %></p>  
+          </div>
+          <div class="div_detail_facturacion">
+            <p class="title_detail">TOTAL</p>
+            <p class="detail">$<%= data.total %></p>
+          </div>
           <div class="boton_cart_compra">
             <button>Finalizar compra </button>
           </div>

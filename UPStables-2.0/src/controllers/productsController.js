@@ -100,7 +100,7 @@ Ofertas: function (req, res, next) {
   .catch((err) => console.log(err));
 },
 
-  // muestro el detalle del producto con base de datos
+// muestro el detalle del producto con base de datos
   detail: function (req, res, next) {
     db.Producto.findByPk(req.params.id, {
       include: [
@@ -278,6 +278,7 @@ Ofertas: function (req, res, next) {
         res.status(500).send("Error interno del servidor");
       });
   },
+
   update: function (req, res, next) {
     const { id } = req.params;
     const {
@@ -387,7 +388,7 @@ delete: async (req, res) => {
           total,
           impuestos,
         };
-        res.render("products/productCart", {
+        res.render("products/newCart", {
           title: "Carrito de Compras",
           productos,
           data,

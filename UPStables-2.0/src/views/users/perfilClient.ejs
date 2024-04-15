@@ -1,0 +1,108 @@
+<%- include('../partials/head')%>
+
+    <body>
+        <%- include('../partials/header.ejs')%>
+            <% if(locals.usuario) {%>
+                <main class="main_perfil-user">
+                    <section class="section_izq_perfil-user">
+                        <div class="div_box_enlaces">
+                            <a href="/users/perfilUser">
+                                <div class="div_enlaces_perfil-user">
+                                    <i class="fa-solid fa-user"></i>
+                                    <p>Mi cuenta</p>
+                                </div>
+                            </a>
+                            <a href="/products/productCart">
+                                <div class="div_enlaces_perfil-user">
+                                    <i class="fa-solid fa-bag-shopping"></i>
+                                    <p>Mis compras</p>
+                                </div>
+                            </a>
+                            <a href="/users/profile">
+                                <div class="div_enlaces_perfil-user">
+                                    <i class="fa-solid fa-user-pen"></i>
+                                    <p>Editar perfil</p>
+                                </div>
+                            </a>
+                            <a href="/users/logout">
+                                <div class="div_enlaces_perfil-user">
+                                    <i class="fa-solid fa-right-from-bracket"></i>
+                                    <p>Salir</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="div_miPerfil">
+                            <img src="<%= usuario.imagen %>" alt="Avatar-Usuario">
+                        </div>
+                    </section>
+                    <section class="section_der_perfil-user">
+                        <article class="section_der_article_perfil-user">
+                            <% if (usuario.nombre) { %>
+                            <div class="div_box_datos">
+                                <div class="div_titulos_perfil-user">
+                                    <p>Nombre</p>
+                                </div>
+                                <div class="div_subtitulos_perfil-user">
+                                    <p><%= usuario.nombre %></p>
+                                </div>
+                            </div>
+                                <% } %>
+                                    <% if (usuario.apellido) { %>
+                                    <div class="div_box_datos">
+                                        <div class="div_titulos_perfil-user">
+                                            <p>Apellido</p>
+                                        </div>
+                                        <div class="div_subtitulos_perfil-user">
+                                            <p><%= usuario.apellido %></p>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                        <% if (usuario.direcciones) { %>
+                                        <div class="div_box_datos">
+                                            <div class="div_titulos_perfil-user">
+                                                <p>Domicilio</p>
+                                            </div>
+                                            <div class="div_subtitulos_perfil-user">
+                                                <% for(x=0; x<usuario.direcciones.length; x=usuario.direcciones.length) { %>
+                                                    <p>
+                                                        <%= usuario.direcciones[0].nombre_calle %>
+                                                        <%= usuario.direcciones[0].numero_calle %>
+                                                    </p>
+                                                <%}%>
+                                            </div>
+                                        </div>    
+                                        <% } %>
+                                        <% if (usuario.telefonos) { %>
+                                            <div class="div_box_datos">
+                                                <div class="div_titulos_perfil-user">
+                                                    <p>Telefono</p>
+                                                </div>
+                                                <div class="div_subtitulos_perfil-user">
+                                                    <% for(x=0; x<usuario.telefonos.length; x=usuario.telefonos.length) { %>
+                                                        <p>
+                                                            <%= usuario.telefonos[0].prefijo %>
+                                                            <%= usuario.telefonos[0].numero %>
+                                                        </p>
+                                                    <%}%>
+                                                </div>
+                                            </div>    
+                                            <% } %>
+                                            <% if (usuario.email) { %>
+                                            <div class="div_box_datos">
+                                                <div class="div_titulos_perfil-user">
+                                                    <p>E-mail</p>
+                                                </div>
+                                                <div class="div_subtitulos_perfil-user">
+                                                    <p><%= usuario.email %></p>
+                                            </div>
+                                            <% } %>
+                        </article>
+                    </section>
+                </main>
+                <% } %>
+
+                    <%- include('../partials/footer') %>
+
+    </body>
+
+    </html>
