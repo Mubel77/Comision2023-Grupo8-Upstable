@@ -1,8 +1,6 @@
-const { title } = require("process");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 const db = require("../database/models/index.js");
-const { log, error } = require("console");
 const { parse, format } = require("@formkit/tempo");
 const { Op } = require("sequelize");
 
@@ -26,7 +24,7 @@ const userController = {
     } else {
       const { nombre, apellido, email, password, fecha_nacimiento } = req.body;
       const nuevoUsuario = {
-        rol_id: 2,
+        rol_id: 1,
         nombre: nombre.trim(),
         apellido: apellido.trim(),
         email: email.trim(),
@@ -79,6 +77,8 @@ const userController = {
         apellido,
         nombre_calle,
         numero_calle,
+        prefijo,
+        numero,
         email,
         password,
         fecha_nacimiento,
@@ -89,7 +89,7 @@ const userController = {
         nombre,
         apellido,
         email,
-        imagen: req.file ? `/images/users/${req.file.filename}` : "/images/users/user-default.png",
+        imagen:"/images/users/user-default.png",
         fecha_nacimiento: fecha_nacimiento,
         password: bcrypt.hashSync(password, 10)
       };
@@ -102,7 +102,15 @@ const userController = {
           };
           db.Direccion.create(nuevoDomicilio)
             .then(()=> {
-              res.redirect('/users/dashboard')
+              const nuevoTelefono = {
+                id_usuario: admin.id,
+                prefijo,
+                numero
+              }
+              db.Telefono.create(nuevoTelefono)
+                .then(()=>{
+                  res.redirect('/users/dashboard')
+                })
              })
              .catch((error)=> console.log(error))
         })
@@ -158,7 +166,11 @@ const userController = {
       ],
     })
       .then((usuarios) => {
-        console.log(req.session.user);
+        const users = usuarios.forEach(user => {
+          let dato = user.dataValues.fecha_nacimiento         
+          let fecha = format(dato,"DD/MM/YYYY");
+          user.dataValues.fecha_nacimiento = fecha
+        })
         res.render("users/dashboard", {
           title: "dashboard",
           usuarios,
@@ -193,6 +205,7 @@ const userController = {
         res.render("users/dashboard", {
           title: "Dashboard",
           usuarios,
+          usuario: req.session.user
         });
       })
       .catch((err) => console.log(err));
@@ -200,6 +213,7 @@ const userController = {
 
   formUpdateUser: (req, res) => {
     db.Usuario.findByPk(req.session.user.id,{include: [
+      { model: db.Rol, as: "roles" },
       { model: db.Direccion, as: 'direcciones' },
       { model: db.Telefono, as: 'telefonos' }
     ]})
@@ -243,7 +257,6 @@ const userController = {
           title: "Editar Usuario",
           subtitulo: "Editar Usuario",
           usuario: req.session.user,
-          //errors: errors.mapped(),
           old: req.body,
         });
       } else {
@@ -253,13 +266,12 @@ const userController = {
         });
 
         const usuarioUpdate = {
-          rol_id: 1,
           nombre: nombre.trim(),
           apellido: apellido.trim(),
           email: email.trim(),
           imagen: req.file
             ? `/images/users/${req.file.filename}`
-            : "/images/users/user-default.png",
+            : `${req.session.user.imagen}`,
           fecha_nacimiento: fecha,
         };
 
@@ -281,7 +293,6 @@ const userController = {
         const actualizarUsuario = await db.Usuario.update(usuarioUpdate, {
           where: { id: req.session.user.id },
         });
-
         const actualizarDomicilio = await db.Direccion.update(domicilioUpdate, {
           where: { id_usuario: req.session.user.id },
         });
@@ -301,14 +312,41 @@ const userController = {
             console.log(error);
           }
         }
+
         Promise.all([actualizarUsuario, actualizarDomicilio, telefono()])
           .then(() => {
-            res.redirect("/users/perfilUser");
+            db.Usuario.findByPk(req.session.user.id,{include: [
+              { model: db.Rol, as: "roles" },
+              { model: db.Direccion, as: 'direcciones' },
+              { model: db.Telefono, as: 'telefonos' }
+            ]})
+              .then((user) => {
+                req.session.user = user;
+                res.cookie("user", user, { maxAge: 1000 * 60 * 30 });
+                if (user.id == 1){
+                res.render("./users/perfilClient", {
+                  title: "Mi Perfil",
+                  usuario: req.session.user
+                });
+              } else {
+                res.render("./users/perfil-admin", {
+                  title: "Mi Perfil",
+                  usuario: req.session.user
+                });
+              }
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+
           })
-        }
-    } catch (error) {
-        console.log(error);
+          .catch((err) => {
+              console.log(err);
+          });
       }
+    } catch (error) {
+      console.log(error);
+    }
   },
 
   formUpdateAdmin: (req, res) => {
@@ -352,6 +390,8 @@ const userController = {
       fecha_nacimiento,
     } = req.body;
 
+    const file = req.files
+
     if (!errors.isEmpty()) {
       res.render("./users/formUpdateAdmin", {
         title: "Editar Empleado",
@@ -371,9 +411,9 @@ const userController = {
         nombre: nombre.trim(),
         apellido: apellido.trim(),
         email: email.trim(),
-        imagen: req.file
-          ? `/images/users/${req.file.filename}`
-          : "/images/users/user-default.png",
+        // imagen: file
+        //   ? `/images/users/${req.file.filename}`
+        //   : undefined ,
         fecha_nacimiento: fecha,
       };
 
@@ -400,11 +440,29 @@ const userController = {
         where: { id_usuario: userId },
       });
 
-      const actualizarTelefono = await db.Telefono.update(telefUpdate, {
-        where: { id_usuario: userId },
-      });
+      async function telefono() {
+        const user = await db.Usuario.findByPk(userId, {
+          include: [
+            { model: db.Telefono, as: "telefonos" },
+          ],
+          attributes: { exclude: ["password"] }
+        })
+        try {
+          if (user.telefonos.length >= 1) {
+            //Si existe un registro de telefono
+            return await db.Telefono.update(telefUpdate, {
+              where: { id_usuario: user.id },
+            });
+          } else {
+            //Si no existe un registro de telefono
+            return await db.Telefono.create(telefUpdate);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
 
-      Promise.all([actualizarUsuario, actualizarDomicilio, actualizarTelefono])
+      Promise.all([actualizarUsuario, actualizarDomicilio, telefono()])
       .then(() => {
           res.redirect("/users/dashboard");
         }
