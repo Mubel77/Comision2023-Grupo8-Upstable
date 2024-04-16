@@ -61,6 +61,14 @@
                         <p class="">Mi cuenta</p>
                     </div>
                 </a>
+                <% if (usuario.roles.rol == 'supervisor') {%>
+                    <a href="/users/profile">
+                        <div class="div_enlaces_perfil-admin">
+                            <i class="fa-solid fa-user-pen"></i>
+                            <p>Editar perfil</p>
+                        </div>
+                    </a>
+                <% } %>
                 <a href="/users/logout">
                     <div class="div_enlaces_perfil-admin">
                         <i class="fa-solid fa-right-from-bracket"></i>

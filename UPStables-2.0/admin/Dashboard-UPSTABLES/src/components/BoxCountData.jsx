@@ -1,14 +1,15 @@
 import BoxCountProduct from "./BoxCountProduct";
 import BoxCountUsers from "./BoxCountUsers"
 import { useState, useEffect } from "react";
+
 function BoxCountData() {
-  const [ups, setUps] = useState([]);
-  const [productos, setProductos] = useState([]);
-  const [categorias, setCategorias] = useState([]);
-  const [estabilizadores, setEstabilizadores] = useState([]);
-  const [usuarios, setUsuarios] = useState([]);
-  const [clientes, setClientes] = useState([]);
-  const [empleados, setEmpleados] = useState([]);
+  const [ups, setUps] = useState();
+  const [productos, setProductos] = useState();
+  const [categorias, setCategorias] = useState();
+  const [estabilizadores, setEstabilizadores] = useState();
+  const [usuarios, setUsuarios] = useState();
+  const [clientes, setClientes] = useState();
+  const [empleados, setEmpleados] = useState();
 
   //Traigo datos de los productos de la api
   useEffect(() => {
@@ -68,6 +69,7 @@ function BoxCountData() {
     }
     fetchEstabilizadores();
   }, [estabilizadores]);
+
   //Traigo datos de los usuarios de la api
   useEffect(() => {
     async function fetchUsuarios() {

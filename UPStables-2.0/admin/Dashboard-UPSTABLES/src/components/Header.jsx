@@ -13,7 +13,6 @@ useEffect(()=>{
         try {
             const response = await fetch(`http://localhost:3000/users/api/userDetail/${id}`);
             const data = await response.json()
-            //console.log("esto es api:", data.usersList.rows)
             setUsuario(data.user)
         } catch (error) {
             console.error('Error al obtener los datos del usuario:', error);

@@ -35,6 +35,19 @@
                     <input type="text"  name="numero_calle" placeholder="Numero Calle" value="<%= locals.oldData ? oldData.numero_calle : null %>">
                     <p><%= locals.errors && errors.numero_calle ? errors.numero_calle.msg : null %> </p>
                 </div>
+
+                <div class="div_config nombre" id="div_telefono">
+                    <label for="telefono">Telefono PREFIJO</label>
+                    <div class="div_config" id="div_prefijo">
+                        <input type="number"  name="prefijo" id="prefijo" placeholder="Prefijo"  value="<%= locals.oldData ? oldData.prefijo : null %>">
+                    </div>
+                </div>
+                <div class="div_config nombre" id="div_telefono">
+                    <label for="telefono">Telefono NUMERO</label>
+                    <div class="div_config" id="div_numero">
+                    <input type="number"  name="numero" id="numero" placeholder="Numero"  value="<%= locals.oldData ? oldData.numero : null %>">
+                    </div>
+                </div>
                 
                 <div class="div_config nombre">
                     <label for="fecha_nacimiento">Fecha Nacimiento</label>

@@ -30,7 +30,7 @@ const Users = () => {
                                 nombre={item.nombre}
                                 apellido={item.apellido}
                                 email={item.email}
-                                rol={item.rol}
+                                rol={item.roles.rol}
                                 imagen={item.imagen}
                                 id={item.id}
                                 key={i}

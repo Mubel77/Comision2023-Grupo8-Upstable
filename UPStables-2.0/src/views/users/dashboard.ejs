@@ -27,10 +27,8 @@
                   <p>Fecha de nacimiento: <%=usuario.fecha_nacimiento%></p>
                   <p>Direccion: <%= usuario.direcciones[0].nombre_calle %> <%= usuario.direcciones[0].numero_calle %></p>
                   <p>Localidad: <%= usuario.direcciones[0].localidad %></p>
-                  <p>Provincia: <%= usuario.direcciones[0].provincia %></p> 
-                  <% if(usuario.telefonos.length > 0){%>
-                    <p>Telefono: <%= usuario.telefonos[0].prefijo%> <%= usuario.telefonos[0].numero%></p> 
-                  <% }%>
+                  <p>Provincia: <%= usuario.direcciones[0].provincia %></p>
+                  <p>Telefono: <%= usuario.telefonos.length > 0 ? `${usuario.telefonos[0].prefijo}-${usuario.telefonos[0].numero}` : 'No hay registros' %></p>
                 </div>
               </article>
               <%} %>
