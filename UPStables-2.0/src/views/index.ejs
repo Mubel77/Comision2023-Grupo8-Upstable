@@ -3,8 +3,12 @@
     <body>
         <%- include('./partials/header.ejs') %>
             <main>
-                <img class="icono-fijo" src="/images/icon-whasap2.png" alt="">
+                <a rel="noreferrer" target="_blank"
+                    href="https://api.whatsapp.com/send?phone=+541131036827&text=Oa%20perroooooo">
+                    <img class="icono-fijo" src="/images/icon-whasap2.png" alt="">
+                </a>
                
+
                 <section class="section_productos">
                     <h3 class="titulo-carrusel">NOVEDADES</h3>
                     <article class="slider">
@@ -43,7 +47,7 @@
                     </article>
                     <article class="banner">
                         <div class="capa">
-    
+
                         </div>
                         <div class="info">
                             <h1>Upstables</h1>
@@ -57,50 +61,65 @@
                         <% let contador=0 %>
                             <!-- se uso un forEach para recorrer el array y mostrar todos los elementos con los metodos solicitados-->
                             <% productos.forEach(producto=> {%>
-                                
+
                                 <% if (contador < 10) {%>
                                     <% for(x=0; x<producto.imagenes.length; x=producto.imagenes.length) { %>
                                         <article class="article_productos article_listProducts">
-                                            <a class="main-enlace main_listProducts" href="/products/productDetail/<%= producto.id %>">
+                                            <a class="main-enlace main_listProducts"
+                                                href="/products/productDetail/<%= producto.id %>">
                                                 <div class="box-image-listProducts">
-                                                <% for(x=0; x<producto.imagenes.length; x=producto.imagenes.length) { %>
-                                                    <img class="image-listProducts" src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>"
-                                                    alt="Imagen Publicidad">
-                                                <% } %>
+                                                    <% for(x=0; x<producto.imagenes.length; x=producto.imagenes.length)
+                                                        { %>
+                                                        <img class="image-listProducts"
+                                                            src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>"
+                                                            alt="Imagen Publicidad">
+                                                        <% } %>
                                                 </div>
                                                 <div class="products_list">
-                                                    <% if (producto.descuento > 0) { %>
+                                                    <% if (producto.descuento> 0) { %>
                                                         <p class="products_list_precio">
-                                                            $<%= toThousand (producto.precio - ((producto.precio * producto.descuento)) / 100) %>
+                                                            $<%= toThousand (producto.precio - ((producto.precio *
+                                                                producto.descuento)) / 100) %>
                                                         </p>
-                                                        <p class="products_list_precio-off"><%= "$" + toThousand (producto.precio) %></p>
-                                                        <p class="products_list_descuento"><%= producto.descuento + "% OFF" %></p>
+                                                        <p class="products_list_precio-off">
+                                                            <%= "$" + toThousand (producto.precio) %>
+                                                        </p>
+                                                        <p class="products_list_descuento">
+                                                            <%= producto.descuento + "% OFF" %>
+                                                        </p>
                                                         <% } else { %>
-                                                        <p class="products_list_precio">$<%= toThousand (producto.precio  ) %></p>
-                                                        <% } %>
-                                                        <p class="products_list_marca"><%= producto.marcas.marca %> <%= producto.modelo %></p>
-                                                        <p class="products_list_categoria"> Categoría: <%= producto.categorias.categoria %></p>
+                                                            <p class="products_list_precio">$<%= toThousand
+                                                                    (producto.precio ) %>
+                                                            </p>
+                                                            <% } %>
+                                                                <p class="products_list_marca">
+                                                                    <%= producto.marcas.marca %>
+                                                                        <%= producto.modelo %>
+                                                                </p>
+                                                                <p class="products_list_categoria"> Categoría: <%=
+                                                                        producto.categorias.categoria %>
+                                                                </p>
                                                 </div>
                                             </a>
                                         </article>
-                                    <% } %>
-                                    
-                                <% }%>
-                                <% contador++ %>
-                            <%})%>
+                                        <% } %>
+
+                                            <% }%>
+                                                <% contador++ %>
+                                                    <%})%>
                     </article>
 
                     <a href="products/productsList/">
                         <h3 class="titulo-carrusel">VER MAS</h3>
                     </a>
-                    
+
 
                     <article class="article_publicidad">
                         <% publicidad.forEach(element=> {%>
                             <img class="imagen_publicidad" src="/images/<%= element.imagen %>" alt="logo publicidad">
                             <%}); %>
                     </article>
-                    
+
                 </section>
             </main>
             <%- include('./partials/footer.ejs') %>
