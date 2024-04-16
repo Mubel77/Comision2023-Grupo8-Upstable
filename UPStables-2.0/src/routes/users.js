@@ -28,7 +28,7 @@ router.get('/logout', usersController.logout);
 
 //dashboard de usuarios
 router.get('/dashboard', isAdmin, usersController.dashboardUsers);
-router.get('/dashboard/search', usersController.dashboardSearchUsers);
+router.get('/dashboard/search', isAdmin, usersController.dashboardSearchUsers);
 
 router.get('/formUpdateAdmin/:id', isAdmin, usersController.formUpdateAdmin)
 router.put('/updateAdmin/:id', upload.single('imagen'), validateUpdateAdmin, usersController.updateAdmin)
