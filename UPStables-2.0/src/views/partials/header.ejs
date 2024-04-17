@@ -19,6 +19,12 @@
     <nav class="nav_header">
         <div class="burguer_header">
             <i class="fas fa-bars"></i>
+            <ol class="menu-vertical">
+                <li><a href="">UPS</a></li>
+                <li><a href="">Estabilizadores</a></li>
+                <li><a href="">Ofertas</a></li>
+                <li><a href="">Modo Oscuro <i class="fa-solid fa-moon"></i></a></li>
+            </ol>
         </div>
 
         <% if ( locals.usuario ){ %>
@@ -74,9 +80,22 @@
 </header>
 
 <nav class="nav_header_2">
-    <h4><a href="/products/UPS">UPS</a></h4>
+    
+    <div class="div_nav_header_2">
+        <h4><a href="/products/UPS">UPS</a></h4>
+
+    </div>
+    
     <div class="linea"></div>
-    <h4 class="estab_nav"><a href="/products/Estabilizadores">ESTABILIZADORES</a></h4>
+    
+    <div class="div_nav_header_2">
+        <h4 class="estab_nav"><a href="/products/Estabilizadores">ESTABILIZADORES</a></h4>
+
+    </div>
+    
     <div class="linea"></div>
-    <h4><a href="/products/Ofertas">OFERTAS</a></h4>
+
+    <div class="div_nav_header_2">
+        <h4><a href="/products/Ofertas">OFERTAS</a></h4>
+    </div>
 </nav>

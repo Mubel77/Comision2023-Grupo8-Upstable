@@ -3,6 +3,10 @@
     <body>
         <%- include('../partials/header.ejs') %>
             <main>
+                <article class="article_form_create">
+                    <div class="subtitulo_registrate">
+                        <p id="p_registro">Editar Producto</p>
+                    </div>    
                 <form action="/products/update/<%=producto.id%>?_method=PUT" method="POST" class="form_create"
                     enctype="multipart/form-data">
                     <div class="div_config div_form_product" id="div_id_categorias">
@@ -39,8 +43,8 @@
                     </div>
                     <div class="div_config div_form_product" id="div_descripcion">
                         <label for="descripcion">Descripción</label>
-                        <input type="text" name="descripcion" id="descripcion"
-                            value="<%= producto && producto.descripcion %>">
+                        <textarea name="descripcion" id="descripcion" rows="10" cols="20" maxlength="500" ><%= producto && producto.descripcion %>
+                        </textarea>
                     </div>
                     <div class="div_config div_form_product" id="div_potencia">
                         <label for="potencia">Potencia</label>
@@ -65,8 +69,13 @@
                     </div>
                     <div class="div_config div_form_product" id="div_imagen">
                         <label for="imagen">Imagen actual</label>
+<<<<<<< HEAD
                             <img src="/images/products/<%=  producto && producto.imagenes && producto.imagenes.length > 0 ? producto.imagenes[0].nombre : 'default.jpg' %>"
                             alt="Imagen del producto" class="centered-img producto">                  
+=======
+                        <img src="/images/products/<%= producto && producto.imagenes && producto.imagenes.length > 0 ? producto.imagenes[0].nombre : 'default.jpg' %>"
+                            alt="Imagen del producto" class="centered-img_producto">
+>>>>>>> b813887f813f2422167c9f7561560586f9e909f3
                     </div>
                     <div class="div_config div_form_product" id="div_modificar_imagen">
                         <label for="modificar_imagen">Input imagen 1</label>
@@ -84,6 +93,7 @@
                         <button type="submit" id="button-submit">Actualizar Producto</button>
                     </div>
                 </form>
+            </article>
             </main>
 
             <script src="/javascripts/validations-Form-EditProduct.js"></script>

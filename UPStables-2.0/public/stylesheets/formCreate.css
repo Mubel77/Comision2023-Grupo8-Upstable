@@ -1,17 +1,20 @@
-main{
-    padding: 20px;
-}
-.form_create{
+.article_form_create{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    margin: 0 auto; 
+    width: 70%;
+    margin: 40px auto; 
     gap: 20px;
-    border: 3px outset #9f9c9c;
+    border-right:#04b2d9 2px solid;
+    border-bottom:#04b2d9 2px solid;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255,0.6);
+    box-shadow:  5px 5px 5px 1px rgba(0,0,0,0.6);
     padding: 8px;
-    
+}
+.form_create{
+    margin: 0 auto;
 }
 .label-create   {
     display: none;
@@ -25,7 +28,13 @@ main{
     margin: 10px;
    
 }
-
+#div_imagen{
+    width: 50%;
+    margin: 20px 0 ;
+}
+    .centered-img_producto{
+        width: 100%;
+    }
 
 textarea{
   
@@ -42,12 +51,12 @@ textarea{
     margin: auto;
 } */
 .boton_registro_create {
-    
-    width: 100%;
+    margin: 0 auto;
+    width: 35%;
 }
 
 .boton_registro_create button {
-    background-color: var(--color-celeste);
+    /* background-color: var(--color-celeste);
     width: 100%;
     border-radius: 5px;
     display: flex;
@@ -55,7 +64,16 @@ textarea{
     padding: 6px;
     font-family: 'Roboto';
     font-size: 82%;
-    justify-content: center;
+    justify-content: center; */
+
+    background-color: var(--color-celeste);
+    width: 100%;
+    border-radius: 5px;
+    margin: 10% auto;
+    padding: 6px;
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 22px;
 }
 
 .boton_registro_create button:hover  {
@@ -127,8 +145,8 @@ input::placeholder {
 /*-------media query para desktop----------*/
 @media(min-width:1024px){
     .form_create{
-        width: 50%;
-        
+        width: 70%;
+        height: 70%;
     }
     /*.boton_registro_update{
         width: 50%;
