@@ -90,14 +90,14 @@ window.onload = function() {
         }
     }
 
-    function highlightFields() {
-        inputs.forEach(input => {
-            input.style.borderColor = 'green';
-        });
-    }
+    // function highlightFields() {
+    //     inputs.forEach(input => {
+    //         input.style.borderColor = 'green';
+    //     });
+    // }
 
-    // Resaltar los campos al cargar la página
-    highlightFields();
+    // // Resaltar los campos al cargar la página
+    // highlightFields();
 
     categoria.addEventListener('blur', () => validate(categoria));
     marca.addEventListener('blur', () => validate(marca));

@@ -17,7 +17,9 @@
 
 body{
     font-family: 'Roboto', sans-serif;
-    width: 100vw;
+    width: 100%;
+    background-image: url("/images/circuit_bg 14.png");
+    background-color: #D1D4DE;
 }
 
 

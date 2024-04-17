@@ -1,13 +1,17 @@
 <%- include('../partials/head')%>
     
-<body>
+<body class="body_form">
         <%- include('../partials/header.ejs')%>    
     
         <main class="main_registro">
+<!-- 
+            <img src="/img/img_formulario_registro.png" alt="fomulario de registro" id="imagenFormulario"> -->
+            <section class="section_form_register">
+                <article class=" article_form_register">
 
-            <img src="/img/img_formulario_registro.png" alt="fomulario de registro" id="imagenFormulario">
+           
             <div class="subtitulo_registrate">
-                <p id="p_registro">registrate</p>
+                <p id="p_registro">Crear Admin</p>
             </div>    
 
             <form action="/users/registerAdmin" method="post" id="form_registro" enctype="multipart/form-data">
@@ -83,7 +87,8 @@
                 </div>
 
             </form>
-            
+        </article>
+    </section>
         </main>
         <script src="/javascripts/validations-form-users-admin.js"></script>
     <%- include('../partials/footer') %>

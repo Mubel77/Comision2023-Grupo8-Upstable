@@ -3,8 +3,11 @@
 <body>
     <%- include('../partials/header.ejs') %>
     <main class="main">
-
+        <div class="subtitulo_registrate">
+            <p id="p_registro">Nuestras Ofertas:</p>
+        </div>  
         <section class="container-articulos">
+           
             <% productos.forEach(producto => {
                 // Solo mostrar productos con descuento
                 if (producto.descuento && producto.descuento !== 0) { %>

@@ -2,6 +2,10 @@
 <body>
     <%- include('../partials/header.ejs')%>
     <main>
+        <article class="article_form_create">
+            <div class="subtitulo_registrate">
+                <p id="p_registro">Crear Producto</p>
+            </div>    
         <form action="/products/formCreate"  method=POST  class="form_create" enctype="multipart/form-data">
                 
                 <div class="div_config div_form_product" id="div_id_categorias">
@@ -62,6 +66,7 @@
                 </div>
                 
         </form>
+    </article>
     </main>
 
     <script src="/javascripts/validations-form-CreateProduct.js"></script>

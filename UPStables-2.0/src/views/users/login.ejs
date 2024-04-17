@@ -1,13 +1,15 @@
 <%- include('../partials/head')%>
     
-<body>
+<body class="body_form">
         <%- include('../partials/header.ejs')%>    
     
-        <main class="main_login">
-            <div class="mensaje_bienvenida">
-            <span class="login_titulo_p">¡Bienvenido!</span>
-            <span class="login_subtitulo_p">Ingresá, te estamos esperando...</span>
-            </div>
+        <main class="main_registro">
+            <section class="section_form_register"> 
+                <article class="article_form_register">
+                    <div class="mensaje_bienvenida">
+                        <span class="login_titulo_p">¡Bienvenido!</span>
+                        <span class="login_subtitulo_p">Ingresá, te estamos esperando...</span>
+                    </div>
           
             <form action="/users/login" method="post" id="form_login">
                 <div class="div_config">
@@ -32,18 +34,21 @@
                    <br>
                 </div>
                
-                <div>
+                <div class="div_remember">
                     <label for="remember">Recuerdame</label>
                     <input type="checkbox" name="remember">
                 </div>
                 
                 <a href="/users/register" id="login_password">
-                    <span>¿No tenés cuenta? <br> Crea tu cuenta</span>
+                    <p>¿No tenés cuenta?</p>  
+                    <p>Crea tu cuenta</p>
                 </a>
                 <div class="boton_login">
                     <button type="submit">Ingresar</button>
                 </div> 
             </form>
+        </article>
+    </section>
         </main>
     <script src="/javascripts/validations-login.js"></script>
         <%- include('../partials/footer') %>

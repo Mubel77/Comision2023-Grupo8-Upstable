@@ -6,14 +6,17 @@
 
         <section class="producto">
             <article class="fotos_producto">
-                <div class="fotos_extras">
+                <div class="fotos_extras_contenedor">
+
                     <% for (let i = 0; i < producto.imagenes.length; i++) { %>
+                        <div class="fotos_extras">
                         <img src="<%= producto.imagenes[i].ubicacion%>/<%= producto.imagenes[i].nombre %>" alt="<%= producto.id_categorias.categoria%> <%= producto.marca%>">
+                        </div>
                     <% } %>
-                      
-                   
                 </div>
+                <div class="producto_img_contenedor">
                     <img  class="producto_img" src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="<%= producto.id_categorias.categoria%> <%= producto.marca%>"> 
+                </div>
                 
                 <div class="circulos_fotos">
                     <i id="circle_color"class="fa-solid fa-circle"></i>
@@ -47,14 +50,22 @@
                     <p>No hay stock</p>
                 </div>
                 <% } %>
+
                
-               <a href="/products/productCart"><button class="comprar_producto">Comprar Producto</button></a>
-               <a href="/products/productCart"> 
-                <div class="agregar_carrito">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <p>Agregar al carrito</p>
-                </div>
+                <div class="comprar_producto">
+                    <a href="/products/newCart">
+                    <p>Comprar Producto</p>
                 </a>
+                </div>
+           
+               
+                <div class="agregar_carrito">                    
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <a href="/products/newCart">
+                    <p>Agregar al carrito</p>
+                </a>
+                </div>
+            
             </article>
            
 

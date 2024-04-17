@@ -57,3 +57,10 @@
     font-weight: bold;
     font-size: 16px; 
 }
+.titulo_product_list {
+    margin: 70px 40px;
+    
+}
+.titulo_product_list h1{
+    text-decoration: underline;
+}

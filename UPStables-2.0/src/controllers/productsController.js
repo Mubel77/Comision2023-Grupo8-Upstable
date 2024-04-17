@@ -271,6 +271,7 @@ Ofertas: function (req, res, next) {
         res.render("products/formUpdate", {
           title: "Formulario Modificar",
           producto,
+          usuario: req.session.user
         });
       })
       .catch((err) => {
