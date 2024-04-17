@@ -321,9 +321,10 @@ const userController = {
               { model: db.Telefono, as: 'telefonos' }
             ]})
               .then((user) => {
+//res.send(user)
                 req.session.user = user;
                 res.cookie("user", user, { maxAge: 1000 * 60 * 30 });
-                if (user.id == 1){
+                if (user.roles.id == 1){
                 res.render("./users/perfilClient", {
                   title: "Mi Perfil",
                   usuario: req.session.user
