@@ -110,7 +110,6 @@ const productsController = {
       ],
     })
       .then((producto) => {
-        console.log(producto, "holaaa");
         res.render("products/productDetail", {
           title: producto.modelo,
           producto,
@@ -296,123 +295,89 @@ const productsController = {
 
     const errors = validationResult(req);
     try {
-      if (errors.isEmpty()) {   
+      if (errors.isEmpty()) {
         const newProducto = {
           modelo,
           descripcion,
           precio,
           stock,
           potencia,
-          tomas, 
+          tomas,
           descuento,
           id_marcas,
           id_categorias,
-        }
-        //const update = await db.Producto.update(newProducto, {where: {id}})
-        //console.log('....REQ-FILES........',req.files)
+        };
+        const update = await db.Producto.update(newProducto, { where: { id } });
+
         if (Object.keys(files).length > 0) {
-          let cont = 0;
-          let oldRegister;
-          //console.log('....Aca llegamos.......',files);
-          await db.Imagen.findAll({where:{id_producto:id}})
-          .then((producto) => {
-            //console.log('.....PRODUCTO Promesa........',producto)
-            for (const key in files) {           
-              files[key].forEach(element => {
-                const imagenProducto = {
-                  nombre: element.filename,
-                  ubicacion: "/images/products/",
-                  id_producto: id,
-                };
-                if (producto[cont] && imagenProducto != oldRegister){
-                  db.Imagen.update(imagenProducto, {
-                    where:{id_producto : id}
-                  })
-                } else {
-                  db.Imagen.create(imagenProducto)
-                }
-                //console.log(`.....PRODUCTO Cont........${cont}......`,producto[cont])
-                cont++
-                oldRegister = imagenProducto
-              })
-            }
-          })
-          .catch((error) => {
-            throw new Error(error)
-          })
-        } else {
-          console.log('.....Estamos mal, por aca no es..............');
+          await db.Imagen.findAll({ where: { id_producto: id } })
+            .then((producto) => {
+              let cont = 0;
+              for (const key in files) {
+                files[key].forEach((element) => {
+                  const imagenProducto = {
+                    nombre: element.filename,
+                    ubicacion: "/images/products/",
+                    id_producto: id,
+                  };
+                  if (producto[cont]) {
+                    db.Imagen.update(imagenProducto, {
+                      where: { id: producto[cont].dataValues.id },
+                    });
+                  } else {
+                    db.Imagen.create(imagenProducto, {
+                      where: { id_producto: id },
+                    });
+                  }
+                });
+                cont += 1;
+              }
+            })
+            .catch((error) => {
+              throw new Error(error);
+            });
         }
 
         res.redirect(`/products/productDetail/${id}`);
-        // const update = await db.Producto.update(newProducto, {where: {id}})
-
-        // if (files.length > 0) {
-        //   db.Imagen.findAll({where:{id_producto:id}})
-        //   .then((producto)=>{
-        //     //console.log('.....Es acaaaaaaaa.......',producto)
-        //     files.forEach(element => {
-        //       const imagenProducto = {
-        //         nombre: element.filename,
-        //         ubicacion: "/images/products/",
-        //         id_producto: id,
-        //       };
-  
-        //       if(producto.length == files.length) {
-        //       db.Imagen.update(imagenProducto, {
-        //         where:{id_producto : id}
-        //       })
-        //       } else {
-        //         db.Imagen.create(imagenProducto)
-        //       }
-        //     })
-        //   })
-          
-        //   res.redirect(`/products/productDetail/${id}`);
-        // }
-
       } else {
-        res.render('products/formUpdate', {
+        res.render("products/formUpdate", {
           title: "Formulario Modificar",
           //errors: errors.mapped(),
           //producto:req.body,
-        })
+        });
       }
     } catch (error) {
-      //console.log(error);
-      res.send(error)
+      console.log(error);
     }
-    
-
   },
 
-  // delete: async (req, res) => {
-  //   const id = parseInt(req.params.id);
-  //   let pathFile;
-  //   const producto = await db.Producto.findByPk(id, {
-  //     include: [{ model: db.Imagen, as: "imagenes" }],
-  //   });
-  //   //console.log(producto.imagenes);
-  //   if (producto.imagenes) {
-  //     producto.imagenes.forEach((imagen) => {
-  //       db.Imagen.destroy({
-  //         where: { id_producto: id },
-  //       });
-  //       pathFile = path.join("public", imagen.ubicacion, "/", imagen.nombre);
-  //       fs.unlink(pathFile, (err) => {
-  //         if (err) throw new Error();
-  //       });
-  //     });
-  //   }
-  //   try {
-  //     const removeProduct = await db.Producto.destroy({
-  //       where: { id },
-  //     });
-  //     res.redirect("/products/dashboard");
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // },
+  delete: async (req, res) => {
+    const id = parseInt(req.params.id);
+    let pathFile;
+    const producto = await db.Producto.findByPk(id, {
+      include: [{ model: db.Imagen, as: "imagenes" }],
+    });
+    producto.imagenes.forEach((imagen) => {
+      if(imagen){
+        db.Imagen.destroy({
+          where: { id_producto: id },
+        });
+        pathFile = path.join("public", imagen.ubicacion, "/", imagen.nombre);
+        fs.unlink(pathFile, (err) => {
+          if (err) throw new Error();
+        });
+      }
+    });
+
+    try {
+      const removeProduct = await db.Producto.destroy({
+        where: { id },
+      });
+      res.redirect("/products/dashboard");
+    } catch (error) {
+      console.log(error);
+    }
+  },
 
   cart: function (req, res, next) {
     db.Producto.findAll({
