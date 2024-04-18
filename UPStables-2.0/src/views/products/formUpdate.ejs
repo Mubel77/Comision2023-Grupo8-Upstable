@@ -69,24 +69,23 @@
                     </div>
                     <div class="div_config div_form_product" id="div_imagen">
                         <label for="imagen">Imagen actual</label>
-<<<<<<< HEAD
-                            <img src="/images/products/<%=  producto && producto.imagenes && producto.imagenes.length > 0 ? producto.imagenes[0].nombre : 'default.jpg' %>"
-                            alt="Imagen del producto" class="centered-img producto">                  
-=======
-                        <img src="/images/products/<%= producto && producto.imagenes && producto.imagenes.length > 0 ? producto.imagenes[0].nombre : 'default.jpg' %>"
-                            alt="Imagen del producto" class="centered-img_producto">
->>>>>>> b813887f813f2422167c9f7561560586f9e909f3
                     </div>
                     <div class="div_config div_form_product" id="div_modificar_imagen">
                         <label for="modificar_imagen">Input imagen 1</label>
+                        <img src="/images/products/<%= producto.imagenes[0].nombre %>"
+                        alt="Imagen del producto" class="centered-img_producto" style="width: 100px; height: 100px;">
                         <input type="file" name="imagen-1" id="modificar_imagen" multiple>
                     </div>
                     <div class="div_config div_form_product" id="div_modificar_imagen">
                         <label for="modificar_imagen">Input imagen 2</label>
+                        <img src="/images/products/<%= producto && producto.imagenes && producto.imagenes[1] ? producto.imagenes[1].nombre : 'default.jpg' %>"
+                        alt="Imagen del producto" class="centered-img_producto" style="width: 100px; height: 100px;">
                         <input type="file" name="imagen-2" id="modificar_imagen" multiple>
                     </div>
                     <div class="div_config div_form_product" id="div_modificar_imagen">
                         <label for="modificar_imagen">Input imagen 3</label>
+                        <img src="/images/products/<%= producto && producto.imagenes && producto.imagenes[2] ? producto.imagenes[2].nombre : 'default.jpg' %>"
+                        alt="Imagen del producto" class="centered-img_producto" style="width: 100px; height: 100px;">
                         <input type="file" name="imagen-3" id="modificar_imagen" multiple>
                     </div>
                     <div class="boton_registro_create">

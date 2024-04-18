@@ -29,7 +29,7 @@ router.get('/formUpdate/:id', isAdmin, productsController.formUpdate);
 router.put('/update/:id', isAdmin, upload.fields([{name: 'imagen-1', maxCount: 1}, {name: 'imagen-2', maxCount: 1}, {name: 'imagen-3', maxCount: 1}]), validateCreation, productsController.update);
 
 // Borrar productos Admin
-//router.delete('/delete/:id', isAdmin, productsController.delete);
+router.delete('/delete/:id', isAdmin, productsController.delete);
 
 // Ver carrito de compra
 router.get('/productCart', sessionValidator, productsController.cart);

@@ -321,7 +321,6 @@ const userController = {
               { model: db.Telefono, as: 'telefonos' }
             ]})
               .then((user) => {
-//res.send(user)
                 req.session.user = user;
                 res.cookie("user", user, { maxAge: 1000 * 60 * 30 });
                 if (user.roles.id == 1){
