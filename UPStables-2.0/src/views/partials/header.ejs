@@ -20,10 +20,15 @@
         <div class="burguer_header">
             <i class="fas fa-bars"></i>
             <ol class="menu-vertical">
-                <li><a href="">UPS</a></li>
-                <li><a href="">Estabilizadores</a></li>
-                <li><a href="">Ofertas</a></li>
-                <li><a href="">Modo Oscuro <i class="fa-solid fa-moon"></i></a></li>
+                <li><a href="/products/UPS">UPS</a></li>
+                <li><a href="/products/Estabilizadores">Estabilizadores</a></li>
+                <li><a href="/products/Ofertas">Ofertas</a></li>
+                <li><a class="dark_mode">Modo Oscuro 
+                    <button class="switch" id="switch">
+                    <span><i class="fa-solid fa-sun"></i></span>
+                    <span><i class="fa-solid fa-moon"></i></span>
+                    </button></i>
+                </a></li>
             </ol>
         </div>
 
@@ -74,7 +79,11 @@
     </nav>
 
     <div class="on-off">
-        <i class="fa-solid fa-toggle-off"></i>
+        <!-- <i class="fa-solid fa-toggle-on"></i> -->
+    <button class="switch_2" id="switch">
+    <span><i class="fa-solid fa-sun"></i></span>
+    <span><i class="fa-solid fa-moon"></i></span>
+    </button>
     </div>
 
 </header>
@@ -99,3 +108,5 @@
         <h4><a href="/products/Ofertas">OFERTAS</a></h4>
     </div>
 </nav>
+
+<script src="/javascripts/dark-mode.js"></script>
