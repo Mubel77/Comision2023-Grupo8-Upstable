@@ -1,206 +1,215 @@
-.body_form{
-    background-image: none;
+.body_form {
+  background-image: none;
 }
-.main_registro{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;    
-    position: relative; 
-    
-  
+.main_registro {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-
-.main_registro::before{
-    content: " ";
-    opacity: 0.1;
-    background-repeat:repeat;
-    background-image: url(/images/img_formulario_registro.png);
-    background-position: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-} 
-.article_form_register{
-    opacity: 1;
-    margin: 50px auto;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: rgba(255, 255, 255,0.6);
-    border-right:#04b2d9 2px solid;
-    border-bottom:#04b2d9 2px solid;
-    width: 70%;
-    height: 90%;
-    border-radius: 10px;
-    box-shadow:  5px 5px 5px 1px rgba(0,0,0,0.6);
-    position: relative; 
-    z-index: 1; 
+.main_registro::before {
+  content: " ";
+  opacity: 0.1;
+  background-repeat: repeat;
+  background-image: url(/images/img_formulario_registro.png);
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.article_form_register {
+  opacity: 1;
+  margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-right: #04b2d9 2px solid;
+  border-bottom: #04b2d9 2px solid;
+  width: 70%;
+  height: 90%;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.6);
+  position: relative;
+  z-index: 1;
 }
 
 .subtitulo_registrate {
-    display: flex;
-    justify-content: left;
-    width: 90%;
-    margin-left: 40px;
-    margin-top: 20px;
+  display: flex;
+  justify-content: left;
+  width: 90%;
+  margin-left: 40px;
+  margin-top: 20px;
 }
 
 #p_registro {
-    text-transform: uppercase;
-    font-size: 24px;
-    font-weight: bold;
-    font-family: 'Roboto';
-    padding: 5% 0%;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "Roboto";
+  padding: 5% 0%;
 }
 
 #form_registro {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
 }
 
 .div_config {
-    display: flex;
-    flex-wrap: wrap;
-    width: 90%;
-    margin: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 5px;
 }
 
 .div_config label {
-    display: none;
-    font-size: 20px;
-    font-style: italic;
+  display: none;
+  font-size: 20px;
+  font-style: italic;
 }
 
 .div_config p {
-    font-size: 20px;
-    font-style: italic;
-    color: red;
+  font-size: 20px;
+  font-style: italic;
+  color: red;
 }
 
-.div_form_product label{
-    display: inline;
+.div_form_product label {
+  display: inline;
 }
 
-.div_config input, textarea{
-    border: 1px solid #000;
-    width: 100%;
-    padding: 5%;
-    margin: 5px 0px;
-    border-radius: 15px;
-    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
-    margin-bottom: 10px;
-    font-size: 18px;
+.div_config input,
+textarea {
+  border: 1px solid #000;
+  width: 100%;
+  padding: 5%;
+  margin: 5px 0px;
+  border-radius: 15px;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  margin-bottom: 10px;
+  font-size: 18px;
 }
 
 .campo_select {
-    border: 1px solid #000;
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0px;
-    border-radius: 15px;
-    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
-    margin-bottom: 10px;
-    font-size: 18px;
+  border: 1px solid #000;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0px;
+  border-radius: 15px;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  margin-bottom: 10px;
+  font-size: 18px;
 }
 
 .boton_registro {
-    margin: 5% auto 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .boton_registro button {
-    background-color: var(--color-celeste);
-    width: 100%;
-    border-radius: 5px;
-    margin: 10% auto;
-    padding: 6px;
-    font-family: 'Roboto';
-    font-weight: bold;
-    font-size: 82%;
+  background-color: var(--color-celeste);
+  width: 100%;
+  border-radius: 5px;
+  margin: 10% auto;
+  padding: 6px;
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 82%;
 }
 
-.boton_registro button:hover  {
-    background-color: rgb(8, 200, 244);
+.boton_registro button:hover {
+  background-color: rgb(8, 200, 244);
 }
 
 input::placeholder {
-    text-align: left;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    color: var(--color-negro);
+  text-align: left;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  color: var(--color-negro);
 }
 
+.div_box_imagen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
 @media (min-width: 768px) {
+  #imagenFormulario {
+    width: 80%;
+  }
 
-    #imagenFormulario{
-        width: 80%;
-    }
+  #p_registro {
+    font-size: 32px;
+    font-weight: bolder;
+    color: white;
+    -webkit-text-stroke: 0.5px black;
+  }
 
-    #p_registro {
-        font-size: 32px;
-        font-weight: bolder;
-        color: white;
-        -webkit-text-stroke: 0.5px black;
-    }
+  .div_config input {
+    padding: 3%;
+  }
 
-    .div_config input {
-        padding: 3%;
-    }
+  .boton_registro button {
+    font-size: 22px;
+  }
+  .div_config label {
+    display: block;
+    font-weight: bold;
+  }
 
-    .boton_registro button {
-        font-size: 22px;
-    }
-    .div_config label {
-        display: block;
-        font-weight: bold;
-    }
+  .boton_registro {
+    margin: 10px;
+  }
+
 }
 
 @media (min-width: 1024px) {
+  #imagenFormulario {
+    width: 50%;
+  }
 
-    #imagenFormulario{
-        width: 50%;
-    }
+  #p_registro {
+    font-size: 40px;
+  }
 
-    #p_registro {
-        font-size: 40px;
-    }
+  .main_registro {
+    flex-direction: column;
+  }
 
-    .main_registro{
-        flex-direction: column;
-    }
+  #form_registro {
+    width: 80%;
+    margin: 0 auto;
+    justify-content: space-between;
+  }
 
-    #form_registro {
-        width: 80%;
-        margin: 0 auto;
-        justify-content: space-between;
-    }
+  .div_config {
+    margin: 1% 0%;
+    width: 100%;
+  }
 
-    .div_config {
-        margin: 1% 0%;
-        width: 100%;
-    }
+  .nombre {
+    width: 45%;
+  }
 
-    
-    .nombre {
-        width: 45%;
-    }
+  .div_config input {
+    padding: 1%;
+  }
 
-    .div_config input {
-        padding: 1%;
-    } 
+  .nombre input {
+    padding: 2%;
+  }
 
-    .nombre input {
-        padding: 2%;
-    }
+  .boton_registro {
+    margin: 0 auto;
+    width: 35%;
+  }
 
-    .boton_registro {
-        margin: 0 auto;
-        width: 35%;
-
-      }
 }

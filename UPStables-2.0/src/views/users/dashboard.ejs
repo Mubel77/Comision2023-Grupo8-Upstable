@@ -2,14 +2,14 @@
 <body>
     <%- include('../partials/header.ejs') %>
     <main>
-      <div class="dashboard_box_search-add">
+      <div class="dashboard_box_search-add dashboard_admin_desktop">
         <div class="dashboard_search">
             <form action="/users/dashboard/search" method="GET">
                 <input type="text" name="keywords" placeholder="Buscar usuario por nombre o apellido ">
                 <button type="submit"><i class="fas fa-search"></i></button>
             </form>
         </div>
-        <a href="/users/registerAdmin"><button class="dashboard_add">+ Agregar Usuario</button></a>
+        <a href="/users/registerAdmin"><button class="boton_verificar">+ Agregar Usuario</button></a>
     </div>
         <article class="Conteiner_articule_users">
             <% usuarios.forEach(usuario => { %>
@@ -18,6 +18,7 @@
                 <div class="box-image-listUsers"><img class="imagen-usuario imagen-listProducts" src="<%= usuario.imagen %>" alt="foto-usuario"></div>
                 <div class="dashboardUsers_div_botones">
                   <a href="/users/formUpdateAdmin/<%= usuario.id %>"><button class="boton_verificar ">Modificar</button></a>
+                  <a href="/users/formUpdateAdmin/<%= usuario.id %>"><button class="boton_verificar ">Eliminar</button></a>
                 </div>
                 <div class="users_list p_texto">
                   <p>Nombre: <%= usuario.nombre %></p>
@@ -33,7 +34,7 @@
               </article>
               <%} %>
             <% }) %>
-          </article>
+        </section>
     </main>
     <%- include('../partials/footer.ejs') %>
 </body>

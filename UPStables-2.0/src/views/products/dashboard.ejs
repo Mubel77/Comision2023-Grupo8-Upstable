@@ -5,14 +5,14 @@
             <main class="dashboard_main">
                                 
                 <div class="dashboard_box_search-add">
-                    <a href="/products"><button class="dashboard_add">List Products</button></a>
+                    <a href="/products"><button class="boton_verificar boton_verificar-margen" id="list-productos">List Products</button></a>
                     <div class="dashboard_search">
                         <form action="/products/dashboard/search" method="GET">
                             <input type="text" name="keywords" placeholder="Buscar producto por Marca">
                             <button type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
-                    <a href="/products/formCreate"><button class="dashboard_add">+ Agregar Producto</button></a>
+                    <a href="/products/formCreate"><button class="boton_verificar boton_verificar-margen">+ Agregar Producto</button></a>
                 </div>
 
                 <section class="dashboard_section">
@@ -35,9 +35,9 @@
                             <h4>Stock: <%= producto.stock%></h4>
                         </div>
                         <div class="dashboard_div_botones">
-                            <a href="/products/formUpdate/<%= producto.id %>"><button>Modificar</button></a>
+                            <a href="/products/formUpdate/<%= producto.id %>"><button class="boton_verificar">Modificar</button></a>
                             <form action="/products/delete/<%=producto.id%>?_method=DELETE" method="POST">
-                                <button type="submit">Eliminar </button>
+                                <button type="submit" class="boton_verificar">Eliminar </button>
                             </form>
                         </div>
                     </article>

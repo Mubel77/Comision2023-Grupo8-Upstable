@@ -4,6 +4,7 @@ const usersController = require('../controllers/usersController.js');
 const loginValidator = require('../validaciones/loginValidator.js')
 const { validateRegister, validateRegisterAdmin } = require('../validaciones/registerValidator.js');
 const { validateUpdateUser, validateUpdateAdmin } = require('../validaciones/updateUserValidator.js');
+const {validateUpdateAvatar} = require('../validaciones/updateAvatar.js')
 const {sessionValidator, isAdmin} = require('../middlewares/sessionValidator.js')
 const upload = require('../middlewares/uploadAvatarUser.js');
 
@@ -23,6 +24,9 @@ router.put('/profile', upload.single('imagen'), validateUpdateUser, usersControl
 
 router.get('/perfilAdmin', isAdmin, usersController.perfilAdmin);
 router.get('/perfilUser', sessionValidator, usersController.perfilUser);
+
+router.get('/updateAvatar', sessionValidator, usersController.formUpdateAvatar);
+router.put('/updateAvatar', sessionValidator, upload.single('imagen'), validateUpdateAvatar, usersController.updateAvatar);
 
 router.get('/logout', usersController.logout);
 

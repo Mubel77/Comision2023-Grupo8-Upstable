@@ -89,32 +89,31 @@ const userController = {
         nombre,
         apellido,
         email,
-        imagen:"/images/users/user-default.png",
+        imagen: "/images/users/user-default.png",
         fecha_nacimiento: fecha_nacimiento,
-        password: bcrypt.hashSync(password, 10)
+        password: bcrypt.hashSync(password, 10),
       };
       db.Usuario.create(newAdmin)
-        .then(admin => {
+        .then((admin) => {
           const nuevoDomicilio = {
             id_usuario: admin.id,
             nombre_calle,
-            numero_calle
+            numero_calle,
           };
           db.Direccion.create(nuevoDomicilio)
-            .then(()=> {
+            .then(() => {
               const nuevoTelefono = {
                 id_usuario: admin.id,
                 prefijo,
-                numero
-              }
-              db.Telefono.create(nuevoTelefono)
-                .then(()=>{
-                  res.redirect('/users/dashboard')
-                })
-             })
-             .catch((error)=> console.log(error))
+                numero,
+              };
+              db.Telefono.create(nuevoTelefono).then(() => {
+                res.redirect("/users/dashboard");
+              });
+            })
+            .catch((error) => console.log(error));
         })
-        .catch((error)=> console.log(error))
+        .catch((error) => console.log(error));
     }
   },
 
@@ -166,15 +165,15 @@ const userController = {
       ],
     })
       .then((usuarios) => {
-        const users = usuarios.forEach(user => {
-          let dato = user.dataValues.fecha_nacimiento         
-          let fecha = format(dato,"DD/MM/YYYY");
-          user.dataValues.fecha_nacimiento = fecha
-        })
+        const users = usuarios.forEach((user) => {
+          let dato = user.dataValues.fecha_nacimiento;
+          let fecha = format(dato, "DD/MM/YYYY");
+          user.dataValues.fecha_nacimiento = fecha;
+        });
         res.render("users/dashboard", {
           title: "dashboard",
           usuarios,
-          usuario: req.session.user
+          usuario: req.session.user,
         });
       })
       .catch((err) => console.log(err));
@@ -205,28 +204,30 @@ const userController = {
         res.render("users/dashboard", {
           title: "Dashboard",
           usuarios,
-          usuario: req.session.user
+          usuario: req.session.user,
         });
       })
       .catch((err) => console.log(err));
   },
 
   formUpdateUser: (req, res) => {
-    db.Usuario.findByPk(req.session.user.id,{include: [
-      { model: db.Rol, as: "roles" },
-      { model: db.Direccion, as: 'direcciones' },
-      { model: db.Telefono, as: 'telefonos' }
-    ]})
+    db.Usuario.findByPk(req.session.user.id, {
+      include: [
+        { model: db.Rol, as: "roles" },
+        { model: db.Direccion, as: "direcciones" },
+        { model: db.Telefono, as: "telefonos" },
+      ],
+    })
       .then((respuesta) => {
-        let dato = respuesta.dataValues.fecha_nacimiento
-        let fecha = format(dato,"DD/MM/YYYY");
-        respuesta.dataValues.fecha_nacimiento = fecha
+        let dato = respuesta.dataValues.fecha_nacimiento;
+        let fecha = format(dato, "DD/MM/YYYY");
+        respuesta.dataValues.fecha_nacimiento = fecha;
 
         res.render("./users/formUpdateUser", {
           title: "Editar Usuario",
           subtitulo: "Editar Usuario",
           usuario: req.session.user,
-          respuesta
+          respuesta,
         });
       })
       .catch((err) => {
@@ -249,7 +250,7 @@ const userController = {
         email,
         fecha_nacimiento,
       } = req.body;
-      
+
       const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
@@ -262,7 +263,7 @@ const userController = {
       } else {
         let fecha = parse({
           date: fecha_nacimiento,
-          format: "DD-MM-YYYY"
+          format: "DD-MM-YYYY",
         });
 
         const usuarioUpdate = {
@@ -315,33 +316,34 @@ const userController = {
 
         Promise.all([actualizarUsuario, actualizarDomicilio, telefono()])
           .then(() => {
-            db.Usuario.findByPk(req.session.user.id,{include: [
-              { model: db.Rol, as: "roles" },
-              { model: db.Direccion, as: 'direcciones' },
-              { model: db.Telefono, as: 'telefonos' }
-            ]})
+            db.Usuario.findByPk(req.session.user.id, {
+              include: [
+                { model: db.Rol, as: "roles" },
+                { model: db.Direccion, as: "direcciones" },
+                { model: db.Telefono, as: "telefonos" },
+              ],
+            })
               .then((user) => {
                 req.session.user = user;
                 res.cookie("user", user, { maxAge: 1000 * 60 * 30 });
-                if (user.roles.id == 1){
-                res.render("./users/perfilClient", {
-                  title: "Mi Perfil",
-                  usuario: req.session.user
-                });
-              } else {
-                res.render("./users/perfil-admin", {
-                  title: "Mi Perfil",
-                  usuario: req.session.user
-                });
-              }
+                if (user.roles.id == 1) {
+                  res.render("./users/perfilClient", {
+                    title: "Mi Perfil",
+                    usuario: req.session.user,
+                  });
+                } else {
+                  res.render("./users/perfil-admin", {
+                    title: "Mi Perfil",
+                    usuario: req.session.user,
+                  });
+                }
               })
               .catch((err) => {
                 console.log(err);
               });
-
           })
           .catch((err) => {
-              console.log(err);
+            console.log(err);
           });
       }
     } catch (error) {
@@ -359,9 +361,9 @@ const userController = {
       ],
       attributes: { exclude: ["password"] },
     }).then((userUpdate) => {
-        let dato = userUpdate.dataValues.fecha_nacimiento
-        let fecha = format(dato,"DD/MM/YYYY");
-        userUpdate.dataValues.fecha_nacimiento = fecha
+      let dato = userUpdate.dataValues.fecha_nacimiento;
+      let fecha = format(dato, "DD/MM/YYYY");
+      userUpdate.dataValues.fecha_nacimiento = fecha;
       res.render("./users/formUpdateAdmin", {
         title: "Editar Empleado",
         userId,
@@ -373,104 +375,162 @@ const userController = {
 
   updateAdmin: async (req, res) => {
     try {
-    const userId = req.params.id;
-    const errors = validationResult(req);
-    const {
-      nombre,
-      apellido,
-      nombre_calle,
-      numero_calle,
-      codigo_postal,
-      localidad,
-      provincia,
-      prefijo,
-      numero,
-      email,
-      rol_id,
-      fecha_nacimiento,
-    } = req.body;
-
-    const file = req.files
-
-    if (!errors.isEmpty()) {
-      res.render("./users/formUpdateAdmin", {
-        title: "Editar Empleado",
-        userId,
-        usuario: req.session.user,
-        errors: errors.mapped(),
-        old: req.body,
-      });
-    } else {
-      let fecha = parse({
-        date: fecha_nacimiento,
-        format: "DD/MM/YYYY",
-      });
-
-      const usuarioUpdate = {
+      const userId = req.params.id;
+      const errors = validationResult(req);
+      const {
+        nombre,
+        apellido,
+        nombre_calle,
+        numero_calle,
+        codigo_postal,
+        localidad,
+        provincia,
+        prefijo,
+        numero,
+        email,
         rol_id,
-        nombre: nombre.trim(),
-        apellido: apellido.trim(),
-        email: email.trim(),
-        // imagen: file
-        //   ? `/images/users/${req.file.filename}`
-        //   : undefined ,
-        fecha_nacimiento: fecha,
-      };
+        fecha_nacimiento,
+      } = req.body;
 
-      const domicilioUpdate = {
-        id_usuario: userId,
-        nombre_calle: nombre_calle,
-        numero_calle: numero_calle,
-        codigo_postal: codigo_postal,
-        localidad: localidad,
-        provincia: provincia,
-      };
+      const file = req.files;
 
-      const telefUpdate = {
-        id_usuario: userId,
-        numero: numero,
-        prefijo: prefijo,
-      };
+      if (!errors.isEmpty()) {
+        res.render("./users/formUpdateAdmin", {
+          title: "Editar Empleado",
+          userId,
+          usuario: req.session.user,
+          errors: errors.mapped(),
+          old: req.body,
+        });
+      } else {
+        let fecha = parse({
+          date: fecha_nacimiento,
+          format: "DD/MM/YYYY",
+        });
 
-      const actualizarUsuario = await db.Usuario.update(usuarioUpdate, {
-        where: { id: userId },
-      });
+        const usuarioUpdate = {
+          rol_id,
+          nombre: nombre.trim(),
+          apellido: apellido.trim(),
+          email: email.trim(),
+          // imagen: file
+          //   ? `/images/users/${req.file.filename}`
+          //   : undefined ,
+          fecha_nacimiento: fecha,
+        };
 
-      const actualizarDomicilio = await db.Direccion.update(domicilioUpdate, {
-        where: { id_usuario: userId },
-      });
+        const domicilioUpdate = {
+          id_usuario: userId,
+          nombre_calle: nombre_calle,
+          numero_calle: numero_calle,
+          codigo_postal: codigo_postal,
+          localidad: localidad,
+          provincia: provincia,
+        };
 
-      async function telefono() {
-        const user = await db.Usuario.findByPk(userId, {
-          include: [
-            { model: db.Telefono, as: "telefonos" },
-          ],
-          attributes: { exclude: ["password"] }
-        })
-        try {
-          if (user.telefonos.length >= 1) {
-            //Si existe un registro de telefono
-            return await db.Telefono.update(telefUpdate, {
-              where: { id_usuario: user.id },
-            });
-          } else {
-            //Si no existe un registro de telefono
-            return await db.Telefono.create(telefUpdate);
+        const telefUpdate = {
+          id_usuario: userId,
+          numero: numero,
+          prefijo: prefijo,
+        };
+
+        const actualizarUsuario = await db.Usuario.update(usuarioUpdate, {
+          where: { id: userId },
+        });
+
+        const actualizarDomicilio = await db.Direccion.update(domicilioUpdate, {
+          where: { id_usuario: userId },
+        });
+
+        async function telefono() {
+          const user = await db.Usuario.findByPk(userId, {
+            include: [{ model: db.Telefono, as: "telefonos" }],
+            attributes: { exclude: ["password"] },
+          });
+          try {
+            if (user.telefonos.length >= 1) {
+              //Si existe un registro de telefono
+              return await db.Telefono.update(telefUpdate, {
+                where: { id_usuario: user.id },
+              });
+            } else {
+              //Si no existe un registro de telefono
+              return await db.Telefono.create(telefUpdate);
+            }
+          } catch (error) {
+            console.log(error);
           }
-        } catch (error) {
-          console.log(error);
         }
-      }
 
-      Promise.all([actualizarUsuario, actualizarDomicilio, telefono()])
+        Promise.all([actualizarUsuario, actualizarDomicilio, telefono()]).then(
+          () => {
+            res.redirect("/users/dashboard");
+          }
+        );
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  formUpdateAvatar: async (req, res) => {
+    db.Usuario.findByPk(req.session.user.id)
       .then(() => {
-          res.redirect("/users/dashboard");
+        res.render("./users/formUpdateAvatar", {
+          title: "Cambiar AVATAR...",
+          subtitulo: "Cambiar AVATAR...",
+          usuario: req.session.user,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+
+  updateAvatar: async (req, res) => {
+    const errors = validationResult(req);
+    if (errors.isEmpty()) {
+      console.log("Aca tambien llegamos....");
+      const newAvatar = {
+        imagen: req.file ? `/images/users/${req.file.filename}` : `${req.session.user.imagen}`,
+      };
+      db.Usuario.update(newAvatar, { where: { id: req.session.user.id } }).then(
+        () => {
+          db.Usuario.findByPk(req.session.user.id, {
+            include: [
+              { model: db.Rol, as: "roles" },
+              { model: db.Direccion, as: "direcciones" },
+              { model: db.Telefono, as: "telefonos" },
+            ],
+          })
+            .then((user) => {
+              req.session.user = user;
+              res.cookie("user", user, { maxAge: 1000 * 60 * 30 });
+              if (user.roles.id == 1) {
+                res.render("./users/perfilClient", {
+                  title: "Mi Perfil",
+                  usuario: req.session.user,
+                });
+              } else {
+                res.render("./users/perfil-admin", {
+                  title: "Mi Perfil",
+                  usuario: req.session.user,
+                });
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
       );
+    } else {
+      res.render("./users/formUpdateAvatar", {
+        title: "Cambiar AVATAR...",
+        subtitulo: "Cambiar AVATAR...",
+        usuario: req.session.user,
+        errors: errors.mapped(),
+      });
     }
-    } catch (error) {
-        console.log(error);
-    } 
   },
 
   perfilAdmin: function (req, res, next) {
@@ -483,7 +543,7 @@ const userController = {
   perfilUser: function (req, res, next) {
     res.render("users/perfilClient", {
       title: "Mi Perfil",
-      usuario: req.session.user
+      usuario: req.session.user,
     });
   },
 
@@ -491,8 +551,7 @@ const userController = {
     res.clearCookie("user");
     req.session.destroy();
     return res.redirect("/");
-  }
-  
+  },
 };
 
 module.exports = userController;

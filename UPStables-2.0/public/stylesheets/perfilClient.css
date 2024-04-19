@@ -7,6 +7,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 20px 10px;
   }
 
   .section_izq_perfil-user {
@@ -44,13 +45,11 @@
   }
   
   .section_der_perfil-user {
-      /* border: 2px red solid; */
       width: 90%;
       margin-top: 10px;
   }
   
   .section_der_article_perfil-user { 
-      /* border: 1px solid grey; */
       border-radius: 10px;
       box-shadow: 0px 0px 10px rgb(100, 100, 100);
       background-color: rgb(222, 219, 219);
@@ -83,6 +82,7 @@
 .main_perfil-user {
   flex-direction: column;
   align-items: center;
+  padding: 20px;
 }
 
 .section_izq_perfil-user {
@@ -94,29 +94,7 @@
   justify-content: space-around;  
 }
 
-/* .div_enlaces_perfil-user {
-  display: flex;
-  align-items: center;
-  margin: 20px 5px;
-  padding: 5px;
-  background-color: rgb(205, 203, 203);
-  border-radius: 10px;
-}
-
-.div_enlaces_perfil-user i {
-  font-size: 30px;
-  width: 40px;
-}
-
-.div_enlaces_perfil-user p{
-  width: 300px;
-  font-size: 28px;
-  font-style: italic;
-  margin-left: 25px;
-} */
-
 .div_miPerfil {
-  /* border: 1px green solid; */
   margin-top: 10px;
   padding: 5px;
   display: flex;
@@ -132,7 +110,6 @@
 }
 
 .section_der_perfil-user {
-  /* border: 2px red solid; */
   display: flex;
   justify-content: space-around;
   width: 90%;
@@ -176,29 +153,7 @@
       flex-direction: column;
   }
   
-  /* .div_enlaces_perfil-user {
-      display: flex;
-      align-items: center;
-      margin: 20px 5px;
-      padding: 5px;
-      background-color: rgb(205, 203, 203);
-      border-radius: 10px;
-  }
-  
-  .div_enlaces_perfil-user i {
-      font-size: 30px;
-      width: 40px;
-  }
-  
-  .div_enlaces_perfil-user p{
-      width: 300px;
-      font-size: 28px;
-      font-style: italic;
-      margin-left: 25px;
-  } */
-  
   .div_miPerfil {
-      /* border: 1px green solid; */
       margin-top: 10px;
       padding: 5px;
       display: flex;
@@ -213,7 +168,6 @@
   }
   
   .section_der_perfil-user {
-      /* border: 2px red solid; */
       width: 70%;
       display: flex;
       justify-content: space-around;
