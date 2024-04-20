@@ -388,7 +388,7 @@ delete: async (req, res) => {
           total,
           impuestos,
         };
-        res.render("products/productCart", {
+        res.render("products/newCart", {
           title: "Carrito de Compras",
           productos,
           data,
