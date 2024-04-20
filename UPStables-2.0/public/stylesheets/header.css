@@ -36,7 +36,7 @@ header a{
     height: 30px;   
     border-radius: 15px;
     border-color: white;
-
+    padding: 5%;
 }
 .buscador_header input::placeholder{
     color:black;
