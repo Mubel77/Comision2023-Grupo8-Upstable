@@ -31,6 +31,7 @@ router.put('/update/:id', upload.array('imagenes',3), validateCreation, products
 router.delete('/delete/:id', isAdmin, productsController.delete);
 
 // Ver carrito de compra
-router.get('/productCart', sessionValidator, productsController.cart);
+router.get('/productCart', productsController.cart); //acordateee de la sesion
 
 module.exports = router;
+

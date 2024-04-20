@@ -4,7 +4,8 @@
     <%-include("../partials/header.ejs") %>
     <main style="display: flex;">
       
-      <section class="column_items_products" >
+      <section id="column_items_products" class="column_items_products" >
+        <div id="listaPorducto">
         <%  productos.forEach(producto => { %>    
             <article class="item_product">
               <div class="item_product_div">
@@ -17,7 +18,8 @@
                 </div>
                 <div class="item_product_div">
                   <p class="">$<%= producto.precio %></p>
-                </div>   
+                </div>  
+             </div>
             </article>
         <% }) %>
       </section>
@@ -37,7 +39,7 @@
           </div>
         </div>   
       </section>
-      <script src="/javascripts/carrito.js"></script>
+      <script src="/javascripts/carritoStoraje.js"></script>
 
     </main>
     <%-include("../partials/footer.ejs") %>

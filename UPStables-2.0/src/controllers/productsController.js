@@ -4,6 +4,7 @@ const fs = require('fs')
 const { validationResult } = require("express-validator");
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const path = require('path');
+const idCart = require('../../public/javascripts/carrito')
 
 const productsController = {
   //pedido a base de datos, listar productos
@@ -364,38 +365,40 @@ delete: async (req, res) => {
 },
 
   cart: function (req, res, next) {
-    db.Producto.findAll({
-      include: [
-        { model: db.Categoria, as: "categorias" }, // Relación con Categoría
-        { model: db.Marca, as: "marcas" }, // Relación con Marca
-        { model: db.Imagen, as: "imagenes" }, // Relación con Imagen
-      ],
-      limit: 2,
-    })
-      .then((productos) => {
-        //let cantidad = 3
-        let subtotal = 0;
-        let total = 0;
-        let impuestos = 0;
-        const cuenta = productos.forEach((element) => {
-          subtotal = +element.precio + subtotal;
-          total = subtotal * 1.21;
-          impuestos = subtotal * 0.21;
-        });
-        const data = {
-          // cantidad,
-          subtotal,
-          total,
-          impuestos,
-        };
-        res.render("products/newCart", {
-          title: "Carrito de Compras",
-          productos,
-          data,
-          usuario: req.session.user,
-        });
-      })
-      .catch((err) => console.log(err));
+    const carritoProducto = localStorage.getItem('id')
+    console.log(carritoProducto,'putoooooo');
+    // db.Producto.findAll({
+    //   include: [
+    //     { model: db.Categoria, as: "categorias" }, // Relación con Categoría
+    //     { model: db.Marca, as: "marcas" }, // Relación con Marca
+    //     { model: db.Imagen, as: "imagenes" }, // Relación con Imagen
+    //   ],
+    //   limit: 2,
+    // })
+    //   .then((productos) => {
+    //     //let cantidad = 3
+    //     let subtotal = 0;
+    //     let total = 0;
+    //     let impuestos = 0;
+    //     const cuenta = productos.forEach((element) => {
+    //       subtotal = +element.precio + subtotal;
+    //       total = subtotal * 1.21;
+    //       impuestos = subtotal * 0.21;
+        // });
+        // const data = {
+      //     // cantidad,
+      //     subtotal,
+      //     total,
+      //     impuestos,
+      //   };
+      //   res.render("products/newCart", {
+      //     title: "Carrito de Compras",
+      //     productos,
+      //     data,
+      //     usuario: req.session.user,
+      //   });
+      // })
+      // .catch((err) => console.log(err));
   },
 };
 

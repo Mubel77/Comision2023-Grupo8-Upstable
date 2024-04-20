@@ -28,6 +28,7 @@
             
 
             <article class="info_producto">
+                <p id="idProducto"><%= producto.id %></p>
                     <h3 class="nombre_producto"><%= producto.modelo %></h3>
                 <div class="marca_producto">
                     <p id="marca">Marca:</p> 
@@ -61,8 +62,7 @@
                
                 <div class="agregar_carrito">                    
                     <i class="fa-solid fa-cart-shopping"></i>
-                    <a href="/products/">
-                    <p>Agregar al carrito</p>
+                    <button class="boton-Carrito" id="botonCarrito"><p>Agregar al carrito</p></button>
                 </a>
                 </div>
             
@@ -121,8 +121,8 @@
         </div>
         </section>
         <script src="/javascripts/contador-unidades.js"></script>
+        <script src="/javascripts/carrito.js"></script>
     </main>
     <%- include("../partials/footer") %>
-    <script src="/javascripts/dark-mode.js"></script>
 </body>
 </html>
