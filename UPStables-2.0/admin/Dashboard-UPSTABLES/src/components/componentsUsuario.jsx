@@ -24,7 +24,7 @@ function Usuario (props) {
       return (
         <>
         <div className='caja_imagen_usuario'>
-        <a href={`http://localhost:3000users/formUpdateAdmin/${props.id}`}>
+        <a href={`http://localhost:3000/users/formUpdateAdmin/${props.id}`}>
          <img style={estilo} src={`http://localhost:3000${props.imagen}`} alt="Imagen de Producto" />
         </a>
         </div>

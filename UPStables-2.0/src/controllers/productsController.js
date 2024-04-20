@@ -291,59 +291,93 @@ const productsController = {
       descuento,
     } = req.body;
 
-    const files = req.files;
+    const {imagen1, imagen2, imagen3 } = req.files
 
     const errors = validationResult(req);
-    try {
-      if (errors.isEmpty()) {
-        const newProducto = {
-          modelo,
-          descripcion,
-          precio,
-          stock,
-          potencia,
-          tomas,
-          descuento,
-          id_marcas,
-          id_categorias,
-        };
-        const update = await db.Producto.update(newProducto, { where: { id } });
+    console.log('Estos son los errores....', {errors:errors.mapped()});
+      try {
+        if (errors.isEmpty()) {
+          console.log('Estamos acaaaaaaa vamooooooo..!!!!');
 
-        if (Object.keys(files).length > 0) {
+          const newProducto = {
+            modelo,
+            descripcion,
+            precio,
+            stock,
+            potencia,
+            tomas,
+            descuento,
+            id_marcas,
+            id_categorias,
+          };
           await db.Imagen.findAll({ where: { id_producto: id } })
-            .then((producto) => {
-              let cont = 0;
-              for (const key in files) {
-                files[key].forEach((element) => {
-                  const imagenProducto = {
-                    nombre: element.filename,
-                    ubicacion: "/images/products/",
-                    id_producto: id,
-                  };
-                  if (producto[cont]) {
-                    db.Imagen.update(imagenProducto, {
-                      where: { id: producto[cont].dataValues.id },
-                    });
-                  } else {
-                    db.Imagen.create(imagenProducto, {
-                      where: { id_producto: id },
-                    });
-                  }
-                });
-                cont += 1;
+            .then((producto) => {       
+              if(imagen1 != undefined){
+                const imagenProducto = {
+                  nombre: imagen1[0].filename,
+                  ubicacion: "/images/products/",
+                  id_producto: id,
+                };
+                if (producto[0]) {
+                  db.Imagen.update(imagenProducto, {
+                    where: { id: producto[0].dataValues.id },
+                  });
+                } else {
+                  db.Imagen.create(imagenProducto, {
+                    where: { id_producto: id },
+                  });
+                }
               }
+              
+              if(imagen2 != undefined){
+                const imagenProducto = {
+                  nombre: imagen2[0].filename,
+                  ubicacion: "/images/products/",
+                  id_producto: id,
+                };
+                if (producto[1]) {
+                  db.Imagen.update(imagenProducto, {
+                    where: { id: producto[1].dataValues.id },
+                  });
+                } else {
+                  db.Imagen.create(imagenProducto, {
+                    where: { id_producto: id },
+                  });
+                }
+              }
+              
+              if (imagen3 != undefined) {
+                const imagenProducto = {
+                  nombre: imagen3[0].filename,
+                  ubicacion: "/images/products/",
+                  id_producto: id,
+                };
+                if (producto[2]) {
+                  db.Imagen.update(imagenProducto, {
+                    where: { id: producto[2].dataValues.id },
+                  });
+                } else {
+                  db.Imagen.create(imagenProducto, {
+                    where: { id_producto: id },
+                  });
+                }
+              }
+              db.Producto.update(newProducto, { where: { id } })
+                .then((result) => {
+                  res.redirect(`/products/productDetail/${id}`);
+                }).catch((err) => {
+                  console.log(err);
+                });
             })
             .catch((error) => {
               throw new Error(error);
             });
-        }
 
-        res.redirect(`/products/productDetail/${id}`);
       } else {
         res.render("products/formUpdate", {
           title: "Formulario Modificar",
-          //errors: errors.mapped(),
-          //producto:req.body,
+          errors: errors.mapped(),
+          producto:req.body,
         });
       }
     } catch (error) {

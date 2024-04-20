@@ -26,7 +26,7 @@ router.post('/formCreate', upload.array('imagenes',3), validateCreation, product
 // Actualizar productos Admin
 router.get('/formUpdate/:id', isAdmin, productsController.formUpdate);
 //router.put('/update/:id', isAdmin, upload.array('imagenes',3), validateCreation, productsController.update);
-router.put('/update/:id', isAdmin, upload.fields([{name: 'imagen-1', maxCount: 1}, {name: 'imagen-2', maxCount: 1}, {name: 'imagen-3', maxCount: 1}]), validateCreation, productsController.update);
+router.put('/update/:id', isAdmin, upload.fields([{name: 'imagen1', maxCount: 1}, {name: 'imagen2', maxCount: 1}, {name: 'imagen3', maxCount: 1}]), validateCreation, productsController.update);
 
 // Borrar productos Admin
 router.delete('/delete/:id', isAdmin, productsController.delete);

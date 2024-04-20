@@ -41,7 +41,7 @@ function LastAdmin() {
   }
   return(
     <div className="content-box-lastCreation">
-      <h2>Ultimo Administrador</h2>
+      <h2>Ultimo Admin Creado</h2>
       <div className="box-lastCreation">
         <div className="box-image"> 
             <img style={estilo} src={`http://localhost:3000/${item.imagen}`} alt="Avatar Usuario" />

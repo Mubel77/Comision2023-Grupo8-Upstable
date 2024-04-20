@@ -12,7 +12,7 @@ function LastProduct() {
     const respuesta = await fetch(`http://localhost:3000/products/api/list/?page=${pages}`)
     const info = await respuesta.json()
     const ultimo = info.productos.filter(element =>
-      element == info.productos[info.productos.length-3]
+      element == info.productos[info.productos.length-1]
     )
     setLast(ultimo[0].id)
     }
@@ -39,7 +39,7 @@ function LastProduct() {
     <div className="content-box-lastCreation">
       {Object.keys(item).length >0 && (
         <>
-        <h2>Ultimo Producto</h2>
+        <h2>Ultimo Producto Creado</h2>
       <div className="box-lastCreation">
         <div className="box-image">
           {item.imagenes && item.imagenes.length > 0 && (         

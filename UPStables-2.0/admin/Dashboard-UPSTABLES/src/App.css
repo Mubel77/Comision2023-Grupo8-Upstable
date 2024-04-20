@@ -122,6 +122,7 @@ body{
   flex-wrap: wrap;
   border-radius: 10px;
   box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.6);
+  background-color: hsla(190, 5%, 78%, 0.721);
 }
 .box-counts {
   background-color: #D1D4DE;
@@ -144,7 +145,6 @@ body{
   margin: 10px;
 }
 .list-entidades {
-  overflow: auto;
   display: flex;
   height: 510px;
   width: 45%;
@@ -162,6 +162,7 @@ body{
   /* margin: 3px 0px; */
   display: flex;
   width: 95%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   /* flex-direction: row;
   /* width: 80%; */
   /* flex-wrap: nowrap;
@@ -187,7 +188,7 @@ body{
   display: flex;
   flex-direction: column;
   padding: 10px;
-  background-color: rgb(211, 211, 198);
+  background-color: hsla(190, 5%, 78%, 0.721);
   border-radius: 10px;
   box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.6);
 }

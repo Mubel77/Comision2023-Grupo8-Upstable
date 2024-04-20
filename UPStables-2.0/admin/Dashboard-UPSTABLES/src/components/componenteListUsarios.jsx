@@ -22,7 +22,9 @@ const Users = () => {
     return (
         <>
             <div className="list-entidades entidades-estilos">
+                <div>
                 <p className='p_estilo'>Lista de Administradores</p>
+                </div>
                 <ul className='ul_estilo'>
                     {users.adminList.map((item, i) => (
                         <li className="box_li caja_estilos estilos_usuario" key={i + item}>
