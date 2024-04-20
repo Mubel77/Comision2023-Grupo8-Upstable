@@ -3,16 +3,22 @@
     <body>
         <%- include('../partials/header.ejs') %>
             <main class="dashboard_main">
-                                
+                <div class="div_buttons_top">
+                    <% if (locals.usuario.roles.id == 2){ %>
+                    <a href="http://localhost:5173/?id=<%= usuario.id %>"><button class="boton_verificar">Dashboard General</button></a>
+                    <% } %>
+                    <a href="/products/productsList"><button class="boton_verificar">List Products</button></a>
+                    <a href="/products/formCreate"><button class="boton_verificar">+ Agregar Producto</button></a>
+                </div>             
                 <div class="dashboard_box_search-add">
-                    <a href="/products"><button class="boton_verificar boton_verificar-margen" id="list-productos">List Products</button></a>
+                    <!-- <a href="/products/productsList"><button class="boton_verificar boton_verificar-margen" id="list-productos">List Products</button></a> -->
                     <div class="dashboard_search">
                         <form action="/products/dashboard/search" method="GET">
                             <input type="text" name="keywords" placeholder="Buscar producto por Marca">
                             <button type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
-                    <a href="/products/formCreate"><button class="boton_verificar boton_verificar-margen">+ Agregar Producto</button></a>
+                    <!-- <a href="/products/formCreate"><button class="boton_verificar boton_verificar-margen">+ Agregar Producto</button></a> -->
                 </div>
 
                 <section class="dashboard_section">
@@ -26,6 +32,7 @@
                         <div class="dashboard_div_texto">
                             <h2>Modelo: <%= producto.modelo%></h2>
                             <h3>Marca: <%= producto.marcas.marca%></h3>
+                            <h4>ID: <%= producto.id%></h4>
                             <h4>Categoria: <%= producto.categorias.categoria%></h4>
                             <p><%= producto.descripcion%></p>
                             <h4>Potencia: <%= producto.potencia%></h4>

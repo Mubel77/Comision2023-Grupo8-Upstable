@@ -50,7 +50,6 @@ function LastAdmin() {
             <p>Nombre: {item.nombre}</p>
             <p>Apellido: {item.apellido}</p>
             <p>Email: {item.email}</p>
-            <p>Cumpleaños: {item.fecha_nacimiento}</p>
       </div>
     </div>
   )

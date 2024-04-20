@@ -2,16 +2,34 @@ function SideBar() {
   return (
     <>
       <div className="div_box_enlaces">
-        <a href="http://localhost:5173/">
+        {/* <a href="http://localhost:5173/">
           <div className="div_enlaces_perfil-user">
           <i className="fa-solid fa-screwdriver-wrench"></i>
             <p>Dashboard</p>
           </div>
-        </a>
-        <a href="http://localhost:3000/products/productsList/">
+        </a> */}
+        <a href="http://localhost:3000/users/dashboard">
           <div className="div_enlaces_perfil-user">
           <i className="fa-solid fa-screwdriver-wrench"></i>
-            <p>Lista de Productos</p>
+            <p>Dashboard Admins</p>
+          </div>
+        </a>
+        <a href="http://localhost:3000/users/registerAdmin">
+          <div className="div_enlaces_perfil-user">
+          <i className="fa-solid fa-screwdriver-wrench"></i>
+            <p>Crear Admin</p>
+          </div>
+        </a>
+        <a href="http://localhost:3000/users/dashboard">
+          <div className="div_enlaces_perfil-user">
+          <i className="fa-solid fa-screwdriver-wrench"></i>
+            <p>Editar Admin</p>
+          </div>
+        </a>
+        <a href="http://localhost:3000/products/dashboard">
+          <div className="div_enlaces_perfil-user">
+          <i className="fa-solid fa-screwdriver-wrench"></i>
+            <p>Dashboard Productos</p>
           </div>
         </a>
         <a href="http://localhost:3000/products/formCreate">
@@ -26,16 +44,10 @@ function SideBar() {
             <p>Editar Producto</p>
           </div>
         </a>
-        <a href="http://localhost:3000/users/dashboard">
+        <a href="http://localhost:3000/products/productsList/">
           <div className="div_enlaces_perfil-user">
           <i className="fa-solid fa-screwdriver-wrench"></i>
-            <p>Dashboard Admins</p>
-          </div>
-        </a>
-        <a href="http://localhost:3000/users/registerAdmin">
-          <div className="div_enlaces_perfil-user">
-          <i className="fa-solid fa-screwdriver-wrench"></i>
-            <p>Crear Admins</p>
+            <p>Lista de Productos</p>
           </div>
         </a>
         <a href="http://localhost:3000/users/logout">

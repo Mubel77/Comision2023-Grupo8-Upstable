@@ -1,6 +1,8 @@
 .article_listProducts {
     display: flex;
     height: 500px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.6);
 }
 
 .main_listProducts {
@@ -27,6 +29,7 @@
     flex-direction: column;
     padding: 0px 20px;
     justify-content: space-around;
+    align-items: baseline;
 }
 
 .products_list p {

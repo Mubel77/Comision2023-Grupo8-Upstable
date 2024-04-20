@@ -10,6 +10,9 @@
             </form>
         </div>
         <a href="/users/registerAdmin"><button class="boton_verificar">+ Agregar Usuario</button></a>
+        <% if (locals.usuario.roles.id == 2){ %>
+          <a href="http://localhost:5173/?id=<%= usuario.id %>"><button class="boton_verificar">Dashboard General</button></a>
+          <% } %>
     </div>
         <article class="Conteiner_articule_users">
             <% usuarios.forEach(usuario => { %>

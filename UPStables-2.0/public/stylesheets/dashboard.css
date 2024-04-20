@@ -127,7 +127,7 @@
 
 @media (min-width: 1024px) {
   #list-productos {
-    margin-left: 250px;
+    margin-left: 500px;
   }
   .dashboard_main {
     display: flex;

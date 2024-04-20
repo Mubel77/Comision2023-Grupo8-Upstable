@@ -49,7 +49,6 @@ function LastProduct() {
             <p>ID: {item.id}</p>
             <p>Modelo: {item.modelo}</p>
             <p>Marca: {item.marcas.marca}</p>
-            <p>Precio: {item.precio}</p>
             <p>Stock: {item.stock}</p>    
       </div>
       </>

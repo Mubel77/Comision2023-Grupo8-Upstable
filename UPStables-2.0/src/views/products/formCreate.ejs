@@ -2,6 +2,10 @@
 <body>
     <%- include('../partials/header.ejs')%>
     <main>
+        <div class="div_buttons_top">
+            <a href="/products/dashboard"><button class="boton_verificar">Dashboard Productos</button></a>
+            <a href="/products/productsList"><button class="boton_verificar">List Products</button></a>
+        </div>
         <article class="article_form_create">
             <div class="subtitulo_registrate">
                 <p id="p_registro">Crear Producto</p>
@@ -57,7 +61,7 @@
                     <input type="number"  name="stock" id="stock" value="<%= locals.oldData ? oldData.stock : null %>">
                 </div>
                 <div class="div_config div_form_product" id="div_imagenes">
-                    <label for="imagenes">Seleccione una imagen</label>
+                    <label for="imagenes">Imagenes (maximo 3 archivos)</label>
                     <input type="file" name="imagenes" id="imagenes"  value="<%= locals.oldData ? oldData.imagenes : null %>" multiple>
                 </div>
            

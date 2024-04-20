@@ -13,7 +13,7 @@ router.get('/register', usersController.register);
 router.post('/register', upload.single('imagen'), validateRegister, usersController.createUser);
 
 router.get('/registerAdmin', isAdmin, usersController.registerAdmin); 
-router.post('/registerAdmin', upload.single('imagen'), validateRegisterAdmin, usersController.createUserAdmin);
+router.post('/registerAdmin', isAdmin, upload.single('imagen'), validateRegisterAdmin, usersController.createUserAdmin);
 
 router.get('/login', usersController.login);
 router.post('/login', loginValidator, usersController.loginUp);
@@ -35,6 +35,6 @@ router.get('/dashboard', isAdmin, usersController.dashboardUsers);
 router.get('/dashboard/search', isAdmin, usersController.dashboardSearchUsers);
 
 router.get('/formUpdateAdmin/:id', isAdmin, usersController.formUpdateAdmin)
-router.put('/updateAdmin/:id', upload.single('imagen'), validateUpdateAdmin, usersController.updateAdmin)
+router.put('/updateAdmin/:id', isAdmin, upload.single('imagen'), validateUpdateAdmin, usersController.updateAdmin)
 
 module.exports = router;

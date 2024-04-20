@@ -3,6 +3,10 @@
     <body>
         <%- include('../partials/header.ejs') %>
             <main>
+                <div class="div_buttons_top">
+                    <a href="/products/dashboard"><button class="boton_verificar">Dashboard Productos</button></a>
+                    <a href="/products/productsList"><button class="boton_verificar">List Products</button></a>
+                </div>
                 <article class="article_form_create">
                     <div class="subtitulo_registrate">
                         <p id="p_registro">Editar Producto</p>
@@ -68,25 +72,25 @@
                         <input type="number" name="stock" id="stock" value="<%= producto && producto.stock %>">
                     </div>
                     <div class="div_config div_form_product" id="div_imagen">
-                        <label for="imagen">Imagen actual</label>
+                        <label for="imagen">Editar imagenes</label>
                     </div>
-                    <div class="div_config div_form_product" id="div_modificar_imagen">
-                        <label for="modificar_imagen">Input imagen 1</label>
+                    <div class="div_config div_form_product div_update-image" id="div_modificar_imagen">
+                        <label for="modificar_imagen">Imagen 1</label>
                         <img src="/images/products/<%= producto.imagenes[0].nombre %>"
                         alt="Imagen del producto" class="centered-img_producto" style="width: 100px; height: 100px;">
-                        <input type="file" name="imagen-1" id="modificar_imagen" multiple>
+                        <input type="file" name="imagen-1" id="modificar_imagen">
                     </div>
-                    <div class="div_config div_form_product" id="div_modificar_imagen">
-                        <label for="modificar_imagen">Input imagen 2</label>
+                    <div class="div_config div_form_product div_update-image" id="div_modificar_imagen">
+                        <label for="modificar_imagen">Imagen 2</label>
                         <img src="/images/products/<%= producto && producto.imagenes && producto.imagenes[1] ? producto.imagenes[1].nombre : 'default.jpg' %>"
                         alt="Imagen del producto" class="centered-img_producto" style="width: 100px; height: 100px;">
-                        <input type="file" name="imagen-2" id="modificar_imagen" multiple>
+                        <input type="file" name="imagen-2" id="modificar_imagen">
                     </div>
-                    <div class="div_config div_form_product" id="div_modificar_imagen">
-                        <label for="modificar_imagen">Input imagen 3</label>
+                    <div class="div_config div_form_product div_update-image" id="div_modificar_imagen">
+                        <label for="modificar_imagen">Imagen 3</label>
                         <img src="/images/products/<%= producto && producto.imagenes && producto.imagenes[2] ? producto.imagenes[2].nombre : 'default.jpg' %>"
                         alt="Imagen del producto" class="centered-img_producto" style="width: 100px; height: 100px;">
-                        <input type="file" name="imagen-3" id="modificar_imagen" multiple>
+                        <input type="file" name="imagen-3" id="modificar_imagen">
                     </div>
                     <div class="boton_registro_create">
                         <button type="submit" id="button-submit">Actualizar Producto</button>
