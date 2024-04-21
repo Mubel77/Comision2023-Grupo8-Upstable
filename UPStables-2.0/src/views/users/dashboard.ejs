@@ -21,7 +21,9 @@
                 <div class="box-image-listUsers"><img class="imagen-usuario imagen-listProducts" src="<%= usuario.imagen %>" alt="foto-usuario"></div>
                 <div class="dashboardUsers_div_botones">
                   <a href="/users/formUpdateAdmin/<%= usuario.id %>"><button class="boton_verificar ">Modificar</button></a>
-                  <a href="/users/formUpdateAdmin/<%= usuario.id %>"><button class="boton_verificar ">Eliminar</button></a>
+                  <form action="/users/deleteAdmin/<%= usuario.id %>?_method=DELETE" method="POST">
+                    <button class="boton_verificar ">Eliminar</button>
+                  </form>
                 </div>
                 <div class="users_list p_texto">
                   <p>Nombre: <%= usuario.nombre %></p>

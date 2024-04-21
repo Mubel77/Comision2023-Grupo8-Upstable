@@ -14,13 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     usuario_id: {
       unsigned: true,
-      unique: true,
       allowNull: false,
       type: DataTypes.INTEGER
     },
     producto_id: {
       unsigned: true,
-      unique: true,
       allowNull: false,
       type: DataTypes.INTEGER
     },
@@ -42,5 +40,13 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true
   };
   const Carrito_Compra = sequelize.define(alias, cols, config);
+
+  Carrito_Compra.associate = (modelos) => {
+    Carrito_Compra.belongsTo(modelos.Producto,{ 
+      as: 'Producto',
+      foreignKey: 'producto_id'
+    });
+  }
+    
   return Carrito_Compra;
 };

@@ -291,93 +291,93 @@ const productsController = {
       descuento,
     } = req.body;
 
-    const {imagen1, imagen2, imagen3 } = req.files
+    const { imagen1, imagen2, imagen3 } = req.files;
 
     const errors = validationResult(req);
-    console.log('Estos son los errores....', {errors:errors.mapped()});
-      try {
-        if (errors.isEmpty()) {
-          console.log('Estamos acaaaaaaa vamooooooo..!!!!');
+    console.log("Estos son los errores....", { errors: errors.mapped() });
+    try {
+      if (errors.isEmpty()) {
+        console.log("Estamos acaaaaaaa vamooooooo..!!!!");
 
-          const newProducto = {
-            modelo,
-            descripcion,
-            precio,
-            stock,
-            potencia,
-            tomas,
-            descuento,
-            id_marcas,
-            id_categorias,
-          };
-          await db.Imagen.findAll({ where: { id_producto: id } })
-            .then((producto) => {       
-              if(imagen1 != undefined){
-                const imagenProducto = {
-                  nombre: imagen1[0].filename,
-                  ubicacion: "/images/products/",
-                  id_producto: id,
-                };
-                if (producto[0]) {
-                  db.Imagen.update(imagenProducto, {
-                    where: { id: producto[0].dataValues.id },
-                  });
-                } else {
-                  db.Imagen.create(imagenProducto, {
-                    where: { id_producto: id },
-                  });
-                }
-              }
-              
-              if(imagen2 != undefined){
-                const imagenProducto = {
-                  nombre: imagen2[0].filename,
-                  ubicacion: "/images/products/",
-                  id_producto: id,
-                };
-                if (producto[1]) {
-                  db.Imagen.update(imagenProducto, {
-                    where: { id: producto[1].dataValues.id },
-                  });
-                } else {
-                  db.Imagen.create(imagenProducto, {
-                    where: { id_producto: id },
-                  });
-                }
-              }
-              
-              if (imagen3 != undefined) {
-                const imagenProducto = {
-                  nombre: imagen3[0].filename,
-                  ubicacion: "/images/products/",
-                  id_producto: id,
-                };
-                if (producto[2]) {
-                  db.Imagen.update(imagenProducto, {
-                    where: { id: producto[2].dataValues.id },
-                  });
-                } else {
-                  db.Imagen.create(imagenProducto, {
-                    where: { id_producto: id },
-                  });
-                }
-              }
-              db.Producto.update(newProducto, { where: { id } })
-                .then((result) => {
-                  res.redirect(`/products/productDetail/${id}`);
-                }).catch((err) => {
-                  console.log(err);
+        const newProducto = {
+          modelo,
+          descripcion,
+          precio,
+          stock,
+          potencia,
+          tomas,
+          descuento,
+          id_marcas,
+          id_categorias,
+        };
+        await db.Imagen.findAll({ where: { id_producto: id } })
+          .then((producto) => {
+            if (imagen1 != undefined) {
+              const imagenProducto = {
+                nombre: imagen1[0].filename,
+                ubicacion: "/images/products/",
+                id_producto: id,
+              };
+              if (producto[0]) {
+                db.Imagen.update(imagenProducto, {
+                  where: { id: producto[0].dataValues.id },
                 });
-            })
-            .catch((error) => {
-              throw new Error(error);
-            });
+              } else {
+                db.Imagen.create(imagenProducto, {
+                  where: { id_producto: id },
+                });
+              }
+            }
 
+            if (imagen2 != undefined) {
+              const imagenProducto = {
+                nombre: imagen2[0].filename,
+                ubicacion: "/images/products/",
+                id_producto: id,
+              };
+              if (producto[1]) {
+                db.Imagen.update(imagenProducto, {
+                  where: { id: producto[1].dataValues.id },
+                });
+              } else {
+                db.Imagen.create(imagenProducto, {
+                  where: { id_producto: id },
+                });
+              }
+            }
+
+            if (imagen3 != undefined) {
+              const imagenProducto = {
+                nombre: imagen3[0].filename,
+                ubicacion: "/images/products/",
+                id_producto: id,
+              };
+              if (producto[2]) {
+                db.Imagen.update(imagenProducto, {
+                  where: { id: producto[2].dataValues.id },
+                });
+              } else {
+                db.Imagen.create(imagenProducto, {
+                  where: { id_producto: id },
+                });
+              }
+            }
+            db.Producto.update(newProducto, { where: { id } })
+              .then((result) => {
+                res.redirect(`/products/productDetail/${id}`);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          })
+          .catch((error) => {
+            throw new Error(error);
+          });
       } else {
         res.render("products/formUpdate", {
           title: "Formulario Modificar",
           errors: errors.mapped(),
-          producto:req.body,
+          producto: req.body,
         });
       }
     } catch (error) {
@@ -392,7 +392,7 @@ const productsController = {
       include: [{ model: db.Imagen, as: "imagenes" }],
     });
     producto.imagenes.forEach((imagen) => {
-      if(imagen){
+      if (imagen) {
         db.Imagen.destroy({
           where: { id_producto: id },
         });
@@ -413,39 +413,86 @@ const productsController = {
     }
   },
 
-  cart: function (req, res, next) {
-    db.Producto.findAll({
-      include: [
-        { model: db.Categoria, as: "categorias" }, // Relación con Categoría
-        { model: db.Marca, as: "marcas" }, // Relación con Marca
-        { model: db.Imagen, as: "imagenes" }, // Relación con Imagen
-      ],
-      limit: 2,
-    })
-      .then((productos) => {
-        //let cantidad = 3
-        let subtotal = 0;
-        let total = 0;
-        let impuestos = 0;
-        const cuenta = productos.forEach((element) => {
-          subtotal = +element.precio + subtotal;
-          total = subtotal * 1.21;
-          impuestos = subtotal * 0.21;
-        });
-        const data = {
-          // cantidad,
-          subtotal,
-          total,
-          impuestos,
+  registerCart: async (req, res) => {
+    const idProduct = req.params.id;
+    const idUser = req.session.user.id;
+    const { cantidad } = req.body;
+
+    try {
+      if (cantidad != undefined && cantidad > 0) {
+        const registro = {
+          usuario_id: idUser,
+          producto_id: idProduct,
+          cantidad,
         };
-        res.render("products/newCart", {
-          title: "Carrito de Compras",
-          productos,
-          data,
-          usuario: req.session.user,
+        await db.Carrito_Compra.create(registro)
+        .then(() => {
+          res.redirect('/products/productCart');
         });
-      })
-      .catch((err) => console.log(err));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  cart: async (req, res, next) => {
+    let subtotal = 0;
+    let total = 0;
+    let impuestos = 0;
+    let productos;
+    let data;
+
+    const carrito = await db.Carrito_Compra.findAll({
+      where: { usuario_id: req.session.user.id },
+      include: { association: "Producto", include: "imagenes" },
+    });
+
+    if (carrito.length > 0) {
+      subtotal = carrito.reduce(
+        (accumulator, currentValue) =>
+          accumulator +
+          parseInt(currentValue.cantidad) *
+            parseInt(currentValue.Producto.precio),
+        0
+      );
+      impuestos = (subtotal * 21) / 100;
+      total = subtotal + impuestos;
+      data = {
+        subtotal,
+        impuestos,
+        total,
+      };
+      productos = carrito;
+    } else {
+      data = {
+        subtotal,
+        total,
+        impuestos,
+      };
+      productos = undefined;
+    }
+
+    res.render("products/newCart", {
+      title: "Carrito de Compras",
+      productos,
+      data,
+      usuario: req.session.user,
+    });
+  },
+
+  cleanCart: async (req, res) => {
+    const idUser = req.session.user.id;
+    // const carrito = await db.Carrito_Compra.findAll({
+    //   where: { usuario_id: idUser },
+    // });
+
+    db.Carrito_Compra.destroy({
+      where: { usuario_id: idUser }
+    })
+    .then(() => {
+      res.redirect('/products/productCart/')
+    })
+    .catch((error) => console.log(error))
   },
 };
 

@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "nodemon ./src/bin/www",
     "react:start": "cd admin/Dashboard-UPSTABLES & npm run dev",
-    "start": "concurrently \"npm run dev\" \"npm run react:start\""
+    "start": "concurrently \"npm run dev\" \"npm run react:start\"",
+    "db": "sequelize db:drop & sequelize db:create & sequelize db:migrate & sequelize db:seed:all"
   },
   "dependencies": {
     "@formkit/tempo": "^0.0.11",

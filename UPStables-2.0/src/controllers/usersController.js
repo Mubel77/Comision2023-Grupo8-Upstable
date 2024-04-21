@@ -473,6 +473,22 @@ const userController = {
     }
   },
 
+  deleteAdmin: async (req, res) => {
+    const id = parseInt(req.params.id);
+
+    db.Direccion.destroy({ where:{ id_usuario: id } })
+    .then(() => {
+      db.Telefono.destroy({ where:{ id_usuario: id } })
+    })
+    .then(() => {
+      db.Usuario.destroy({ where:{ id } })
+    })
+    .then(() => {
+      res.redirect(`http://localhost:5173/?id=${req.session.user.id}`)
+    })
+    .catch((error) => console.log(error))
+  },
+
   formUpdateAvatar: async (req, res) => {
     db.Usuario.findByPk(req.session.user.id)
       .then(() => {

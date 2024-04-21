@@ -33,5 +33,7 @@ router.delete('/delete/:id', isAdmin, productsController.delete);
 
 // Ver carrito de compra
 router.get('/productCart', sessionValidator, productsController.cart);
+router.post('/productCart/:id',sessionValidator, productsController.registerCart)
+router.delete('/productCart/:id',sessionValidator, productsController.cleanCart)
 
 module.exports = router;
