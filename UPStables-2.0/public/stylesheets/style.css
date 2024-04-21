@@ -1,17 +1,15 @@
 @import url(./general.css);
 @import url(./header.css);
 @import url(./index.css);
-@import url(./productCart.css);
 @import url(./login.css);
 @import url(./register.css);
 @import url(./productDetail.css);
 @import url(./footer.css);
 @import url(./formCreate.css);
 @import url(./productsList.css);
-@import url(./perfilUser.css);
+@import url(./perfilClient.css);
 @import url(./perfilAdmin.css);
 @import url(./dashboard.css);
-
 @import url(./newCart.css);
 @import url(./dashboardUsers.css);
 

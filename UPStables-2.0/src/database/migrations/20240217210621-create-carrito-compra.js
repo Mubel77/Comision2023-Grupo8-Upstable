@@ -13,7 +13,6 @@ module.exports = {
       },
       usuario_id: {
         unsigned: true,
-        unique: true,
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
@@ -25,7 +24,6 @@ module.exports = {
       },
       producto_id: {
         unsigned: true,
-        unique: true,
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
