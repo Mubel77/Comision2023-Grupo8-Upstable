@@ -40,15 +40,16 @@
                     <section class="section_der_perfil-user">
                         <article class="section_der_article_perfil-user">
                             <% if (usuario.nombre) { %>
-                            <div class="div_box_datos">
-                                <div class="div_titulos_perfil-user">
-                                    <p>Nombre</p>
+                                <div class="div_box_datos">
+                                    <div class="div_titulos_perfil-user">
+                                        <p>Nombre</p>
+                                    </div>
+                                    <div class="div_subtitulos_perfil-user">
+                                        <p><%= usuario.nombre %></p>
+                                    </div>
                                 </div>
-                                <div class="div_subtitulos_perfil-user">
-                                    <p><%= usuario.nombre %></p>
-                                </div>
-                            </div>
                                 <% } %>
+
                                     <% if (usuario.apellido) { %>
                                     <div class="div_box_datos">
                                         <div class="div_titulos_perfil-user">
@@ -59,6 +60,7 @@
                                         </div>
                                     </div>
                                     <% } %>
+
                                         <% if (usuario.direcciones) { %>
                                         <div class="div_box_datos">
                                             <div class="div_titulos_perfil-user">
@@ -74,30 +76,42 @@
                                             </div>
                                         </div>    
                                         <% } %>
-                                        <% if (usuario.telefonos) { %>
+
+                                            <% if (usuario.telefonos.length>0) { %>
                                             <div class="div_box_datos">
-                                                <div class="div_titulos_perfil-user">
-                                                    <p>Telefono</p>
-                                                </div>
-                                                <div class="div_subtitulos_perfil-user">
-                                                    <% for(x=0; x<usuario.telefonos.length; x=usuario.telefonos.length) { %>
-                                                        <p>
-                                                            <%= usuario.telefonos[0].prefijo %>
-                                                            <%= usuario.telefonos[0].numero %>
-                                                        </p>
-                                                    <%}%>
-                                                </div>
+                                                    <div class="div_titulos_perfil-user">
+                                                        <p>Telefono</p>
+                                                    </div>
+                                                    <div class="div_subtitulos_perfil-user">
+                                                        <% for(x=0; x<usuario.telefonos.length; x=usuario.telefonos.length) { %>
+                                                            <p>
+                                                                <%= usuario.telefonos[0].prefijo %>-
+                                                                <%= usuario.telefonos[0].numero %>
+                                                            </p>
+                                                        <% } %>
+                                                    </div>
                                             </div>    
+                                            <% } else { %>
+                                                <div class="div_box_datos">
+                                                        <div class="div_titulos_perfil-user">
+                                                            <p>Telefono</p>
+                                                        </div>
+                                                        <div class="div_subtitulos_perfil-user">
+                                                            <p style="font-style: italic;"> No hay registros... </p>
+                                                        </div>
+                                                </div>    
                                             <% } %>
-                                            <% if (usuario.email) { %>
-                                            <div class="div_box_datos">
-                                                <div class="div_titulos_perfil-user">
-                                                    <p>E-mail</p>
+                                            
+                                            
+                                                <% if (usuario.email) { %>
+                                                <div class="div_box_datos">
+                                                    <div class="div_titulos_perfil-user">
+                                                        <p>E-mail</p>
+                                                    </div>
+                                                    <div class="div_subtitulos_perfil-user">
+                                                        <p><%= usuario.email %></p>
                                                 </div>
-                                                <div class="div_subtitulos_perfil-user">
-                                                    <p><%= usuario.email %></p>
-                                            </div>
-                                            <% } %>
+                                                <% } %>
                         </article>
                     </section>
                 </main>
