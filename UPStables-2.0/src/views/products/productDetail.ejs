@@ -3,7 +3,115 @@
     <%- include("../partials/header") %>
     
     <main class="main_productDetail">
+        <% if (locals.usuario && locals.usuario.roles.id > 1) {%>
+            <section class="producto">
+                <article class="fotos_producto">
+                    <div class="fotos_extras_contenedor">
+    
+                        <% for (let i = 0; i < producto.imagenes.length; i++) { %>
+                            <div class="fotos_extras">
+                            <img src="<%= producto.imagenes[i].ubicacion%>/<%= producto.imagenes[i].nombre %>" alt="<%= producto.id_categorias.categoria%> <%= producto.marca%>">
+                            </div>
+                        <% } %>
+                    </div>
+                    <div class="producto_img_contenedor">
+                        <img  class="producto_img" src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="<%= producto.id_categorias.categoria%> <%= producto.marca%>"> 
+                    </div>
+                    
+                    <div class="circulos_fotos">
+                        <i id="circle_color"class="fa-solid fa-circle"></i>
+                        <i class="fa-regular fa-circle"></i>
+                        <i class="fa-regular fa-circle"></i>
+                    </div> 
+                </article>
+    
+                <article class="info_producto">
+                        <h3 class="nombre_producto"><%= producto.modelo %></h3>
+                    <div class="marca_producto">
+                        <p id="marca">Marca:</p> 
+                        <p><%= producto.marcas.marca %></p>
+                        <h3 class="precio_producto">$<%= toThousand(producto.precio) %></h3>
+                    </div>
+                    <div class="unidades">
+                        <i class="fa-solid fa-minus" id="botonMenos"></i>
+                        <p id="numeroUnidades">1 unidad</p>
+                        <i class="fa-solid fa-plus" id="botonMas"></i>
+                    </div>
+                    <% if(producto.stock>0){ %>
+                        <div class="stock_disponible">
+                            <i class="fa-solid fa-check"></i>
+                            <p>Stock Disponible: <%= producto.stock %></p>
+                        </div>
+                    <% } else { %>
+                       <div class="stock_disponible">
+                        <i class="fa-solid fa-x"></i>
+                        <p>No hay stock</p>
+                    </div>
+                    <% } %>
+    
+                    <div class="comprar_producto">
+                        <a href="/products/formUpdate/<%= producto.id %>">
+                        <p>Editar Producto</p>
+                        </a>
+                    </div>
+                    <div class="comprar_producto">
+                        <a href="/products/dashboard/">
+                        <p>Dashboard</p>
+                        </a>
+                    </div>
 
+                </article>
+            </section>
+            <article class="descripcion_producto">
+                <h4>Producto ID: <%= producto.id %></h4>
+                    <p>Descripción</p>
+                <p><%= producto.descripcion %></p>
+            </article>
+            <section class="intereses">
+                <p class="intereses_titulo">También podría interesarte</p>
+                <article class="productos_relacionados">
+                    
+                    <div class="productos_relacionados_extras">
+                        <a class="main-enlace main_listProducts" href="/products/productDetail/<%= producto.id %>">
+                        <img  class="producto_img" src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="<%= producto.id_categorias.categoria%> <%= producto.marca%>"> 
+                        <h4><%= producto.modelo %></h4>
+                        <p>$<%= toThousand(producto.precio)  %></p>
+                    </a>
+                    </div>
+                    <div class="productos_relacionados_extras">
+                        <a class="main-enlace main_listProducts" href="/products/productDetail/<%= producto.id %>">
+                        <img  class="producto_img" src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="<%= producto.id_categorias.categoria%> <%= producto.marca%>"> 
+                        <h4><%= producto.modelo %></h4>
+                        <p>$<%= toThousand(producto.precio)  %></p>
+                    </a>
+                    </div>
+                    <div class="productos_relacionados_extras">
+                        <a class="main-enlace main_listProducts" href="/products/productDetail/<%= producto.id %>">
+                        <img  class="producto_img" src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="<%= producto.id_categorias.categoria%> <%= producto.marca%>"> 
+                        <h4><%= producto.modelo %></h4>
+                        <p>$<%= toThousand(producto.precio)  %></p>
+                    </a>
+                    </div>
+                    <div class="flecha_relacionados">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    
+                </article>
+            </section>
+           <section class="banners_producto">
+            
+            <img id="img_1"  src="/images/minibanner1-10-06-22.png" alt="img_banner">
+            <img id="img_2" src="/images/minibanner2-28-06-22.png" alt="img_banner">
+            <img id="img_3" src="/images/minibanner3-10-06-22.png" alt="img_banner">
+            
+            <div class="circulos_banners">
+                <i id="circle_color_banner"class="fa-solid fa-circle"></i>
+                <i id="circle_color_white"class="fa-regular fa-circle"></i>
+                <i id="circle_color_white"class="fa-regular fa-circle"></i>
+            </div>
+            </section>
+        <%} else {%>
+            <form action="/products/productCart/<%= producto.id %>" method="post">
         <section class="producto">
             <article class="fotos_producto">
                 <div class="fotos_extras_contenedor">
@@ -23,12 +131,9 @@
                     <i class="fa-regular fa-circle"></i>
                     <i class="fa-regular fa-circle"></i>
                 </div> 
-                
             </article>
-            
 
             <article class="info_producto">
-                <p id="idProducto"><%= producto.id %></p>
                     <h3 class="nombre_producto"><%= producto.modelo %></h3>
                 <div class="marca_producto">
                     <p id="marca">Marca:</p> 
@@ -36,9 +141,10 @@
                     <h3 class="precio_producto">$<%= toThousand(producto.precio) %></h3>
                 </div>
                 <div class="unidades">
-                    <i class="fa-solid fa-minus" id="botonMenos"></i>
-                    <p id="numeroUnidades">1 unidad</p>
-                    <i class="fa-solid fa-plus" id="botonMas"></i>
+                    <!-- <i class="fa-solid fa-minus" id="botonMenos"></i> -->
+                    <!-- <p id="numeroUnidades">1 unidad</p> -->
+                    <input type="number" name="cantidad" value="1" style="border-radius: 10px; padding: 5px 20px; font-size: 14px; width: 100px;">
+                    <!-- <i class="fa-solid fa-plus" id="botonMas"></i> -->
                 </div>
                 <% if(producto.stock>0){ %>
                     <div class="stock_disponible">
@@ -46,36 +152,29 @@
                         <p>Stock Disponible: <%= producto.stock %></p>
                     </div>
                 <% } else { %>
-                   <div class="stock_disponible">
+                <div class="stock_disponible">
                     <i class="fa-solid fa-x"></i>
                     <p>No hay stock</p>
                 </div>
                 <% } %>
 
-               
-                <div class="comprar_producto">
-                    <a href="/products/newCart">
+                <!-- <div class="comprar_producto">
+                    <a href="/products/productCart">
                     <p>Comprar Producto</p>
                 </a>
-                </div>
-           
-               
+                </div> -->
+        
                 <div class="agregar_carrito">                    
                     <i class="fa-solid fa-cart-shopping"></i>
-                    <button class="boton-Carrito" id="botonCarrito"><p>Agregar al carrito</p></button>
-                </a>
+                    <button type="submit">Agregar al Carrito</button type="submit">
                 </div>
-            
             </article>
-           
-
         </section>
-
         <article class="descripcion_producto">
                 <p>Descripción</p>
             <p><%= producto.descripcion %></p>
         </article>
-
+            </form>
         <section class="intereses">
             <p class="intereses_titulo">También podría interesarte</p>
             <article class="productos_relacionados">
@@ -101,13 +200,12 @@
                     <p>$<%= toThousand(producto.precio)  %></p>
                 </a>
                 </div>
-                <div class="flecha_relacionados">
+                <!-- <div class="flecha_relacionados">
                     <i class="fa-solid fa-chevron-right"></i>
-                </div>
+                </div> -->
                 
             </article>
         </section>
-
        <section class="banners_producto">
         
         <img id="img_1"  src="/images/minibanner1-10-06-22.png" alt="img_banner">
@@ -120,6 +218,8 @@
             <i id="circle_color_white"class="fa-regular fa-circle"></i>
         </div>
         </section>
+        <% } %>
+        
         <script src="/javascripts/contador-unidades.js"></script>
         <script src="/javascripts/carrito.js"></script>
     </main>

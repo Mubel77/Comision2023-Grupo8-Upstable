@@ -1,167 +1,259 @@
 @media (min-width: 320px) {
-    .main_newCart {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .column_items_products {
-      display: flex;
-      flex-direction: column;
-      padding: 0px 10px;
-      margin: 10px 0px;
-    }
-    .item_product {
-      display: flex;
-      margin-bottom: 10px;
-      border: 1px grey solid;
-      background-color: rgb(222, 219, 219);
-      flex-wrap: wrap;
-      border-radius: 10px;
-      box-shadow: 0px 0px 10px rgb(100, 100, 100);
-    }
-    .item_product_div {
-      display: flex;
-      align-items: center;
-      padding: 5px;
-    }
-    .div_image {
-      order: 1;
-      width: 50%;
-      display: flex;
-      justify-content: center;
-    }
-    .div_description {
-      order: 3;
-      width: 100%;
-    }
-    .div_price {
-      order: 2;
-      width: 50%;
-      display: flex;
-      justify-content: center;
-    }
-    .item_product_div img {
-      width: 100px;
-      height: 100px;
-    }
-    .item_product_div span {
-      font-size: 12px;
-      font-style: italic;
-      display: flex;
-      align-items: center;
-      height: 100px;
-    }
-    .item_product_div p {
-      width: 100px;
-      display: flex;
-      justify-content: center;
-      font-size: 20px;
-      font-weight: bold;
-    }
-    .column_detail_facturacion {
-      display: flex;
-      height: 500px;
-      padding: 20px;
-      margin: 10px 0px;
-      border-radius: 10px;
-      box-shadow: 0px 0px 10px rgb(100, 100, 100);
-      background-color: var(--color-gris);
-      width: 90%;
-    }
-    .list_detail_facturacion {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    }
-    .list_detail_facturacion p {
-      margin-bottom: 20px;
-      font-size: 20px;
-    }
-    .title_detail {
-      letter-spacing: 1px;
-      font-style: italic;
-      text-decoration: underline;
-    }
-    .detail {
-      letter-spacing: 1px;
-      margin-left: 10px;
-      font-weight: bold;
-    }
-    .boton_cart_compra {
-      display: flex;
-      justify-content: end;
-      margin: 50px 10px;
-    }
-    .boton_cart_compra button {
-      width: 200px;
-      font-size: 18px;
-      font-weight: bold;
-      padding: 5px;
-      border-radius: 5px;
-      background-color: var(--color-celeste);
-    }
+  .main_newCart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  @media (min-width: 768px) {
-    .item_product {
-      flex-wrap: nowrap;
-    }
-    .div_image {
-      order: 1;
-      width: 25%;
-    }
-    .div_description {
-      order: 2;
-      width: 100%;
-    }
-    .div_price {
-      order: 3;
-      width: 25%;
-    }
-    .item_product_div img {
-      width: 100px;
-      height: 100px;
-    }
-    .item_product_div span {
-      font-size: 16px;
-    }
-    .column_detail_facturacion {
-      height: 400px;
-      border: 1px grey solid;
-      background-color: var(--color-gris);
-    }
-    .div_detail_facturacion {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 20px;
-    }
+
+  .column_items_products {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10px;
+    margin: 10px 0px;
   }
-  @media (min-width: 1024px) {
-    .main_newCart {
-      display: flex;
-      flex-direction: row;
-      align-items: normal;
-    }
-    .column_items_products {
-      display: flex;
-      flex-direction: column;
-      width: 70%;
-      padding: 0px 10px;
-      margin: 10px 0px;
-    }
-    .item_product_div img {
-      width: 100px;
-      height: 100px;
-    }
-    .item_product_div span {
-      font-size: 18px;
-    }
-    .column_detail_facturacion {
-      width: 30%;
-      border: 1px grey solid;
-      background-color: var(--color-gris);
-    }
-    .title_detail {
-      letter-spacing: 2px;
-    }
+
+  .item_product {
+    display: flex;
+    margin-bottom: 10px;
+    border: 1px grey solid;
+    background-color: rgb(222, 219, 219);
+    flex-wrap: wrap;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgb(100, 100, 100);
   }
+
+  .item_product_div {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .div_image {
+    order: 1;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+  }
+  .div_description {
+    order: 3;
+    width: 100%;
+  }
+  .div_price {
+    order: 2;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+  }
+  .clean_cart {
+    display: flex;
+    justify-content: end;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .clean_cart button {
+    background-color: var(--color-celeste);
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+
+  .item_product_div img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .item_product_div span {
+    font-size: 12px;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    height: 100px;
+  }
+
+  .item_product_div p {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .column_detail_facturacion {
+    display: flex;
+    height: 500px;
+    padding: 20px;
+    margin: 10px 0px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgb(100, 100, 100);
+    background-color: var(--color-gris);
+    width: 90%;
+  }
+
+  .list_detail_facturacion {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .list_detail_facturacion p {
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+
+  .title_detail {
+    letter-spacing: 1px;
+    font-style: italic;
+    text-decoration: underline;
+  }
+
+  .impuesto_style {
+    font-size: 10px;
+  }
+
+  .detail {
+    letter-spacing: 1px;
+    margin-left: 10px;
+    font-weight: bold;
+  }
+
+  .boton_cart_compra {
+    display: flex;
+    justify-content: end;
+    margin: 50px 10px;
+  }
+
+  .boton_cart_compra button {
+    width: 200px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--color-celeste);
+  }
+
+  .box_empty {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .box_message_empty {
+    width: 90%;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgb(100, 100, 100);
+  }
+  .box_message_empty p {
+    font-size: 25px;
+    font-style: italic;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .item_product {
+    flex-wrap: nowrap;
+  }
+
+  .div_image {
+    order: 1;
+    width: 25%;
+  }
+  .div_description {
+    order: 2;
+    width: 100%;
+  }
+  .div_price {
+    order: 3;
+    width: 25%;
+  }
+
+  .item_product_div img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .item_product_div span {
+    font-size: 16px;
+  }
+
+  .column_detail_facturacion {
+    height: 400px;
+    border: 1px grey solid;
+    background-color: var(--color-gris);
+  }
+
+  .div_detail_facturacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .box_message_empty p {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main_newCart {
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+  }
+
+  .column_items_products {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    padding: 0px 10px;
+    margin: 10px 0px;
+  }
+
+  .item_product_div img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .item_product_div span {
+    font-size: 18px;
+  }
+
+  .column_detail_facturacion {
+    width: 30%;
+    border: 1px grey solid;
+    background-color: var(--color-gris);
+  }
+
+  .impuesto_style {
+    font-size: 10px;
+  }
+
+  .title_detail {
+    letter-spacing: 2px;
+  }
+
+  .box_empty {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items:center;
+    padding: 20px;
+  }
+
+  .box_message_empty {
+    width: 60%;
+    height: 400px;
+    margin: 0px 5px;
+    padding-right: 5px;
+  }
+  .box_message_empty p {
+    font-size: 70px;
+  }
+}

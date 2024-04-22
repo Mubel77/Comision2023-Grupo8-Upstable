@@ -3,6 +3,12 @@
   <body>
     <%-include('../partials/header.ejs') %>
       <main>
+        <div class="div_buttons_top">
+          <% if (locals.usuario.roles.id == 2) { %>
+            <a href="http://localhost:5173/?id=<%= usuario.id %>"><button class="boton_verificar">Dashboard General</button></a>
+            <% } %>
+            <a href="/products/dashboard"><button class="boton_verificar">Dashboard Productos</button></a>
+      </div>
         <div class="titulo_product_list">
           <h1>Nuestros Productos:</h1>
         </div>
@@ -25,6 +31,12 @@
                       <p class="products_list_precio">$<%= toThousand(producto.precio)  %></p>
                     <% } %>
                     <p class="products_list_marca"><%= producto.marcas.marca %> <%= producto.modelo %></p>
+                    <% if (locals.usuario.roles.id > 1) { %>
+                    <p class="products_list_marca">ID: <%= producto.id %></p>
+                    <% } %>
+                    <p class="products_list_categoria"> Categoría: <%=
+                      producto.categorias.categoria %>
+              </p>
                 </div>
               </a>
             </article>

@@ -1,0 +1,32 @@
+<%- include('../partials/head') %>
+<body class="body_form">
+    <%- include('../partials/header.ejs') %>
+    <main class="main_registro">
+      <section class="section_form_register">
+        <article class="article_form_register">
+          <div class="subtitulo_registrate">
+              <p id="p_registro"><%= subtitulo %></p>
+          </div>
+          <form method="POST" action="/users/updateAvatar?_method=PUT" id="form_registro" enctype="multipart/form-data">
+            
+              <div class="div_config" id="div_imagen">
+                  <img src="<%= locals.usuario.imagen %>" alt="Avatar-usuario" style="width: 200px; height: 200px; ">
+                  <input type="file" name="imagen" id="imagen">  
+                  <p><%= locals.errors && errors.imagen ? errors.imagen.msg : null %> </p>   
+              </div>
+          
+              <div class="boton_registro">
+                  <button type="submit" id="button-submit">Guardar</button>
+                  <a href="/users/perfilAdmin"><button>Cancelar</button></a>
+              </div>
+
+          </form>
+        </article>
+      </section>
+    </main>
+
+    <script src="/javascripts/validations-form-UpdateUser.js"></script>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

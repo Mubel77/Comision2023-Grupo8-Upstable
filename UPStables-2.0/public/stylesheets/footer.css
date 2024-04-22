@@ -30,7 +30,21 @@
         width: 150px;
         margin: 10px;
     }
-
+    .header_nav_horizontal{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px;
+    }
+    .estilo-li{
+        display: flex;
+        width: 100%;
+    }
+    .fa-brands, .fab {
+        font-weight: 400;
+        color: white;
+    }
 @media(min-width:320px){
     .footer-father{
         display: flex;
@@ -44,6 +58,15 @@
     }
     .footer-texto-bottom, .footer-logo{
         display: none;
+    }
+    .estilo-li {
+        display: flex;
+        width: 100%;
+        /* color: #af0000; */
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: stretch;
+        justify-content: center;
     }
 
 }

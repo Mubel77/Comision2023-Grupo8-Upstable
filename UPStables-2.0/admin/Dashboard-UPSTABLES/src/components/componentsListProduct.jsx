@@ -22,7 +22,9 @@ const Product = () => {
   return (
     <>
       <div className="list-entidades entidades-estilos">
+        <div>
         <p className="p_estilo">Lista de Productos</p>
+        </div>
         <ul className="ul_estilo">
           {products.productos.map((item, i) => (
             <li
