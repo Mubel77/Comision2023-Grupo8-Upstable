@@ -143,18 +143,25 @@ const productsController = {
   // Busacador del dashboard con base datos
   dashboardSearch: function (req, res, next) {
     const { keywords } = req.query;
-    const mensaje = "No hay elementos";
-    db.Producto.findAll({
-      where: {
-        id_marcas: {
-          [Op.like]: `%${keywords}%`, // Buscar coincidencias parciales e ignorar mayúsculas/minúsculas
-        },
-      },
+    const mensaje = `No hay producto con el ID ${keywords} ...`;
+    // db.Producto.findAll({
+    //   where: {
+    //     id_marcas: {
+    //       [Op.like]: `%${keywords}%`, // Buscar coincidencias parciales e ignorar mayúsculas/minúsculas
+    //     },
+    //   },
+    //   include: [
+    //     { model: db.Categoria, as: "categorias" }, // Incluir la relación con Categoría
+    //     { model: db.Marca, as: "marcas" }, // Incluir la relación con Marca
+    //     { model: db.Imagen, as: "imagenes" }, // Incluir la relación con Imagen
+    //   ],
+    // })
+    db.Producto.findByPk(keywords, {
       include: [
-        { model: db.Categoria, as: "categorias" }, // Incluir la relación con Categoría
-        { model: db.Marca, as: "marcas" }, // Incluir la relación con Marca
-        { model: db.Imagen, as: "imagenes" }, // Incluir la relación con Imagen
-      ],
+            { model: db.Categoria, as: "categorias" }, // Incluir la relación con Categoría
+            { model: db.Marca, as: "marcas" }, // Incluir la relación con Marca
+            { model: db.Imagen, as: "imagenes" }, // Incluir la relación con Imagen
+          ]
     })
       .then((result) => {
         res.render("products/dashboardSearch", {

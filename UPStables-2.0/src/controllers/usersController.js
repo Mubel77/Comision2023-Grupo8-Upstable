@@ -30,7 +30,7 @@ const userController = {
         email: email.trim(),
         imagen: req.file
           ? `/images/users/${req.file.filename}`
-          : "/images/users/user-default.png",
+          : "/images/users/no-user-img.jpeg",
         fecha_nacimiento: fecha_nacimiento,
         password: bcrypt.hashSync(password, 10),
       };
@@ -89,7 +89,7 @@ const userController = {
         nombre,
         apellido,
         email,
-        imagen: "/images/users/user-default.png",
+        imagen: "/images/users/no-user-img.jpeg",
         fecha_nacimiento: fecha_nacimiento,
         password: bcrypt.hashSync(password, 10),
       };
