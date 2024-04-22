@@ -40,7 +40,7 @@ const Users = () => {
                         </li>
                     ))}
                 </ul>
-                {isLastPage && <p className='p_estilo'>No hay más administradores</p>}
+                {/* {isLastPage && <p className='p_estilo'>No hay más administradores</p>} */}
                 <div className="pagination-buttons">
                     <button className='style-button' onClick={() => setPage(page - 1)} disabled={page === 1}>Anterior</button>
                     <button className='style-button' onClick={() => setPage(page + 1)} disabled={isLastPage}>Siguiente</button>

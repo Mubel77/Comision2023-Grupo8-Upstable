@@ -333,6 +333,9 @@
   .agregar_carrito button {
     padding: 5px;
     border-radius: 5px;
+    background-color: var(--color-gris);
+    border: none;
+    width: 90%;
   }
 
   #img_relacionados_3 {
