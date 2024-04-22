@@ -35,6 +35,21 @@ const userControllerApi = {
         previous : page > 1 ? previous : '',
         next : page < countPage(usersList.count,limit) ? next : ''
       })
+    //   const usersList = await db.Usuario.findAndCountAll(query)
+    //   const totalLength = total.length
+    // await db.Usuario.findAll(query)
+    // .then((usersList) => {
+    //   return res.status(200).json({
+    //     usersList,
+    //     count: totalLength,
+    //     countRows: usersList.length,
+    //     pages: countPage(totalLength,limit),
+    //     status: 200,
+    //     url : url,
+    //     previous : page > 1 ? previous : '',
+    //     next : usersList.length < limit ? '' : next
+    //   })
+    //})
     } catch (error) {
       res.status(400).send(error.message)
     }
@@ -77,7 +92,7 @@ const userControllerApi = {
 
   // Listar todos los administradores
   listAdmin: async (req, res) => {
-    let {page=1 ,limit=5 } = req.query;
+    let {page=1 ,limit=3 } = req.query;
     limit = parseInt(limit);
     const offSet = limit * (parseInt(page) -1);
     const query = {limit, offset:offSet, include:{association:'roles'}, where : {rol_id : {[Op.gt]:1}}};
@@ -104,6 +119,21 @@ const userControllerApi = {
         previous : page > 1 ? previous : '',
         next : page < countPage(adminList.count,limit) ? next : ''
       })
+      // const total = await db.Usuario.findAll({where : {rol_id : {[Op.gt]:1}}})
+      // const totalLength = total.length
+      // await db.Usuario.findAll(query)
+      // .then((adminList) => {
+      //   return res.status(200).json({
+      //     adminList,
+      //     count: totalLength,
+      //     countRows: adminList.length,
+      //     pages: countPage(totalLength,limit),
+      //     status: 200,
+      //     url : url,
+      //     previous : page > 1 ? previous : '',
+      //     next : adminList.length < limit ? '' : next
+      //   })
+      // })
     } catch (error) {
       res.status(400).send(error.message)
     }

@@ -51,6 +51,42 @@
         "codigo_postal":1617,
         "localidad":"Pacheco",
         "provincia":"Buenos Aires",
-        "id_usuario": 5
+        "id_usuario": 6
+    },
+    {
+        "id": 7,
+        "nombre_calle":"San Luis",
+        "numero_calle": 1330,
+        "codigo_postal":1917,
+        "localidad":"Lomas de Zamora",
+        "provincia":"Buenos Aires",
+        "id_usuario": 7
+    },
+    {
+        "id": 8,
+        "nombre_calle":"Av San Martin",
+        "numero_calle": 12300,
+        "codigo_postal":1241,
+        "localidad":"Boedo",
+        "provincia":"Buenos Aires",
+        "id_usuario": 8
+    },
+    {
+        "id": 9,
+        "nombre_calle":"Suipacha",
+        "numero_calle": 5800,
+        "codigo_postal":1340,
+        "localidad":"San Martin",
+        "provincia":"Buenos Aires",
+        "id_usuario": 9
+    },
+    {
+        "id": 10,
+        "nombre_calle":"Av Cordoba",
+        "numero_calle": 3290,
+        "codigo_postal":1900,
+        "localidad":"CABA",
+        "provincia":"Buenos Aires",
+        "id_usuario": 10
     }
 ]

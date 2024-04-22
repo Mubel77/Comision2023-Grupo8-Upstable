@@ -24,7 +24,7 @@ function BoxCount(props) {
           </div>
 
           <div className="box-counts">
-            <h3>Empleados:</h3>
+            <h3>Administradores:</h3>
             <h3>{props.empleados}</h3>
           </div>
         
