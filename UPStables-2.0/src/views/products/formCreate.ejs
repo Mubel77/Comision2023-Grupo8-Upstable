@@ -2,19 +2,26 @@
 <body>
     <%- include('../partials/header.ejs')%>
     <main>
+        <div class="div_buttons_top">
+            <a href="/products/dashboard"><button class="boton_verificar">Dashboard Productos</button></a>
+            <a href="/products/productsList"><button class="boton_verificar">List Products</button></a>
+        </div>
+        <article class="article_form_create">
+            <div class="subtitulo_registrate">
+                <p id="p_registro">Crear Producto</p>
+            </div>    
         <form action="/products/formCreate"  method=POST  class="form_create" enctype="multipart/form-data">
                 
-                <div class="div_config div_form_product">
-                    <label for="id_categorias" id="id_categorias">Categoria</label>
+                <div class="div_config div_form_product" id="div_id_categorias">
+                    <label for="id_categorias">Categoria</label>
                     <select name="id_categorias"  id="id_categorias" class="campo_select">
                         <option value="" selected>Elegí una Categoria</option>
                         <option value="1" <%= locals.oldData && oldData.id_categorias == '1' ? 'selected' : null %>>UPS</option>
                         <option value="2" <%= locals.oldData && oldData.id_categorias == '2' ? 'selected' : null %>>ESTABILIZADORES</option>
                     </select>
-                    <p><%= locals.errors && errors.id_categorias ? errors.id_categorias.msg : null %></p>
                 </div>
-                <div class="div_config div_form_product">
-                    <label for="id_marcas" id="id_marcas">Elegi una Marca</label>
+                <div class="div_config div_form_product" id="div_id_marcas">
+                    <label for="id_marcas">Elegi una Marca</label>
                     <select name="id_marcas" id="id_marcas" class="campo_select">
                         <option value="" selected>Elegí una Marca</option>
                         <option value="1" <%= locals.oldData && oldData.id_marcas == '1' ? 'selected' : null %>>Lyonn</option>
@@ -24,55 +31,50 @@
                         <option value="5" <%= locals.oldData && oldData.id_marcas == '5' ? 'selected' : null %>>TRV</option>
                         <option value="6" <%= locals.oldData && oldData.id_marcas == '6' ? 'selected' : null %>>Forza</option>
                     </select>
-                    <p><%= locals.errors && errors.id_marcas ? errors.id_marcas.msg : null %></p>
                 </div>
-                <div class="div_config div_form_product">
-                    <label for="modelo" id="modelo" class="div_config_label">Modelo</label>
-                    <input type="text"  name="modelo" value="<%= locals.oldData ? oldData.modelo : null %>">
-                    <p><%= locals.errors && errors.modelo ? errors.modelo.msg : null %></p>
+                <div class="div_config div_form_product" id="div_modelo">
+                    <label for="modelo" class="div_config_label">Modelo</label>
+                    <input type="text"  name="modelo" id="modelo" value="<%= locals.oldData ? oldData.modelo : null %>">
                 </div>
-                <div class="div_config div_form_product">
-                    <label for="descripcion" id="descripcion">Descripcion</label>
+                <div class="div_config div_form_product" id="div_descripcion">
+                    <label for="descripcion">Descripcion</label>
                     <input type="text" name="descripcion" id="descripcion" value="<%= locals.oldData ? oldData.descripcion : null %>">
-                    <p><%= locals.errors && errors.descripcion ? errors.descripcion.msg : null %></p>
                 </div>
-                <div class="div_config div_form_product">
-                    <label for="potencia" id="potencia">Potencia</label>
-                    <input type="number"  name="potencia" value="<%= locals.oldData ? oldData.potencia : null %>">
-                    <p><%= locals.errors && errors.potencia ? errors.potencia.msg : null %></p>
+                <div class="div_config div_form_product" id="div_potencia">
+                    <label for="potencia">Potencia</label>
+                    <input type="number"  name="potencia" id="potencia" value="<%= locals.oldData ? oldData.potencia : null %>">
                 </div>
-                <div class="div_config div_form_product">
-                    <label for="tomas" id="tomas">Cantidad de tomas</label>
-                    <input type="number"  name="tomas" value="<%= locals.oldData ? oldData.tomas : null %>">
-                    <p><%= locals.errors && errors.tomas ? errors.tomas.msg : null %></p>
+                <div class="div_config div_form_product" id="div_tomas">
+                    <label for="tomas">Cantidad de tomas</label>
+                    <input type="number"  name="tomas" id="tomas" value="<%= locals.oldData ? oldData.tomas : null %>">
                 </div>
-                <div class="div_config div_form_product">
-                    <label for="precio" id="precio">Precio</label>
-                    <input type="number"  name="precio" value="<%= locals.oldData ? oldData.precio : null %>">
-                    <p><%= locals.errors && errors.precio ? errors.precio.msg : null %></p>
+                <div class="div_config div_form_product" id="div_precio">
+                    <label for="precio">Precio</label>
+                    <input type="number"  name="precio" id="precio" value="<%= locals.oldData ? oldData.precio : null %>">
                 </div>
-                <div class="div_config div_form_product">
-                    <label for="descuento" id="descuento">Descuento</label>
-                    <input type="number"  name="descuento" value="<%= locals.oldData ? oldData.descuento : null %>">
-                    <p><%= locals.errors && errors.descuento ? errors.descuento.msg : null %></p>
+                <div class="div_config div_form_product" id="div_descuento">
+                    <label for="descuento">Descuento</label>
+                    <input type="number"  name="descuento" id="descuento" value="<%= locals.oldData ? oldData.descuento : null %>">
                 </div>
-                <div class="div_config div_form_product">
-                    <label for="stock" id="stock">Stock</label>
-                    <input type="number"  name="stock" value="<%= locals.oldData ? oldData.stock : null %>">
-                    <p><%= locals.errors && errors.stock ? errors.stock.msg : null %></p>
+                <div class="div_config div_form_product" id="div_stock">
+                    <label for="stock">Stock</label>
+                    <input type="number"  name="stock" id="stock" value="<%= locals.oldData ? oldData.stock : null %>">
                 </div>
-                <div class="div_config div_form_product">
-                    <label for="imagenes" id="imagen">Seleccione una imagen</label>
-                    <input type="file"  name="imagenes" multiple>
-                    <p><%= locals.errors && errors.imagenes ? errors.imagenes.msg : null %></p>
+                <div class="div_config div_form_product" id="div_imagenes">
+                    <label for="imagenes">Imagenes (maximo 3 archivos)</label>
+                    <input type="file" name="imagenes" id="imagenes"  value="<%= locals.oldData ? oldData.imagenes : null %>" multiple>
                 </div>
            
                 <div class="boton_registro_create">
-                    <button type="submit">Crear Producto</button>
+                    <button type="submit" id="button-submit">Crear Producto</button>
                 </div>
                 
         </form>
+    </article>
     </main>
+
+    <script src="/javascripts/validations-form-CreateProduct.js"></script>
+
     <%- include('../partials/footer.ejs')%>
 </body>
 </html>

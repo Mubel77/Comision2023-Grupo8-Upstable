@@ -8,7 +8,7 @@
     </a>
 
     <div class="buscador_header">
-        <form>
+        <form action="/search" method="get">
             <input type="text" name="buscador" placeholder="¿Qué estás buscando?">
             <div class="lupa_header">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -19,6 +19,17 @@
     <nav class="nav_header">
         <div class="burguer_header">
             <i class="fas fa-bars"></i>
+            <ol class="menu-vertical">
+                <li><a href="/products/UPS">UPS</a></li>
+                <li><a href="/products/Estabilizadores">Estabilizadores</a></li>
+                <li><a href="/products/Ofertas">Ofertas</a></li>
+                <li><a class="dark_mode">Modo Oscuro 
+                    <button class="switch" id="switch">
+                    <span><i class="fa-solid fa-sun"></i></span>
+                    <span><i class="fa-solid fa-moon"></i></span>
+                    </button></i>
+                </a></li>
+            </ol>
         </div>
 
         <% if ( locals.usuario ){ %>
@@ -68,15 +79,34 @@
     </nav>
 
     <div class="on-off">
-        <i class="fa-solid fa-toggle-off"></i>
+        <!-- <i class="fa-solid fa-toggle-on"></i> -->
+    <button class="switch_2" id="switch">
+    <span><i class="fa-solid fa-sun"></i></span>
+    <span><i class="fa-solid fa-moon"></i></span>
+    </button>
     </div>
 
 </header>
 
 <nav class="nav_header_2">
-    <h4>UPS</h4>
+    
+    <div class="div_nav_header_2">
+        <h4><a href="/products/UPS">UPS</a></h4>
+
+    </div>
+    
     <div class="linea"></div>
-    <h4 class="estab_nav">ESTABILIZADORES</h4>
+    
+    <div class="div_nav_header_2">
+        <h4 class="estab_nav"><a href="/products/Estabilizadores">ESTABILIZADORES</a></h4>
+
+    </div>
+    
     <div class="linea"></div>
-    <h4>OFERTAS</h4>
+
+    <div class="div_nav_header_2">
+        <h4><a href="/products/Ofertas">OFERTAS</a></h4>
+    </div>
 </nav>
+
+<script src="/javascripts/dark-mode.js"></script>

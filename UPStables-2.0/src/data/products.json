@@ -4,7 +4,7 @@
     "modelo": "Ctb-800",
     "descripcion": "Un estabilizador que garantiza un suministro de energía constante y seguro. Visor LCD para monitorear fácilmente el estado del equipo y el voltaje en tiempo real. Su diseño compacto y moderno se adapta a cualquier espacio de trabajo o hogar.",
     "precio": 50000.00,
-    "descuento": 9,
+    "descuento": 0,
     "stock": 5,
     "id_marcas": 1,
     "id_categorias": 1,
@@ -16,7 +16,7 @@
     "modelo": "SRV-1KI-AR",
     "descripcion": "Un estabilizador que garantiza un suministro de energía constante y seguro. Visor LCD para monitorear fácilmente el estado del equipo y el voltaje en tiempo real. Su diseño compacto y moderno se adapta a cualquier espacio de trabajo o hogar.",
     "precio": 115900.00,
-    "descuento": 15,
+    "descuento": 0,
     "stock": 10,
     "id_marcas": 2,
     "id_categorias": 1,
@@ -32,7 +32,7 @@
     "potencia": 1000,
     "tomas": 6,
     "precio": 80000.00,
-    "descuento": null,
+    "descuento": 0,
     "stock": 8
   },
   {
@@ -44,7 +44,7 @@
     "potencia": 500,
     "tomas": 3,
     "precio": 65000.00,
-    "descuento": null,
+    "descuento": 0,
     "stock": 5
   },
   {
@@ -68,7 +68,7 @@
     "potencia": 2000,
     "tomas": 8,
     "precio": 6500000.00,
-    "descuento": 5.5,
+    "descuento": 15,
     "stock": 8
   },
   {
@@ -80,7 +80,7 @@
     "potencia": 1000,
     "tomas": 4,
     "precio": 63200.00,
-    "descuento": 12,
+    "descuento": 10,
     "stock": 5
   },
   {
@@ -139,8 +139,8 @@
     "descripcion": "Un estabilizador que garantiza un suministro de energía constante y seguro. Visor LCD para monitorear fácilmente el estado del equipo y el voltaje en tiempo real. Su diseño compacto y moderno se adapta a cualquier espacio de trabajo o hogar.",
     "potencia": 1000,
     "tomas": 4,
-    "precio": 850000.00,
-    "descuento": 12,
+    "precio": 10000.00,
+    "descuento": 0,
     "stock": 3
   }
 ]

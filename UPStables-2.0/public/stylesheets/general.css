@@ -17,7 +17,34 @@
 
 body{
     font-family: 'Roboto', sans-serif;
+    width: 100%;
+    background-image: url("/images/circuit_bg 14.png");
+    background-color: #D1D4DE;
+    transition: background-color 1s;
 }
+    body.dark{
+        background-color: #222222;
+        transition: background-color 1s;
+    }
+    body.dark h1{
+        color: white;
+    }
+    body.dark h2{
+        color: white;
+    }
+    body.dark h3{
+        color: white;
+    }
+    body.dark h4{
+        color: white;
+    }
+    
+    body.dark p{
+        color: white;
+    }
+    body.dark i{
+        color: white;
+    }
 
 
 

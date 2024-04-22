@@ -1,14 +1,18 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require('cors')
+//const corsOptions = { origin:'*'}
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var productsRouter = require('./routes/products');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const productsRouter = require('./routes/products');
+const productsApiRouter = require('./routes/api/productsApi');
+const usersApiRouter = require('./routes/api/usersApi')
 
-var app = express();
+const app = express();
 
 const methodOverride =  require('method-override');
 const session = require('express-session')
@@ -31,9 +35,29 @@ app.use(session({
 }))
 app.use(rememberMe);
 
+// Cors configuraciones de la apis
+const corsOptions = {
+  origin: 'http://localhost:5173', // Reemplaza esto con el origen de tu aplicación React
+  credentials: true // Incluye las cookies en las solicitudes
+};
+
+app.use(cors(corsOptions));
+let allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header("Access-Control-Allow-Methods", "OPTIONS, POST, GET, PUT, DELETE");
+    res.header('Access-Control-Allow-Headers', "*");
+    res.header("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With")
+    res.header('Access-Control-Allow-Headers', "*");
+    res.header('Access-Control-Allow-Credentials', 'true'); 
+    next();
+  }
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
+app.use('/products/api', productsApiRouter);
+app.use('/users/api', usersApiRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -49,5 +73,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;

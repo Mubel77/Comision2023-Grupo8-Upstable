@@ -3,30 +3,30 @@
     "id": 1,
     "nombre": "Mauricio",
     "apellido": "Cuellar",
-    "email": "mau@cuellar.com",
+    "email": "mauri@gmail.com",
     "password":"Casa-123",
-    "rol_id": 2,
-    "imagen": "/images/users/no-user-img.jpg",
+    "rol_id": 3,
+    "imagen": "/images/users/no-user-img.jpeg",
     "fecha_nacimiento": "1995-8-23"
   },
   {
     "id": 2,
     "nombre": "Santiago",
     "apellido": "Barrios",
-    "email": "santi@barrios.com",
+    "email": "santi@gmail.com",
     "password":"Casa-123",
-    "rol_id": 3,
-    "imagen": "/images/users/no-user-img.jpg",
+    "rol_id": 1,
+    "imagen": "/images/users/no-user-img.jpeg",
     "fecha_nacimiento": "1990-5-12"
   },
   {
     "id": 3,
     "nombre": "Emiliano",
     "apellido": "Ferreyra",
-    "email": "emi@ferreyra.com",
+    "email": "emi@gmail.com",
     "password":"Casa-123",
-    "rol_id": 3,
-    "imagen": "/images/users/no-user-img.jpg",
+    "rol_id": 2,
+    "imagen": "/images/users/no-user-img.jpeg",
     "fecha_nacimiento": "1989-11-15"
   },
   {
@@ -36,7 +36,7 @@
     "email": "jose@perez.com",
     "password":"Casa-123",
     "rol_id": 1,
-    "imagen": "/images/users/no-user-img.jpg",
+    "imagen": "/images/users/no-user-img.jpeg",
     "fecha_nacimiento": "2000-2-16"
   },
   {
@@ -46,7 +46,57 @@
     "email": "maru@solis.com",
     "password":"Casa-123",
     "rol_id": 1,
-    "imagen": "/images/users/no-user-img.jpg",
+    "imagen": "/images/users/no-user-img.jpeg",
     "fecha_nacimiento": "2005-4-28"
-  } 
+  },
+  {
+    "id": 6,
+    "nombre": "Jorge Ariel",
+    "apellido": "Perez",
+    "email": "jorgeAriel@gmail.com",
+    "password":"Casa-123",
+    "rol_id": 1,
+    "imagen": "/images/users/no-user-img.jpeg",
+    "fecha_nacimiento": "1980-12-6"
+  },
+  {
+    "id": 7,
+    "nombre": "Soledad",
+    "apellido": "Garcia",
+    "email": "solegarcia@gmail.com",
+    "password":"Casa-123",
+    "rol_id": 1,
+    "imagen": "/images/users/no-user-img.jpeg",
+    "fecha_nacimiento": "1981-1-28"
+  },
+  {
+    "id": 8,
+    "nombre": "Marisa",
+    "apellido": "Benitez",
+    "email": "maribenitez@gmail.com",
+    "password":"Casa-123",
+    "rol_id": 4,
+    "imagen": "/images/users/no-user-img.jpeg",
+    "fecha_nacimiento": "1988-4-21"
+  },
+  {
+    "id": 9,
+    "nombre": "Soledad",
+    "apellido": "Ramirez",
+    "email": "soleramirez@gmail.com",
+    "password":"Casa-123",
+    "rol_id": 5,
+    "imagen": "/images/users/no-user-img.jpeg",
+    "fecha_nacimiento": "1992-5-18"
+  },
+  {
+    "id": 10,
+    "nombre": "Carlos",
+    "apellido": "Sosa",
+    "email": "carlisosa@gmail.com",
+    "password":"Casa-123",
+    "rol_id": 1,
+    "imagen": "/images/users/no-user-img.jpeg",
+    "fecha_nacimiento": "1998-10-1"
+  }
 ]

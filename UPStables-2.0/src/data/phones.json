@@ -3,12 +3,30 @@
         "id": 1,
         "prefijo": 11,
         "numero": 12345678,
-        "id_usuario": 2
+        "id_usuario": 1
     },
     {
         "id": 2,
         "prefijo": 11,
+        "numero": 12348756,
+        "id_usuario": 2
+    },
+    {
+        "id": 3,
+        "prefijo": 11,
         "numero": 87654321,
         "id_usuario": 3
+    },
+    {
+        "id": 4,
+        "prefijo": 11,
+        "numero": 23425345,
+        "id_usuario": 8
+    },
+    {
+        "id": 5,
+        "prefijo": 11,
+        "numero": 34788999,
+        "id_usuario": 9
     }
 ]

@@ -1,0 +1,285 @@
+header{
+    font-family: 'Alumni Sans Collegiate One', sans-serif;
+    background-color: #222222;
+}
+header a{
+    text-decoration: none;
+}
+.link_to_home_header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width:100%
+}
+.logo_header{
+    width: 50%;
+    height: auto;
+    margin:2% 34%;
+    border-radius: 35%;
+}
+.titulo{
+    font-weight: 100;
+    font-size: 80px;
+    
+    -webkit-text-stroke: 0.5px black;
+    color: white;
+    
+}
+.buscador_header {
+    width: 55%;
+    margin:0 auto;
+    border-color: white;
+}
+.buscador_header input{
+    width:100%;
+    height: 30px;   
+    border-radius: 15px;
+    border-color: white;
+
+}
+.buscador_header input::placeholder{
+    color:black;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+.nav_header{
+    margin:5% 5% 0% 5%;
+    padding: 10px;
+    width:90%;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.nav_header i{
+    font-size: 120%;
+    color: white;
+}
+.burguer_header{
+    font-size: 120%;
+    color:white;
+    background-color: rgb(41, 40, 40);
+}
+
+.nav_header_2{
+    display: none;
+}
+
+.subtitulo{
+    display: none;
+}
+.texto_nav{
+    display: none;
+}
+.lupa_header{
+    display: none;
+}
+.on-off{
+    display: none;
+}
+.icons_nav{
+    padding: 10px;
+    
+} 
+    .icons_nav img{
+        margin-top: 15px;
+        border-radius: 180px;
+        width: 40px;
+        height:40px;
+    }
+@media (min-width: 768px){
+header{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+   justify-content: space-around;
+    width: 100vw;
+    height: 15%;
+    padding: 5px;
+}
+.link_to_home_header{
+    width: 30%;
+    justify-content:space-around;
+    flex-wrap: wrap;
+    align-items: center;
+}
+#img_user{
+    width: 40%;
+   
+    
+}
+#img_user a{
+    width: 100%;
+    display:flex;
+    justify-content: space-around;
+}
+.logo_header{
+    display: flex;
+    width: 30%;
+    height: 8%;
+    margin:0;
+    left: 100%;
+}
+.titular{
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+    .titulo{
+        -webkit-text-stroke: 1px black;
+        font-size: 45px;
+        width: 65%;
+        height: auto;
+        margin:0;
+        margin-left: -20%;
+    }
+    .subtitulo{
+        display: flex;
+        width: 90%;
+        height: 40%;
+        right: 100%;
+        font-size: 12px;
+        text-align: center;
+        color:white;
+        font-family: 'Roboto';
+    }
+.buscador_header{
+    position: relative;
+    display: inline-block;
+    align-items: left ;
+    width:30%;
+    margin:0;
+}
+    .buscador_header input{
+        margin-left: 10px ;
+        border-radius: 20px;
+        text-align: left;
+        width: 100%;
+    }
+    .buscador_header input::placeholder{
+        margin-left: 30px;
+    }
+    .lupa_header{
+        display: flex;
+        position:absolute;
+        font-size: 20px;
+        left:85%;
+        top:20%;
+        color:black;
+    }
+.nav_header{
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    width:37%;
+    margin:0;
+    font-size: 12px;
+
+}
+.texto_nav{
+    display: flex;
+    margin-right: 10px;
+}
+    .burguer_header{
+        display: none;
+    }
+    .nav_header a{
+        display: flex;
+        justify-content: space-between;
+        font-family: 'Roboto';
+        color:white;    
+    }
+.on-off{
+    display: block;
+}
+.nav_header_2{
+   display: flex;
+    height: 30px;
+   justify-content: space-around;
+   align-items: center;
+   background-color: rgba(34, 34, 34, 0.8);
+   color:white;
+}
+    .nav_header_2 h4{
+        display: flex;
+        font-family: 'Roboto';
+        width:33%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        font-weight: 100;
+
+    }   
+    .linea{
+        height: 30px;
+  width: 2px;
+  background-color: var(--color-verde_agua); 
+  margin: 0 5px;
+    }
+    .on-off{
+        color: white;
+        font-size: 20px;
+        width: 100%;
+        text-align: right;
+        position: relative;
+    }
+        .fa-toggle-off{
+            position: absolute;
+           bottom: 1px;
+            right:15px
+        }
+}
+
+@media (min-width:1024px){
+    header{
+        padding: 15px;
+    }
+    .logo_header{
+        width:30%;
+        
+    }
+    .link_to_home_header {
+        width: 33%;
+    }
+    .titular{
+        width: 70%;
+        align-items: center;
+    }
+    .titulo{
+        font-size: 60px;
+        width: 100%;
+        text-align: center;
+        margin-left: -5px;
+    }
+    .subtitulo{
+        font-size: 16px;
+        width: 90%;
+    }
+
+    .buscador_header{
+        width:28%
+    }
+
+    .buscador_header input{
+        height: 40px;
+        margin:0;
+        width: 100%;
+       
+        
+    }
+   .buscador_header input::placeholder{
+        font-size: 16px;
+        margin-left: 60px;
+    }
+    .lupa_header{
+        font-size: 25px;
+        left:85%;
+        top:15%;   
+    }
+.nav_header{
+    width:37%;
+    font-size: 16px;
+}
+}

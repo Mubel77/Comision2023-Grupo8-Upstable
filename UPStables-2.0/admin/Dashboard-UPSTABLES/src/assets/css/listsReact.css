@@ -1,0 +1,100 @@
+:root {
+  --color-gris: #d1d4de;
+  --color-negro: #000000;
+  --color-celeste: #04b2d9;
+  --color-background: #ffffff;
+  --color-verde_agua: #2dd4da;
+}
+
+.clase_de_fondo {
+  /* background-color: hsl(226.15deg 13.68% 81.37%); */
+  font-weight: bold;
+  color: #000000;
+  /* font-family: 'Roboto', sans-serif; */
+}
+*/ .caja_estilos {
+  border: 2px solid var(--color-verde_agua);
+  width: 100%;
+  margin: 8px 0px;
+  background-color: grey;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.estilos_usuario {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  margin: 5px 0px;
+  border-radius: 5px;
+  border: 2px solid grey;
+}
+.caja_estilos:hover {
+  box-shadow: 0px 0px 10px rgb(8, 210, 255);
+  background-color: rgba(33, 33, 33, 0.3);
+  color: white;
+  transform: scale(1.01);
+  transition: background-color 2.5s, color 1s, transform 1s;
+}
+.estilos_productos {
+  width: 90%;
+  /* border: 2px  solid var(--color-verde_agua); */
+  border: 2px solid grey;
+  border-radius: 5px;
+  margin: 5px 0px;
+}
+.caja_imagenes {
+  /* width: 40%; */
+  display: flex;
+  /* flex-direction: row; */
+  flex-direction: column;
+  flex-wrap: nowrap;
+  /* align-content: stretch;
+  align-items: center; */
+  padding: 5px;  
+  justify-content: space-around;
+}
+.caja_imagen_usuario {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  padding: 5px;
+}
+.caja_de_texto {
+  padding: 0px 5px;
+}
+.ul_estilo {
+  
+  overflow: auto;
+  padding-left: 0px;
+  margin-right: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.pagination-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.p_estilo {
+  color: #000000;
+}
+
+.style-button {
+  background-color: var(--color-gris);
+  border-radius: 5px;
+  /* margin: 10% auto; */
+  padding: 5px;
+  font-family: "Roboto";
+  /* font-size: 16px; */
+  font-weight: bold;
+  /* display: flex; */
+  /* align-items: center; */
+  /* margin: -2px; */
+  /* margin-bottom: 8px; */
+  color: black;
+  margin-bottom: 5px;
+}

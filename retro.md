@@ -61,3 +61,41 @@ Mantener la comunicacion y el compromiso que tenemos hasta ahora con el proyecto
 Darle una importancia menor a la retrospectiva por sobre las demas tareas.
 ### Dejar de hacer...
 Reuniones sin ideas o dudas concretas a fin de optimizar mas el tiempo.
+
+
+# SPRINT 5
+
+Para esta parte del proyecto el equipo conto con un integrante menos. Como primera medida redistribuimos las tareas para lograr que la carga de las mismas sea de la manera mas equitativa posible. De todas maneras se cumplio con el sprint, se entrego en tiempo y forma y corregimos los errores marcados. Las observaciones son las siguientes:
+
+### Comenzar a hacer...
+Mejorar la interfaz grafica del proyecto.
+### Hacer mas...
+Revisar y corregir errores del diseño propios de los sprints anteriores.
+### Continuar haciendo...
+Mantener la comunicacion y el compromiso que tenemos hasta ahora con el proyecto.
+### Hacer menos...
+Evitar agregar nuevas funcionalidades a fin de mejorar el diseño grafico de la pagina.
+### Dejar de hacer...
+Dejar de restarle importancia a la retrospectiva por sobre las demas tareas.
+
+
+# SPRINT 6
+
+En el sprint número 6 nos encontramos realmente con un verdadero problema. En principio nos atrasamos con los contenidos y nos costaba poder comprender los mismos, por ende, las actividades del sprint se fueron atrasando cada vez más. 
+No pudimos cumplir con la fecha de entrega, pero unos días más tarde concluimos nuestras tareas, con errores a corregir en el próximo sprint. 
+
+### Comenzar a hacer...
+Asimilar los contenidos antes de empezar el sprint.
+
+### Hacer mas... 
+Realizar más prácticas de los nuevos contenidos.
+
+### Continuar haciendo...
+Mantener el compromiso con el grupo y con el proyecto.
+
+### Hacer menos...
+Evitar posponer la práctica para más tarde. 
+
+### Dejar de hacer...
+Practicar o asimilar los contenidos durante el sprint.
+

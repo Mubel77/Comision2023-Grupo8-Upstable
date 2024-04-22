@@ -3,7 +3,7 @@
         "id": 1,
         "nombre_calle":"Mendoza",
         "numero_calle": 212,
-        "codigo_postal":null,
+        "codigo_postal":1864,
         "localidad":"Alejandro Korn",
         "provincia":"Buenos Aires",
         "id_usuario": 1
@@ -12,7 +12,7 @@
         "id": 2,
         "nombre_calle":"Salta",
         "numero_calle": 313,
-        "codigo_postal":null,
+        "codigo_postal":1824,
         "localidad":"Lanus",
         "provincia":"Buenos Aires",
         "id_usuario": 2
@@ -30,7 +30,7 @@
         "id": 4,
         "nombre_calle":"Jujuy",
         "numero_calle": 2300,
-        "codigo_postal":null,
+        "codigo_postal":3421,
         "localidad":"Guaymallen",
         "provincia":"Mendoza",
         "id_usuario": 4
@@ -39,7 +39,7 @@
         "id": 5,
         "nombre_calle":"Rio Cuarto",
         "numero_calle": 850,
-        "codigo_postal":null,
+        "codigo_postal":2413,
         "localidad":"Parana",
         "provincia":"Entre Rios",
         "id_usuario": 5
@@ -48,9 +48,45 @@
         "id": 6,
         "nombre_calle":"Mariano Moreno",
         "numero_calle": 1030,
-        "codigo_postal":null,
-        "localidad":"ParanPachecoa",
+        "codigo_postal":1617,
+        "localidad":"Pacheco",
         "provincia":"Buenos Aires",
-        "id_usuario": 5
+        "id_usuario": 6
+    },
+    {
+        "id": 7,
+        "nombre_calle":"San Luis",
+        "numero_calle": 1330,
+        "codigo_postal":1917,
+        "localidad":"Lomas de Zamora",
+        "provincia":"Buenos Aires",
+        "id_usuario": 7
+    },
+    {
+        "id": 8,
+        "nombre_calle":"Av San Martin",
+        "numero_calle": 12300,
+        "codigo_postal":1241,
+        "localidad":"Boedo",
+        "provincia":"Buenos Aires",
+        "id_usuario": 8
+    },
+    {
+        "id": 9,
+        "nombre_calle":"Suipacha",
+        "numero_calle": 5800,
+        "codigo_postal":1340,
+        "localidad":"San Martin",
+        "provincia":"Buenos Aires",
+        "id_usuario": 9
+    },
+    {
+        "id": 10,
+        "nombre_calle":"Av Cordoba",
+        "numero_calle": 3290,
+        "codigo_postal":1900,
+        "localidad":"CABA",
+        "provincia":"Buenos Aires",
+        "id_usuario": 10
     }
 ]

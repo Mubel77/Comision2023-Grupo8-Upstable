@@ -6,8 +6,9 @@
         <%- include('../partials/header.ejs')%>    
     
     <main class="main_registro">
-
-        <img src="/images/img_formulario_registro.png" alt="fomulario de registro" id="imagenFormulario">
+        <section class="section_form_register"> 
+            <article class="article_form_register">
+       
         <div class="subtitulo_registrate">
             <p id="p_registro">Editar datos </p>
         </div>    
@@ -71,20 +72,16 @@
                     <input type="text" name="fecha_nacimiento" id="fecha_nacimiento"  value="<%= locals.old && old.fecha_nacimiento? old.fecha_nacimiento : locals.userUpdate ? userUpdate.fecha_nacimiento: null %>" >
                     <p><%= locals.errors && errors.fecha_nacimiento ? errors.fecha_nacimiento.msg : null %> </p>
                 </div> 
-
-                <div class="div_config">
-                    <label for="imagen" class="col-12 mt-3">Foto de perfil</label>
-                    <input type="file" name="imagen" class="form-control" id="inputGroupFile02">
-                    <p><%= locals.errors && errors.imagen ? errors.imagen.msg : null %> </p>
-                </div>
             
             <div class="boton_registro">
                 <button type="submit">Guardar Cambios</button>
             </div>     
 
         </form>
+    </article>
+</section>
     </main>
-    
+    <script src="/javascripts/validations-form-users-adminUpdate.js"></script>
     <%- include('../partials/footer') %>
     
 </body>

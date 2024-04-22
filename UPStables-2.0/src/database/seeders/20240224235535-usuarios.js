@@ -1,5 +1,5 @@
 'use strict';
-
+const bcrypt = require("bcryptjs");
 const { parse } = require("@formkit/tempo") 
 const {leerArchivo} = require('../../data/jsonFunctions');
 const data = leerArchivo("users");
@@ -9,6 +9,7 @@ const usuarios = data.map(usuario=>{
     format: "YYYY-MM-DD HH:mm:ss"
   });
   usuario.fecha_nacimiento = fecha;
+  usuario.password = bcrypt.hashSync(usuario.password, 10)
   usuario.createdAt = new Date;
   usuario.updatedAt = new Date;
   return usuario

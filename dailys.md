@@ -356,4 +356,185 @@
 * Emi:
     - Qué hizo ayer: corregir funcion y el middleware para recordar el inicio de sesion del usuario, transcribir retrospectiva y daily
     - Si se encontró con algún impedimento:
-    - Qué va a hacer hoy: completar registro de dailys, testear errores
+    - Qué va a hacer hoy: completar registro de dailys, testear errores.
+
+# SPRINT 6
+
+### Lunes 12/02/24
+* Mauri: 
+    - Qué hizo ayer:
+    - Si se encontró con algún impedimento: 
+    - Qué va a hacer hoy: idear diagrama para la base de datos
+
+* Santi: 
+    - Qué hizo ayer:
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: idear diagrama para la base de datos
+
+* Emi:
+    - Qué hizo ayer:
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: idear diagrama para la base de datos
+
+### Martes 13/02/24
+* Mauri: 
+    - Qué hizo ayer: idear diagrama para la base de datos
+    - Si se encontró con algún impedimento: definir entidades y sus relaciones
+    - Qué va a hacer hoy: continuar con el diagrama para la base de datos
+
+* Santi: 
+    - Qué hizo ayer: idear diagrama para la base de datos
+    - Si se encontró con algún impedimento: definir entidades y sus relaciones
+    - Qué va a hacer hoy: continuar con el diagrama para la base de datos
+
+* Emi:
+    - Qué hizo ayer: idear diagrama para la base de datos
+    - Si se encontró con algún impedimento: definir entidades y sus relaciones
+    - Qué va a hacer hoy: continuar con el diagrama para la base de datos
+
+### Miercoles 14/02/24
+* Mauri: 
+    - Qué hizo ayer: idear diagrama para la base de datos
+    - Si se encontró con algún impedimento: definir entidades y sus relaciones  
+    - Qué va a hacer hoy: reunion grupal para definir el diagrama 
+
+* Santi: 
+    - Qué hizo ayer: idear diagrama para la base de datos
+    - Si se encontró con algún impedimento: definir entidades y sus relaciones
+    - Qué va a hacer hoy: reunion grupal para definir el diagrama
+
+* Emi:
+    - Qué hizo ayer: idear diagrama para la base de datos
+    - Si se encontró con algún impedimento: definir entidades y sus relaciones
+    - Qué va a hacer hoy: reunion grupal para definir el diagrama
+
+### Jueves 15/02/24
+* Mauri: 
+    - Qué hizo ayer: definimos el diagrama a presentar
+    - Si se encontró con algún impedimento: definir entidades y sus relaciones
+    - Qué va a hacer hoy: exposicion del diagrama en clase para corregir errores
+
+* Santi: 
+    - Qué hizo ayer: definimos el diagrama a presentar
+    - Si se encontró con algún impedimento: definir entidades y sus relaciones
+    - Qué va a hacer hoy: exposicion del diagrama en clase para corregir errores
+
+* Emi:
+    - Qué hizo ayer: definimos el diagrama a presentar
+    - Si se encontró con algún impedimento: definir entidades y sus relaciones
+    - Qué va a hacer hoy: exposicion del diagrama en clase para corregir errores
+
+### Viernes 16/02/24
+* Mauri: 
+    - Qué hizo ayer: exposicion del diagrama en clase para corregir errores
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: reunion grupal para definir la reparticion de tareas y realizar la retrospectiva
+
+* Santi: 
+    - Qué hizo ayer: exposicion del diagrama en clase para corregir errores
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: reunion grupal para definir la reparticion de tareas y realizar la retrospectiva
+
+* Emi:
+    - Qué hizo ayer: exposicion del diagrama en clase para corregir errores
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: reunion grupal para definir la reparticion de tareas y realizar la retrospectiva
+
+### Sabado 17/02/24
+* Mauri: 
+    - Qué hizo ayer: reunion grupal para definir la reparticion de tareas y realizar la retrospectiva
+    - Si se encontró con algún impedimento: 
+    - Qué va a hacer hoy: refactorizar los controladores del producto
+
+* Santi: 
+    - Qué hizo ayer: reunion grupal para definir la reparticion de tareas y realizar la retrospectiva
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: refactorizar los controladores del usuario
+
+* Emi:
+    - Qué hizo ayer: reunion grupal para definir la reparticion de tareas y realizar la retrospectiva
+    - Si se encontró con algún impedimento:
+    - Qué va a hacer hoy: configuracion de Sequelize y definicion de modelos relacionados con la entidad Usuario
+
+# SPRINT 7
+
+### Lunes 25/03/24
+* Mauri: 
+-Qué hizo ayer:
+-Si se encontró con algún impedimento:
+-Qué va a hacer hoy: reunion grupal para retrospectiva
+
+* Santi: 
+-Qué hizo ayer:
+-Si se encontró con algún impedimento:
+-Qué va a hacer hoy: reunion grupal para retrospectiva
+
+* Emi:
+-Qué hizo ayer:
+-Si se encontró con algún impedimento:
+-Qué va a hacer hoy: reunion grupal para retrospectiva, corregir validaciones del back-end para la cargar de archivos con multer
+
+### Martes 26/3/24
+* Mauri: 
+-Qué hizo ayer:  reunion grupal para retrospectiva
+-Si se encontró con algún impedimento: falta asimilar algunos conceptos sobre las validaciones del lado del front-end
+-Qué va a hacer hoy: buscar informacion, repasar contenido, playground y videos
+
+* Santi: 
+-Qué hizo ayer: reunion grupal para retrospectiva
+-Si se encontró con algún impedimento: 
+-Qué va a hacer hoy: comenzar con validación del lado del frontend en vista login
+ 
+
+* Emi:
+-Qué hizo ayer: reunion grupal para retrospectiva, corregir validaciones del back-end para la cargar de archivos con multer
+-Si se encontró con algún impedimento: errores en la configuracion de multer
+-Qué va a hacer hoy: corregir errores de configuracion de multer
+
+### Miercoles 27/3/24
+* Mauri: 
+-Qué hizo ayer: buscar informacion y repasar contenido para asimilar y comenzar las tareas del sprint
+-Si se encontró con algún impedimento:
+-Qué va a hacer hoy: implementar validaciones front-end al formulario de actualizacion de Producto
+
+* Santi: 
+-Qué hizo ayer: comenzar con validación del lado del frontend en vista login
+-Si se encontró con algún impedimento:
+-Qué va a hacer hoy: continuar con validación del lado del frontend en vista login
+
+* Emi:
+-Qué hizo ayer: corregir errores de configuracion de multer
+-Si se encontró con algún impedimento: tuve problemas para filtrar los archivos segun su extension y capturar los errores de ese proceso
+-Qué va a hacer hoy: aplicar validaciones front-end al formulario de creacion de producto
+
+### Jueves 28/3/24
+* Mauri: 
+-Qué hizo ayer: implementar validaciones front-end al formulario de actualizacion de Producto
+-Si se encontró con algún impedimento:
+-Qué va a hacer hoy: corregir detalles y cerrar la tarea de validaciones front-end para la actualizacion del Producto
+
+* Santi: 
+-Qué hizo ayer: continuar con validación del lado del frontend en vista login
+-Si se encontró con algún impedimento:
+-Qué va a hacer hoy: comenzar con las validaciones del lado del frontend en vista registro
+
+* Emi:
+-Qué hizo ayer: aplicar validaciones front-end al formulario de creacion de producto
+-Si se encontró con algún impedimento: hubo problemas para filtrar los archivos segun su extension y mostrar los errores pero esta vez desde el lado del front-end con JavaScript
+-Qué va a hacer hoy: aplicar validaciones front-end al formulario de actualizacion de perfil del usuario CLIENTE
+
+### Viernes 29/3/24
+* Mauri: 
+-Qué hizo ayer: corregir detalles y cerrar la tarea de validaciones front-end para la actualizacion del Producto
+-Si se encontró con algún impedimento:
+-Qué va a hacer hoy: terminar la tarea de registro de usuario admin y su actulizacion .
+
+* Santi: 
+-Qué hizo ayer: comenzar con las validaciones del lado del frontend en vista registro
+-Si se encontró con algún impedimento:
+-Qué va a hacer hoy: continuar con las validaciones del lado del frontend en vista registro
+
+* Emi:
+-Qué hizo ayer: aplicar validaciones front-end al formulario de actualizacion de perfil del usuario CLIENTE
+-Si se encontró con algún impedimento: consegui validar la fecha de nacimiento como formato string pero falta validarla como una fecha real
+-Qué va a hacer hoy: intentar solucionar validacion del campo fecha

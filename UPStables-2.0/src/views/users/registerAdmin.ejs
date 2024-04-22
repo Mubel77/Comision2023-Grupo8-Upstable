@@ -1,13 +1,15 @@
 <%- include('../partials/head')%>
     
-<body>
+<body class="body_form">
         <%- include('../partials/header.ejs')%>    
     
         <main class="main_registro">
-
-            <img src="/img/img_formulario_registro.png" alt="fomulario de registro" id="imagenFormulario">
+            
+            <section class="section_form_register">
+                <article class=" article_form_register">
+           
             <div class="subtitulo_registrate">
-                <p id="p_registro">registrate</p>
+                <p id="p_registro">Crear Admin</p>
             </div>    
 
             <form action="/users/registerAdmin" method="post" id="form_registro" enctype="multipart/form-data">
@@ -34,6 +36,19 @@
                     <label for="domicilio">Domicilio NUMERO</label>
                     <input type="text"  name="numero_calle" placeholder="Numero Calle" value="<%= locals.oldData ? oldData.numero_calle : null %>">
                     <p><%= locals.errors && errors.numero_calle ? errors.numero_calle.msg : null %> </p>
+                </div>
+
+                <div class="div_config nombre" id="div_telefono">
+                    <label for="telefono">Telefono PREFIJO</label>
+                    <div class="div_config" id="div_prefijo">
+                        <input type="number"  name="prefijo" id="prefijo" placeholder="Prefijo"  value="<%= locals.oldData ? oldData.prefijo : null %>">
+                    </div>
+                </div>
+                <div class="div_config nombre" id="div_telefono">
+                    <label for="telefono">Telefono NUMERO</label>
+                    <div class="div_config" id="div_numero">
+                    <input type="number"  name="numero" id="numero" placeholder="Numero"  value="<%= locals.oldData ? oldData.numero : null %>">
+                    </div>
                 </div>
                 
                 <div class="div_config nombre">
@@ -79,13 +94,14 @@
                 </div>
 
                 <div class="boton_registro">
-                    <button type="submit">Crear cuenta</button>
+                    <button type="submit" id="boton_crear">Crear cuenta</button>
                 </div>
 
             </form>
-            
+        </article>
+    </section>
         </main>
-    
+        <script src="/javascripts/validations-form-users-admin.js"></script>
     <%- include('../partials/footer') %>
     
 </body>

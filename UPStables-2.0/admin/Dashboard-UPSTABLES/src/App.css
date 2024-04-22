@@ -1,0 +1,218 @@
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+} */
+
+/* //////////----------------------------------------\\\\\\\\\\ */
+@import url(./assets/css/style.css);
+/* //////////--- HEADER ---\\\\\\\\\\ */
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: white 2px solid;
+}
+.div_header {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: white 2px solid;
+}
+
+/* //////////--- MAIN ---\\\\\\\\\\ */
+body{
+  background-image: url("http://localhost:3000/images/circuit_bg 14.png");
+  background-color: #D1D4DE;
+
+}
+.main {
+  width: 100%;
+  display: flex;
+  border: white 2px solid;
+
+}
+
+/* //////////--- Columna Izquierda ---\\\\\\\\\\ */
+.column-izq {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+.div_enlaces_perfil-user {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  padding: 5px 0px 0px 10px;
+  /* background-color: rgb(205, 203, 203); */
+  border-radius: 10px;
+  color: black;
+}
+.div_enlaces_perfil-user i {
+  font-size: 30px;
+  width: 40px;
+}
+
+.div_enlaces_perfil-user p{
+  width: 300px;
+  font-size: 28px;
+  font-style: italic;
+  margin-left: 25px;
+}
+
+/* //////////--- Columna Derecha ---\\\\\\\\\\ */
+.column-der {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  /* border: white 2px solid; */
+}
+
+.article-1 {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+}
+.div_box-counts {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  width: 45%;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.6);
+  background-color: hsla(190, 5%, 78%, 0.721);
+}
+.box-counts {
+  background-color: #D1D4DE;
+  width: 40%;
+  border-bottom: #2DD4DA 2px solid;
+  border-right: #2DD4DA 3px solid;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 1);;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+  .box-counts h3{
+    color: black;
+  }
+/* lista de usuarios y productos */
+.article-2 {
+  display: flex;
+  justify-content: space-around;
+  /* border: white 2px solid; */
+  margin: 10px;
+}
+.list-entidades {
+  display: flex;
+  height: 510px;
+  width: 45%;
+  border: 1px solid black;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.6);
+  background-color: hsla(190, 5%, 78%, 0.721);
+}
+.box_li {
+  /* border: 1px solid black; */
+  /* padding: 5px; */
+  /* margin: 3px 0px; */
+  display: flex;
+  width: 95%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  /* flex-direction: row;
+  /* width: 80%; */
+  /* flex-wrap: nowrap;
+  justify-content: space-between; */
+}
+
+.article-3 {
+  display: flex;
+  justify-content: space-around;
+  padding: 25px;
+  margin: 10px;
+}
+.content-box-lastCreation {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  margin: 5px;
+}
+.box-lastCreation {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: hsla(190, 5%, 78%, 0.721);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.6);
+}
+.box-lastCreation p{
+  color: black;
+}
+.box-image {
+  display: flex;
+  justify-content: center;
+}
+
+/* //////////--- FOOTER ---\\\\\\\\\\ */
+/* .footer {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: white 2px solid;
+}
+.div_footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: white 2px solid;
+} */
