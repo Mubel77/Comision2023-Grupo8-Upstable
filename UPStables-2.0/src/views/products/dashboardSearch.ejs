@@ -3,45 +3,50 @@
     <body>
         <%- include('../partials/header.ejs') %>
             <main class="dashboard_main">
-                                
+                <div class="div_buttons_top">
+                    <% if (locals.usuario.roles.id == 2){ %>
+                    <a href="http://localhost:5173/?id=<%= usuario.id %>"><button class="boton_verificar">Dashboard General</button></a>
+                    <% } %>
+                    <a href="/products/dashboard"><button class="boton_verificar">Dashboard</button></a>
+                    <a href="/products/productsList"><button class="boton_verificar">List Products</button></a>
+                    <a href="/products/formCreate"><button class="boton_verificar">+ Agregar Producto</button></a>
+                </div>       
                 <div class="dashboard_box_search-add">
-                    <a href="/products/dashboard"><button class="dashboard_add">Dashboard</button></a>
+                    <!-- <a href="/products/productsList"><button class="boton_verificar">List Products</button></a> -->
                     <div class="dashboard_search">
                         <form action="/products/dashboard/search" method="GET">
-                            <input type="text" name="keywords" placeholder="Buscar producto">
+                            <input type="text" name="keywords" placeholder="Buscar producto por ID">
                             <button type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
-                    <a href="/products/formCreate"><button class="dashboard_add">+ Agregar Producto</button></a>
+                    <!-- <a href="/products/formCreate"><button class="boton_verificar">+ Agregar producto</button></a> -->
                 </div>
 
                 <section class="dashboard_section">
-                    <% if (result.length > 0) {%>                   
-                    <% result.forEach(producto => {%>
-                        <article class="dashboard_article">
+                    <% if (result) {%>                   
+                        <article class="dashboard_article" style="height: 400px;">
                             <div class="dashboard_div_img">
-                                <% for(x=0; x<producto.imagenes.length; x=producto.imagenes.length) { %>
-                                    <img src="<%= producto.imagenes[0].ubicacion%>/<%= producto.imagenes[0].nombre %>" alt="Imagen Publicidad">
+                                <% for(x=0; x<result.imagenes.length; x=result.imagenes.length) { %>
+                                    <img src="<%= result.imagenes[0].ubicacion%>/<%= result.imagenes[0].nombre %>" alt="Imagen Publicidad">
                                 <% } %>
                             </div>
                             <div class="dashboard_div_texto">
-                                <h2>Modelo: <%= producto.modelo%></h2>
-                                <h3>Marca: <%= producto.marcas.marca%></h3>
-                                <h4>Categoria: <%= producto.categorias.categoria%></h4>
-                                <p><%= producto.descripcion%></p>
-                                <h4>Potencia: <%= producto.potencia%></h4>
-                                <h4>Tomas: <%= producto.tomas%></h4>
-                                <h4>Precio: <%= producto.precio%></h4>
-                                <h4>Descuento: <%= producto.descuento%></h4>
-                                <h4>Stock: <%= producto.stock%></h4>
+                                <h2>Modelo: <%= result.modelo%></h2>
+                                <h3>Marca: <%= result.marcas.marca%></h3>
+                                <h4>Categoria: <%= result.categorias.categoria%></h4>
+                                <p><%= result.descripcion%></p>
+                                <h4>Potencia: <%= result.potencia%></h4>
+                                <h4>Tomas: <%= result.tomas%></h4>
+                                <h4>Precio: <%= result.precio%></h4>
+                                <h4>Descuento: <%= result.descuento%></h4>
+                                <h4>Stock: <%= result.stock%></h4>
                             </div>
                             <div class="dashboard_div_botones">
-                                <a href="/products/formUpdate/<%= producto.id%>"><button>Modificar</button></a>
+                                <a href="/products/formUpdate/<%= result.id%>"><button class="boton_verificar">Modificar</button></a>
                             </div>
                         </article>
-                <% })%>
                     <% } else {%>
-                             <h2><%= mensaje %></h2>
+                             <h2 style="margin-left: 30px;font-style: italic;"><%= mensaje %></h2>
                         <% }%>  
                 
                 </section>

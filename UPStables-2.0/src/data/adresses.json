@@ -3,7 +3,7 @@
         "id": 1,
         "nombre_calle":"Mendoza",
         "numero_calle": 212,
-        "codigo_postal":null,
+        "codigo_postal":1864,
         "localidad":"Alejandro Korn",
         "provincia":"Buenos Aires",
         "id_usuario": 1
@@ -12,7 +12,7 @@
         "id": 2,
         "nombre_calle":"Salta",
         "numero_calle": 313,
-        "codigo_postal":null,
+        "codigo_postal":1824,
         "localidad":"Lanus",
         "provincia":"Buenos Aires",
         "id_usuario": 2
@@ -30,7 +30,7 @@
         "id": 4,
         "nombre_calle":"Jujuy",
         "numero_calle": 2300,
-        "codigo_postal":null,
+        "codigo_postal":3421,
         "localidad":"Guaymallen",
         "provincia":"Mendoza",
         "id_usuario": 4
@@ -39,7 +39,7 @@
         "id": 5,
         "nombre_calle":"Rio Cuarto",
         "numero_calle": 850,
-        "codigo_postal":null,
+        "codigo_postal":2413,
         "localidad":"Parana",
         "provincia":"Entre Rios",
         "id_usuario": 5
@@ -48,8 +48,8 @@
         "id": 6,
         "nombre_calle":"Mariano Moreno",
         "numero_calle": 1030,
-        "codigo_postal":null,
-        "localidad":"ParanPachecoa",
+        "codigo_postal":1617,
+        "localidad":"Pacheco",
         "provincia":"Buenos Aires",
         "id_usuario": 5
     }
